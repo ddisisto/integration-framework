@@ -6,21 +6,21 @@ Independent research paper arguing that LLM effectiveness reflects hierarchical 
 
 ## Status
 
-Chapters 2, 3, 5 are written. Chapters 1, 4, 6 and the appendix are stubbed with detailed writing briefs. The Quarto book structure is in place. Research reports in `research/` ground all claims.
+Chapters 1–5 are written. Chapter 6 and the appendix are stubbed. The Quarto book structure is in place. Research reports in `research/` ground all claims.
 
 ```
 paper/
 ├── _quarto.yml                        ← book config
 ├── index.qmd                          ← abstract + preface
-├── 01_compression_hierarchy.qmd       ← STUB
-├── 02_structure_across_depth.qmd      ← DONE
-├── 03_autoregressive_loop.qmd         ← DONE
-├── 04_convergence_across_substrates.qmd ← STUB
-├── 05_recursive_loop.qmd             ← DONE
+├── 01_compression_hierarchy.qmd       ← DONE (~1,040 words)
+├── 02_structure_across_depth.qmd      ← DONE (~3,200 words)
+├── 03_autoregressive_loop.qmd         ← DONE (~2,600 words)
+├── 04_convergence_across_substrates.qmd ← DONE (~2,300 words)
+├── 05_recursive_loop.qmd             ← DONE (~2,800 words)
 ├── 06_of_meaning.qmd                 ← STUB
-├── references.bib                     ← ~75 entries
-├── cross-references.md                ← canonical IDs
-├── appendix_formal_foundations.qmd    ← STUB
+├── references.bib                     ← ~76 entries
+├── cross-references.md                ← canonical IDs (prediction sections: sec-predictions-ch{N})
+├── appendix_formal_foundations.qmd    ← STUB (write after main chapters)
 └── references.qmd
 ```
 
