@@ -1,0 +1,28 @@
+## 1. The Compression Hierarchy {#sec-compression-hierarchy}
+
+<!-- STATUS: Stub — to be written.
+
+Purpose: Establish the central conceptual distinction. Short, decisive.
+
+Core claims:
+- Data → information → knowledge as progressively deeper compression.
+- Three levels precisely distinguished:
+  - Algorithmic compression: reduces bits. Surface redundancy. Does not generalise.
+  - Organisational compression: discovers structure. Encodes shape rather than
+    instances. Generalises (grammar, taxonomy, chess principles vs memorised games).
+  - Semantic compression: builds navigable meaning geometry. Supports inference
+    through structure. This is what transformers do.
+- Rate-distortion theory introduced as the natural formalism: each level is a
+  rate-distortion problem with progressively more abstract relevance criterion.
+  What counts as "loss" changes at each level — this is what makes the hierarchy
+  a hierarchy. Cite Shannon 1959 (distortion measure as choice).
+- The hierarchy is not substrate-specific. Flagged here, developed in Ch 4.
+
+Target length: ~35% shorter than v1 Section 1. The taxonomy is clear within
+three paragraphs. Do not over-elaborate.
+
+Key citations: @shannon_1959, @achille_soatto_2018, @tishby_zaslavsky_2015
+
+Voice and level: match Chapters 2, 3, 5. First idea, first sentence. Trust
+the reader.
+-->

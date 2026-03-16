@@ -1,0 +1,57 @@
+## 6. Of Meaning {#sec-of-meaning}
+
+<!-- STATUS: Stub — to be written.
+
+Purpose: The conclusion as integration — the paper's structure has enacted an
+escalation (signal, structure, sequence, substrate, ecology), and this chapter
+resolves it. Tight, decisive, one job.
+
+Structure (from integration_framework.md):
+
+### The thematic spine {#sec-thematic-spine}
+- At each level, the same distinction governed: between genuine integration
+  (structure added, new inference enabled, representational diversity expanded)
+  and mere accumulation (volume added, surface preserved, diversity contracted).
+- This is the paper's thematic spine, and it resolves here.
+
+### The single-variable claim
+- Statistical complexity — the structural complexity of configurations a system
+  can reach — is a summary statistic, not a causal lever. But it is the *right*
+  summary statistic. What the compression hierarchy produces, what the
+  autoregressive loop amplifies or erodes, what the ecological loops threaten.
+
+### Shannon's insight as closing frame {#sec-shannon-surprise}
+- Information *is* surprise. The framework is about whether systems optimised
+  for producing unsurprising output (fluent, coherent, high-probability)
+  preserve or destroy the capacity for surprise at higher levels of description.
+- The nested loops optimise for the unsurprising. The compression hierarchy
+  generates the surprising. Both accelerating through the same architectures.
+
+### IIT resonance {#sec-iit-resonance}
+- Brief — one paragraph max. Two independent programmes arriving at
+  "integration" as the key variable. Distinguished: this framework is about
+  knowledge compression, not consciousness. Light touch.
+
+### What to watch
+- The framework identifies what to watch and warns the answer won't be found
+  in surface metrics. One paragraph, decisive.
+
+### The final gesture {#sec-final-gesture}
+- The framework can describe conditions under which meaning is generated or
+  eroded. It cannot supply meaning itself — cannot determine which configurations
+  *matter*. That remains the task the hierarchy points toward without reaching.
+- This is the paper's most memorable moment. Earn it. One paragraph.
+
+### Consolidated predictions
+- Summary list of all 10 predictions, gathered from Parts I-III:
+  1-5 from Ch 2, 6-8 from Ch 3/4, plus:
+  9. Ecological degradation exhibits predicted top-down erosion (@pred-ecological-erosion)
+  10. Characterisable threshold for self-reinforcing degradation (@pred-critical-fraction)
+
+Target length: shortest chapter. Resist the urge to re-argue. The work is done;
+this chapter says what it means.
+
+Voice: confident, spare, no rhetorical warm-up. The v1 conclusion's final
+paragraph is the target — compress the runway to get there, but don't lose
+the gesture itself.
+-->

@@ -1,0 +1,56 @@
+## 4. Convergence Across Substrates {#sec-convergence}
+
+<!-- STATUS: Stub — to be written.
+
+Purpose: The biological parallel, tightened. Argue for convergence precisely,
+concede limitations honestly, move on. Supporting evidence, not a core pillar.
+The shortest chapter.
+
+Structure (from integration_framework.md):
+
+### The projection bottleneck as substrate-independent constraint {#sec-projection-bottleneck}
+- Channel capacity (from Ch 3's sec-channel-capacity) makes the argument formal.
+- Any system with internal representations exceeding output channel capacity
+  must solve the same sequential coding problem.
+- Vygotsky's inner/external speech: best-documented biological case. Brief.
+  Inner speech compressed, predicative, semantically dense. External speech
+  expanded for intersubjective recovery. @vygotsky_1934, @alderson-day_fernyhough_2015
+- Fodor's structural claim: output underdetermines internal representation.
+  Widely shared. Revival via @quilty-dunn_etal_2023.
+- Speech bandwidth: ~39 bits/second, cross-linguistically invariant
+  @reed_durlach_1998, @coupe_etal_2019. Internal bandwidth orders of magnitude
+  higher. The bottleneck is quantifiable.
+- RSA convergence: @yamins_etal_2014, @kriegeskorte_2015, @schrimpf_etal_2021,
+  @goldstein_etal_2022. Task-optimised DNNs predict biological neural responses.
+  30-60% variance explained — real convergence with real limits.
+
+### Convergence and its limits {#sec-convergence-limits}
+- Convergence is structural, not mechanistic. Birds and aircraft.
+- Co-evolution disanalogy (Deacon @deacon_1997): language and brain co-evolved;
+  transformers adapt to language unidirectionally. RLHF partially but weakly
+  closes the gap. The disanalogy is real and consequential.
+- Levinson HEDGED: @levinson_2003, @levinson_etal_2002 — but challenged by
+  @li_gleitman_2002. Use moderate claim: language biases default processing
+  strategies, not "reshapes internal representation."
+- Grounding as rate-distortion question {#sec-grounding-rate-distortion}:
+  novel framing, no precedent. Does solving hierarchical rate-distortion
+  problems require sensorimotor grounding? Cite @zaslavsky_etal_2018 as
+  precedent for rate-distortion in linguistic categorisation. Present as
+  open question, not established theory.
+- What convergence explains (effectiveness less surprising than it appears)
+  and what it doesn't (depth/robustness of text-only compression unresolved).
+
+### Predictions {#sec-predictions-part2}
+6. CoT quality predicts effectiveness better than length (@pred-cot-quality)
+   — already stated in Ch 3, gathered here.
+7. ICL fails when regularity type absent (@pred-icl-failure) — same.
+8. RSA convergence prediction (@pred-rsa-convergence): if convergence is deep,
+   transformer representations should exhibit geometric properties similar to
+   neural population codes. Systematic divergence would constrain the claim.
+
+Target length: ~60% of v1 Section 4. Once channel capacity formalises the
+constraint, the case is made quickly.
+
+Key citations: @coupe_etal_2019, @goldstein_etal_2022, @quilty-dunn_etal_2023,
+@li_gleitman_2002, @zaslavsky_etal_2018, @deacon_1997, @vygotsky_1934
+-->

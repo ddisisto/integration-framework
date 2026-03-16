@@ -1,0 +1,38 @@
+# Appendix A: Formal Foundations {#sec-appendix-formal .appendix}
+
+<!-- STATUS: Stub — to be written after all main chapters are complete.
+
+Purpose: Carry the formal rigour that the main body references but does not
+develop. Each section answers a specific question a sceptical reader would ask.
+
+Planned sections:
+
+## A.1 Rate-distortion and the compression hierarchy
+- Formal definition of R(D) and the role of the distortion measure.
+- Explicit construction: how the three compression levels map to rate-distortion
+  problems with different d(·,·).
+- Relationship to @achille_soatto_2018 (minimal sufficient statistics).
+
+## A.2 Statistical complexity: definition and properties
+- Formal definition of causal states, ε-machines, and Cμ.
+- Relationship to excess entropy / predictive information.
+- Why Cμ is not constrained by the DPI (it is a property of the representation,
+  not mutual information with the source).
+- Known difficulties with estimation in continuous high-dimensional spaces.
+- Proxy measures and their relationship to Cμ.
+
+## A.3 The autoregressive loop as sequential coding
+- The dimensionality mismatch stated formally.
+- Joint source-channel coding: why the classical channel coding theorem applies
+  only approximately (message constructed during transmission).
+- Token interdependence and effective capacity per token.
+
+## A.4 The Saxe/Shwartz-Ziv measurement debate
+- Brief, fair summary.
+- Why the debate is about measurement, not about whether reorganisation occurs.
+- Implications for the framework's own measurement predictions.
+
+Each section should be self-contained and referenceable from the main text.
+Write only after main chapters are finalised — the appendices serve claims
+that need to be stable before formalising.
+-->
