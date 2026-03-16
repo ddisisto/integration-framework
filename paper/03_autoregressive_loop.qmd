@@ -1,0 +1,94 @@
+## 3. The Autoregressive Loop {#sec-autoregressive-loop}
+
+Everything in Part I occurs within the forward pass — parallel operations across layers and heads, all unfolding in a single inference step. But transformer language models do not operate as single-shot compressors. They operate autoregressively: each generated token is appended to the context and conditions the generation of the next. This adds a qualitatively distinct scale to the compression hierarchy, and understanding what it adds — and what it does not — requires care.
+
+### Two compression systems, one forward pass {#sec-two-compression-systems}
+
+The trained weights encode a static geometry: extraordinarily rich, but fixed at the end of training. This geometry defines, for any input, the full probability distribution over next tokens — a compressed model of all the statistical structure in the training corpus. Nothing about it changes during inference.
+
+What changes is where on the map the model is reading.
+
+Each generated token shifts the input to the next forward pass. The weight geometry is fixed, but the region being activated — the path through representational space — is constructed dynamically, step by step. Generation is not sampling from a single distribution. It is sequential traversal, where each step determines the starting point for the next.
+
+The natural description is that each token *reshapes* the space. The intuition is productive but technically wrong in a way that matters. The weights are fixed during inference. The geometry does not change. What changes is the trajectory through it — but through a space so high-dimensional and combinatorially structured that the distinction nearly collapses in practice. A chess board and its rules are fixed; the space of possible games is so vast that each move creates a local horizon that feels like a new landscape.
+
+Two compression systems are thus operating simultaneously:
+
+- **Weights**: deep, static, vast — the accumulated compression of the training distribution. Determines the full geometry of the representational space.
+- **Context**: shallow, dynamic, narrow — a running compression of the current trajectory, built in real time. Determines where in the geometry the model is currently operating.
+
+Context is always interpreted *through* the weight geometry. The trajectory being constructed is read against the entire map at every step. This interaction — fixed geometry, dynamic path — is the source of the autoregressive loop's power.
+
+### Channel capacity and the projection bottleneck {#sec-channel-capacity}
+
+The interaction can be characterised in information-theoretic terms. The internal representation at any step — the full residual stream state conditioning the next-token prediction — is a vector in a space of dimension on the order of $10^3$ to $10^4$. The output is a single selection from a vocabulary of $10^4$ to $10^5$ tokens. The entropy of the internal state vastly exceeds the information capacity of a single token.
+
+This is a bandwidth mismatch, and the autoregressive loop is the solution: a sequential coding scheme for transmitting a high-entropy source through a low-capacity channel, one token at a time. Each token is a channel use. The sequence of tokens collectively encodes what no single token could carry.
+
+The framing is not metaphorical. Shannon's noisy channel theorem [@shannon_1948] establishes that reliable communication through a bandwidth-limited channel requires sequential coding — distributing the message across multiple channel uses. The autoregressive loop is doing exactly this, with the complication that the "message" is not pre-existing but constructed during transmission. The generation process is closer to joint source-channel coding, where encoding and message-construction happen simultaneously, than to the classical setting where a fixed message is encoded for transmission. Each token both *extends* what is being said and *encodes* what has been said so far into a form that conditions what comes next.
+
+This formalises what @sec-convergence will develop as a substrate-independent constraint: any system with internal representations exceeding output channel capacity must solve this sequential coding problem. The specific solution — hierarchical compression projected through a serial bottleneck — is what the constraint demands.
+
+### Compositional novelty from fixed geometry {#sec-compositional-novelty}
+
+The weight geometry is a compression of the training distribution. Every regularity it encodes was present in the data. So in what sense can traversal produce something new?
+
+The weights do not store a lookup table. They encode compressed regularities — abstract patterns of co-occurrence, syntactic structure, semantic relationships, inferential dependencies — that generalise beyond any specific training example. A model trained on arithmetic encodes the *operation*, not every sum.
+
+Combinatorial generalisation follows directly. The autoregressive loop can compose individually learned regularities in sequences that never occurred in training, by constructing trajectories that activate different regularities in novel combinations. Each step draws on the weight geometry; the sequence of steps can be unprecedented. The novelty is compositional: sequential combination of individually learned regularities in configurations shaped by context. Configurations that are coherent — because each step is conditioned by the geometry — but unprecedented — because the specific trajectory has never been traversed.
+
+This is a precise and limited sense of novelty, but it is genuine, and it is sufficient to explain why these models produce outputs that surprise even those who built them.
+
+It is equally important to state what this rules out. The model cannot produce outputs requiring regularities not encoded in the weights. It can combine what it knows in new ways; it cannot generate what it does not know. The autoregressive loop is generative within the span of the weight geometry and silent beyond it.
+
+This predicts two failure modes. The first is familiar: *confabulation* — confident, fluent navigation to a region of semantic space where compressed regularities are locally coherent but globally unmoored from anything true. The second is subtler: *spurious cross-domain coherence* — outputs that are locally correct within each contributing domain while being incoherent at their intersection. Each component regularity is well-grounded; the composition fails. This is harder to detect precisely because the parts are sound. The framework predicts it as an inherent cost of compositional generalisation, not a bug to be trained away: any system that generates novelty by combining known regularities will sometimes combine them invalidly, and the failure will be most insidious where each domain is well-represented but their intersection is sparse.
+
+### The enriching and degrading regimes {#sec-enriching-degrading}
+
+As generation extends, the context becomes increasingly dominated by model-generated tokens. The question the framework must face is whether those tokens are doing the same representational work as human-contributed context.
+
+The answer is: sometimes they are, and sometimes they are not, and the difference is consequential.
+
+Consider two limiting cases. A model reproducing a memorised text generates tokens that are maximally predictable from preceding context. Attention to the original prompt drops toward zero; the generated context is sufficient to predict what follows. Surface statistics may be excellent — they belong to the source text, not to any compressive work the model is doing. The model's contribution has collapsed into retrieval. Context is full and minimally enriching.
+
+At the other extreme, a model working through a novel problem — generating intermediate results, establishing partial conclusions, building scaffolding — produces tokens that do genuine compressive work. Each surfaces structure unavailable from the prompt alone, conditioning subsequent generation in ways that open new representational territory. Context is growing richer in the strong sense: not merely longer, but higher-dimensional as input to the next forward pass.
+
+The variable distinguishing these cases is the *compressive novelty* of each generated token relative to what the context already contains. When a token does new representational work — surfacing structure, bridging domains, establishing results that change the local geometry of what is probable next — the loop is in the **enriching regime**. When a token reinforces an existing trajectory — reproducing known patterns, settling into attractor paths, restating in different form what the context already implies — the loop is in the **degrading regime**, regardless of how fluent the output remains.
+
+Neither regime is a fixed property of model or task. It is a property of the *interaction*: capacity × task demands × context seeding × generation parameters. A capable model on a well-structured task, seeded with context that positions it in a productive region of the weight geometry, can sustain the enriching regime for extended generation. The same model, poorly seeded or on a task that quickly exhausts available novel combinations, will slide into the degrading regime — and the slide will be invisible in surface metrics.
+
+This invisibility is the framework's central warning at this scale. Fluency, grammaticality, and local coherence are properties of algorithmic and lower-order organisational compression, which the model maintains effortlessly throughout. What degrades is higher-order statistical complexity: the novelty, cross-domain connection, and structural surprise that characterise the enriching regime. In information-theoretic terms: in the enriching regime, each token increases the statistical complexity of the context. In the degrading regime, it increases length without increasing complexity — adding tokens without adding structure.
+
+This is the distinction between integration and mere accumulation — the thematic spine of the paper, encountered here at its tightest and fastest scale. It will recur at the ecological scale in @sec-recursive-loop, where the same ambivalent dynamic governs model outputs re-entering the broader knowledge ecosystem.
+
+### Chain-of-thought and in-context learning as steering strategies {#sec-cot-icl}
+
+The enriching/degrading distinction reframes two phenomena that are otherwise somewhat mysterious.
+
+**Chain-of-thought.** Prompting models to produce intermediate reasoning steps before a final answer substantially improves performance on complex tasks [@kojima_etal_2022]. The standard explanation is that CoT "gives the model more computation" — each intermediate token is an additional forward pass, and complex problems require more serial processing than a single pass provides.
+
+This is correct but incomplete. Each intermediate token performs two functions: it contributes to the visible chain of reasoning, and it enriches the context for subsequent forward passes. The intermediate tokens are not merely scratchpad — they are semantic compressions of partial results that, once in context, activate regions of the weight geometry relevant to the next step. CoT converts a problem requiring deep single-pass synthesis into one solvable by shallower synthesis iterated across passes, with each pass building on the compressed output of the last.
+
+In the terms of @sec-structure-across-depth: CoT converts depth into length. A problem whose required statistical complexity exceeds single-pass capacity becomes tractable when intermediate steps progressively enrich the context.
+
+But CoT is not merely extended computation. It is a *steering strategy* for the autoregressive loop. A well-constructed chain keeps each token in the enriching regime: each step surfaces genuinely new structure that changes what is accessible to the next. A poorly constructed chain — restating premises, circling, generating steps predictable from what precedes them — is in the degrading regime despite having the surface form of reasoning. The tokens are present but not doing compressive work.
+
+This generates a specific prediction: CoT quality, measured by the compressive novelty of each step, should predict effectiveness better than chain length. Longer chains that sustain the enriching regime should outperform longer chains that drift into the degrading regime, even when both have the surface form of step-by-step reasoning (@pred-cot-quality).
+
+**In-context learning.** The ability of LLMs to learn new input-output mappings from prompt examples, without weight updates, is naturally situated here. If the weight geometry already encodes the *type* of regularity being demonstrated — because the training distribution contained structurally analogous patterns — then in-context examples serve to *locate* the relevant region of the geometry, navigating the model to a point from which the demonstrated pattern is locally extractable.
+
+In-context examples are a seeding strategy: they position the loop's starting point where the enriching regime is likely to be sustained for the task at hand. This is consistent with the finding that in-context learning is associated with specific computational structures — induction heads — that emerge during training and implement pattern-matching across the context window [@olsson_etal_2022]. The framework adds that these structures are performing context-driven navigation of the weight geometry, using in-context patterns to determine which compressed regularities should dominate the current trajectory.
+
+The predicted limitation: in-context learning should fail when the required regularity *type* is absent from the weight geometry — when the task demands a pattern the model has never encountered, even abstractly. This is distinct from demanding a specific pattern it has never seen (which compositional generalisation can handle) and amounts to demanding a type absent from its compressed repertoire (@pred-icl-failure). Empirically distinguishing these failure modes — compositional generalisation failure versus absent regularity type — would be a productive test.
+
+The unifying claim: CoT, in-context learning, and prompting strategies generally are instances of a single dynamic — steering the autoregressive loop into the enriching regime by managing what enters context. The model's capacity is fixed. The question is always whether the accumulating context is opening representational structure or closing it down.
+
+### Limitations {#sec-autoregressive-limitations}
+
+Three limitations should be stated explicitly.
+
+First, the context window is finite and context compression is lossy. As generation extends, early context is not remembered but *summarised* by its downstream effects — the tokens it conditioned, which now condition subsequent tokens in turn. The effective context of a long generation is not the literal token history but a compressed trace, mediated by attention's capacity to weight recent and salient tokens over distant ones. The finite context window is a hard upper bound on the temporal depth of autoregressive compression.
+
+Second, degradation in long generations has two separable sources. Attentional degradation is architectural — the ceiling imposed by context length and attention mechanics. Compositional degradation is the regime drift described above: progressive dominance of model-generated tokens shifting the loop from enriching to degrading, independent of whether attention can still technically access early context. Both are concurrent. The first is a hard constraint. The second is in principle steerable — but steering it requires understanding the enriching/degrading transition well enough to manage, which is not yet systematically achieved.
+
+Third, the novelty account is specifically *compositional*: novel combinations of known regularities. Whether genuinely new abstractions or regularity types can emerge within the autoregressive loop — or whether they require weight updates — is an open question the framework does not resolve. The boundary between "novel composition of existing regularities" and "genuine conceptual novelty" is not sharp, and we flag this as requiring further investigation rather than asserting a confident answer.
