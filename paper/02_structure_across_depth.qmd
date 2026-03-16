@@ -60,7 +60,7 @@ Small-scale settings provide the clearest evidence for the principle. @nanda_eta
 
 Scaling these analyses to large autoregressive models remains an open challenge. Most detailed representational evidence comes from encoder models or small-scale settings. The extrapolation to the systems the framework is primarily about — large decoder-only language models — should be acknowledged as a gap that the framework motivates closing, not one it has already closed.
 
-### Predictions {#sec-predictions-part1}
+### Predictions {#sec-predictions-ch2}
 
 The framework generates five specific predictions from Part I:
 
