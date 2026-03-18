@@ -44,7 +44,8 @@ Canonical IDs for use across all chapter files. Use `@sec-*` for sections,
 - `sec-channel-capacity` — Channel capacity and the projection bottleneck
 - `sec-compositional-novelty` — Compositional novelty from fixed geometry
 - `sec-enriching-degrading` — The enriching and degrading regimes
-- `sec-cot-icl` — CoT and ICL as steering strategies (predictions 6–7 inline)
+- `sec-cot-icl` — CoT and ICL as steering strategies
+- `sec-predictions-ch3` — Predictions 6–7
 - `sec-autoregressive-limitations` — Limitations of the autoregressive account
 
 ### Chapter 4
@@ -57,8 +58,9 @@ Canonical IDs for use across all chapter files. Use `@sec-*` for sections,
 - `sec-carriers` — Knowledge carriers and persistence ecology
 - `sec-carrier-asymmetry` — Endogenous vs exogenous persistence
 - `sec-nested-loops` — Four nested feedback loops
-- `sec-silent-flattening` — Top-down erosion and silent flattening (predictions 9–10 inline)
+- `sec-silent-flattening` — Top-down erosion and silent flattening
 - `sec-curation-defence` — Human curation as primary defence
+- `sec-predictions-ch5` — Predictions 9–10
 - `sec-eroding-asymmetry` — Processor-to-carrier transition
 
 ### Chapter 6
@@ -76,11 +78,11 @@ Canonical IDs for use across all chapter files. Use `@sec-*` for sections,
 | `pred-accumulator` | 3 | Residual stream as measurable accumulator | 2 |
 | `pred-ib-complement` | 4 | IB compression and complexity growth are complementary | 2 |
 | `pred-training-shift` | 5 | Power-law dynamics; qualitative shift across training | 2 |
-| `pred-cot-quality` | 6 | CoT quality predicts effectiveness better than length | 3 (inline) |
-| `pred-icl-failure` | 7 | ICL fails when regularity type absent from geometry | 3 (inline) |
+| `pred-cot-quality` | 6 | CoT quality predicts effectiveness better than length | 3 |
+| `pred-icl-failure` | 7 | ICL fails when regularity type absent from geometry | 3 |
 | `pred-rsa-convergence` | 8 | Transformer/biological representational similarity | 4 |
-| `pred-ecological-erosion` | 9 | Top-down erosion in recursive training loops | 5 (inline) |
-| `pred-critical-fraction` | 10 | Characterisable threshold for self-reinforcing degradation | 5 (inline) |
+| `pred-ecological-erosion` | 9 | Top-down erosion in recursive training loops | 5 |
+| `pred-critical-fraction` | 10 | Characterisable threshold for self-reinforcing degradation | 5 |
 
 ## Citation conventions
 
