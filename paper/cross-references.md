@@ -27,10 +27,9 @@ Canonical IDs for use across all chapter files. Use `@sec-*` for sections,
 ## Key Subsection IDs
 
 ### Chapter 1
-- `sec-algorithmic-compression` — Algorithmic compression level
-- `sec-organisational-compression` — Organisational compression level
-- `sec-semantic-compression` — Semantic compression level
-- `sec-rate-distortion-hierarchy` — Rate-distortion mapping
+- `sec-lossless-lossy` — The one sharp boundary; entry of relevance
+- `sec-compression-continuum` — Lossy compression as continuum (perceptual → structural → semantic)
+- `sec-what-transformers-do` — Bridging to deep learning; forward reference to Ch 2
 
 ### Chapter 2
 - `sec-architectural-mechanisms` — How transformers generate representational structure
