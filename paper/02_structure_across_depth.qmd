@@ -1,6 +1,6 @@
 ## 2. Structure Across Depth {#sec-structure-across-depth}
 
-The compression hierarchy described in @sec-compression-hierarchy is a claim about types of compression. This chapter is about how transformers implement it — how the forward pass generates progressively deeper compression across layers, what formal framework captures what is happening, and what specific predictions follow.
+@sec-compression-hierarchy established what compression becomes when the distortion measure shifts from surface fidelity toward meaning: a continuum along which progressively more abstract structure is preserved. This chapter is about how transformers implement that continuum — how the forward pass generates progressively deeper compression across layers, what formal framework captures what is happening, and what specific predictions follow.
 
 ### How transformers generate representational structure {#sec-architectural-mechanisms}
 
@@ -11,8 +11,6 @@ Within a transformer, each layer does not merely re-encode the input. It synthes
 **Residual streams as accumulation.** Each layer adds to rather than replaces the internal representation. Earlier compressions are not discarded but elaborated. The architecture accumulates representational structure across depth rather than trading old for new. This is among the best-established findings in mechanistic interpretability: the residual stream functions as a shared communication channel across layers, with each layer reading from and writing to it [@elhage_etal_2021]. The logit lens [@nostalgebraist_2020] and tuned lens [@belrose_etal_2023] provide direct empirical windows — applying the output projection at intermediate layers reveals progressively refined predictions, with each layer's contribution measurable as an incremental update to the accumulated representation.
 
 **Depth as recursive compression.** Each layer operates on the output of the last, applying compression to already-compressed representations. Each pass can surface structure invisible at the previous scale — regularities in the regularities.
-
-The empirical evidence for the resulting hierarchy is strong. Probing studies converge on a consistent picture: lower layers encode surface and lexical features, middle layers encode syntactic structure, upper layers encode semantic and relational structure [@tenney_etal_2019; @jawahar_etal_2019; @hewitt_manning_2019]. The hierarchy is accumulative, not sequential — thanks to residual connections, earlier representations remain accessible alongside later ones [@rogers_etal_2020]. This is exactly the pattern the compression hierarchy predicts: progressively deeper compression, with each level preserved rather than replaced.
 
 ### The data processing inequality and what grows across depth {#sec-dpi-resolution}
 
@@ -40,13 +38,7 @@ One empirical pattern requires explicit acknowledgment. Intrinsic dimensionality
 
 ### Relationship to the information bottleneck {#sec-ib-complementarity}
 
-The information bottleneck framework [@tishby_etal_2000] provides an adjacent account of what layers do. In the IB framing, layers progressively compress input while preserving task-relevant information — minimising $I(X; T)$ while maximising $I(T; Y)$.
-
-The present framework and IB are complementary, not competing. IB describes what layers *discard*: input-specific information irrelevant to the task. This framework describes what layers *generate*: new organisation of preserved information. A layer that discards "this is the word 'bank' in position 7" while introducing "this is a financial context" is performing IB compression and increasing statistical complexity simultaneously.
-
-The distinction matters because IB alone does not predict disproportionate returns on scale. Efficient noise removal makes a system more efficient. It does not make it more *capable*. The generative side — growth of statistical complexity, the creation of representations that support qualitatively new kinds of inference — is what accounts for capability emergence. This is what depth buys that width cannot.
-
-The IB debate itself [@shwartz-ziv_tishby_2017; @saxe_etal_2018; @goldfeld_etal_2019] illustrates the measurement difficulty rather than undermining either framework. Whether deep networks universally exhibit an IB compression phase depends on activation functions, architecture, and MI estimation methods. The debate is about measurement, not about whether layers reorganise information — which they manifestly do. The framework's predictions are independent of whether the IB compression phase is universal, because statistical complexity tracks a different quantity than mutual information with the input.
+The information bottleneck framework [@tishby_etal_2000] provides an adjacent account: layers progressively compress input while preserving task-relevant information — minimising $I(X; T)$ while maximising $I(T; Y)$. The present framework and IB are complementary. IB tracks what layers *discard* (the subtractive side); this framework tracks what layers *generate* (the reorganisation side). Both happen simultaneously — a layer that discards "this is the word 'bank' in position 7" while introducing "this is a financial context" is performing IB compression and increasing statistical complexity at once. But IB alone does not predict disproportionate returns on scale. Efficient noise removal makes a system more efficient; it does not make it more *capable*. The generative side — growth of statistical complexity, the creation of representations supporting qualitatively new inference — is what accounts for capability emergence. This is what depth buys that width cannot.
 
 ### Emergent capabilities as threshold-crossing {#sec-emergence-thresholds}
 
