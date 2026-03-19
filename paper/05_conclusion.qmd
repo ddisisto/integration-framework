@@ -1,4 +1,4 @@
-# 5. Conclusion {#sec-conclusion}
+# Conclusion {#sec-conclusion}
 
 ## Integration and accumulation {#sec-thematic-spine}
 

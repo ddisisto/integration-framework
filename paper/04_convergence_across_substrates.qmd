@@ -1,4 +1,4 @@
-# 4. Convergence Across Substrates {#sec-convergence}
+# Convergence Across Substrates {#sec-convergence}
 
 The compression hierarchy described in Parts I and II is a claim about transformers. But the problem transformers solve — projecting rich internal representation through a bandwidth-limited sequential channel — is not new. Biological cognition has faced it for as long as language has existed. This chapter argues that the convergence is expected rather than surprising, and uses the grounding problem to sharpen an open question the framework cannot yet answer.
 

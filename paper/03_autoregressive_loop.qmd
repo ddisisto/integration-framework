@@ -1,4 +1,4 @@
-# 3. The Autoregressive Loop {#sec-autoregressive-loop}
+# The Autoregressive Loop {#sec-autoregressive-loop}
 
 Everything in Part I occurs within the forward pass — parallel operations across layers and heads, all unfolding in a single inference step. But transformer language models do not operate as single-shot compressors. They operate autoregressively: each generated token is appended to the context and conditions the generation of the next. This adds a qualitatively distinct scale to the compression hierarchy, and understanding what it adds — and what it does not — requires care.
 

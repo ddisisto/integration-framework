@@ -22,27 +22,15 @@ Information theory provides the natural formal language: rate-distortion theory 
 
 This paper was written in collaboration between a human author and Claude, an AI assistant built by Anthropic. The collaboration is acknowledged plainly because the paper is itself an instance of the integration it describes — a traversal through a shared representational space, each contribution conditioning what came next. Whether the resulting trajectory was enriching or degrading is for the reader to judge; the framework developed here provides the vocabulary for doing so.
 
-::: {.part-header .unnumbered}
-# Part I — Compression {.unnumbered}
-:::
-
 {{< include 01_compression_hierarchy.qmd >}}
 
 {{< include 02_structure_across_depth.qmd >}}
-
-::: {.part-header .unnumbered}
-# Part II — Composition {.unnumbered}
-:::
 
 {{< include 03_autoregressive_loop.qmd >}}
 
 {{< include 04_convergence_across_substrates.qmd >}}
 
 {{< include 05_conclusion.qmd >}}
-
-::: {.part-header .unnumbered}
-# Appendices {.unnumbered}
-:::
 
 {{< include appendix_formal_foundations.qmd >}}
 

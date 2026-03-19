@@ -1,4 +1,4 @@
-# 1. The Compression Hierarchy {#sec-compression-hierarchy}
+# The Compression Hierarchy {#sec-compression-hierarchy}
 
 A transformer trained on a large text corpus builds, across its layers, progressively more abstract representations of its input — from surface statistics through syntactic structure to semantic relationships. At each layer, the representation is compressed: information about the specific input is traded for structure that generalises across inputs. The final layers project this rich internal state through a radical bottleneck — a single token selected from a finite vocabulary — and the autoregressive loop repeats the process, constructing a sequential code that carries, one token at a time, what no single token could express.
 

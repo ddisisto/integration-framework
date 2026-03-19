@@ -1,4 +1,4 @@
-# 2. Structure Across Depth {#sec-structure-across-depth}
+# Structure Across Depth {#sec-structure-across-depth}
 
 @sec-compression-hierarchy established what compression becomes when the distortion measure shifts from surface fidelity toward meaning: a continuum along which progressively more abstract structure is preserved. This chapter is about how transformers implement that continuum — how the forward pass generates progressively deeper compression across layers, what formal framework captures what is happening, and what specific predictions follow.
 
