@@ -66,7 +66,9 @@ Canonical IDs for use across all chapter files. Use `@sec-*` for sections,
 ### Chapter 6
 - `sec-thematic-spine` — Integration vs mere accumulation
 - `sec-shannon-surprise` — Shannon's insight as closing frame
-- `sec-iit-resonance` — IIT nod (light touch)
+- `sec-distortion-alignment` — Alignment as distortion measure mismatch (novel)
+- `sec-iit-resonance` — IIT resonance (light touch)
+- `sec-consolidated-predictions` — Summary of all 10 predictions
 - `sec-final-gesture` — What the hierarchy points toward without reaching
 
 ## Prediction IDs

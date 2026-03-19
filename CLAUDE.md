@@ -6,7 +6,7 @@ Independent research paper arguing that LLM effectiveness reflects hierarchical 
 
 ## Status
 
-Chapters 1–5 are written. Chapter 6 and the appendix are stubbed. The Quarto book structure is in place. Research reports in `research/` ground all claims.
+Chapters 1–6 are written. The appendix is stubbed. The Quarto book structure is in place. Research reports in `research/` ground all claims.
 
 ```
 paper/
@@ -17,7 +17,7 @@ paper/
 ├── 03_autoregressive_loop.qmd         ← DONE (~2,600 words)
 ├── 04_convergence_across_substrates.qmd ← DONE (~2,300 words)
 ├── 05_recursive_loop.qmd             ← DONE (~2,800 words)
-├── 06_of_meaning.qmd                 ← STUB
+├── 06_of_meaning.qmd                 ← DONE (~1,100 words)
 ├── references.bib                     ← ~76 entries
 ├── cross-references.md                ← canonical IDs (prediction sections: sec-predictions-ch{N})
 ├── appendix_formal_foundations.qmd    ← STUB (write after main chapters)
@@ -48,5 +48,6 @@ Other files: `v1_draft.md` (source material), `v2_outline.md` (superseded), `int
 - Autoregressive loop as sequential coding through bandwidth-limited channel
 - Grounding problem as rate-distortion question
 - Processor-to-carrier transition framing
+- Alignment as distortion measure mismatch (model's implicit measure vs receiver's; correction as projection bottleneck problem)
 
 These have no clear precedent in the literature. Present as contributions, not established theory.
