@@ -49,5 +49,6 @@ Other files: `v1_draft.md` (source material), `v2_outline.md` (superseded), `int
 - Grounding problem as rate-distortion question
 - Processor-to-carrier transition framing
 - Alignment as distortion measure mismatch (model's implicit measure vs receiver's; correction as projection bottleneck problem)
+- Attention allocation as distortion measure selection; algorithmic capture as adaptive exploit at ecological scale
 
 These have no clear precedent in the literature. Present as contributions, not established theory.
