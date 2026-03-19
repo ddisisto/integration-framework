@@ -1,34 +1,8 @@
 project:
-  type: book
+  type: default
   output-dir: ../web
-
-book:
-  title: "Integration"
-  subtitle: "Compression, composition, and the ecology of representational diversity in large language models"
-  author: "Daniel"
-  date: last-modified
-
-  chapters:
-    - index.qmd
-    - part: "Part I — Compression"
-      chapters:
-        - 01_compression_hierarchy.qmd
-        - 02_structure_across_depth.qmd
-    - part: "Part II — Composition"
-      chapters:
-        - 03_autoregressive_loop.qmd
-        - 04_convergence_across_substrates.qmd
-    - part: "Part III — Ecology"
-      chapters:
-        - 05_recursive_loop.qmd
-        - 06_of_meaning.qmd
-    - references.qmd
-
-  appendices:
-    - appendix_formal_foundations.qmd
-
-bibliography: references.bib
-csl: apa.csl
+  render:
+    - integration.qmd
 
 format:
   html:
@@ -36,25 +10,14 @@ format:
     toc: true
     toc-depth: 3
     number-sections: true
-    crossref:
-      chapters: true
   pdf:
-    documentclass: scrbook
+    documentclass: scrreprt
     papersize: a4
     fontsize: 11pt
     number-sections: true
-    crossref:
-      chapters: true
     include-in-header:
       text: |
         \usepackage{amsmath}
         \usepackage{amssymb}
         \usepackage{pgfpages}
         \pgfpagesuselayout{2 on 1}[a4paper,landscape]
-
-# Profiles for multi-scale output
-# quarto render --profile full  → complete paper with appendices
-# quarto render --profile web   → accessible version without appendices
-profile:
-  group:
-    - [default, full, web]

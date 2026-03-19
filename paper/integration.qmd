@@ -1,0 +1,56 @@
+---
+title: "Integration"
+subtitle: "Compression, composition, and the ecology of representational diversity in large language models"
+author: "Daniel"
+date: last-modified
+bibliography: references.bib
+csl: apa.csl
+number-sections: true
+toc: true
+toc-depth: 3
+---
+
+## Abstract {.unnumbered}
+
+The effectiveness of large language models reflects hierarchical multi-scale compression — organisational and semantic, not merely algorithmic — operating simultaneously within the forward pass and sequentially across the autoregressive loop. The autoregressive loop is fundamentally ambivalent: it can enrich or degrade representational diversity through the same mechanism. This ambivalence recurs at the ecological scale, where model outputs re-enter the knowledge ecosystem through nested feedback loops, threatening a silent flattening that preserves surface quality while eroding higher-order structure.
+
+Information theory provides the natural formal language: rate-distortion theory characterises the hierarchy, the data processing inequality clarifies what depth can and cannot do, channel capacity formalises the projection bottleneck, and statistical complexity provides the measure of what grows across depth. The framework generates specific testable predictions and identifies representational diversity — the structural complexity of the configurations a system can reach — as the critical variable governing whether these systems enrich or impoverish the knowledge ecology they are entering.
+
+## Preface {.unnumbered}
+
+This paper was written in collaboration between a human author and Claude, an AI assistant built by Anthropic. The collaboration is acknowledged plainly because the paper is itself an instance of the integration it describes — a traversal through a shared representational space, each contribution conditioning what came next. Whether the resulting trajectory was enriching or degrading is for the reader to judge; the framework developed here provides the vocabulary for doing so.
+
+::: {.part-header .unnumbered}
+# Part I — Compression {.unnumbered}
+:::
+
+{{< include 01_compression_hierarchy.qmd >}}
+
+{{< include 02_structure_across_depth.qmd >}}
+
+::: {.part-header .unnumbered}
+# Part II — Composition {.unnumbered}
+:::
+
+{{< include 03_autoregressive_loop.qmd >}}
+
+{{< include 04_convergence_across_substrates.qmd >}}
+
+::: {.part-header .unnumbered}
+# Part III — Ecology {.unnumbered}
+:::
+
+{{< include 05_recursive_loop.qmd >}}
+
+{{< include 06_of_meaning.qmd >}}
+
+::: {.part-header .unnumbered}
+# Appendices {.unnumbered}
+:::
+
+{{< include appendix_formal_foundations.qmd >}}
+
+## References {.unnumbered}
+
+::: {#refs}
+:::

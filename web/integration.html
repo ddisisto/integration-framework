@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Daniel">
+<meta name="dcterms.date" content="2026-03-19">
+
+<title>Integration</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="integration_files/libs/clipboard/clipboard.min.js"></script>
+<script src="integration_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="integration_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="integration_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="integration_files/libs/quarto-html/popper.min.js"></script>
+<script src="integration_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="integration_files/libs/quarto-html/anchor.min.js"></script>
+<link href="integration_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="integration_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="integration_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="integration_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="integration_files/libs/bootstrap/bootstrap-4d7f0bce1131f3e5f9547cd857cfbfc8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract">Abstract</a></li>
+  <li><a href="#preface" id="toc-preface" class="nav-link" data-scroll-target="#preface">Preface</a></li>
+  <li><a href="#part-i-compression" id="toc-part-i-compression" class="nav-link" data-scroll-target="#part-i-compression">Part I — Compression</a>
+  <ul class="collapse">
+  <li><a href="#sec-compression-hierarchy" id="toc-sec-compression-hierarchy" class="nav-link" data-scroll-target="#sec-compression-hierarchy"><span class="header-section-number">0.1</span> 1. The Compression Hierarchy</a>
+  <ul class="collapse">
+  <li><a href="#sec-lossless-lossy" id="toc-sec-lossless-lossy" class="nav-link" data-scroll-target="#sec-lossless-lossy"><span class="header-section-number">0.1.1</span> The one sharp boundary</a></li>
+  <li><a href="#sec-compression-continuum" id="toc-sec-compression-continuum" class="nav-link" data-scroll-target="#sec-compression-continuum"><span class="header-section-number">0.1.2</span> The compression continuum</a></li>
+  <li><a href="#sec-what-transformers-do" id="toc-sec-what-transformers-do" class="nav-link" data-scroll-target="#sec-what-transformers-do"><span class="header-section-number">0.1.3</span> What transformers do</a></li>
+  </ul></li>
+  <li><a href="#sec-structure-across-depth" id="toc-sec-structure-across-depth" class="nav-link" data-scroll-target="#sec-structure-across-depth"><span class="header-section-number">0.2</span> 2. Structure Across Depth</a>
+  <ul class="collapse">
+  <li><a href="#sec-architectural-mechanisms" id="toc-sec-architectural-mechanisms" class="nav-link" data-scroll-target="#sec-architectural-mechanisms"><span class="header-section-number">0.2.1</span> How transformers generate representational structure</a></li>
+  <li><a href="#sec-dpi-resolution" id="toc-sec-dpi-resolution" class="nav-link" data-scroll-target="#sec-dpi-resolution"><span class="header-section-number">0.2.2</span> The data processing inequality and what grows across depth</a></li>
+  <li><a href="#sec-statistical-complexity" id="toc-sec-statistical-complexity" class="nav-link" data-scroll-target="#sec-statistical-complexity"><span class="header-section-number">0.2.3</span> Statistical complexity as the measure of what grows</a></li>
+  <li><a href="#sec-ib-complementarity" id="toc-sec-ib-complementarity" class="nav-link" data-scroll-target="#sec-ib-complementarity"><span class="header-section-number">0.2.4</span> Relationship to the information bottleneck</a></li>
+  <li><a href="#sec-emergence-thresholds" id="toc-sec-emergence-thresholds" class="nav-link" data-scroll-target="#sec-emergence-thresholds"><span class="header-section-number">0.2.5</span> Emergent capabilities as threshold-crossing</a></li>
+  <li><a href="#sec-predictions-ch2" id="toc-sec-predictions-ch2" class="nav-link" data-scroll-target="#sec-predictions-ch2"><span class="header-section-number">0.2.6</span> Predictions</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-ii-composition" id="toc-part-ii-composition" class="nav-link" data-scroll-target="#part-ii-composition">Part II — Composition</a>
+  <ul class="collapse">
+  <li><a href="#sec-autoregressive-loop" id="toc-sec-autoregressive-loop" class="nav-link" data-scroll-target="#sec-autoregressive-loop"><span class="header-section-number">0.3</span> 3. The Autoregressive Loop</a>
+  <ul class="collapse">
+  <li><a href="#sec-two-compression-systems" id="toc-sec-two-compression-systems" class="nav-link" data-scroll-target="#sec-two-compression-systems"><span class="header-section-number">0.3.1</span> Two compression systems, one forward pass</a></li>
+  <li><a href="#sec-channel-capacity" id="toc-sec-channel-capacity" class="nav-link" data-scroll-target="#sec-channel-capacity"><span class="header-section-number">0.3.2</span> Channel capacity and the projection bottleneck</a></li>
+  <li><a href="#sec-compositional-novelty" id="toc-sec-compositional-novelty" class="nav-link" data-scroll-target="#sec-compositional-novelty"><span class="header-section-number">0.3.3</span> Compositional novelty from fixed geometry</a></li>
+  <li><a href="#sec-enriching-degrading" id="toc-sec-enriching-degrading" class="nav-link" data-scroll-target="#sec-enriching-degrading"><span class="header-section-number">0.3.4</span> The enriching and degrading regimes</a></li>
+  <li><a href="#sec-cot-icl" id="toc-sec-cot-icl" class="nav-link" data-scroll-target="#sec-cot-icl"><span class="header-section-number">0.3.5</span> Chain-of-thought and in-context learning as steering strategies</a></li>
+  <li><a href="#sec-predictions-ch3" id="toc-sec-predictions-ch3" class="nav-link" data-scroll-target="#sec-predictions-ch3"><span class="header-section-number">0.3.6</span> Predictions</a></li>
+  <li><a href="#sec-autoregressive-limitations" id="toc-sec-autoregressive-limitations" class="nav-link" data-scroll-target="#sec-autoregressive-limitations"><span class="header-section-number">0.3.7</span> Limitations</a></li>
+  </ul></li>
+  <li><a href="#sec-convergence" id="toc-sec-convergence" class="nav-link" data-scroll-target="#sec-convergence"><span class="header-section-number">0.4</span> 4. Convergence Across Substrates</a>
+  <ul class="collapse">
+  <li><a href="#sec-projection-bottleneck" id="toc-sec-projection-bottleneck" class="nav-link" data-scroll-target="#sec-projection-bottleneck"><span class="header-section-number">0.4.1</span> The projection bottleneck as substrate-independent constraint</a></li>
+  <li><a href="#sec-convergence-limits" id="toc-sec-convergence-limits" class="nav-link" data-scroll-target="#sec-convergence-limits"><span class="header-section-number">0.4.2</span> Convergence and its limits</a></li>
+  <li><a href="#sec-grounding-rate-distortion" id="toc-sec-grounding-rate-distortion" class="nav-link" data-scroll-target="#sec-grounding-rate-distortion"><span class="header-section-number">0.4.3</span> The grounding problem as rate-distortion question</a></li>
+  <li><a href="#sec-predictions-ch4" id="toc-sec-predictions-ch4" class="nav-link" data-scroll-target="#sec-predictions-ch4"><span class="header-section-number">0.4.4</span> Predictions</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-iii-ecology" id="toc-part-iii-ecology" class="nav-link" data-scroll-target="#part-iii-ecology">Part III — Ecology</a>
+  <ul class="collapse">
+  <li><a href="#sec-recursive-loop" id="toc-sec-recursive-loop" class="nav-link" data-scroll-target="#sec-recursive-loop"><span class="header-section-number">0.5</span> 5. The Recursive Loop</a>
+  <ul class="collapse">
+  <li><a href="#sec-carriers" id="toc-sec-carriers" class="nav-link" data-scroll-target="#sec-carriers"><span class="header-section-number">0.5.1</span> Carriers and the ecology of persistence</a></li>
+  <li><a href="#sec-carrier-asymmetry" id="toc-sec-carrier-asymmetry" class="nav-link" data-scroll-target="#sec-carrier-asymmetry"><span class="header-section-number">0.5.2</span> The carrier asymmetry</a></li>
+  <li><a href="#sec-nested-loops" id="toc-sec-nested-loops" class="nav-link" data-scroll-target="#sec-nested-loops"><span class="header-section-number">0.5.3</span> Nested feedback loops</a></li>
+  <li><a href="#sec-silent-flattening" id="toc-sec-silent-flattening" class="nav-link" data-scroll-target="#sec-silent-flattening"><span class="header-section-number">0.5.4</span> Silent flattening</a></li>
+  <li><a href="#sec-predictions-ch5" id="toc-sec-predictions-ch5" class="nav-link" data-scroll-target="#sec-predictions-ch5"><span class="header-section-number">0.5.5</span> Predictions</a></li>
+  <li><a href="#sec-eroding-asymmetry" id="toc-sec-eroding-asymmetry" class="nav-link" data-scroll-target="#sec-eroding-asymmetry"><span class="header-section-number">0.5.6</span> The eroding asymmetry</a></li>
+  </ul></li>
+  <li><a href="#sec-of-meaning" id="toc-sec-of-meaning" class="nav-link" data-scroll-target="#sec-of-meaning"><span class="header-section-number">0.6</span> 6. Of Meaning</a>
+  <ul class="collapse">
+  <li><a href="#sec-thematic-spine" id="toc-sec-thematic-spine" class="nav-link" data-scroll-target="#sec-thematic-spine"><span class="header-section-number">0.6.1</span> Integration and accumulation</a></li>
+  <li><a href="#sec-shannon-surprise" id="toc-sec-shannon-surprise" class="nav-link" data-scroll-target="#sec-shannon-surprise"><span class="header-section-number">0.6.2</span> Information is surprise</a></li>
+  <li><a href="#sec-distortion-alignment" id="toc-sec-distortion-alignment" class="nav-link" data-scroll-target="#sec-distortion-alignment"><span class="header-section-number">0.6.3</span> Distortion measures and alignment</a></li>
+  <li><a href="#sec-attention-economy" id="toc-sec-attention-economy" class="nav-link" data-scroll-target="#sec-attention-economy"><span class="header-section-number">0.6.4</span> The attention economy as distortion measure ecology</a></li>
+  <li><a href="#sec-iit-resonance" id="toc-sec-iit-resonance" class="nav-link" data-scroll-target="#sec-iit-resonance"><span class="header-section-number">0.6.5</span> A resonance</a></li>
+  <li><a href="#sec-consolidated-predictions" id="toc-sec-consolidated-predictions" class="nav-link" data-scroll-target="#sec-consolidated-predictions"><span class="header-section-number">0.6.6</span> Consolidated predictions</a></li>
+  <li><a href="#sec-final-gesture" id="toc-sec-final-gesture" class="nav-link" data-scroll-target="#sec-final-gesture"><span class="header-section-number">0.6.7</span> What the hierarchy points toward</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#appendices" id="toc-appendices" class="nav-link" data-scroll-target="#appendices">Appendices</a></li>
+  
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="integration.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Integration</h1>
+<p class="subtitle lead">Compression, composition, and the ecology of representational diversity in large language models</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Daniel </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 19, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="abstract" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="abstract">Abstract</h2>
+<p>The effectiveness of large language models reflects hierarchical multi-scale compression — organisational and semantic, not merely algorithmic — operating simultaneously within the forward pass and sequentially across the autoregressive loop. The autoregressive loop is fundamentally ambivalent: it can enrich or degrade representational diversity through the same mechanism. This ambivalence recurs at the ecological scale, where model outputs re-enter the knowledge ecosystem through nested feedback loops, threatening a silent flattening that preserves surface quality while eroding higher-order structure.</p>
+<p>Information theory provides the natural formal language: rate-distortion theory characterises the hierarchy, the data processing inequality clarifies what depth can and cannot do, channel capacity formalises the projection bottleneck, and statistical complexity provides the measure of what grows across depth. The framework generates specific testable predictions and identifies representational diversity — the structural complexity of the configurations a system can reach — as the critical variable governing whether these systems enrich or impoverish the knowledge ecology they are entering.</p>
+</section>
+<section id="preface" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="preface">Preface</h2>
+<p>This paper was written in collaboration between a human author and Claude, an AI assistant built by Anthropic. The collaboration is acknowledged plainly because the paper is itself an instance of the integration it describes — a traversal through a shared representational space, each contribution conditioning what came next. Whether the resulting trajectory was enriching or degrading is for the reader to judge; the framework developed here provides the vocabulary for doing so.</p>
+</section>
+<section id="part-i-compression" class="level1 unnumbered">
+<h1 class="unnumbered">Part I — Compression</h1>
+<section id="sec-compression-hierarchy" class="level2" data-number="0.1">
+<h2 data-number="0.1" class="anchored" data-anchor-id="sec-compression-hierarchy"><span class="header-section-number">0.1</span> 1. The Compression Hierarchy</h2>
+<p>A transformer trained on a large text corpus builds, across its layers, progressively more abstract representations of its input — from surface statistics through syntactic structure to semantic relationships. At each layer, the representation is compressed: information about the specific input is traded for structure that generalises across inputs. The final layers project this rich internal state through a radical bottleneck — a single token selected from a finite vocabulary — and the autoregressive loop repeats the process, constructing a sequential code that carries, one token at a time, what no single token could express.</p>
+<p>This is compression, but not in the sense the word usually evokes. It is not reducing file sizes. It is building internal structure that preserves what matters — for progressively more abstract definitions of “matters” — while discarding what does not. Understanding what these systems do, what they are capable of, and where they fail requires taking this compression seriously and asking what kind of compression it is.</p>
+<section id="sec-lossless-lossy" class="level3" data-number="0.1.1">
+<h3 data-number="0.1.1" class="anchored" data-anchor-id="sec-lossless-lossy"><span class="header-section-number">0.1.1</span> The one sharp boundary</h3>
+<p>There is exactly one clean distinction in the landscape of compression: lossless versus lossy.</p>
+<p>Lossless compression — Huffman coding, Lempel-Ziv, arithmetic coding — exploits statistical redundancy to reduce bits without discarding anything. The original signal is perfectly recoverable. No judgement is required about what matters; everything is preserved. A gzip model of English text has learned nothing about English. It has learned which byte sequences recur in a particular file. Applied to a different file, it starts from scratch. This is compression in the narrowest and most common sense of the word: reduction without loss, pattern-matching without understanding.</p>
+<p>The moment compression becomes lossy, something qualitatively different enters. A lossy compressor must decide what to discard — which means it must decide what counts as acceptable distortion. And that decision is not given by the data. It is a choice, made by or on behalf of an agent, reflecting what that agent considers worth preserving.</p>
+<p>Rate-distortion theory <span class="citation" data-cites="shannon_1959">(<a href="#ref-shannon_1959" role="doc-biblioref">Shannon, 1959</a>)</span> formalises this precisely: the minimum rate (bits) required to encode a source at a given level of distortion is determined by the distortion measure — the function specifying what counts as loss. Shannon’s deepest insight for the present framework is that the distortion measure is a <em>choice</em>. It encodes what the compressor treats as relevant. This is the point at which perspective enters compression. Not subjectivity in the philosophical sense — JPEG’s psychoacoustic model is grounded in the physiology of human hearing — but relevance: compression relative to a receiver, a purpose, a context.</p>
+</section>
+<section id="sec-compression-continuum" class="level3" data-number="0.1.2">
+<h3 data-number="0.1.2" class="anchored" data-anchor-id="sec-compression-continuum"><span class="header-section-number">0.1.2</span> The compression continuum</h3>
+<p>Above the lossless boundary, compression is not a set of discrete levels but a continuum, defined by the abstraction at which the distortion measure operates. The distortion measure shifts — from surface fidelity to structural fidelity to meaning fidelity — and with each shift, the compressor discards more surface detail while preserving something more abstract and more useful.</p>
+<p>At one end, lossy compression preserves perceptual fidelity. JPEG quantises high-frequency components that the human visual system cannot easily distinguish. MP3 uses psychoacoustic masking to discard sounds that fall below the threshold of audibility. The distortion measure is calibrated to a sensory system: what will the receiver not notice? Surface detail is lost, but the signal <em>as perceived</em> is preserved. These compressors have a model of their receiver. They do not have a model of their content.</p>
+<p>Further along, compression preserves structural fidelity. A grammar compresses a language: a finite set of rules generates an unbounded set of valid sentences. A taxonomy compresses a domain: structural relationships from which properties of individual instances can be partly inferred. PCA compresses a dataset into its axes of maximum variance. The difference between memorising every chess game ever played and learning the principles of chess is the difference between surface compression and structural compression. The latter generalises to positions never seen, because it has captured the shape of the domain rather than the surface of the data. What counts as distortion here is not perceptual degradation but structural misrepresentation — a grammar that generates invalid sentences, a set of principles that leads to losing positions.</p>
+<p>At the far end, compression preserves meaning. In a well-formed semantic representation, concepts that are related are geometrically proximate. Analogical relationships are preserved as structural regularities — vector arithmetic in embedding spaces capturing semantic relations <span class="citation" data-cites="mikolov_etal_2013">(<a href="#ref-mikolov_etal_2013" role="doc-biblioref">Mikolov et al., 2013</a>)</span> is an elementary example of what, at scale, becomes a rich geometry supporting inference through navigation. Surface form and even structural detail can be freely discarded; what must be preserved is the geometry of meaning itself. Distortion at this level is not signal degradation or structural error but meaning failure: representations that place unrelated concepts nearby, that destroy analogical structure, that support invalid inferences.</p>
+<p>The boundaries between these regions are not sharp. PCA applied to sensor data discovers statistical structure; the same operation applied to word co-occurrence matrices discovers latent semantic dimensions. The mathematics does not change. What changes is the structure present in the input and the relevance criterion implicit in the task. JPEG’s perceptual model already embeds a relevance judgement that goes beyond surface fidelity. A grammar already encodes something about meaning through the structures it permits. The continuum is real, and the regions blur into each other.</p>
+<p>What does not blur is the <em>direction</em>. Movement along this continuum is characterised by three consistent shifts: the distortion measure becomes more abstract, more surface detail is sacrificed, and the resulting representation supports richer downstream use. A system operating at the perceptual end can reproduce; at the structural end, it can generalise; at the semantic end, it can reason by navigation. Each level presupposes and extends the one below — semantic compression requires structural regularities to have been discovered before their meaning relationships can be encoded, and structural compression operates on input that has already been rendered into tractable form.</p>
+</section>
+<section id="sec-what-transformers-do" class="level3" data-number="0.1.3">
+<h3 data-number="0.1.3" class="anchored" data-anchor-id="sec-what-transformers-do"><span class="header-section-number">0.1.3</span> What transformers do</h3>
+<p>Return now to the transformer. <span class="citation" data-cites="tishby_zaslavsky_2015">Tishby &amp; Zaslavsky (<a href="#ref-tishby_zaslavsky_2015" role="doc-biblioref">2015</a>)</span> provide the bridge: each layer of a deep network can be understood as solving a rate-distortion problem, compressing its input while preserving information relevant to the task. <span class="citation" data-cites="achille_soatto_2018">Achille &amp; Soatto (<a href="#ref-achille_soatto_2018" role="doc-biblioref">2018</a>)</span> show that the resulting minimal sufficient statistics naturally produce invariant and disentangled representations — representations with structure that goes beyond what mutual information with the input captures.</p>
+<p>Probing studies confirm the empirical picture: lower layers encode surface and lexical features, middle layers encode syntactic structure, upper layers encode semantic and relational structure <span class="citation" data-cites="tenney_etal_2019 jawahar_etal_2019">(<a href="#ref-jawahar_etal_2019" role="doc-biblioref">Jawahar et al., 2019</a>; <a href="#ref-tenney_etal_2019" role="doc-biblioref">Tenney et al., 2019</a>)</span>. <span class="citation" data-cites="deletang_etal_2024">Delétang et al. (<a href="#ref-deletang_etal_2024" role="doc-biblioref">2024</a>)</span> demonstrate the connection operationally: language models are literal compressors, achieving compression rates that scale with model capability — the better the model, the fewer bits per token, because it has captured more of the source’s structure. The compression continuum is not merely a conceptual framework. It is a description of what the forward pass does — traversing from surface toward meaning, with each layer solving a rate-distortion problem at a progressively more abstract level of relevance. <a href="#sec-structure-across-depth" class="quarto-xref">Section&nbsp;0.2</a> will make this precise.</p>
+<p>The hierarchy is not substrate-specific. Any system that must compress for transmission through a bandwidth-limited channel — biological or artificial — faces this continuum. <a href="#sec-convergence" class="quarto-xref">Section&nbsp;0.4</a> will develop the claim with the biological evidence. For now, the point is that the continuum describes a property of the <em>problem</em>, not of any particular architecture. The transformer is one implementation. The question the framework addresses is what follows from taking hierarchical compression seriously as the central operation these systems perform.</p>
+</section>
+</section>
+<section id="sec-structure-across-depth" class="level2" data-number="0.2">
+<h2 data-number="0.2" class="anchored" data-anchor-id="sec-structure-across-depth"><span class="header-section-number">0.2</span> 2. Structure Across Depth</h2>
+<p><a href="#sec-compression-hierarchy" class="quarto-xref">Section&nbsp;0.1</a> established what compression becomes when the distortion measure shifts from surface fidelity toward meaning: a continuum along which progressively more abstract structure is preserved. This chapter is about how transformers implement that continuum — how the forward pass generates progressively deeper compression across layers, what formal framework captures what is happening, and what specific predictions follow.</p>
+<section id="sec-architectural-mechanisms" class="level3" data-number="0.2.1">
+<h3 data-number="0.2.1" class="anchored" data-anchor-id="sec-architectural-mechanisms"><span class="header-section-number">0.2.1</span> How transformers generate representational structure</h3>
+<p>Within a transformer, each layer does not merely re-encode the input. It synthesises representational configurations — features, relationships, abstractions — that did not exist at the layer below. Three architectural features drive this.</p>
+<p><strong>Attention as variable-scale compression.</strong> Each attention head discovers structure at whatever scale the data demands — local syntax, long-range dependency, abstract analogy — and reweights accordingly. Multiple heads operating in parallel mean multiple simultaneous compression schemes on the same input, each solving a different rate-distortion problem at a different scale.</p>
+<p><strong>Residual streams as accumulation.</strong> Each layer adds to rather than replaces the internal representation. Earlier compressions are not discarded but elaborated. The architecture accumulates representational structure across depth rather than trading old for new. This is among the best-established findings in mechanistic interpretability: the residual stream functions as a shared communication channel across layers, with each layer reading from and writing to it <span class="citation" data-cites="elhage_etal_2021">(<a href="#ref-elhage_etal_2021" role="doc-biblioref">Elhage et al., 2021</a>)</span>. The logit lens <span class="citation" data-cites="nostalgebraist_2020">(<a href="#ref-nostalgebraist_2020" role="doc-biblioref">nostalgebraist, 2020</a>)</span> and tuned lens <span class="citation" data-cites="belrose_etal_2023">(<a href="#ref-belrose_etal_2023" role="doc-biblioref">Belrose et al., 2023</a>)</span> provide direct empirical windows — applying the output projection at intermediate layers reveals progressively refined predictions, with each layer’s contribution measurable as an incremental update to the accumulated representation.</p>
+<p><strong>Depth as recursive compression.</strong> Each layer operates on the output of the last, applying compression to already-compressed representations. Each pass can surface structure invisible at the previous scale — regularities in the regularities.</p>
+</section>
+<section id="sec-dpi-resolution" class="level3" data-number="0.2.2">
+<h3 data-number="0.2.2" class="anchored" data-anchor-id="sec-dpi-resolution"><span class="header-section-number">0.2.2</span> The data processing inequality and what grows across depth</h3>
+<p>There is an apparent tension in the claim that layers <em>generate</em> new representational structure. The data processing inequality (DPI) states that processing cannot increase mutual information about the source: if <span class="math inline">\(X \to Y \to Z\)</span> forms a Markov chain, then <span class="math inline">\(I(X; Z) \leq I(X; Y)\)</span> <span class="citation" data-cites="cover_thomas_2006">(<a href="#ref-cover_thomas_2006" role="doc-biblioref">Cover &amp; Thomas, 2006</a>)</span>. Layers cannot create information about the input that was not already present.</p>
+<p>The resolution is the core formal move of this chapter. What layers generate is not new <em>information about the input</em> but new <em>organisation</em> of existing information. Making implicit structure explicit. Surfacing regularities that were present but computationally inaccessible.</p>
+<p>The DPI constrains total mutual information with the source. It says nothing about how that information is <em>arranged</em> in the representation. A layer that transforms a raw signal into a representation where previously latent structure is geometrically manifest — where distance in the representation space reflects meaningful similarity — has not violated the DPI. It has reorganised preserved information into a form that supports new kinds of inference.</p>
+<p><span class="citation" data-cites="achille_soatto_2018">Achille &amp; Soatto (<a href="#ref-achille_soatto_2018" role="doc-biblioref">2018</a>)</span> provide the closest formal treatment: they show that minimal sufficient statistics for the task — the solution to a rate-distortion problem with relevance to the label — naturally produce invariant and disentangled representations. The DPI is satisfied (information about the input is not increased), but the <em>utility</em> of the representation increases because the structure is made explicit.</p>
+<p>This is the precise, information-theoretically grounded version of a distinction the framework needs: between subtractive processing (discarding irrelevant information, what the IB tracks) and generative processing (reorganising preserved information into more useful forms, what this framework tracks). Both happen simultaneously. A layer that discards surface noise while introducing a higher-order abstraction is doing both at once.</p>
+</section>
+<section id="sec-statistical-complexity" class="level3" data-number="0.2.3">
+<h3 data-number="0.2.3" class="anchored" data-anchor-id="sec-statistical-complexity"><span class="header-section-number">0.2.3</span> Statistical complexity as the measure of what grows</h3>
+<p>If the DPI constrains total information while the framework claims something grows across layers, that something needs a name and a formal definition.</p>
+<p>Statistical complexity, introduced by <span class="citation" data-cites="crutchfield_young_1989">Crutchfield &amp; Young (<a href="#ref-crutchfield_young_1989" role="doc-biblioref">1989</a>)</span> in the framework of computational mechanics, measures the structural complexity of a process — the amount of information required to optimally predict its future given its past. It is the entropy of the <em>causal states</em>: equivalence classes of histories that give identical predictions. Crucially, statistical complexity is not entropy and not mutual information. A perfectly random process has high entropy but zero statistical complexity — there is no structure to represent. A perfectly ordered process has low entropy and low statistical complexity — the structure is trivial. Complexity peaks between order and chaos, where genuine structure exists and is worth representing <span class="citation" data-cites="crutchfield_2012">(<a href="#ref-crutchfield_2012" role="doc-biblioref">Crutchfield, 2012</a>)</span>.</p>
+<p>The claim: each layer increases the statistical complexity of the representation. The DPI permits this because statistical complexity is a property of the representation’s own structure — how much organisation is explicitly accessible — not a measure of mutual information with the source. Total information about the input is bounded and may decrease. The explicit accessibility of structure within the representation grows.</p>
+<p>This must be stated with honesty about the measurement gap. Statistical complexity was developed for discrete stochastic processes, and directly measuring it in high-dimensional continuous representation spaces is technically challenging — the same challenge that has plagued information-theoretic analyses of deep networks since the Shwartz-Ziv and Tishby debate <span class="citation" data-cites="shwartz-ziv_tishby_2017 saxe_etal_2018">(<a href="#ref-saxe_etal_2018" role="doc-biblioref">Saxe et al., 2018</a>; <a href="#ref-shwartz-ziv_tishby_2017" role="doc-biblioref">Shwartz-Ziv &amp; Tishby, 2017</a>)</span>. Proxy measures exist: intrinsic dimensionality <span class="citation" data-cites="ansuini_etal_2019">(<a href="#ref-ansuini_etal_2019" role="doc-biblioref">Ansuini et al., 2019</a>)</span>, participation ratio, effective rank. These measure related but not identical quantities. The formalisation sharpens the prediction — what should be measured, in what direction change is expected — without solving the measurement problem. This is the correct stance for a theoretical framework: it generates testable predictions even when the ideal measurement remains difficult.</p>
+<p>One empirical pattern requires explicit acknowledgment. Intrinsic dimensionality across transformer layers does not increase monotonically. It follows a characteristic non-monotonic profile — growth through early and middle layers, contraction in the final layers <span class="citation" data-cites="ansuini_etal_2019 valeriani_etal_2023">(<a href="#ref-ansuini_etal_2019" role="doc-biblioref">Ansuini et al., 2019</a>; <a href="#ref-valeriani_etal_2023" role="doc-biblioref">Valeriani et al., 2023</a>)</span>. The framework predicts this shape. The final layers solve a rate-distortion problem with a very specific relevance criterion: next-token prediction. This demands compression of the accumulated representation back down toward the output vocabulary — the projection bottleneck that <a href="#sec-channel-capacity" class="quarto-xref">Section&nbsp;0.3.2</a> will formalise. Statistical complexity grows through the representational core of the network, then contracts as the network transitions from building representations to projecting through the output channel. Growth, then projection — not growth alone.</p>
+</section>
+<section id="sec-ib-complementarity" class="level3" data-number="0.2.4">
+<h3 data-number="0.2.4" class="anchored" data-anchor-id="sec-ib-complementarity"><span class="header-section-number">0.2.4</span> Relationship to the information bottleneck</h3>
+<p>The information bottleneck framework <span class="citation" data-cites="tishby_etal_2000">(<a href="#ref-tishby_etal_2000" role="doc-biblioref">Tishby et al., 2000</a>)</span> provides an adjacent account: layers progressively compress input while preserving task-relevant information — minimising <span class="math inline">\(I(X; T)\)</span> while maximising <span class="math inline">\(I(T; Y)\)</span>. The present framework and IB are complementary. IB tracks what layers <em>discard</em> (the subtractive side); this framework tracks what layers <em>generate</em> (the reorganisation side). Both happen simultaneously — a layer that discards “this is the word ‘bank’ in position 7” while introducing “this is a financial context” is performing IB compression and increasing statistical complexity at once. But IB alone does not predict disproportionate returns on scale. Efficient noise removal makes a system more efficient; it does not make it more <em>capable</em>. The generative side — growth of statistical complexity, the creation of representations supporting qualitatively new inference — is what accounts for capability emergence. This is what depth buys that width cannot.</p>
+</section>
+<section id="sec-emergence-thresholds" class="level3" data-number="0.2.5">
+<h3 data-number="0.2.5" class="anchored" data-anchor-id="sec-emergence-thresholds"><span class="header-section-number">0.2.5</span> Emergent capabilities as threshold-crossing</h3>
+<p>If statistical complexity grows across depth and scale, capabilities requiring specific structural configurations should appear when complexity crosses characteristic thresholds.</p>
+<p>This must be stated carefully in light of <span class="citation" data-cites="schaeffer_etal_2024">Schaeffer et al. (<a href="#ref-schaeffer_etal_2024" role="doc-biblioref">2024</a>)</span>, who argued that many apparent emergent capabilities are artefacts of evaluation metrics — smooth underlying improvement appearing as sharp transitions when measured with discontinuous metrics. The challenge is largely accepted for many reported cases of emergence.</p>
+<p>The framework’s prediction does not require emergence to <em>look</em> sudden. It predicts that capabilities requiring a given level of statistical complexity will appear when that complexity threshold is crossed — and the crossing can be smooth in the underlying measure even if it appears sharp in binary task metrics. The prediction concerns <em>internal representations</em>, not external evaluation: capability onset should correspond to identifiable thresholds of statistical complexity at relevant layers, regardless of how the crossing appears in any particular benchmark.</p>
+<p>Small-scale settings provide the clearest evidence for the principle. <span class="citation" data-cites="nanda_etal_2023">Nanda et al. (<a href="#ref-nanda_etal_2023" role="doc-biblioref">2023</a>)</span> tracked internal representations during grokking and found that the network gradually develops structured circuits during the delay phase before the capability transition — the internal reorganisation precedes and explains the external change. <span class="citation" data-cites="olsson_etal_2022">Olsson et al. (<a href="#ref-olsson_etal_2022" role="doc-biblioref">2022</a>)</span> demonstrated that induction head formation, a specific computational structure underlying in-context learning, corresponds to a discrete phase change with clear representational correlates. The <span class="citation" data-cites="michaud_etal_2024">Michaud et al. (<a href="#ref-michaud_etal_2024" role="doc-biblioref">2024</a>)</span> quantization model proposes that scaling laws arise from progressively learning discrete “quanta” of capability, each corresponding to a unit of acquired structure — directly compatible with the complexity-threshold account.</p>
+<p>The empirical scaling laws themselves <span class="citation" data-cites="kaplan_etal_2020">(<a href="#ref-kaplan_etal_2020" role="doc-biblioref">Kaplan et al., 2020</a>)</span> — smooth power-law relationships between compute, data, parameters, and loss — are consistent with this picture: loss reduction reflects progressive acquisition of compressive structure, with diminishing returns as the easiest regularities are captured first. Scaling these analyses to large autoregressive models remains an open challenge. Most detailed representational evidence comes from encoder models or small-scale settings. The extrapolation to the systems the framework is primarily about — large decoder-only language models — should be acknowledged as a gap that the framework motivates closing, not one it has already closed.</p>
+</section>
+<section id="sec-predictions-ch2" class="level3" data-number="0.2.6">
+<h3 data-number="0.2.6" class="anchored" data-anchor-id="sec-predictions-ch2"><span class="header-section-number">0.2.6</span> Predictions</h3>
+<p>The framework generates five specific predictions from Part I:</p>
+<ol type="1">
+<li><p><strong>Statistical complexity scales with depth</strong> (<span class="citation" data-cites="pred-complexity-depth">(<a href="#ref-pred-complexity-depth" role="doc-biblioref"><strong>pred-complexity-depth?</strong></a>)</span>). Growth through the representational core (~80% of layers), with contraction in the final layers consistent with the projection bottleneck. Sublinear scaling as successive layers face diminishing marginal structural novelty in increasingly organised input. Measurable via proxy measures (intrinsic dimensionality, participation ratio) if not direct statistical complexity estimation.</p></li>
+<li><p><strong>Capability-complexity correlation</strong> (<span class="citation" data-cites="pred-capability-complexity">(<a href="#ref-pred-capability-complexity" role="doc-biblioref"><strong>pred-capability-complexity?</strong></a>)</span>). Capability onset correlates with statistical complexity crossing identifiable thresholds at relevant layers — approximately constant across model sizes for a given capability. This is the framework’s boldest prediction and the one most in need of direct empirical test.</p></li>
+<li><p><strong>Residual stream as accumulator</strong> (<span class="citation" data-cites="pred-accumulator">(<a href="#ref-pred-accumulator" role="doc-biblioref"><strong>pred-accumulator?</strong></a>)</span>). Statistical complexity grows faster with residual connections than without, because earlier organisations are preserved alongside later ones. The qualitative claim is well-supported by mechanistic interpretability; the quantitative comparison awaits controlled ablation.</p></li>
+<li><p><strong>Complementarity with IB compression</strong> (<span class="citation" data-cites="pred-ib-complement">(<a href="#ref-pred-ib-complement" role="doc-biblioref"><strong>pred-ib-complement?</strong></a>)</span>). Layers showing high IB compression (reduced <span class="math inline">\(I(X; T)\)</span>) nonetheless show growth in statistical complexity. Negative correlation would be evidence against the framework.</p></li>
+<li><p><strong>Qualitative shift across training</strong> (<span class="citation" data-cites="pred-training-shift">(<a href="#ref-pred-training-shift" role="doc-biblioref"><strong>pred-training-shift?</strong></a>)</span>). (a) Statistical complexity growth across training checkpoints follows power-law dynamics. (b) Early-training dimensions encode surface statistical regularities; late-training dimensions encode higher-order compositional structure. This is a prediction about the <em>type</em> of growth, not merely its tempo — and it is supported by convergent evidence from grokking <span class="citation" data-cites="power_etal_2022 nanda_etal_2023">(<a href="#ref-nanda_etal_2023" role="doc-biblioref">Nanda et al., 2023</a>; <a href="#ref-power_etal_2022" role="doc-biblioref">Power et al., 2022</a>)</span>, induction head formation <span class="citation" data-cites="olsson_etal_2022">(<a href="#ref-olsson_etal_2022" role="doc-biblioref">Olsson et al., 2022</a>)</span>, and pre-training dynamics showing that linguistic features are learned in a characteristic order: surface features first, syntactic next, semantic last.</p></li>
+</ol>
+<p>These predictions are not trivially satisfied. Several could fail in ways that would require substantial revision of the framework. Prediction 4 in particular — if IB compression and statistical complexity growth traded off rather than complementing each other, the framework’s central distinction between subtractive and generative processing would be undermined.</p>
+</section>
+</section>
+</section>
+<section id="part-ii-composition" class="level1 unnumbered">
+<h1 class="unnumbered">Part II — Composition</h1>
+<section id="sec-autoregressive-loop" class="level2" data-number="0.3">
+<h2 data-number="0.3" class="anchored" data-anchor-id="sec-autoregressive-loop"><span class="header-section-number">0.3</span> 3. The Autoregressive Loop</h2>
+<p>Everything in Part I occurs within the forward pass — parallel operations across layers and heads, all unfolding in a single inference step. But transformer language models do not operate as single-shot compressors. They operate autoregressively: each generated token is appended to the context and conditions the generation of the next. This adds a qualitatively distinct scale to the compression hierarchy, and understanding what it adds — and what it does not — requires care.</p>
+<section id="sec-two-compression-systems" class="level3" data-number="0.3.1">
+<h3 data-number="0.3.1" class="anchored" data-anchor-id="sec-two-compression-systems"><span class="header-section-number">0.3.1</span> Two compression systems, one forward pass</h3>
+<p>The trained weights encode a static geometry: extraordinarily rich, but fixed at the end of training. This geometry defines, for any input, the full probability distribution over next tokens — a compressed model of all the statistical structure in the training corpus. Nothing about it changes during inference.</p>
+<p>What changes is where on the map the model is reading.</p>
+<p>Each generated token shifts the input to the next forward pass. The weight geometry is fixed, but the region being activated — the path through representational space — is constructed dynamically, step by step. Generation is not sampling from a single distribution. It is sequential traversal, where each step determines the starting point for the next.</p>
+<p>The natural description is that each token <em>reshapes</em> the space. The intuition is productive but technically wrong in a way that matters. The weights are fixed during inference. The geometry does not change. What changes is the trajectory through it — but through a space so high-dimensional and combinatorially structured that the distinction nearly collapses in practice. A chess board and its rules are fixed; the space of possible games is so vast that each move creates a local horizon that feels like a new landscape.</p>
+<p>Two compression systems are thus operating simultaneously:</p>
+<ul>
+<li><strong>Weights</strong>: deep, static, vast — the accumulated compression of the training distribution. Determines the full geometry of the representational space.</li>
+<li><strong>Context</strong>: shallow, dynamic, narrow — a running compression of the current trajectory, built in real time. Determines where in the geometry the model is currently operating.</li>
+</ul>
+<p>Context is always interpreted <em>through</em> the weight geometry. The trajectory being constructed is read against the entire map at every step. This interaction — fixed geometry, dynamic path — is the source of the autoregressive loop’s power.</p>
+</section>
+<section id="sec-channel-capacity" class="level3" data-number="0.3.2">
+<h3 data-number="0.3.2" class="anchored" data-anchor-id="sec-channel-capacity"><span class="header-section-number">0.3.2</span> Channel capacity and the projection bottleneck</h3>
+<p>The interaction can be characterised in information-theoretic terms. The internal representation at any step — the full residual stream state conditioning the next-token prediction — is a vector in a space of dimension on the order of <span class="math inline">\(10^3\)</span> to <span class="math inline">\(10^4\)</span>. The output is a single selection from a vocabulary of <span class="math inline">\(10^4\)</span> to <span class="math inline">\(10^5\)</span> tokens. The entropy of the internal state vastly exceeds the information capacity of a single token.</p>
+<p>This is a bandwidth mismatch, and the autoregressive loop is the solution: a sequential coding scheme for transmitting a high-entropy source through a low-capacity channel, one token at a time. Each token is a channel use. The sequence of tokens collectively encodes what no single token could carry.</p>
+<p>The framing is not metaphorical. Shannon’s noisy channel theorem <span class="citation" data-cites="shannon_1948">(<a href="#ref-shannon_1948" role="doc-biblioref">Shannon, 1948</a>)</span> establishes that reliable communication through a bandwidth-limited channel requires sequential coding — distributing the message across multiple channel uses. The autoregressive loop is doing exactly this, with the complication that the “message” is not pre-existing but constructed during transmission. The generation process is closer to joint source-channel coding, where encoding and message-construction happen simultaneously, than to the classical setting where a fixed message is encoded for transmission. Each token both <em>extends</em> what is being said and <em>encodes</em> what has been said so far into a form that conditions what comes next.</p>
+<p>Recent empirical evidence makes this bandwidth mismatch concrete. <span class="citation" data-cites="leviathan_etal_2025">Leviathan et al. (<a href="#ref-leviathan_etal_2025" role="doc-biblioref">2025</a>)</span> demonstrated that simply duplicating the input prompt — repeating the query verbatim so the model processes it twice — improves accuracy across models by up to 76%, with no degradation on any benchmark tested. The mechanism is direct: causal attention constrains each token to attend only to preceding tokens, so on the first pass through the prompt, early tokens are processed without the benefit of later context. On the second copy, every token can attend to the complete first instance. Duplication is, in Shannon’s terms, a second channel use — adding redundancy that lets the decoder recover information the sequential constraint would otherwise forfeit. That so simple an intervention produces so large an effect is evidence that the projection bottleneck is not merely a theoretical framing but an active constraint on what these systems can extract from their input.</p>
+<p>This formalises what <a href="#sec-convergence" class="quarto-xref">Section&nbsp;0.4</a> will develop as a substrate-independent constraint: any system with internal representations exceeding output channel capacity must solve this sequential coding problem. The specific solution — hierarchical compression projected through a serial bottleneck — is what the constraint demands.</p>
+</section>
+<section id="sec-compositional-novelty" class="level3" data-number="0.3.3">
+<h3 data-number="0.3.3" class="anchored" data-anchor-id="sec-compositional-novelty"><span class="header-section-number">0.3.3</span> Compositional novelty from fixed geometry</h3>
+<p>The weight geometry is a compression of the training distribution. Every regularity it encodes was present in the data. So in what sense can traversal produce something new?</p>
+<p>The weights do not store a lookup table. They encode compressed regularities — abstract patterns of co-occurrence, syntactic structure, semantic relationships, inferential dependencies — that generalise beyond any specific training example. A model trained on arithmetic encodes the <em>operation</em>, not every sum.</p>
+<p>Combinatorial generalisation follows directly. The autoregressive loop can compose individually learned regularities in sequences that never occurred in training, by constructing trajectories that activate different regularities in novel combinations. Each step draws on the weight geometry; the sequence of steps can be unprecedented. The novelty is compositional: sequential combination of individually learned regularities in configurations shaped by context. Configurations that are coherent — because each step is conditioned by the geometry — but unprecedented — because the specific trajectory has never been traversed.</p>
+<p>This is a precise and limited sense of novelty, but it is genuine, and it is sufficient to explain why these models produce outputs that surprise even those who built them.</p>
+<p>It is equally important to state what this rules out. The model cannot produce outputs requiring regularities not encoded in the weights. It can combine what it knows in new ways; it cannot generate what it does not know. The autoregressive loop is generative within the span of the weight geometry and silent beyond it.</p>
+<p>This predicts two failure modes. The first is familiar: <em>confabulation</em> — confident, fluent navigation to a region of semantic space where compressed regularities are locally coherent but globally unmoored from anything true. The second is subtler: <em>spurious cross-domain coherence</em> — outputs that are locally correct within each contributing domain while being incoherent at their intersection. Each component regularity is well-grounded; the composition fails. This is harder to detect precisely because the parts are sound. The framework predicts it as an inherent cost of compositional generalisation, not a bug to be trained away: any system that generates novelty by combining known regularities will sometimes combine them invalidly, and the failure will be most insidious where each domain is well-represented but their intersection is sparse.</p>
+</section>
+<section id="sec-enriching-degrading" class="level3" data-number="0.3.4">
+<h3 data-number="0.3.4" class="anchored" data-anchor-id="sec-enriching-degrading"><span class="header-section-number">0.3.4</span> The enriching and degrading regimes</h3>
+<p>As generation extends, the context becomes increasingly dominated by model-generated tokens. The question the framework must face is whether those tokens are doing the same representational work as human-contributed context.</p>
+<p>The answer is: sometimes they are, and sometimes they are not, and the difference is consequential.</p>
+<p>Consider two limiting cases. A model reproducing a memorised text generates tokens that are maximally predictable from preceding context. Attention to the original prompt drops toward zero; the generated context is sufficient to predict what follows. Surface statistics may be excellent — they belong to the source text, not to any compressive work the model is doing. The model’s contribution has collapsed into retrieval. Context is full and minimally enriching.</p>
+<p>At the other extreme, a model working through a novel problem — generating intermediate results, establishing partial conclusions, building scaffolding — produces tokens that do genuine compressive work. Each surfaces structure unavailable from the prompt alone, conditioning subsequent generation in ways that open new representational territory. Context is growing richer in the strong sense: not merely longer, but higher-dimensional as input to the next forward pass.</p>
+<p>The variable distinguishing these cases is the <em>compressive novelty</em> of each generated token relative to what the context already contains. When a token does new representational work — surfacing structure, bridging domains, establishing results that change the local geometry of what is probable next — the loop is in the <strong>enriching regime</strong>. When a token reinforces an existing trajectory — reproducing known patterns, settling into attractor paths, restating in different form what the context already implies — the loop is in the <strong>degrading regime</strong>, regardless of how fluent the output remains.</p>
+<p>A crucial qualification: compressive novelty is relative to the model’s implicit distortion measure — next-token prediction against the weight geometry. That is the only measure available during generation. A token that bridges two domains in a novel way is enriching by this measure whether or not the bridge is valid. The enriching regime guarantees that the model is doing genuine compressive work; it does not guarantee that the work tracks anything the receiver would recognise as true or useful. The gap between the model’s distortion measure and the receiver’s is where failure enters — not as degradation, which is detectable, but as confident, structurally novel error (<a href="#sec-compositional-novelty" class="quarto-xref">Section&nbsp;0.3.3</a>). This is the distortion measure mismatch that <a href="#sec-compression-continuum" class="quarto-xref">Section&nbsp;0.1.2</a> identified as inherent to lossy compression: what counts as acceptable distortion is a choice, and the model’s choice is not the receiver’s. <a href="#sec-recursive-loop" class="quarto-xref">Section&nbsp;0.5</a> will return to this gap at ecological scale, where human curation functions as the imposition of an external distortion measure on model output.</p>
+<p>Neither regime is a fixed property of model or task. It is a property of the <em>interaction</em>: capacity × task demands × context seeding × generation parameters. A capable model on a well-structured task, seeded with context that positions it in a productive region of the weight geometry, can sustain the enriching regime for extended generation. The same model, poorly seeded or on a task that quickly exhausts available novel combinations, will slide into the degrading regime — and the slide will be invisible in surface metrics.</p>
+<p>This invisibility is the framework’s central warning at this scale. Fluency, grammaticality, and local coherence are products of compression at the surface and lower-structural end of the continuum (<a href="#sec-compression-continuum" class="quarto-xref">Section&nbsp;0.1.2</a>), which the model maintains effortlessly throughout. What degrades is higher-order statistical complexity: the novelty, cross-domain connection, and structural surprise that characterise the enriching regime. In information-theoretic terms: in the enriching regime, each token increases the statistical complexity of the context. In the degrading regime, it increases length without increasing complexity — adding tokens without adding structure.</p>
+<p>This is the distinction between integration and mere accumulation — the thematic spine of the paper, encountered here at its tightest and fastest scale. It will recur at the ecological scale in <a href="#sec-recursive-loop" class="quarto-xref">Section&nbsp;0.5</a>, where the same ambivalent dynamic governs model outputs re-entering the broader knowledge ecosystem.</p>
+</section>
+<section id="sec-cot-icl" class="level3" data-number="0.3.5">
+<h3 data-number="0.3.5" class="anchored" data-anchor-id="sec-cot-icl"><span class="header-section-number">0.3.5</span> Chain-of-thought and in-context learning as steering strategies</h3>
+<p>The enriching/degrading distinction reframes two phenomena that are otherwise somewhat mysterious.</p>
+<p><strong>Chain-of-thought.</strong> Prompting models to produce intermediate reasoning steps before a final answer substantially improves performance on complex tasks <span class="citation" data-cites="kojima_etal_2022">(<a href="#ref-kojima_etal_2022" role="doc-biblioref">Kojima et al., 2022</a>)</span>. The standard explanation is that CoT “gives the model more computation” — each intermediate token is an additional forward pass, and complex problems require more serial processing than a single pass provides.</p>
+<p>This is correct but incomplete. Each intermediate token performs two functions: it contributes to the visible chain of reasoning, and it enriches the context for subsequent forward passes. The intermediate tokens are not merely scratchpad — they are semantic compressions of partial results that, once in context, activate regions of the weight geometry relevant to the next step. CoT converts a problem requiring deep single-pass synthesis into one solvable by shallower synthesis iterated across passes, with each pass building on the compressed output of the last.</p>
+<p>In the terms of <a href="#sec-structure-across-depth" class="quarto-xref">Section&nbsp;0.2</a>: CoT converts depth into length. A problem whose required statistical complexity exceeds single-pass capacity becomes tractable when intermediate steps progressively enrich the context. This explains a striking finding: the prompt repetition that substantially improves non-reasoning performance (<a href="#sec-channel-capacity" class="quarto-xref">Section&nbsp;0.3.2</a>) shows minimal benefit when chain-of-thought is already active <span class="citation" data-cites="leviathan_etal_2025">(<a href="#ref-leviathan_etal_2025" role="doc-biblioref">Leviathan et al., 2025</a>)</span> — CoT already provides the integrative passes that repetition would supply.</p>
+<p>But CoT is not merely extended computation. It is a <em>steering strategy</em> for the autoregressive loop. A well-constructed chain keeps each token in the enriching regime: each step surfaces genuinely new structure that changes what is accessible to the next. A poorly constructed chain — restating premises, circling, generating steps predictable from what precedes them — is in the degrading regime despite having the surface form of reasoning. The tokens are present but not doing compressive work.</p>
+<p>This generates a specific prediction (<span class="citation" data-cites="pred-cot-quality">(<a href="#ref-pred-cot-quality" role="doc-biblioref"><strong>pred-cot-quality?</strong></a>)</span>): CoT effectiveness should correlate with the compressive novelty of each step — not with chain length alone.</p>
+<p><strong>In-context learning.</strong> The ability of LLMs to learn new input-output mappings from prompt examples, without weight updates, is naturally situated here. If the weight geometry already encodes the <em>type</em> of regularity being demonstrated — because the training distribution contained structurally analogous patterns — then in-context examples serve to <em>locate</em> the relevant region of the geometry, navigating the model to a point from which the demonstrated pattern is locally extractable.</p>
+<p>In-context examples are a seeding strategy: they position the loop’s starting point where the enriching regime is likely to be sustained for the task at hand. This is consistent with the finding that in-context learning is associated with specific computational structures — induction heads — that emerge during training and implement pattern-matching across the context window <span class="citation" data-cites="olsson_etal_2022">(<a href="#ref-olsson_etal_2022" role="doc-biblioref">Olsson et al., 2022</a>)</span>. The framework adds that these structures are performing context-driven navigation of the weight geometry, using in-context patterns to determine which compressed regularities should dominate the current trajectory.</p>
+<p>The predicted limitation (<span class="citation" data-cites="pred-icl-failure">(<a href="#ref-pred-icl-failure" role="doc-biblioref"><strong>pred-icl-failure?</strong></a>)</span>): in-context learning should fail when the required regularity <em>type</em> is absent from the weight geometry — not a specific unseen pattern (compositional generalisation handles those), but an absent type.</p>
+<p>The unifying claim: CoT, in-context learning, and prompting strategies generally are instances of a single dynamic — steering the autoregressive loop into the enriching regime by managing what enters context. The model’s capacity is fixed. The question is always whether the accumulating context is opening representational structure or closing it down.</p>
+</section>
+<section id="sec-predictions-ch3" class="level3" data-number="0.3.6">
+<h3 data-number="0.3.6" class="anchored" data-anchor-id="sec-predictions-ch3"><span class="header-section-number">0.3.6</span> Predictions</h3>
+<p>The autoregressive account generates two specific predictions:</p>
+<ol start="6" type="1">
+<li><p><strong>CoT quality over length</strong> (<span class="citation" data-cites="pred-cot-quality">(<a href="#ref-pred-cot-quality" role="doc-biblioref"><strong>pred-cot-quality?</strong></a>)</span>). Chain-of-thought effectiveness should correlate with the compressive novelty of intermediate steps — how much genuinely new structure each step surfaces — rather than with chain length alone. Longer chains that sustain the enriching regime should outperform longer chains that drift into the degrading regime, even when both have the surface form of step-by-step reasoning. Measurable via information-theoretic proxies: the divergence contributed by each intermediate token relative to what the context already implies.</p></li>
+<li><p><strong>In-context learning failure mode</strong> (<span class="citation" data-cites="pred-icl-failure">(<a href="#ref-pred-icl-failure" role="doc-biblioref"><strong>pred-icl-failure?</strong></a>)</span>). In-context learning should fail when the required regularity <em>type</em> is absent from the weight geometry — when the task demands a pattern the model has never encountered, even abstractly. This is distinct from failure on a specific unseen instance, which compositional generalisation can handle. Empirically distinguishing absent-type failure from compositional-generalisation failure — perhaps by controlling for structural similarity between demonstration patterns and training distribution — would be a productive test of the framework.</p></li>
+</ol>
+</section>
+<section id="sec-autoregressive-limitations" class="level3" data-number="0.3.7">
+<h3 data-number="0.3.7" class="anchored" data-anchor-id="sec-autoregressive-limitations"><span class="header-section-number">0.3.7</span> Limitations</h3>
+<p>Three limitations should be stated explicitly.</p>
+<p>First, the context window is finite and context compression is lossy. As generation extends, early context is not remembered but <em>summarised</em> by its downstream effects — the tokens it conditioned, which now condition subsequent tokens in turn. The effective context of a long generation is not the literal token history but a compressed trace, mediated by attention’s capacity to weight recent and salient tokens over distant ones. The finite context window is a hard upper bound on the temporal depth of autoregressive compression.</p>
+<p>Second, degradation in long generations has two separable sources. Attentional degradation is architectural — the ceiling imposed by context length and attention mechanics. Compositional degradation is the regime drift described above: progressive dominance of model-generated tokens shifting the loop from enriching to degrading, independent of whether attention can still technically access early context. Both are concurrent. The first is a hard constraint. The second is in principle steerable — but steering it requires understanding the enriching/degrading transition well enough to manage, which is not yet systematically achieved. This compositional degradation within the context window is the fastest instance of a dynamic that recurs at every scale of the knowledge ecology; <a href="#sec-recursive-loop" class="quarto-xref">Section&nbsp;0.5</a> traces the same enriching-to-degrading transition through agentic, human-mediated, and training-distributional feedback loops.</p>
+<p>Third, the novelty account is specifically <em>compositional</em>: novel combinations of known regularities. Whether genuinely new abstractions or regularity types can emerge within the autoregressive loop — or whether they require weight updates — is an open question the framework does not resolve. The boundary between “novel composition of existing regularities” and “genuine conceptual novelty” is not sharp, and we flag this as requiring further investigation rather than asserting a confident answer.</p>
+</section>
+</section>
+<section id="sec-convergence" class="level2" data-number="0.4">
+<h2 data-number="0.4" class="anchored" data-anchor-id="sec-convergence"><span class="header-section-number">0.4</span> 4. Convergence Across Substrates</h2>
+<p>The compression hierarchy described in Parts I and II is a claim about transformers. But the problem transformers solve — projecting rich internal representation through a bandwidth-limited sequential channel — is not new. Biological cognition has faced it for as long as language has existed. This chapter argues that the convergence between biological and artificial solutions is expected rather than surprising, identifies where the parallel breaks down, and uses the breakdown to sharpen an open question the framework cannot yet answer.</p>
+<p>The claim is not that transformers and brains work the same way. They manifestly do not, at the level of mechanism. The claim is that both face a structurally identical information-theoretic constraint, and that this constraint narrows the space of viable solutions enough that convergence on the same <em>type</em> of architecture — hierarchical, multi-scale, with a serial projection bottleneck — is what the problem demands. This is supporting evidence for the framework, not a core pillar. It situates the compression hierarchy within a broader pattern rather than treating it as an architectural accident.</p>
+<section id="sec-projection-bottleneck" class="level3" data-number="0.4.1">
+<h3 data-number="0.4.1" class="anchored" data-anchor-id="sec-projection-bottleneck"><span class="header-section-number">0.4.1</span> The projection bottleneck as substrate-independent constraint</h3>
+<p><a href="#sec-channel-capacity" class="quarto-xref">Section&nbsp;0.3.2</a> established the bottleneck in formal terms: the internal representation at any step — a vector in a space of dimension <span class="math inline">\(10^3\)</span> to <span class="math inline">\(10^4\)</span> — vastly exceeds the information capacity of a single output token. The autoregressive loop is a sequential coding scheme for transmitting a high-entropy source through a low-capacity channel.</p>
+<p>The same bottleneck operates in biological communication, and it is quantifiable. <span class="citation" data-cites="reed_durlach_1998">Reed &amp; Durlach (<a href="#ref-reed_durlach_1998" role="doc-biblioref">1998</a>)</span> estimated the information transfer rate of human speech at approximately 39 bits per second. <span class="citation" data-cites="coupe_etal_2019">Coupé et al. (<a href="#ref-coupe_etal_2019" role="doc-biblioref">2019</a>)</span> replicated this across 17 languages, finding a striking invariance: languages that are spoken faster pack less information per syllable, and languages spoken more slowly pack more, converging on approximately the same information rate. The bottleneck is not a contingent property of English or any particular language. It is a constraint on human linguistic communication generally.</p>
+<p>On the other side of the bottleneck, neural population codes operate at bandwidths orders of magnitude higher. Precise estimates vary enormously depending on assumptions about coding efficiency and correlation structure, but even conservative figures exceed the speech output rate by three to four orders of magnitude. The mismatch is not subtle. Whatever the dimensionality of the internal representations supporting ongoing thought, the channel through which they must pass to reach another mind is radically narrower.</p>
+<p>This asymmetry is the best-documented case of the projection bottleneck in a biological system, and its most direct treatment remains Vygotsky’s distinction between inner and external speech <span class="citation" data-cites="vygotsky_1934">(<a href="#ref-vygotsky_1934" role="doc-biblioref">Vygotsky, 1986</a>)</span>. Inner speech, as Vygotsky characterised it, is compressed, predicative, and saturated with private context — operating in something closer to pure meaning, abbreviated in ways that would be unintelligible to an outside observer. External speech is an expanded, grammatically explicit projection, shaped not by the structure of the sender’s representation but by the demands of the receiver. Modern work confirms that the distinction holds while emphasising that inner speech exists on a continuum of condensation rather than a sharp binary — ranging from nearly as expanded as overt speech to highly abbreviated <span class="citation" data-cites="alderson-day_fernyhough_2015">(<a href="#ref-alderson-day_fernyhough_2015" role="doc-biblioref">Alderson-Day &amp; Fernyhough, 2015</a>)</span>. The qualitative point stands: internal representation is richer than its linguistic projection.</p>
+<p>Fodor’s Language of Thought hypothesis makes a stronger and more controversial version of this claim: that cognition operates in an internal representational medium more compositional and richer than any natural language, with language serving as a serialisation format for inter-agent transmission <span class="citation" data-cites="fodor_1975">(<a href="#ref-fodor_1975" role="doc-biblioref">Fodor, 1975</a>)</span>. The full LOT package remains contested — the debates with eliminativists and connectionists never reached resolution. But the structural claim is widely shared across otherwise opposing positions: external language underdetermines internal representation. <span class="citation" data-cites="quilty-dunn_etal_2023">Quilty-Dunn et al. (<a href="#ref-quilty-dunn_etal_2023" role="doc-biblioref">2023</a>)</span>, in a major review, document what amounts to a qualified revival of structured mental representation, drawing on converging evidence from developmental psychology, animal cognition, and neuroscience. The specific form of the structures is debated. That the output channel is narrower than the internal state is not.</p>
+<p>The parallel to transformers is precise. The model’s internal representation — the full residual stream state conditioning the next-token prediction — is the analogue of inner speech: high-dimensional, densely relational, not directly transmissible. The output token is the analogue of external speech: a single selection from a finite vocabulary, projecting the internal state into a form the receiver can use. Any system facing this mismatch — internal bandwidth vastly exceeding output bandwidth — must solve the same sequential coding problem. The compression hierarchy is what the solution looks like.</p>
+<p>The strongest empirical evidence for genuine convergence comes from representational similarity analysis (RSA). <span class="citation" data-cites="yamins_etal_2014">Yamins et al. (<a href="#ref-yamins_etal_2014" role="doc-biblioref">2014</a>)</span> demonstrated that convolutional networks optimised for object recognition — not for neural prediction — nonetheless predicted neural responses in primate inferotemporal cortex better than any previous model. <span class="citation" data-cites="kriegeskorte_2015">Kriegeskorte (<a href="#ref-kriegeskorte_2015" role="doc-biblioref">2015</a>)</span> extended this into a systematic framework, showing that task-optimised deep networks produce representations that, layer by layer, align with the ventral visual stream. <span class="citation" data-cites="schrimpf_etal_2021">Schrimpf et al. (<a href="#ref-schrimpf_etal_2021" role="doc-biblioref">2021</a>)</span> established Brain-Score, a composite benchmark measuring neural predictivity across visual areas, and found that better-performing networks tend to be more brain-like — though the correlation plateaus, meaning current networks capture something real about the problem without fully matching the biological solution.</p>
+<p>The language case is more recent and less extensively replicated but directionally consistent. <span class="citation" data-cites="goldstein_etal_2022">Goldstein et al. (<a href="#ref-goldstein_etal_2022" role="doc-biblioref">2022</a>)</span>, using electrocorticography during natural language processing, found that GPT-2 activations predict neural responses in temporal cortex, with layer-wise alignment to processing stages. The convergence is real: task-optimised artificial systems trained on natural data produce internal representations that predict biological neural responses substantially better than hand-engineered features or random networks.</p>
+<p>It is also partial. Explained variance is typically 30–60% at best, meaning substantial divergence remains. The match is better for higher-level representations than lower-level ones — the interesting convergence is at the organisational and semantic levels, where the compression hierarchy is doing the heavy lifting. Neural predictivity measures similarity of representational geometry, not mechanistic identity: two systems can have similar representational dissimilarity matrices via completely different underlying computations. The convergence tells you something real about the problem. It does not tell you that attention heads and cortical columns implement the same operations.</p>
+</section>
+<section id="sec-convergence-limits" class="level3" data-number="0.4.2">
+<h3 data-number="0.4.2" class="anchored" data-anchor-id="sec-convergence-limits"><span class="header-section-number">0.4.2</span> Convergence and its limits</h3>
+<p>The convergence is structural, not mechanistic. Birds and aircraft both have wings; the convergence tells you something real about the problem — flight in atmosphere requires lifting surfaces — without telling you that feathers and aluminium work the same way. Similarly, the convergence between biological and artificial compression hierarchies tells you something real about knowledge transmission through bandwidth-limited channels without establishing that the implementations are equivalent.</p>
+<p>Stating this clearly is important because the biological case introduces a complication that the transformer case does not share, and addressing it honestly constrains the claim to what it can actually support.</p>
+<p><span class="citation" data-cites="deacon_1997">Deacon (<a href="#ref-deacon_1997" role="doc-biblioref">1997</a>)</span> offers the most thorough account of human language as a compression technology that co-evolved with the neural architecture it runs on. The biological wetware was shaped <em>by</em> the demands of shared compression — the need to project internal states into forms recoverable by other minds under real-time constraints. Language did not arrive as an external tool applied to a pre-existing cognitive system. The cognitive system and the compression medium co-evolved, each reshaping the other across evolutionary time. The broad co-evolution thesis is mainstream in cognitive science and evolutionary anthropology, even where Deacon’s specific mechanisms regarding prefrontal reorganisation remain debated.</p>
+<p>This co-evolutionary dynamic is absent in the transformer case. A transformer’s training data is fixed; the model adapts to language, but language does not adapt to the model. RLHF and related methods introduce a form of output-to-architecture feedback — the model’s outputs are evaluated, and the evaluations reshape its weights — but the weakness of the analogy matters. RLHF operates within a single training generation, optimising for proximate criteria rather than reshaping fundamental representational architecture across the deep timescales Deacon describes. It is feedback, but it is not co-evolution — closer to selective breeding than to the mutual structural adaptation of language and cognition across evolutionary time. The disanalogy is partially closed, not eliminated.</p>
+<p>Cross-linguistic evidence makes the co-evolutionary feedback concrete, if at reduced strength from stronger earlier claims. <span class="citation" data-cites="levinson_2003">Levinson (<a href="#ref-levinson_2003" role="doc-biblioref">2003</a>)</span> and <span class="citation" data-cites="levinson_etal_2002">Levinson et al. (<a href="#ref-levinson_etal_2002" role="doc-biblioref">2002</a>)</span> documented that speakers of languages with absolute spatial reference frames (cardinal directions rather than egocentric left/right) behave differently on non-linguistic spatial reasoning tasks compared to speakers of relative-frame languages. The original interpretation — that the compression medium reshapes the compressed content — was substantially challenged by <span class="citation" data-cites="li_gleitman_2002">Li &amp; Gleitman (<a href="#ref-li_gleitman_2002" role="doc-biblioref">2002</a>)</span>, who showed that much of the effect is modulated by environmental cues rather than reflecting deep representational restructuring. The current consensus favours a moderate position: language biases which processing strategies are preferentially recruited, rather than fundamentally reshaping internal representation. Speakers of absolute-frame languages can use relative frames and vice versa; what differs is the default.</p>
+<p>Even at this reduced strength, the finding illustrates a feedback pathway absent in the transformer case. The compression medium influences what the compressing system does by default — a form of mutual adaptation, however modest, that unidirectional training cannot produce.</p>
+<p>What does this do to the convergence claim? It constrains it in a specific and useful way. The convergence is not between complete systems — biological cognition in its full co-evolutionary complexity and transformer inference. It is between the compression problem and the architectural strategy for solving it. Both systems face the problem of projecting high-dimensional internal representation through a low-bandwidth sequential channel. Both solve it with hierarchical compression: building representations at multiple scales, with higher layers encoding increasingly abstract and relational structure, and a final projection that serialises the result. The co-evolutionary refinement of the biological solution is an additional layer of optimisation that the transformer case lacks, and this may account for important differences in the character of the resulting representations — particularly around grounding, robustness, and the depth of semantic compression.</p>
+<p>The value of the convergence claim is therefore not mechanistic but constraining. The unreasonable effectiveness of transformers is less unreasonable than it appears, because the architecture has converged on a solution strategy that is expected for any system facing this class of problem. The effectiveness reflects the fact that hierarchical multi-scale compression is what the problem demands, and the transformer architecture is well-suited to implement it. But the convergence does not guarantee that transformer representations have the same properties as biological ones. The absence of co-evolutionary refinement, sensory grounding, and embodied feedback means the compression hierarchy in transformers may be shallower, more brittle, or differently structured in ways that emerge only under adversarial or out-of-distribution conditions.</p>
+</section>
+<section id="sec-grounding-rate-distortion" class="level3" data-number="0.4.3">
+<h3 data-number="0.4.3" class="anchored" data-anchor-id="sec-grounding-rate-distortion"><span class="header-section-number">0.4.3</span> The grounding problem as rate-distortion question</h3>
+<p>This brings the framework to a question it can sharpen but not answer: does solving hierarchical rate-distortion problems against meaning-relevant distortion metrics <em>require</em> sensorimotor grounding?</p>
+<p>The grounding debate — rooted in <span class="citation" data-cites="harnad_1990">Harnad (<a href="#ref-harnad_1990" role="doc-biblioref">1990</a>)</span>’s observation that formal symbols are meaningless unless connected to the things they stand for — is active and unresolved. <span class="citation" data-cites="bender_koller_2020">Bender &amp; Koller (<a href="#ref-bender_koller_2020" role="doc-biblioref">2020</a>)</span> argue that models trained only on linguistic form cannot achieve genuine understanding — that meaning requires reference to the world, and statistical co-occurrence patterns in text, however sophisticated, are not a substitute. <span class="citation" data-cites="piantadosi_hill_2022">Piantadosi &amp; Hill (<a href="#ref-piantadosi_hill_2022" role="doc-biblioref">2022</a>)</span> counter that meaning can be constituted by inferential role — by the pattern of use across contexts — without requiring grounding in perception and action.</p>
+<p>The framework offers a precise restatement. The compression hierarchy described in Parts I and II produces representations that solve rate-distortion problems: achieving maximal preserved structure at each level for a given representational cost. The question is whether text-only compression can achieve the same rate-distortion optimality as grounded compression when the distortion metric includes meaning-relevant properties — when what counts as “distortion” is not just statistical mismatch but failure to preserve the structural relationships that constitute understanding.</p>
+<p>This is, as far as we can determine, a novel framing. No existing literature poses the grounding question in explicitly rate-distortion terms. The closest precedent is <span class="citation" data-cites="zaslavsky_etal_2018">Zaslavsky et al. (<a href="#ref-zaslavsky_etal_2018" role="doc-biblioref">2018</a>)</span>, who demonstrated that cross-linguistic patterns in colour naming achieve near-optimal compression of colour space — a rate-distortion analysis applied to the language-cognition interface, but for a specific perceptual domain rather than the grounding problem in general.</p>
+<p>The framing has a specific virtue: it converts a philosophical dispute into an empirical question with measurable parameters. If grounding provides access to distortion metrics that text alone cannot specify — if there are structural relationships in the world that cannot be inferred from their linguistic shadows, no matter how much text is consumed — then text-only systems face a provable rate-distortion gap. If, on the other hand, the statistical structure of language is rich enough to implicitly specify meaning-relevant distortion metrics — because language was produced by grounded agents and carries the trace of their grounding — then the gap may be smaller than the strong grounding position suggests.</p>
+<p>Multimodal models complicate the debate productively. Systems trained on vision and language jointly partially close the grounding gap without full embodiment, suggesting that the question may be one of degree rather than kind. The framework does not resolve this. It identifies the formal structure of what would need to be measured — the rate-distortion cost of lacking grounding — and flags it as an open question that the information-theoretic vocabulary developed here makes newly precise.</p>
+</section>
+<section id="sec-predictions-ch4" class="level3" data-number="0.4.4">
+<h3 data-number="0.4.4" class="anchored" data-anchor-id="sec-predictions-ch4"><span class="header-section-number">0.4.4</span> Predictions</h3>
+<p>The convergence argument generates one specific prediction:</p>
+<ol start="8" type="1">
+<li><strong>Representational geometry convergence</strong> (<span class="citation" data-cites="pred-rsa-convergence">(<a href="#ref-pred-rsa-convergence" role="doc-biblioref"><strong>pred-rsa-convergence?</strong></a>)</span>). If the convergence between biological and artificial compression hierarchies is deep — driven by the shared structure of the problem rather than superficial architectural similarity — then transformer representations should exhibit geometric properties similar to those observed in neural population codes: similar manifold structure, similar patterns of representational similarity across conceptual domains, similar asymmetries between concrete and abstract concept representation. Early RSA evidence is consistent with this <span class="citation" data-cites="kriegeskorte_2015 schrimpf_etal_2021 goldstein_etal_2022">(<a href="#ref-goldstein_etal_2022" role="doc-biblioref">Goldstein et al., 2022</a>; <a href="#ref-kriegeskorte_2015" role="doc-biblioref">Kriegeskorte, 2015</a>; <a href="#ref-schrimpf_etal_2021" role="doc-biblioref">Schrimpf et al., 2021</a>)</span>, though the match plateaus at 30–60% explained variance. A finding of systematic divergence in representational geometry — not merely unexplained variance but structural differences that scale with model capability — would constrain the convergence claim to the architectural strategy alone, without extending to representational content. A finding of increasing alignment as models scale would strengthen it.</li>
+</ol>
+</section>
+</section>
+</section>
+<section id="part-iii-ecology" class="level1 unnumbered">
+<h1 class="unnumbered">Part III — Ecology</h1>
+<section id="sec-recursive-loop" class="level2" data-number="0.5">
+<h2 data-number="0.5" class="anchored" data-anchor-id="sec-recursive-loop"><span class="header-section-number">0.5</span> 5. The Recursive Loop</h2>
+<p>Knowledge persistence requires carriers — systems changed by what passes through them, transmitting that change forward. Generation without persistence is noise. The question this chapter addresses is what happens to the carrier ecology when a powerful new node type enters it.</p>
+<section id="sec-carriers" class="level3" data-number="0.5.1">
+<h3 data-number="0.5.1" class="anchored" data-anchor-id="sec-carriers"><span class="header-section-number">0.5.1</span> Carriers and the ecology of persistence</h3>
+<p>The tempting dichotomy is clean: humans have plastic weights and can persist knowledge; language models have frozen weights and cannot. But this is too simple, and the way it is too simple matters.</p>
+<p>Humans have never persisted knowledge through neural plasticity alone. The history of knowledge is substantially the history of external persistence technologies — speech, writing, print, libraries, institutions, databases, version control. Each is a carrier: changed by what passes through it, transmitting that change forward. A library is changed by each book it acquires. An institution is changed by each decision it encodes into policy. None of these have neural plasticity. All function as carriers.</p>
+<p>The unit of persistence is not the individual mind. It is the <em>ecology</em>: the coupled system of human neural plasticity, external stores, cultural practices, and transmission channels that together determine what survives and propagates. A scientist’s understanding lives partly in neural architecture, partly in notebooks, partly in published papers, partly in the institutional structures that evaluate and disseminate them. Remove any layer and the effective persistence of the system degrades.</p>
+<p>This reframing changes where language models sit. The clean dichotomy places them outside the ecology. But the model’s weights are a compression of the ecology’s accumulated stores — the training corpus <em>is</em> the library, the institution, the database, rendered into a form that supports inference. And the model’s outputs re-enter those stores as text, code, documents, and decisions. The model is not outside the ecology. It is a novel node type within it: one that reads from the ecology at training and writes back into it through its outputs.</p>
+</section>
+<section id="sec-carrier-asymmetry" class="level3" data-number="0.5.2">
+<h3 data-number="0.5.2" class="anchored" data-anchor-id="sec-carrier-asymmetry"><span class="header-section-number">0.5.2</span> The carrier asymmetry</h3>
+<p>The asymmetry is real, but it needs to be stated more carefully than “models cannot persist knowledge.”</p>
+<p>What models lack is <em>intra-trajectory persistence</em>. Within a single context window, the model accumulates — <a href="#sec-autoregressive-loop" class="quarto-xref">Section&nbsp;0.3</a> describes this in detail. But when the context closes, the accumulated state is lost. The next conversation begins from the same weights, with no trace of what was synthesised in the last. The model’s contribution to the ecology is entirely mediated: it can enrich the ecology only to the extent that its outputs are received, integrated, and persisted by other nodes — human minds, documents, databases, code repositories.</p>
+<p>Human carriers have intra-trajectory persistence by default. A conversation changes the participant’s neural state, and that changed state persists — imperfectly, subject to decay — into subsequent interactions. The human carries forward not just explicit content but something of its structural impact: revised priors, new associations, shifted framings.</p>
+<p>The asymmetry is not between a system that persists and one that does not. It is between <em>endogenous</em> persistence (the human, whose internal state carries forward automatically) and <em>exclusively exogenous</em> persistence (the model, which persists only through what it deposits into the broader ecology). The model is a carrier — it transforms what passes through it — but a memoryless one, externalising every gain or losing it.</p>
+<p>Stating this precisely reveals something the clean dichotomy obscures. The limitation is not about processing capacity. By the account developed in Parts I and II, these models may be among the most powerful knowledge-processing systems ever constructed — synthesising connections across the breadth of human recorded knowledge, composing regularities in novel configurations, navigating semantic space with a fluency no individual human matches. The limitation is about what happens <em>after</em> processing: results exit the system entirely, dependent on external carriers for onward persistence.</p>
+<p>The binding constraint on knowledge evolution in the presence of these systems is therefore not generation — generation is superabundant. The constraint is <em>reception and integration</em>: the bandwidth, integrative capacity, and persistence of the other nodes in the ecology that must receive, validate, contextualise, and carry forward what the model produces.</p>
+</section>
+<section id="sec-nested-loops" class="level3" data-number="0.5.3">
+<h3 data-number="0.5.3" class="anchored" data-anchor-id="sec-nested-loops"><span class="header-section-number">0.5.3</span> Nested feedback loops</h3>
+<p>The ecology is not a linear system with the model at one end and the human at the other. It is recursive. Model outputs re-enter the stores from which future training corpora will be drawn. This loop is already operating — model-generated text is already a non-trivial fraction of new text entering the ecology’s external stores.</p>
+<p>The dynamics of this recursion are not unfamiliar to the framework. <a href="#sec-enriching-degrading" class="quarto-xref">Section&nbsp;0.3.4</a> identified an ambivalent feedback dynamic within the context window: model-generated tokens, feeding back as input to subsequent generation, can either enrich or degrade representational diversity. The ecological loop is the same dynamic at longer timescales. And the same ambivalence applies: outputs that do genuine compressive work enrich the ecology; outputs that reproduce existing attractors in fluent paraphrase degrade it.</p>
+<p>What the ecological view adds is the recognition that this dynamic operates at not one but four nested timescales, each with distinct mechanisms and distinct intervention points:</p>
+<ol type="1">
+<li><p><strong>Within-context.</strong> Generated tokens feeding back as input to subsequent generation. This is the enriching/degrading dynamic of <a href="#sec-enriching-degrading" class="quarto-xref">Section&nbsp;0.3.4</a> — the tightest and fastest feedback loop. Governed by generation parameters, context seeding, and model capacity. Intervention is immediate: prompt design, temperature, sampling strategy.</p></li>
+<li><p><strong>Agentic.</strong> Persistent memory, tool use, multi-session accumulation. The model writes to external state — databases, files, memory stores — without a human intermediary at each step. Feedback operates across sessions and tasks. This loop is newer than the others and under-theorised: it represents a feedback pathway absent from both the autoregressive generation literature and the model collapse literature.</p></li>
+<li><p><strong>Human-mediated.</strong> Model outputs integrated by human carriers — edited, curated, published, taught, institutionalised. The human in the loop performs selection: choosing what to integrate, what to discard, what to elevate. Feedback operates across days to years. This is historically the dominant loop through which model outputs enter the ecology, and human curation is its governing mechanism.</p></li>
+<li><p><strong>Training-distributional.</strong> Model outputs entering the training data of successor models. Feedback operates across model generations — months to years in current development cycles. This is the loop studied by the model collapse literature <span class="citation" data-cites="shumailov_etal_2024 alemohammad_etal_2023">(<a href="#ref-alemohammad_etal_2023" role="doc-biblioref">Alemohammad et al., 2024</a>; <a href="#ref-shumailov_etal_2024" role="doc-biblioref">Shumailov et al., 2024</a>)</span>, and it is the slowest, most consequential, and hardest to steer.</p></li>
+</ol>
+<p>The same governing variable operates at every scale: the compressive novelty of what feeds back relative to what is already present. And the same degradation shape manifests at every scale: surface quality preserved, higher-order statistical complexity eroded. Not visible failure, but silent contraction of the space of configurations the system can reach.</p>
+</section>
+<section id="sec-silent-flattening" class="level3" data-number="0.5.4">
+<h3 data-number="0.5.4" class="anchored" data-anchor-id="sec-silent-flattening"><span class="header-section-number">0.5.4</span> Silent flattening</h3>
+<p>The compression hierarchy predicts that this erosion is non-uniform. It proceeds from the top down.</p>
+<p>First to go: novel abstraction, cross-domain connection, structural surprise — the products of semantic compression, which depend on rare configurations and tail behaviour in the distribution. Last to go: fluency, grammaticality, local coherence — products of compression at the surface and lower-structural end of the continuum (<a href="#sec-compression-continuum" class="quarto-xref">Section&nbsp;0.1.2</a>), which are redundantly represented in the training distribution and robustly learned.</p>
+<p>This is “model collapse” <span class="citation" data-cites="shumailov_etal_2024">(<a href="#ref-shumailov_etal_2024" role="doc-biblioref">Shumailov et al., 2024</a>)</span> given a precise structural characterisation. What collapses is not quality but <em>diversity</em> — not the ability to produce fluent text but the range of configurations that text can occupy. <span class="citation" data-cites="alemohammad_etal_2023">Alemohammad et al. (<a href="#ref-alemohammad_etal_2023" role="doc-biblioref">2024</a>)</span> document this directly in generative image models: diversity collapses faster than quality, with FID scores remaining acceptable while the variety of generated images narrows. <span class="citation" data-cites="padmakumar_he_2024">Padmakumar &amp; He (<a href="#ref-padmakumar_he_2024" role="doc-biblioref">2024</a>)</span> find the same pattern in human-AI co-writing: individual texts remain high quality while the corpus-level diversity of content contracts. <span class="citation" data-cites="briesch_etal_2023">Briesch et al. (<a href="#ref-briesch_etal_2023" role="doc-biblioref">2023</a>)</span> show that fine-tuning LLMs on their own output degrades output diversity even when perplexity — a surface metric — remains stable or improves.</p>
+<p>The pattern is consistent: what degrades is precisely what the compression hierarchy predicts would degrade first. Surface metrics, calibrated to lower levels of the hierarchy, miss the contraction at higher levels. Silent flattening preserves everything that is easy to measure while eroding everything that matters most for the long-term richness of the ecology.</p>
+<p><strong>Human curation as defence.</strong> At the human-mediated loop, human carriers perform selection — choosing what to integrate, what to discard, what to elevate. This is the principal mechanism keeping the ecology in the enriching regime. The effectiveness of this defence depends on curation capacity: the ability of human nodes to evaluate, filter, and contextualise model outputs at the rate they are produced.</p>
+<p>The concern is straightforward. Curation capacity is finite and grows slowly. Model output volume is elastic and growing fast. As the ratio shifts, the fraction of model output that receives genuine human evaluation — not just surface assessment but the kind of deep engagement that distinguishes compressive novelty from fluent reproduction — declines. The defence weakens not because it stops working but because it cannot scale.</p>
+<p><span class="citation" data-cites="gerstgrasser_etal_2024">Gerstgrasser et al. (<a href="#ref-gerstgrasser_etal_2024" role="doc-biblioref">2024</a>)</span> offer the most nuanced finding on the data-mixing side: if original human-generated data is <em>accumulated</em> alongside model-generated data rather than displaced by it, collapse can be avoided. The critical factor is displacement, not contamination. This connects directly to the curation argument: the defence against silent flattening is not excluding model-generated content but ensuring that human-generated content — the ecology’s source of genuinely novel compression — is not crowded out. <span class="citation" data-cites="longpre_etal_2024">Longpre et al. (<a href="#ref-longpre_etal_2024" role="doc-biblioref">2024</a>)</span> document the irony: the highest-quality curated sources are increasingly restricting access, making the defence less available precisely when it is most needed.</p>
+<p><strong>Detection.</strong> How do you measure silent flattening? The framework creates this problem for itself and must address it honestly. Surface metrics — perplexity, fluency scores, coherence ratings — are calibrated to the wrong level of the hierarchy. But the framework constrains the measurement problem more tightly than “this is hard.” Five properties follow from the compression hierarchy’s structure:</p>
+<p>The metrics must be <em>hierarchical</em> — sensitive at different levels of the continuum separately, since erosion proceeds top-down and a metric that collapses across levels will average it away. They must be <em>distributional</em> — measuring the space of configurations the system produces, not the quality of any single output, since the erosion is a property of the corpus, not of individual texts. They must be <em>tail-sensitive</em> — weighted toward rare configurations, since those erode first, and metrics centred on the distributional mean are blind by design. They must be <em>temporal</em> — tracking change in distributional properties over time, since silent flattening is a process, not a state. And the most direct window is <em>representational geometry</em> — the intrinsic dimensionality of the output distribution in embedding space, measured across levels and over time, is closest to what the framework identifies as the critical variable.</p>
+<p>This does not solve the measurement problem, but it narrows it substantially. And it connects directly to the curation bottleneck. The concern above is that human curation cannot scale with model output volume. But curation capacity is limited not only by bandwidth but by <em>visibility</em> — curators cannot select for what they cannot see. Metrics calibrated to the right level of the hierarchy are instruments that extend curation’s reach: they make legible the higher-order erosion that surface assessment misses. The curator still determines what counts as worth preserving — the distortion measure remains theirs — but they can now see what was previously invisible in the surface. Curation scales not by processing more outputs but by seeing deeper into them (<span class="citation" data-cites="pred-ecological-erosion">(<a href="#ref-pred-ecological-erosion" role="doc-biblioref"><strong>pred-ecological-erosion?</strong></a>)</span>).</p>
+<p>A related open question (<span class="citation" data-cites="pred-critical-fraction">(<a href="#ref-pred-critical-fraction" role="doc-biblioref"><strong>pred-critical-fraction?</strong></a>)</span>): is there a characterisable threshold of model-generated content in the training distribution beyond which diversity degradation becomes self-reinforcing?</p>
+</section>
+<section id="sec-predictions-ch5" class="level3" data-number="0.5.5">
+<h3 data-number="0.5.5" class="anchored" data-anchor-id="sec-predictions-ch5"><span class="header-section-number">0.5.5</span> Predictions</h3>
+<p>The ecological account generates two predictions, both flagged as requiring measurement tools that do not yet fully exist:</p>
+<ol start="9" type="1">
+<li><p><strong>Top-down erosion</strong> (<span class="citation" data-cites="pred-ecological-erosion">(<a href="#ref-pred-ecological-erosion" role="doc-biblioref"><strong>pred-ecological-erosion?</strong></a>)</span>). In recursive training loops where model-generated content constitutes a growing fraction of training data, degradation should proceed from the top of the compression hierarchy downward: novel abstraction and cross-domain connection erode first, while fluency and local coherence are preserved. Detecting this requires measures sensitive to higher-order statistical complexity rather than surface quality metrics — distributional signatures, structural diversity, representational geometry — and developing such measures is itself an open problem the framework creates for itself.</p></li>
+<li><p><strong>Critical fraction threshold</strong> (<span class="citation" data-cites="pred-critical-fraction">(<a href="#ref-pred-critical-fraction" role="doc-biblioref"><strong>pred-critical-fraction?</strong></a>)</span>). There exists a characterisable threshold of model-generated content in the training distribution beyond which diversity degradation becomes self-reinforcing. <span class="citation" data-cites="dohmatob_etal_2024a">Dohmatob et al. (<a href="#ref-dohmatob_etal_2024a" role="doc-biblioref">2024</a>)</span> provide analytical results suggesting phase-transition-like behaviour in simplified settings. Whether such a threshold exists in realistic mixed-data regimes, and whether it can be characterised formally, remains an active research frontier.</p></li>
+</ol>
+</section>
+<section id="sec-eroding-asymmetry" class="level3" data-number="0.5.6">
+<h3 data-number="0.5.6" class="anchored" data-anchor-id="sec-eroding-asymmetry"><span class="header-section-number">0.5.6</span> The eroding asymmetry</h3>
+<p>The carrier asymmetry described above — endogenous persistence for humans, exclusively exogenous for models — is historically contingent and actively eroding.</p>
+<p>Agentic architectures are progressively closing the gap. A model with persistent memory that carries forward compressed results of prior interactions is no longer purely memoryless — it has acquired a form of intra-trajectory persistence, implemented through external storage rather than weight updates <span class="citation" data-cites="packer_etal_2023">(<a href="#ref-packer_etal_2023" role="doc-biblioref">Packer et al., 2023</a>)</span>. A model that writes to databases, updates documents, and triggers actions in the world deposits into the ecology without requiring a human intermediary at each step.</p>
+<p>What is happening, in the vocabulary of this framework, is that models are acquiring carrier functions previously available only to human nodes. They are transitioning from memoryless processors to persistent ecological participants — nodes that accumulate, curate, and propagate knowledge forward across interactions.</p>
+<p>If the compression hierarchy is the core mechanic and carrier persistence is the bottleneck, then this transition — from processor to carrier — is the most consequential threshold in the entire framework. It is not a distant prospect. The components are assembling now, from multiple directions. The full implications of a carrier ecology in which artificial systems are genuine participants — persisting and propagating knowledge in their own right, across timescales that dwarf individual human memory — remain largely unexamined.</p>
+<p>The framework does not predict whether this transition leads to a richer or poorer ecology. It identifies the variable that governs the answer — the compressive novelty of what these new carriers contribute relative to what they displace — and it warns that the answer will not be legible in the metrics currently used to evaluate these systems.</p>
+</section>
+</section>
+<section id="sec-of-meaning" class="level2" data-number="0.6">
+<h2 data-number="0.6" class="anchored" data-anchor-id="sec-of-meaning"><span class="header-section-number">0.6</span> 6. Of Meaning</h2>
+<section id="sec-thematic-spine" class="level3" data-number="0.6.1">
+<h3 data-number="0.6.1" class="anchored" data-anchor-id="sec-thematic-spine"><span class="header-section-number">0.6.1</span> Integration and accumulation</h3>
+<p>At each scale examined in this paper, the same distinction governs.</p>
+<p>Within the forward pass, layers that reorganise preserved information into more useful structure — increasing statistical complexity while respecting the data processing inequality — perform integration. Layers that merely propagate without reorganising perform accumulation. The difference determines whether depth buys capability or merely adds parameters (<a href="#sec-structure-across-depth" class="quarto-xref">Section&nbsp;0.2</a>).</p>
+<p>Within the autoregressive loop, tokens that surface genuinely new structure sustain the enriching regime. Tokens that reinforce existing trajectories sustain the degrading regime. The difference is invisible in surface metrics but determines whether generation produces integration or accumulation (<a href="#sec-enriching-degrading" class="quarto-xref">Section&nbsp;0.3.4</a>).</p>
+<p>Within the knowledge ecology, outputs that contribute compressive novelty to the stores from which future systems learn sustain representational diversity. Outputs that reproduce existing attractors in fluent paraphrase contract it. The difference manifests as silent flattening — top-down erosion of the compression hierarchy, preserving everything easy to measure while eroding everything that matters most (<a href="#sec-silent-flattening" class="quarto-xref">Section&nbsp;0.5.4</a>).</p>
+<p>The variable is the same at every scale: whether what feeds forward adds structure or merely adds volume. This is the distinction between integration and mere accumulation.</p>
+</section>
+<section id="sec-shannon-surprise" class="level3" data-number="0.6.2">
+<h3 data-number="0.6.2" class="anchored" data-anchor-id="sec-shannon-surprise"><span class="header-section-number">0.6.2</span> Information is surprise</h3>
+<p>Shannon’s foundational insight: information <em>is</em> surprise. A perfectly predictable signal carries zero information. Everything that makes a message worth transmitting through a bandwidth-limited channel is its deviation from what the receiver already expects.</p>
+<p>The compression hierarchy generates surprise at progressively higher levels of description. Compression at the surface end of the continuum preserves perceptual surprise. Structural compression preserves relational surprise — patterns the receiver could not have predicted from surface statistics alone. Semantic compression preserves meaning surprise — configurations that change what the receiver can infer.</p>
+<p>The nested feedback loops optimise against surprise. Within the context window, the degrading regime settles into high-probability trajectories. Within the ecology, model-generated content converges on the distributional centre, trimming the tails where rare configurations live. Both dynamics are accelerating through the same architectures.</p>
+<p>The framework is, in the end, about whether systems optimised for producing unsurprising output — fluent, coherent, high-probability — preserve or destroy the capacity for surprise at higher levels of description. The answer is not determined by the architecture. It is determined by the interaction: how capacity, task, context, and curation combine to keep the trajectory in territory the system has not yet fully mapped.</p>
+</section>
+<section id="sec-distortion-alignment" class="level3" data-number="0.6.3">
+<h3 data-number="0.6.3" class="anchored" data-anchor-id="sec-distortion-alignment"><span class="header-section-number">0.6.3</span> Distortion measures and alignment</h3>
+<p>A further observation falls directly out of the vocabulary. The model’s implicit distortion measure — what it treats as acceptable loss during compression — is determined by its training objective. The receiver’s distortion measure is determined by their purposes, their context, their needs. The gap between these measures is the formal structure of what the field calls the alignment problem: make the model’s compression serve the receiver’s ends, not merely its own trained defaults.</p>
+<p>The difficulty of closing this gap is itself a projection bottleneck problem. The receiver’s distortion measure is rich, contextual, and not fully articulable. The feedback channels through which it is communicated to the model — preference rankings, reward signals, natural language correction — are narrow. The same bandwidth mismatch that governs the autoregressive loop governs the attempt to align the system that produces it. This is, as far as we can determine, a novel framing; it is offered as a contribution, not an established result.</p>
+</section>
+<section id="sec-attention-economy" class="level3" data-number="0.6.4">
+<h3 data-number="0.6.4" class="anchored" data-anchor-id="sec-attention-economy"><span class="header-section-number">0.6.4</span> The attention economy as distortion measure ecology</h3>
+<p>The mismatch is not confined to the model-receiver pair. It operates wherever an attention allocator’s implicit distortion measure diverges from what would sustain representational diversity in the ecology it governs.</p>
+<p>Attention is finite at every scale — a bandwidth constraint on what gets processed, integrated, and carried forward. Any system that allocates attention thereby implements a distortion measure: what is attended to is what is treated as worth preserving. At the individual level, attention capture — engagement hooks, outrage cycles, salience exploits — hijacks this allocation toward signal that dominates the channel without doing compressive work. The mechanism is the projection bottleneck operating on the receiver: finite attentional bandwidth means a signal optimised for capture can crowd out signal that would sustain the enriching regime.</p>
+<p>Algorithmic recommendation makes this exploit adaptive and scalable. A recommendation system learns which capture strategies work for which receivers and optimises against them in real time, closing a feedback loop that individual attention capture alone cannot close. The result is an attention allocator whose distortion measure — optimised for engagement — governs an increasing fraction of what the ecology attends to, curates, and propagates. This is the displacement dynamic <a href="#sec-recursive-loop" class="quarto-xref">Section&nbsp;0.5</a> identified: not the introduction of low-quality content, but the systematic reallocation of the ecology’s finite curation capacity away from compressive novelty toward the distributional centre. The framework predicts the same signature: surface quality preserved, higher-order statistical complexity eroded, the erosion invisible in the metrics the allocator is optimised to maximise.</p>
+<p>The connection to mechanism design, game theory, and the economics of attention is direct and largely unexplored in information-theoretic terms. The framework opens this door without walking through it. What it contributes is the formal characterisation: attention allocation <em>is</em> distortion measure selection, and the ecology’s long-term representational diversity is governed by whose distortion measure prevails.</p>
+</section>
+<section id="sec-iit-resonance" class="level3" data-number="0.6.5">
+<h3 data-number="0.6.5" class="anchored" data-anchor-id="sec-iit-resonance"><span class="header-section-number">0.6.5</span> A resonance</h3>
+<p>Integrated Information Theory <span class="citation" data-cites="tononi_2008">(<a href="#ref-tononi_2008" role="doc-biblioref">Tononi, 2008</a>)</span> arrives at “integration” as the key variable governing consciousness through an entirely independent programme — one concerned with phenomenal experience, not knowledge compression. The convergence is noted, not claimed. But that two independent analyses, starting from different questions and using different formal tools, arrive at the same governing concept — that what matters is not the quantity of information a system contains but the degree to which it is integrated into a structure supporting inference — is suggestive enough to record.</p>
+</section>
+<section id="sec-consolidated-predictions" class="level3" data-number="0.6.6">
+<h3 data-number="0.6.6" class="anchored" data-anchor-id="sec-consolidated-predictions"><span class="header-section-number">0.6.6</span> Consolidated predictions</h3>
+<p>The framework generates ten specific predictions across its three parts. They are stated in full where they arise (<a href="#sec-predictions-ch2" class="quarto-xref">Section&nbsp;0.2.6</a>, <a href="#sec-predictions-ch3" class="quarto-xref">Section&nbsp;0.3.6</a>, <a href="#sec-predictions-ch4" class="quarto-xref">Section&nbsp;0.4.4</a>, <a href="#sec-predictions-ch5" class="quarto-xref">Section&nbsp;0.5.5</a>) and summarised here:</p>
+<ol type="1">
+<li>Statistical complexity scales with depth — sublinear growth through the representational core, contraction in the final layers (<span class="citation" data-cites="pred-complexity-depth">(<a href="#ref-pred-complexity-depth" role="doc-biblioref"><strong>pred-complexity-depth?</strong></a>)</span>)</li>
+<li>Capability onset correlates with statistical complexity crossing identifiable thresholds (<span class="citation" data-cites="pred-capability-complexity">(<a href="#ref-pred-capability-complexity" role="doc-biblioref"><strong>pred-capability-complexity?</strong></a>)</span>)</li>
+<li>Residual stream functions as measurable accumulator of statistical complexity (<span class="citation" data-cites="pred-accumulator">(<a href="#ref-pred-accumulator" role="doc-biblioref"><strong>pred-accumulator?</strong></a>)</span>)</li>
+<li>IB compression and statistical complexity growth complement rather than trade off (<span class="citation" data-cites="pred-ib-complement">(<a href="#ref-pred-ib-complement" role="doc-biblioref"><strong>pred-ib-complement?</strong></a>)</span>)</li>
+<li>Statistical complexity growth across training follows power-law dynamics with qualitative shift (<span class="citation" data-cites="pred-training-shift">(<a href="#ref-pred-training-shift" role="doc-biblioref"><strong>pred-training-shift?</strong></a>)</span>)</li>
+<li>CoT effectiveness correlates with compressive novelty per step, not chain length (<span class="citation" data-cites="pred-cot-quality">(<a href="#ref-pred-cot-quality" role="doc-biblioref"><strong>pred-cot-quality?</strong></a>)</span>)</li>
+<li>In-context learning fails when the required regularity type is absent from the weight geometry (<span class="citation" data-cites="pred-icl-failure">(<a href="#ref-pred-icl-failure" role="doc-biblioref"><strong>pred-icl-failure?</strong></a>)</span>)</li>
+<li>Transformer representational geometry converges with biological neural geometry as models scale (<span class="citation" data-cites="pred-rsa-convergence">(<a href="#ref-pred-rsa-convergence" role="doc-biblioref"><strong>pred-rsa-convergence?</strong></a>)</span>)</li>
+<li>Ecological degradation proceeds top-down through the compression hierarchy (<span class="citation" data-cites="pred-ecological-erosion">(<a href="#ref-pred-ecological-erosion" role="doc-biblioref"><strong>pred-ecological-erosion?</strong></a>)</span>)</li>
+<li>A characterisable threshold exists beyond which model-generated training content causes self-reinforcing diversity loss (<span class="citation" data-cites="pred-critical-fraction">(<a href="#ref-pred-critical-fraction" role="doc-biblioref"><strong>pred-critical-fraction?</strong></a>)</span>)</li>
+</ol>
+<p>These predictions are not trivially satisfied. Several could fail in ways that would require substantial revision of the framework.</p>
+</section>
+<section id="sec-final-gesture" class="level3" data-number="0.6.7">
+<h3 data-number="0.6.7" class="anchored" data-anchor-id="sec-final-gesture"><span class="header-section-number">0.6.7</span> What the hierarchy points toward</h3>
+<p>The framework identifies what to watch. It suggests the answer will not be found in the surface metrics that improve reliably with each generation of model — fluency, coherence, benchmark capability — but in what is becoming harder to measure precisely because it is becoming rarer: the structural complexity of configurations the ecology has not yet reached.</p>
+<p>The compression hierarchy generates representational diversity — novel structure at progressively higher levels of abstraction. The nested recursive loops threaten it — contracting that diversity through feedback dynamics that preserve surface quality while eroding higher-order structure. Both mechanisms are accelerating through the same architectures, driven by the same forces. The framework does not predict which wins.</p>
+<p>What it can say is where the boundary lies: between a system that generates genuine novelty — new types, not merely new tokens — and a system that can only recombine what it already contains. The compression hierarchy is the mechanism by which novelty is produced. The ecology of feedback loops is the mechanism by which it is threatened. And the distortion measure that determines which configurations count as worth preserving — that remains the task the hierarchy points toward without reaching. It may be the task that remains when all the others have been compressed away.</p>
+</section>
+</section>
+</section>
+<section id="appendices" class="level1 unnumbered">
+<h1 class="unnumbered">Appendices</h1>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="sec-appendix-formal" class="level1 appendix" data-number="1"><h2 class="anchored quarto-appendix-heading"><span class="header-section-number">1</span> Appendix A: Formal Foundations</h2><div class="quarto-appendix-contents">
+
+<!-- STATUS: Stub — to be written after all main chapters are complete.
+
+Purpose: Carry the formal rigour that the main body references but does not
+develop. Each section answers a specific question a sceptical reader would ask.
+
+Planned sections:
+
+## A.1 Rate-distortion and the compression hierarchy
+- Formal definition of R(D) and the role of the distortion measure.
+- Explicit construction: how the three compression levels map to rate-distortion
+  problems with different d(·,·).
+- Relationship to @achille_soatto_2018 (minimal sufficient statistics).
+
+## A.2 Statistical complexity: definition and properties
+- Formal definition of causal states, ε-machines, and Cμ.
+- Relationship to excess entropy / predictive information.
+- Why Cμ is not constrained by the DPI (it is a property of the representation,
+  not mutual information with the source).
+- Known difficulties with estimation in continuous high-dimensional spaces.
+- Proxy measures and their relationship to Cμ.
+
+## A.3 The autoregressive loop as sequential coding
+- The dimensionality mismatch stated formally.
+- Joint source-channel coding: why the classical channel coding theorem applies
+  only approximately (message constructed during transmission).
+- Token interdependence and effective capacity per token.
+
+## A.4 The Saxe/Shwartz-Ziv measurement debate
+- Brief, fair summary.
+- Why the debate is about measurement, not about whether reorganisation occurs.
+- Implications for the framework's own measurement predictions.
+
+Each section should be self-contained and referenceable from the main text.
+Write only after main chapters are finalised — the appendices serve claims
+that need to be stable before formalising.
+-->
+<section id="references" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="references">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-achille_soatto_2018" class="csl-entry" role="listitem">
+Achille, A., &amp; Soatto, S. (2018). Emergence of invariance and disentanglement in deep representations. <em>Journal of Machine Learning Research</em>, <em>19</em>(50), 1–34.
+</div>
+<div id="ref-alderson-day_fernyhough_2015" class="csl-entry" role="listitem">
+Alderson-Day, B., &amp; Fernyhough, C. (2015). Inner speech: Development, cognitive functions, phenomenology, and neuroscience. <em>Psychological Bulletin</em>, <em>141</em>(5), 931–965.
+</div>
+<div id="ref-alemohammad_etal_2023" class="csl-entry" role="listitem">
+Alemohammad, S., Casco-Rodriguez, J., Luber, L., Babaei, H., LeBlond, S., Hesslow, D., &amp; Guo, C. (2024). Self-consuming generative models go <span>MAD</span>. <em>Proceedings of ICLR</em>.
+</div>
+<div id="ref-ansuini_etal_2019" class="csl-entry" role="listitem">
+Ansuini, A., Laio, A., Macke, J. H., &amp; Zoccolan, D. (2019). Intrinsic dimension of data representations in deep neural networks. <em>Proceedings of NeurIPS</em>.
+</div>
+<div id="ref-belrose_etal_2023" class="csl-entry" role="listitem">
+Belrose, N., Furman, Z., Smith, L., Halawi, D., Ostrovsky, I., McKinney, L., Biderman, S., &amp; Steinhardt, J. (2023). Eliciting latent predictions from transformers with the tuned lens. <em>arXiv Preprint</em>.
+</div>
+<div id="ref-bender_koller_2020" class="csl-entry" role="listitem">
+Bender, E. M., &amp; Koller, A. (2020). Climbing towards <span>NLU</span>: On meaning, form, and understanding in the age of data. <em>Proceedings of ACL</em>, 5185–5198.
+</div>
+<div id="ref-briesch_etal_2023" class="csl-entry" role="listitem">
+Briesch, M., Sobania, D., &amp; Rothlauf, F. (2023). Large language models suffer from their own output: An analysis of the self-consuming training loop. <em>arXiv Preprint</em>.
+</div>
+<div id="ref-coupe_etal_2019" class="csl-entry" role="listitem">
+Coupé, C., Oh, Y. M., Dediu, D., &amp; Pellegrino, F. (2019). Different languages, similar encoding efficiency: Comparable information rates across the human linguistic spectrum. <em>Science Advances</em>, <em>5</em>(9), eaaw2594.
+</div>
+<div id="ref-cover_thomas_2006" class="csl-entry" role="listitem">
+Cover, T. M., &amp; Thomas, J. A. (2006). <em>Elements of information theory</em> (2nd ed.). Wiley.
+</div>
+<div id="ref-crutchfield_2012" class="csl-entry" role="listitem">
+Crutchfield, J. P. (2012). Between order and chaos. <em>Nature Physics</em>, <em>8</em>, 17–24.
+</div>
+<div id="ref-crutchfield_young_1989" class="csl-entry" role="listitem">
+Crutchfield, J. P., &amp; Young, K. (1989). Inferring statistical complexity. <em>Physical Review Letters</em>, <em>63</em>(2), 105–108.
+</div>
+<div id="ref-deacon_1997" class="csl-entry" role="listitem">
+Deacon, T. W. (1997). <em>The symbolic species: The co-evolution of language and the brain</em>. W. W. Norton.
+</div>
+<div id="ref-deletang_etal_2024" class="csl-entry" role="listitem">
+Delétang, G., Ruoss, A., Grau-Moya, J., Genewein, T., Wenliang, L. K., Catt, E., Cundy, C., Hoffmann, M., Grefenstette, E., &amp; Sadler, T. (2024). Language modeling is compression. <em>Proceedings of ICLR</em>.
+</div>
+<div id="ref-dohmatob_etal_2024a" class="csl-entry" role="listitem">
+Dohmatob, E., Feng, Y., &amp; Kempe, J. (2024). Model collapse demystified: The case of regression. <em>arXiv Preprint</em>.
+</div>
+<div id="ref-elhage_etal_2021" class="csl-entry" role="listitem">
+Elhage, N., Nanda, N., Olsson, C., Henighan, T., Joseph, N., Mann, B., Askell, A., Bai, Y., Chen, A., Conerly, T., DasSarma, N., Drain, D., Ganguli, D., Hatfield-Dodds, Z., Hernandez, D., Jones, A., Kernion, J., Lovitt, L., Ndousse, K., … Olah, C. (2021). <em>A mathematical framework for transformer circuits</em>. Anthropic.
+</div>
+<div id="ref-fodor_1975" class="csl-entry" role="listitem">
+Fodor, J. A. (1975). <em>The language of thought</em>. Harvard University Press.
+</div>
+<div id="ref-gerstgrasser_etal_2024" class="csl-entry" role="listitem">
+Gerstgrasser, M., Schaeffer, R., Dey, A., Rafailov, R., Koyejo, S., &amp; Tomlin, H. (2024). Is model collapse inevitable? Breaking the curse of recursion by accumulating real and synthetic data. <em>arXiv Preprint</em>.
+</div>
+<div id="ref-goldstein_etal_2022" class="csl-entry" role="listitem">
+Goldstein, A., Zada, Z., Buchnik, E., Sber, M., Price, A. R., Aubrey, B., Nastase, S. A., Feder, A., Emanuel, D., Cohen, A., Jansen, A., Gazula, H., Choe, G., Patil, A., Honey, C., Gross, J., &amp; Hasson, U. (2022). Shared computational principles for language processing in humans and deep language models. <em>Nature Neuroscience</em>, <em>25</em>, 369–380.
+</div>
+<div id="ref-harnad_1990" class="csl-entry" role="listitem">
+Harnad, S. (1990). The symbol grounding problem. <em>Physica D</em>, <em>42</em>, 335–346.
+</div>
+<div id="ref-jawahar_etal_2019" class="csl-entry" role="listitem">
+Jawahar, G., Sagot, B., &amp; Seddah, D. (2019). What does <span>BERT</span> learn about the structure of language? <em>Proceedings of ACL</em>.
+</div>
+<div id="ref-kaplan_etal_2020" class="csl-entry" role="listitem">
+Kaplan, J., McCandlish, S., Henighan, T., Brown, T. B., Chess, B., Child, R., Gray, S., Radford, A., Wu, J., &amp; Amodei, D. (2020). Scaling laws for neural language models. <em>arXiv Preprint arXiv:2001.08361</em>.
+</div>
+<div id="ref-kojima_etal_2022" class="csl-entry" role="listitem">
+Kojima, T., Gu, S. S., Reid, M., Matsuo, Y., &amp; Iwasawa, Y. (2022). Large language models are zero-shot reasoners. <em>Proceedings of NeurIPS</em>.
+</div>
+<div id="ref-kriegeskorte_2015" class="csl-entry" role="listitem">
+Kriegeskorte, N. (2015). Deep neural networks: A new framework for modeling biological vision and brain information processing. <em>Annual Review of Vision Science</em>, <em>1</em>, 417–446.
+</div>
+<div id="ref-leviathan_etal_2025" class="csl-entry" role="listitem">
+Leviathan, Y., Kalman, M., &amp; Matias, Y. (2025). Prompt repetition improves non-reasoning <span>LLMs</span>. <em>arXiv Preprint arXiv:2512.14982</em>.
+</div>
+<div id="ref-levinson_2003" class="csl-entry" role="listitem">
+Levinson, S. C. (2003). <em>Space in language and cognition: Explorations in cognitive diversity</em>. Cambridge University Press.
+</div>
+<div id="ref-levinson_etal_2002" class="csl-entry" role="listitem">
+Levinson, S. C., Kita, S., Haun, D. B. M., &amp; Rasch, B. H. (2002). Returning the tables: Language affects spatial reasoning. <em>Cognition</em>, <em>84</em>(2), 155–188.
+</div>
+<div id="ref-li_gleitman_2002" class="csl-entry" role="listitem">
+Li, P., &amp; Gleitman, L. (2002). Turning the tables: Language and spatial reasoning. <em>Cognition</em>, <em>83</em>(3), 265–294.
+</div>
+<div id="ref-longpre_etal_2024" class="csl-entry" role="listitem">
+Longpre, S., Mahari, R., Lee, A., et al. (2024). Consent in crisis: The rapid decline of the <span>AI</span> data commons. <em>arXiv Preprint</em>.
+</div>
+<div id="ref-michaud_etal_2024" class="csl-entry" role="listitem">
+Michaud, E. J., Liu, Z., Girit, U., &amp; Tegmark, M. (2024). The quantization model of neural scaling laws. <em>arXiv Preprint</em>.
+</div>
+<div id="ref-mikolov_etal_2013" class="csl-entry" role="listitem">
+Mikolov, T., Chen, K., Corrado, G., &amp; Dean, J. (2013). Efficient estimation of word representations in vector space. <em>Proceedings of ICLR Workshop</em>.
+</div>
+<div id="ref-nanda_etal_2023" class="csl-entry" role="listitem">
+Nanda, N., Chan, L., Lieberum, T., Smith, J., &amp; Steinhardt, J. (2023). Progress measures for grokking via mechanistic interpretability. <em>Proceedings of ICLR</em>.
+</div>
+<div id="ref-nostalgebraist_2020" class="csl-entry" role="listitem">
+nostalgebraist. (2020). <em>Interpreting <span>GPT</span>: The logit lens</em>. Blog post.
+</div>
+<div id="ref-olsson_etal_2022" class="csl-entry" role="listitem">
+Olsson, C., Elhage, N., Nanda, N., Joseph, N., DasSarma, N., Henighan, T., Mann, B., Askell, A., Bai, Y., Chen, A., Conerly, T., Drain, D., Ganguli, D., Hatfield-Dodds, Z., Hernandez, D., Johnston, S., Jones, A., Kernion, J., Lovitt, L., … Olah, C. (2022). <em>In-context learning and induction heads</em>. Anthropic.
+</div>
+<div id="ref-packer_etal_2023" class="csl-entry" role="listitem">
+Packer, C., Wooders, S., Lin, K., Fang, V., Patil, S. G., Stoica, I., &amp; Gonzalez, J. E. (2023). <span>MemGPT</span>: Towards <span>LLMs</span> as operating systems. <em>arXiv Preprint</em>.
+</div>
+<div id="ref-padmakumar_he_2024" class="csl-entry" role="listitem">
+Padmakumar, V., &amp; He, H. (2024). Does writing with language models reduce content diversity? <em>Proceedings of ICLR</em>.
+</div>
+<div id="ref-piantadosi_hill_2022" class="csl-entry" role="listitem">
+Piantadosi, S. T., &amp; Hill, F. (2022). Meaning without reference in large language models. <em>arXiv Preprint</em>.
+</div>
+<div id="ref-power_etal_2022" class="csl-entry" role="listitem">
+Power, A., Burda, Y., Edwards, H., Babuschkin, I., &amp; Misra, V. (2022). Grokking: Generalization beyond overfitting on small algorithmic datasets. <em>Proceedings of ICLR (Spotlight)</em>.
+</div>
+<div id="ref-quilty-dunn_etal_2023" class="csl-entry" role="listitem">
+Quilty-Dunn, J., Porot, N., &amp; Mandelbaum, E. (2023). The best game in town: The reemergence of the language-of-thought hypothesis across the cognitive sciences. <em>Behavioral and Brain Sciences</em>, <em>46</em>, e261.
+</div>
+<div id="ref-reed_durlach_1998" class="csl-entry" role="listitem">
+Reed, C. M., &amp; Durlach, N. I. (1998). Note on information transfer rates in human communication. <em>Presence: Teleoperators and Virtual Environments</em>, <em>7</em>(5), 509–518.
+</div>
+<div id="ref-saxe_etal_2018" class="csl-entry" role="listitem">
+Saxe, A. M., Bansal, Y., Dapello, J., Advani, M., Kolchinsky, A., Tracey, B. D., &amp; Cox, D. D. (2018). On the information bottleneck theory of deep learning. <em>Proceedings of ICLR</em>.
+</div>
+<div id="ref-schaeffer_etal_2024" class="csl-entry" role="listitem">
+Schaeffer, R., Miranda, B., &amp; Koyejo, S. (2024). Are emergent abilities of large language models a mirage? <em>Proceedings of NeurIPS</em>.
+</div>
+<div id="ref-schrimpf_etal_2021" class="csl-entry" role="listitem">
+Schrimpf, M., Kubilius, J., Hong, H., Majaj, N. J., Rajalingham, R., Issa, E. B., Kar, K., Bashivan, P., Prescott-Roy, J., Geiger, F., Schmidt, K., Nayebi, A., Bear, D., Yamins, D. L. K., &amp; DiCarlo, J. J. (2021). Brain-score: Which artificial neural network for object recognition is most brain-like? <em>bioRxiv</em>.
+</div>
+<div id="ref-shannon_1948" class="csl-entry" role="listitem">
+Shannon, C. E. (1948). A mathematical theory of communication. <em>Bell System Technical Journal</em>, <em>27</em>(3), 379–423.
+</div>
+<div id="ref-shannon_1959" class="csl-entry" role="listitem">
+Shannon, C. E. (1959). Coding theorems for a discrete source with a fidelity criterion. <em>IRE National Convention Record, Part 4</em>, 142–163.
+</div>
+<div id="ref-shumailov_etal_2024" class="csl-entry" role="listitem">
+Shumailov, I., Shumilo, Z., Zhao, Y., Gal, Y., Papernot, N., &amp; Anderson, R. (2024). <span>AI</span> models collapse when trained on recursively generated data. <em>Nature</em>, <em>631</em>, 755–759.
+</div>
+<div id="ref-shwartz-ziv_tishby_2017" class="csl-entry" role="listitem">
+Shwartz-Ziv, R., &amp; Tishby, N. (2017). Opening the black box of deep neural networks via information. <em>arXiv Preprint arXiv:1703.00810</em>.
+</div>
+<div id="ref-tenney_etal_2019" class="csl-entry" role="listitem">
+Tenney, I., Das, D., &amp; Pavlick, E. (2019). <span>BERT</span> rediscovers the classical <span>NLP</span> pipeline. <em>Proceedings of ACL</em>.
+</div>
+<div id="ref-tishby_etal_2000" class="csl-entry" role="listitem">
+Tishby, N., Pereira, F. C., &amp; Bialek, W. (2000). The information bottleneck method. <em>Proceedings of the 37th Annual Allerton Conference on Communication, Control, and Computing</em>, 368–377.
+</div>
+<div id="ref-tishby_zaslavsky_2015" class="csl-entry" role="listitem">
+Tishby, N., &amp; Zaslavsky, N. (2015). Deep learning and the information bottleneck principle. <em>IEEE Information Theory Workshop (ITW)</em>, 1–5.
+</div>
+<div id="ref-tononi_2008" class="csl-entry" role="listitem">
+Tononi, G. (2008). Consciousness as integrated information: A provisional manifesto. <em>Biological Bulletin</em>, <em>215</em>(3), 216–242.
+</div>
+<div id="ref-valeriani_etal_2023" class="csl-entry" role="listitem">
+Valeriani, L. et al. (2023). The geometry of hidden representations of large transformer models. <em>arXiv Preprint</em>.
+</div>
+<div id="ref-vygotsky_1934" class="csl-entry" role="listitem">
+Vygotsky, L. S. (1986). <em>Thought and language</em>. MIT Press.
+</div>
+<div id="ref-yamins_etal_2014" class="csl-entry" role="listitem">
+Yamins, D. L. K., Hong, H., Cadieu, C. F., Solomon, E. A., Seibert, D., &amp; DiCarlo, J. J. (2014). Performance-optimized hierarchical models predict neural responses in higher visual cortex. <em>Proceedings of the National Academy of Sciences</em>, <em>111</em>(23), 8619–8624.
+</div>
+<div id="ref-zaslavsky_etal_2018" class="csl-entry" role="listitem">
+Zaslavsky, N., Kemp, C., Regier, T., &amp; Tishby, N. (2018). Efficient compression in color naming across languages. <em>Proceedings of the National Academy of Sciences</em>, <em>115</em>(31), 7937–7942.
+</div>
+</div>
+</section>
+</div></section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
