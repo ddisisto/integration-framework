@@ -1,10 +1,10 @@
-## 1. The Compression Hierarchy {#sec-compression-hierarchy}
+# 1. The Compression Hierarchy {#sec-compression-hierarchy}
 
 A transformer trained on a large text corpus builds, across its layers, progressively more abstract representations of its input — from surface statistics through syntactic structure to semantic relationships. At each layer, the representation is compressed: information about the specific input is traded for structure that generalises across inputs. The final layers project this rich internal state through a radical bottleneck — a single token selected from a finite vocabulary — and the autoregressive loop repeats the process, constructing a sequential code that carries, one token at a time, what no single token could express.
 
 This is compression, but not in the sense the word usually evokes. It is not reducing file sizes. It is building internal structure that preserves what matters — for progressively more abstract definitions of "matters" — while discarding what does not. Understanding what these systems do, what they are capable of, and where they fail requires taking this compression seriously and asking what kind of compression it is.
 
-### The one sharp boundary {#sec-lossless-lossy}
+## The one sharp boundary {#sec-lossless-lossy}
 
 There is exactly one clean distinction in the landscape of compression: lossless versus lossy.
 
@@ -14,7 +14,7 @@ The moment compression becomes lossy, something qualitatively different enters. 
 
 Rate-distortion theory [@shannon_1959] formalises this precisely: the minimum rate (bits) required to encode a source at a given level of distortion is determined by the distortion measure — the function specifying what counts as loss. Shannon's deepest insight for the present framework is that the distortion measure is a *choice*. It encodes what the compressor treats as relevant. This is the point at which perspective enters compression. Not subjectivity in the philosophical sense — JPEG's psychoacoustic model is grounded in the physiology of human hearing — but relevance: compression relative to a receiver, a purpose, a context.
 
-### The compression continuum {#sec-compression-continuum}
+## The compression continuum {#sec-compression-continuum}
 
 Above the lossless boundary, compression is not a set of discrete levels but a continuum, defined by the abstraction at which the distortion measure operates. The distortion measure shifts — from surface fidelity to structural fidelity to meaning fidelity — and with each shift, the compressor discards more surface detail while preserving something more abstract and more useful.
 
@@ -28,7 +28,7 @@ The boundaries between these regions are not sharp. PCA applied to sensor data d
 
 What does not blur is the *direction*. Movement along this continuum is characterised by three consistent shifts: the distortion measure becomes more abstract, more surface detail is sacrificed, and the resulting representation supports richer downstream use. A system operating at the perceptual end can reproduce; at the structural end, it can generalise; at the semantic end, it can reason by navigation. Each level presupposes and extends the one below — semantic compression requires structural regularities to have been discovered before their meaning relationships can be encoded, and structural compression operates on input that has already been rendered into tractable form.
 
-### What transformers do {#sec-what-transformers-do}
+## What transformers do {#sec-what-transformers-do}
 
 Return now to the transformer. @tishby_zaslavsky_2015 provide the bridge: each layer of a deep network can be understood as solving a rate-distortion problem, compressing its input while preserving information relevant to the task. @achille_soatto_2018 show that the resulting minimal sufficient statistics naturally produce invariant and disentangled representations — representations with structure that goes beyond what mutual information with the input captures.
 

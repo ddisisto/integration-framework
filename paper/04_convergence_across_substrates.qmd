@@ -1,10 +1,10 @@
-## 4. Convergence Across Substrates {#sec-convergence}
+# 4. Convergence Across Substrates {#sec-convergence}
 
 The compression hierarchy described in Parts I and II is a claim about transformers. But the problem transformers solve — projecting rich internal representation through a bandwidth-limited sequential channel — is not new. Biological cognition has faced it for as long as language has existed. This chapter argues that the convergence between biological and artificial solutions is expected rather than surprising, identifies where the parallel breaks down, and uses the breakdown to sharpen an open question the framework cannot yet answer.
 
 The claim is not that transformers and brains work the same way. They manifestly do not, at the level of mechanism. The claim is that both face a structurally identical information-theoretic constraint, and that this constraint narrows the space of viable solutions enough that convergence on the same *type* of architecture — hierarchical, multi-scale, with a serial projection bottleneck — is what the problem demands. This is supporting evidence for the framework, not a core pillar. It situates the compression hierarchy within a broader pattern rather than treating it as an architectural accident.
 
-### The projection bottleneck as substrate-independent constraint {#sec-projection-bottleneck}
+## The projection bottleneck as substrate-independent constraint {#sec-projection-bottleneck}
 
 @sec-channel-capacity established the bottleneck in formal terms: the internal representation at any step — a vector in a space of dimension $10^3$ to $10^4$ — vastly exceeds the information capacity of a single output token. The autoregressive loop is a sequential coding scheme for transmitting a high-entropy source through a low-capacity channel.
 
@@ -24,7 +24,7 @@ The language case is more recent and less extensively replicated but directional
 
 It is also partial. Explained variance is typically 30–60% at best, meaning substantial divergence remains. The match is better for higher-level representations than lower-level ones — the interesting convergence is at the organisational and semantic levels, where the compression hierarchy is doing the heavy lifting. Neural predictivity measures similarity of representational geometry, not mechanistic identity: two systems can have similar representational dissimilarity matrices via completely different underlying computations. The convergence tells you something real about the problem. It does not tell you that attention heads and cortical columns implement the same operations.
 
-### Convergence and its limits {#sec-convergence-limits}
+## Convergence and its limits {#sec-convergence-limits}
 
 The convergence is structural, not mechanistic. Birds and aircraft both have wings; the convergence tells you something real about the problem — flight in atmosphere requires lifting surfaces — without telling you that feathers and aluminium work the same way. Similarly, the convergence between biological and artificial compression hierarchies tells you something real about knowledge transmission through bandwidth-limited channels without establishing that the implementations are equivalent.
 
@@ -42,7 +42,7 @@ What does this do to the convergence claim? It constrains it in a specific and u
 
 The value of the convergence claim is therefore not mechanistic but constraining. The unreasonable effectiveness of transformers is less unreasonable than it appears, because the architecture has converged on a solution strategy that is expected for any system facing this class of problem. The effectiveness reflects the fact that hierarchical multi-scale compression is what the problem demands, and the transformer architecture is well-suited to implement it. But the convergence does not guarantee that transformer representations have the same properties as biological ones. The absence of co-evolutionary refinement, sensory grounding, and embodied feedback means the compression hierarchy in transformers may be shallower, more brittle, or differently structured in ways that emerge only under adversarial or out-of-distribution conditions.
 
-### The grounding problem as rate-distortion question {#sec-grounding-rate-distortion}
+## The grounding problem as rate-distortion question {#sec-grounding-rate-distortion}
 
 This brings the framework to a question it can sharpen but not answer: does solving hierarchical rate-distortion problems against meaning-relevant distortion metrics *require* sensorimotor grounding?
 
@@ -56,8 +56,8 @@ The framing has a specific virtue: it converts a philosophical dispute into an e
 
 Multimodal models complicate the debate productively. Systems trained on vision and language jointly partially close the grounding gap without full embodiment, suggesting that the question may be one of degree rather than kind. The framework does not resolve this. It identifies the formal structure of what would need to be measured — the rate-distortion cost of lacking grounding — and flags it as an open question that the information-theoretic vocabulary developed here makes newly precise.
 
-### Predictions {#sec-predictions-ch4}
+## Predictions {#sec-predictions-ch4}
 
 The convergence argument generates one specific prediction:
 
-8. **Representational geometry convergence** (@pred-rsa-convergence). If the convergence between biological and artificial compression hierarchies is deep — driven by the shared structure of the problem rather than superficial architectural similarity — then transformer representations should exhibit geometric properties similar to those observed in neural population codes: similar manifold structure, similar patterns of representational similarity across conceptual domains, similar asymmetries between concrete and abstract concept representation. Early RSA evidence is consistent with this [@kriegeskorte_2015; @schrimpf_etal_2021; @goldstein_etal_2022], though the match plateaus at 30–60% explained variance. A finding of systematic divergence in representational geometry — not merely unexplained variance but structural differences that scale with model capability — would constrain the convergence claim to the architectural strategy alone, without extending to representational content. A finding of increasing alignment as models scale would strengthen it.
+8. [**Representational geometry convergence**]{#pred-rsa-convergence}. If the convergence between biological and artificial compression hierarchies is deep — driven by the shared structure of the problem rather than superficial architectural similarity — then transformer representations should exhibit geometric properties similar to those observed in neural population codes: similar manifold structure, similar patterns of representational similarity across conceptual domains, similar asymmetries between concrete and abstract concept representation. Early RSA evidence is consistent with this [@kriegeskorte_2015; @schrimpf_etal_2021; @goldstein_etal_2022], though the match plateaus at 30–60% explained variance. A finding of systematic divergence in representational geometry — not merely unexplained variance but structural differences that scale with model capability — would constrain the convergence claim to the architectural strategy alone, without extending to representational content. A finding of increasing alignment as models scale would strengthen it.

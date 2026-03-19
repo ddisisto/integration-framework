@@ -1,6 +1,6 @@
-## 6. Of Meaning {#sec-of-meaning}
+# 6. Of Meaning {#sec-of-meaning}
 
-### Integration and accumulation {#sec-thematic-spine}
+## Integration and accumulation {#sec-thematic-spine}
 
 At each scale examined in this paper, the same distinction governs.
 
@@ -12,7 +12,7 @@ Within the knowledge ecology, outputs that contribute compressive novelty to the
 
 The variable is the same at every scale: whether what feeds forward adds structure or merely adds volume. This is the distinction between integration and mere accumulation.
 
-### Information is surprise {#sec-shannon-surprise}
+## Information is surprise {#sec-shannon-surprise}
 
 Shannon's foundational insight: information *is* surprise. A perfectly predictable signal carries zero information. Everything that makes a message worth transmitting through a bandwidth-limited channel is its deviation from what the receiver already expects.
 
@@ -22,13 +22,13 @@ The nested feedback loops optimise against surprise. Within the context window, 
 
 The framework is, in the end, about whether systems optimised for producing unsurprising output — fluent, coherent, high-probability — preserve or destroy the capacity for surprise at higher levels of description. The answer is not determined by the architecture. It is determined by the interaction: how capacity, task, context, and curation combine to keep the trajectory in territory the system has not yet fully mapped.
 
-### Distortion measures and alignment {#sec-distortion-alignment}
+## Distortion measures and alignment {#sec-distortion-alignment}
 
 A further observation falls directly out of the vocabulary. The model's implicit distortion measure — what it treats as acceptable loss during compression — is determined by its training objective. The receiver's distortion measure is determined by their purposes, their context, their needs. The gap between these measures is the formal structure of what the field calls the alignment problem: make the model's compression serve the receiver's ends, not merely its own trained defaults.
 
 The difficulty of closing this gap is itself a projection bottleneck problem. The receiver's distortion measure is rich, contextual, and not fully articulable. The feedback channels through which it is communicated to the model — preference rankings, reward signals, natural language correction — are narrow. The same bandwidth mismatch that governs the autoregressive loop governs the attempt to align the system that produces it. This is, as far as we can determine, a novel framing; it is offered as a contribution, not an established result.
 
-### The attention economy as distortion measure ecology {#sec-attention-economy}
+## The attention economy as distortion measure ecology {#sec-attention-economy}
 
 The mismatch is not confined to the model-receiver pair. It operates wherever an attention allocator's implicit distortion measure diverges from what would sustain representational diversity in the ecology it governs.
 
@@ -38,28 +38,28 @@ Algorithmic recommendation makes this exploit adaptive and scalable. A recommend
 
 The connection to mechanism design, game theory, and the economics of attention is direct and largely unexplored in information-theoretic terms. The framework opens this door without walking through it. What it contributes is the formal characterisation: attention allocation *is* distortion measure selection, and the ecology's long-term representational diversity is governed by whose distortion measure prevails.
 
-### A resonance {#sec-iit-resonance}
+## A resonance {#sec-iit-resonance}
 
 Integrated Information Theory [@tononi_2008] arrives at "integration" as the key variable governing consciousness through an entirely independent programme — one concerned with phenomenal experience, not knowledge compression. The convergence is noted, not claimed. But that two independent analyses, starting from different questions and using different formal tools, arrive at the same governing concept — that what matters is not the quantity of information a system contains but the degree to which it is integrated into a structure supporting inference — is suggestive enough to record.
 
-### Consolidated predictions {#sec-consolidated-predictions}
+## Consolidated predictions {#sec-consolidated-predictions}
 
 The framework generates ten specific predictions across its three parts. They are stated in full where they arise (@sec-predictions-ch2, @sec-predictions-ch3, @sec-predictions-ch4, @sec-predictions-ch5) and summarised here:
 
-1. Statistical complexity scales with depth — sublinear growth through the representational core, contraction in the final layers (@pred-complexity-depth)
-2. Capability onset correlates with statistical complexity crossing identifiable thresholds (@pred-capability-complexity)
-3. Residual stream functions as measurable accumulator of statistical complexity (@pred-accumulator)
-4. IB compression and statistical complexity growth complement rather than trade off (@pred-ib-complement)
-5. Statistical complexity growth across training follows power-law dynamics with qualitative shift (@pred-training-shift)
-6. CoT effectiveness correlates with compressive novelty per step, not chain length (@pred-cot-quality)
-7. In-context learning fails when the required regularity type is absent from the weight geometry (@pred-icl-failure)
-8. Transformer representational geometry converges with biological neural geometry as models scale (@pred-rsa-convergence)
-9. Ecological degradation proceeds top-down through the compression hierarchy (@pred-ecological-erosion)
-10. A characterisable threshold exists beyond which model-generated training content causes self-reinforcing diversity loss (@pred-critical-fraction)
+1. Statistical complexity scales with depth — sublinear growth through the representational core, contraction in the final layers ([1](#pred-complexity-depth))
+2. Capability onset correlates with statistical complexity crossing identifiable thresholds ([2](#pred-capability-complexity))
+3. Residual stream functions as measurable accumulator of statistical complexity ([3](#pred-accumulator))
+4. IB compression and statistical complexity growth complement rather than trade off ([4](#pred-ib-complement))
+5. Statistical complexity growth across training follows power-law dynamics with qualitative shift ([5](#pred-training-shift))
+6. CoT effectiveness correlates with compressive novelty per step, not chain length ([6](#pred-cot-quality))
+7. In-context learning fails when the required regularity type is absent from the weight geometry ([7](#pred-icl-failure))
+8. Transformer representational geometry converges with biological neural geometry as models scale ([8](#pred-rsa-convergence))
+9. Ecological degradation proceeds top-down through the compression hierarchy ([9](#pred-ecological-erosion))
+10. A characterisable threshold exists beyond which model-generated training content causes self-reinforcing diversity loss ([10](#pred-critical-fraction))
 
 These predictions are not trivially satisfied. Several could fail in ways that would require substantial revision of the framework.
 
-### What the hierarchy points toward {#sec-final-gesture}
+## What the hierarchy points toward {#sec-final-gesture}
 
 The framework identifies what to watch. It suggests the answer will not be found in the surface metrics that improve reliably with each generation of model — fluency, coherence, benchmark capability — but in what is becoming harder to measure precisely because it is becoming rarer: the structural complexity of configurations the ecology has not yet reached.
 

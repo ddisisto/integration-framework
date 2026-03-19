@@ -1,8 +1,8 @@
-## 5. The Recursive Loop {#sec-recursive-loop}
+# 5. The Recursive Loop {#sec-recursive-loop}
 
 Knowledge persistence requires carriers — systems changed by what passes through them, transmitting that change forward. Generation without persistence is noise. The question this chapter addresses is what happens to the carrier ecology when a powerful new node type enters it.
 
-### Carriers and the ecology of persistence {#sec-carriers}
+## Carriers and the ecology of persistence {#sec-carriers}
 
 The tempting dichotomy is clean: humans have plastic weights and can persist knowledge; language models have frozen weights and cannot. But this is too simple, and the way it is too simple matters.
 
@@ -12,7 +12,7 @@ The unit of persistence is not the individual mind. It is the *ecology*: the cou
 
 This reframing changes where language models sit. The clean dichotomy places them outside the ecology. But the model's weights are a compression of the ecology's accumulated stores — the training corpus *is* the library, the institution, the database, rendered into a form that supports inference. And the model's outputs re-enter those stores as text, code, documents, and decisions. The model is not outside the ecology. It is a novel node type within it: one that reads from the ecology at training and writes back into it through its outputs.
 
-### The carrier asymmetry {#sec-carrier-asymmetry}
+## The carrier asymmetry {#sec-carrier-asymmetry}
 
 The asymmetry is real, but it needs to be stated more carefully than "models cannot persist knowledge."
 
@@ -26,7 +26,7 @@ Stating this precisely reveals something the clean dichotomy obscures. The limit
 
 The binding constraint on knowledge evolution in the presence of these systems is therefore not generation — generation is superabundant. The constraint is *reception and integration*: the bandwidth, integrative capacity, and persistence of the other nodes in the ecology that must receive, validate, contextualise, and carry forward what the model produces.
 
-### Nested feedback loops {#sec-nested-loops}
+## Nested feedback loops {#sec-nested-loops}
 
 The ecology is not a linear system with the model at one end and the human at the other. It is recursive. Model outputs re-enter the stores from which future training corpora will be drawn. This loop is already operating — model-generated text is already a non-trivial fraction of new text entering the ecology's external stores.
 
@@ -44,7 +44,7 @@ What the ecological view adds is the recognition that this dynamic operates at n
 
 The same governing variable operates at every scale: the compressive novelty of what feeds back relative to what is already present. And the same degradation shape manifests at every scale: surface quality preserved, higher-order statistical complexity eroded. Not visible failure, but silent contraction of the space of configurations the system can reach.
 
-### Silent flattening {#sec-silent-flattening}
+## Silent flattening {#sec-silent-flattening}
 
 The compression hierarchy predicts that this erosion is non-uniform. It proceeds from the top down.
 
@@ -64,19 +64,19 @@ The concern is straightforward. Curation capacity is finite and grows slowly. Mo
 
 The metrics must be *hierarchical* — sensitive at different levels of the continuum separately, since erosion proceeds top-down and a metric that collapses across levels will average it away. They must be *distributional* — measuring the space of configurations the system produces, not the quality of any single output, since the erosion is a property of the corpus, not of individual texts. They must be *tail-sensitive* — weighted toward rare configurations, since those erode first, and metrics centred on the distributional mean are blind by design. They must be *temporal* — tracking change in distributional properties over time, since silent flattening is a process, not a state. And the most direct window is *representational geometry* — the intrinsic dimensionality of the output distribution in embedding space, measured across levels and over time, is closest to what the framework identifies as the critical variable.
 
-This does not solve the measurement problem, but it narrows it substantially. And it connects directly to the curation bottleneck. The concern above is that human curation cannot scale with model output volume. But curation capacity is limited not only by bandwidth but by *visibility* — curators cannot select for what they cannot see. Metrics calibrated to the right level of the hierarchy are instruments that extend curation's reach: they make legible the higher-order erosion that surface assessment misses. The curator still determines what counts as worth preserving — the distortion measure remains theirs — but they can now see what was previously invisible in the surface. Curation scales not by processing more outputs but by seeing deeper into them (@pred-ecological-erosion).
+This does not solve the measurement problem, but it narrows it substantially. And it connects directly to the curation bottleneck. The concern above is that human curation cannot scale with model output volume. But curation capacity is limited not only by bandwidth but by *visibility* — curators cannot select for what they cannot see. Metrics calibrated to the right level of the hierarchy are instruments that extend curation's reach: they make legible the higher-order erosion that surface assessment misses. The curator still determines what counts as worth preserving — the distortion measure remains theirs — but they can now see what was previously invisible in the surface. Curation scales not by processing more outputs but by seeing deeper into them ([Prediction 9](#pred-ecological-erosion)).
 
-A related open question (@pred-critical-fraction): is there a characterisable threshold of model-generated content in the training distribution beyond which diversity degradation becomes self-reinforcing?
+A related open question ([Prediction 10](#pred-critical-fraction)): is there a characterisable threshold of model-generated content in the training distribution beyond which diversity degradation becomes self-reinforcing?
 
-### Predictions {#sec-predictions-ch5}
+## Predictions {#sec-predictions-ch5}
 
 The ecological account generates two predictions, both flagged as requiring measurement tools that do not yet fully exist:
 
-9. **Top-down erosion** (@pred-ecological-erosion). In recursive training loops where model-generated content constitutes a growing fraction of training data, degradation should proceed from the top of the compression hierarchy downward: novel abstraction and cross-domain connection erode first, while fluency and local coherence are preserved. Detecting this requires measures sensitive to higher-order statistical complexity rather than surface quality metrics — distributional signatures, structural diversity, representational geometry — and developing such measures is itself an open problem the framework creates for itself.
+9. [**Top-down erosion**]{#pred-ecological-erosion}. In recursive training loops where model-generated content constitutes a growing fraction of training data, degradation should proceed from the top of the compression hierarchy downward: novel abstraction and cross-domain connection erode first, while fluency and local coherence are preserved. Detecting this requires measures sensitive to higher-order statistical complexity rather than surface quality metrics — distributional signatures, structural diversity, representational geometry — and developing such measures is itself an open problem the framework creates for itself.
 
-10. **Critical fraction threshold** (@pred-critical-fraction). There exists a characterisable threshold of model-generated content in the training distribution beyond which diversity degradation becomes self-reinforcing. @dohmatob_etal_2024a provide analytical results suggesting phase-transition-like behaviour in simplified settings. Whether such a threshold exists in realistic mixed-data regimes, and whether it can be characterised formally, remains an active research frontier.
+10. [**Critical fraction threshold**]{#pred-critical-fraction}. There exists a characterisable threshold of model-generated content in the training distribution beyond which diversity degradation becomes self-reinforcing. @dohmatob_etal_2024a provide analytical results suggesting phase-transition-like behaviour in simplified settings. Whether such a threshold exists in realistic mixed-data regimes, and whether it can be characterised formally, remains an active research frontier.
 
-### The eroding asymmetry {#sec-eroding-asymmetry}
+## The eroding asymmetry {#sec-eroding-asymmetry}
 
 The carrier asymmetry described above — endogenous persistence for humans, exclusively exogenous for models — is historically contingent and actively eroding.
 

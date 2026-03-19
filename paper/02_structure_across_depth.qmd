@@ -1,8 +1,8 @@
-## 2. Structure Across Depth {#sec-structure-across-depth}
+# 2. Structure Across Depth {#sec-structure-across-depth}
 
 @sec-compression-hierarchy established what compression becomes when the distortion measure shifts from surface fidelity toward meaning: a continuum along which progressively more abstract structure is preserved. This chapter is about how transformers implement that continuum — how the forward pass generates progressively deeper compression across layers, what formal framework captures what is happening, and what specific predictions follow.
 
-### How transformers generate representational structure {#sec-architectural-mechanisms}
+## How transformers generate representational structure {#sec-architectural-mechanisms}
 
 Within a transformer, each layer does not merely re-encode the input. It synthesises representational configurations — features, relationships, abstractions — that did not exist at the layer below. Three architectural features drive this.
 
@@ -12,7 +12,7 @@ Within a transformer, each layer does not merely re-encode the input. It synthes
 
 **Depth as recursive compression.** Each layer operates on the output of the last, applying compression to already-compressed representations. Each pass can surface structure invisible at the previous scale — regularities in the regularities.
 
-### The data processing inequality and what grows across depth {#sec-dpi-resolution}
+## The data processing inequality and what grows across depth {#sec-dpi-resolution}
 
 There is an apparent tension in the claim that layers *generate* new representational structure. The data processing inequality (DPI) states that processing cannot increase mutual information about the source: if $X \to Y \to Z$ forms a Markov chain, then $I(X; Z) \leq I(X; Y)$ [@cover_thomas_2006]. Layers cannot create information about the input that was not already present.
 
@@ -24,7 +24,7 @@ The DPI constrains total mutual information with the source. It says nothing abo
 
 This is the precise, information-theoretically grounded version of a distinction the framework needs: between subtractive processing (discarding irrelevant information, what the IB tracks) and generative processing (reorganising preserved information into more useful forms, what this framework tracks). Both happen simultaneously. A layer that discards surface noise while introducing a higher-order abstraction is doing both at once.
 
-### Statistical complexity as the measure of what grows {#sec-statistical-complexity}
+## Statistical complexity as the measure of what grows {#sec-statistical-complexity}
 
 If the DPI constrains total information while the framework claims something grows across layers, that something needs a name and a formal definition.
 
@@ -36,11 +36,11 @@ This must be stated with honesty about the measurement gap. Statistical complexi
 
 One empirical pattern requires explicit acknowledgment. Intrinsic dimensionality across transformer layers does not increase monotonically. It follows a characteristic non-monotonic profile — growth through early and middle layers, contraction in the final layers [@ansuini_etal_2019; @valeriani_etal_2023]. The framework predicts this shape. The final layers solve a rate-distortion problem with a very specific relevance criterion: next-token prediction. This demands compression of the accumulated representation back down toward the output vocabulary — the projection bottleneck that @sec-channel-capacity will formalise. Statistical complexity grows through the representational core of the network, then contracts as the network transitions from building representations to projecting through the output channel. Growth, then projection — not growth alone.
 
-### Relationship to the information bottleneck {#sec-ib-complementarity}
+## Relationship to the information bottleneck {#sec-ib-complementarity}
 
 The information bottleneck framework [@tishby_etal_2000] provides an adjacent account: layers progressively compress input while preserving task-relevant information — minimising $I(X; T)$ while maximising $I(T; Y)$. The present framework and IB are complementary. IB tracks what layers *discard* (the subtractive side); this framework tracks what layers *generate* (the reorganisation side). Both happen simultaneously — a layer that discards "this is the word 'bank' in position 7" while introducing "this is a financial context" is performing IB compression and increasing statistical complexity at once. But IB alone does not predict disproportionate returns on scale. Efficient noise removal makes a system more efficient; it does not make it more *capable*. The generative side — growth of statistical complexity, the creation of representations supporting qualitatively new inference — is what accounts for capability emergence. This is what depth buys that width cannot.
 
-### Emergent capabilities as threshold-crossing {#sec-emergence-thresholds}
+## Emergent capabilities as threshold-crossing {#sec-emergence-thresholds}
 
 If statistical complexity grows across depth and scale, capabilities requiring specific structural configurations should appear when complexity crosses characteristic thresholds.
 
@@ -52,18 +52,18 @@ Small-scale settings provide the clearest evidence for the principle. @nanda_eta
 
 The empirical scaling laws themselves [@kaplan_etal_2020] — smooth power-law relationships between compute, data, parameters, and loss — are consistent with this picture: loss reduction reflects progressive acquisition of compressive structure, with diminishing returns as the easiest regularities are captured first. Scaling these analyses to large autoregressive models remains an open challenge. Most detailed representational evidence comes from encoder models or small-scale settings. The extrapolation to the systems the framework is primarily about — large decoder-only language models — should be acknowledged as a gap that the framework motivates closing, not one it has already closed.
 
-### Predictions {#sec-predictions-ch2}
+## Predictions {#sec-predictions-ch2}
 
 The framework generates five specific predictions from Part I:
 
-1. **Statistical complexity scales with depth** (@pred-complexity-depth). Growth through the representational core (~80% of layers), with contraction in the final layers consistent with the projection bottleneck. Sublinear scaling as successive layers face diminishing marginal structural novelty in increasingly organised input. Measurable via proxy measures (intrinsic dimensionality, participation ratio) if not direct statistical complexity estimation.
+1. [**Statistical complexity scales with depth**]{#pred-complexity-depth}. Growth through the representational core (~80% of layers), with contraction in the final layers consistent with the projection bottleneck. Sublinear scaling as successive layers face diminishing marginal structural novelty in increasingly organised input. Measurable via proxy measures (intrinsic dimensionality, participation ratio) if not direct statistical complexity estimation.
 
-2. **Capability-complexity correlation** (@pred-capability-complexity). Capability onset correlates with statistical complexity crossing identifiable thresholds at relevant layers — approximately constant across model sizes for a given capability. This is the framework's boldest prediction and the one most in need of direct empirical test.
+2. [**Capability-complexity correlation**]{#pred-capability-complexity}. Capability onset correlates with statistical complexity crossing identifiable thresholds at relevant layers — approximately constant across model sizes for a given capability. This is the framework's boldest prediction and the one most in need of direct empirical test.
 
-3. **Residual stream as accumulator** (@pred-accumulator). Statistical complexity grows faster with residual connections than without, because earlier organisations are preserved alongside later ones. The qualitative claim is well-supported by mechanistic interpretability; the quantitative comparison awaits controlled ablation.
+3. [**Residual stream as accumulator**]{#pred-accumulator}. Statistical complexity grows faster with residual connections than without, because earlier organisations are preserved alongside later ones. The qualitative claim is well-supported by mechanistic interpretability; the quantitative comparison awaits controlled ablation.
 
-4. **Complementarity with IB compression** (@pred-ib-complement). Layers showing high IB compression (reduced $I(X; T)$) nonetheless show growth in statistical complexity. Negative correlation would be evidence against the framework.
+4. [**Complementarity with IB compression**]{#pred-ib-complement}. Layers showing high IB compression (reduced $I(X; T)$) nonetheless show growth in statistical complexity. Negative correlation would be evidence against the framework.
 
-5. **Qualitative shift across training** (@pred-training-shift). (a) Statistical complexity growth across training checkpoints follows power-law dynamics. (b) Early-training dimensions encode surface statistical regularities; late-training dimensions encode higher-order compositional structure. This is a prediction about the *type* of growth, not merely its tempo — and it is supported by convergent evidence from grokking [@power_etal_2022; @nanda_etal_2023], induction head formation [@olsson_etal_2022], and pre-training dynamics showing that linguistic features are learned in a characteristic order: surface features first, syntactic next, semantic last.
+5. [**Qualitative shift across training**]{#pred-training-shift}. (a) Statistical complexity growth across training checkpoints follows power-law dynamics. (b) Early-training dimensions encode surface statistical regularities; late-training dimensions encode higher-order compositional structure. This is a prediction about the *type* of growth, not merely its tempo — and it is supported by convergent evidence from grokking [@power_etal_2022; @nanda_etal_2023], induction head formation [@olsson_etal_2022], and pre-training dynamics showing that linguistic features are learned in a characteristic order: surface features first, syntactic next, semantic last.
 
 These predictions are not trivially satisfied. Several could fail in ways that would require substantial revision of the framework. Prediction 4 in particular — if IB compression and statistical complexity growth traded off rather than complementing each other, the framework's central distinction between subtractive and generative processing would be undermined.
