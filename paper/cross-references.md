@@ -13,8 +13,7 @@ Canonical IDs for use across all chapter files. Use `@sec-*` for sections,
 | `sec-structure-across-depth` | 2. Structure Across Depth | `02_structure_across_depth.qmd` |
 | `sec-autoregressive-loop` | 3. The Autoregressive Loop | `03_autoregressive_loop.qmd` |
 | `sec-convergence` | 4. Convergence Across Substrates | `04_convergence_across_substrates.qmd` |
-| `sec-recursive-loop` | 5. The Recursive Loop | `05_recursive_loop.qmd` |
-| `sec-of-meaning` | 6. Of Meaning | `06_of_meaning.qmd` |
+| `sec-conclusion` | 5. Conclusion | `05_conclusion.qmd` |
 
 ## Part IDs
 
@@ -22,7 +21,6 @@ Canonical IDs for use across all chapter files. Use `@sec-*` for sections,
 |----|------|
 | `sec-part-compression` | Part I — Compression |
 | `sec-part-composition` | Part II — Composition |
-| `sec-part-ecology` | Part III — Ecology |
 
 ## Key Subsection IDs
 
@@ -49,28 +47,16 @@ Canonical IDs for use across all chapter files. Use `@sec-*` for sections,
 - `sec-autoregressive-limitations` — Limitations of the autoregressive account
 
 ### Chapter 4
-- `sec-projection-bottleneck` — Channel capacity as substrate-independent constraint (Vygotsky, Fodor, speech bandwidth, RSA evidence woven in)
-- `sec-convergence-limits` — What convergence explains and what it doesn't (Deacon, Levinson)
+- `sec-projection-bottleneck` — Channel capacity as substrate-independent constraint
+- `sec-convergence-limits` — What convergence explains and what it doesn't
 - `sec-grounding-rate-distortion` — Grounding as rate-distortion question (novel)
 - `sec-predictions-ch4` — Prediction 8
 
-### Chapter 5
-- `sec-carriers` — Knowledge carriers and persistence ecology
-- `sec-carrier-asymmetry` — Endogenous vs exogenous persistence
-- `sec-nested-loops` — Four nested feedback loops
-- `sec-silent-flattening` — Top-down erosion and silent flattening
-- `sec-curation-defence` — Human curation as primary defence
-- `sec-predictions-ch5` — Predictions 9–10
-- `sec-eroding-asymmetry` — Processor-to-carrier transition
-
-### Chapter 6
+### Chapter 5 (Conclusion)
 - `sec-thematic-spine` — Integration vs mere accumulation
-- `sec-shannon-surprise` — Shannon's insight as closing frame
 - `sec-distortion-alignment` — Alignment as distortion measure mismatch (novel)
-- `sec-attention-economy` — Attention allocation as distortion measure ecology (novel)
-- `sec-iit-resonance` — IIT resonance (light touch)
-- `sec-consolidated-predictions` — Summary of all 10 predictions
-- `sec-final-gesture` — What the hierarchy points toward without reaching
+- `sec-consolidated-predictions` — Summary of all 8 predictions with testability ranking
+- `sec-future-directions` — Ecological dynamics and measurement operationalisation
 
 ## Prediction IDs
 
@@ -84,12 +70,14 @@ Canonical IDs for use across all chapter files. Use `@sec-*` for sections,
 | `pred-cot-quality` | 6 | CoT quality predicts effectiveness better than length | 3 |
 | `pred-icl-failure` | 7 | ICL fails when regularity type absent from geometry | 3 |
 | `pred-rsa-convergence` | 8 | Transformer/biological representational similarity | 4 |
-| `pred-ecological-erosion` | 9 | Top-down erosion in recursive training loops | 5 |
-| `pred-critical-fraction` | 10 | Characterisable threshold for self-reinforcing degradation | 5 |
+
+### Predictions moved to Paper 2 (ecological dynamics)
+| `pred-ecological-erosion` | 9 | Top-down erosion in recursive training loops | paper2 |
+| `pred-critical-fraction` | 10 | Characterisable threshold for self-reinforcing degradation | paper2 |
 
 ## Citation conventions
 
 - Use `@citekey` for inline citations: `@achille_soatto_2018`
-- Use `[@citekey]` for parenthetical: `[@achille_soatto_2018]`
+- Use `[@citekey]` for parenthetical: `[@achille_soatto_2018`]
 - Use `[@key1; @key2]` for multiple: `[@shannon_1948; @cover_thomas_2006]`
 - All citekeys defined in `references.bib`

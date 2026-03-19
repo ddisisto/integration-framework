@@ -1,13 +1,15 @@
 ---
 title: "Integration"
-subtitle: "Compression, composition, and the ecology of representational diversity in large language models"
+subtitle: "Compression, composition, and the projection bottleneck in large language models"
 ---
 
 ## Abstract {.unnumbered}
 
-The effectiveness of large language models reflects hierarchical multi-scale compression — organisational and semantic, not merely algorithmic — operating simultaneously within the forward pass and sequentially across the autoregressive loop. The autoregressive loop is fundamentally ambivalent: it can enrich or degrade representational diversity through the same mechanism. This ambivalence recurs at the ecological scale, where model outputs re-enter the knowledge ecosystem through nested feedback loops, threatening a silent flattening that preserves surface quality while eroding higher-order structure.
+The effectiveness of large language models reflects hierarchical multi-scale compression — organisational and semantic, not merely algorithmic — operating simultaneously within the forward pass and sequentially across the autoregressive loop. Each layer solves a rate-distortion problem under a progressively more abstract distortion measure, building representations whose statistical complexity grows even as mutual information with the input is bounded by the data processing inequality. The autoregressive loop projects this rich internal state through a radical bottleneck — a single token selected from a finite vocabulary — constructing a sequential code that carries what no single token could express.
 
-Information theory provides the natural formal language: rate-distortion theory characterises the hierarchy, the data processing inequality clarifies what depth can and cannot do, channel capacity formalises the projection bottleneck, and statistical complexity provides the measure of what grows across depth. The framework generates specific testable predictions and identifies representational diversity — the structural complexity of the configurations a system can reach — as the critical variable governing whether these systems enrich or impoverish the knowledge ecology they are entering.
+The autoregressive loop is fundamentally ambivalent: it can enrich or degrade representational diversity through the same mechanism. The enriching regime surfaces genuinely new structure; the degrading regime reproduces existing attractors in fluent form. The distinction is invisible in surface metrics and consequential for every downstream use.
+
+Information theory provides the natural formal language: rate-distortion theory characterises the hierarchy, the data processing inequality clarifies what depth can and cannot do, channel capacity formalises the projection bottleneck, and statistical complexity provides the measure of what grows across depth. The framework generates eight specific testable predictions, grouped by testability, and identifies the operationalisation of statistical complexity in high-dimensional representations as the most important near-term challenge it creates for itself.
 
 ## Preface {.unnumbered}
 

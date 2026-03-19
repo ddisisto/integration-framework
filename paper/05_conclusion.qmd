@@ -1,0 +1,48 @@
+# 5. Conclusion {#sec-conclusion}
+
+## Integration and accumulation {#sec-thematic-spine}
+
+At each scale examined in this paper, the same distinction governs.
+
+Within the forward pass, layers that reorganise preserved information into more useful structure — increasing statistical complexity while respecting the data processing inequality — perform integration. Layers that merely propagate without reorganising perform accumulation. The difference determines whether depth buys capability or merely adds parameters (@sec-structure-across-depth).
+
+Within the autoregressive loop, tokens that surface genuinely new structure sustain the enriching regime. Tokens that reinforce existing trajectories sustain the degrading regime. The difference is invisible in surface metrics but determines whether generation produces integration or accumulation (@sec-enriching-degrading).
+
+The variable is the same at both scales: whether what feeds forward adds structure or merely adds volume.
+
+## Distortion measures and alignment {#sec-distortion-alignment}
+
+A further observation falls directly out of the vocabulary. The model's implicit distortion measure — what it treats as acceptable loss during compression — is determined by its training objective. The receiver's distortion measure is determined by their purposes, their context, their needs. The gap between these measures is the formal structure of what the field calls the alignment problem: make the model's compression serve the receiver's ends, not merely its own trained defaults.
+
+The difficulty of closing this gap is itself a projection bottleneck problem. The receiver's distortion measure is rich, contextual, and not fully articulable. The feedback channels through which it is communicated to the model — preference rankings, reward signals, natural language correction — are narrow. The same bandwidth mismatch that governs the autoregressive loop governs the attempt to align the system that produces it. This is, as far as we can determine, a novel framing; it is offered as a contribution, not an established result.
+
+## Consolidated predictions {#sec-consolidated-predictions}
+
+The framework generates eight specific predictions across its three parts. They are stated in full where they arise (@sec-predictions-ch2, @sec-predictions-ch3, @sec-predictions-ch4) and summarised here, grouped by testability.
+
+**Most directly testable** — these require probing existing models and could be tested with current methods:
+
+1. Statistical complexity scales with depth — sublinear growth through the representational core, contraction in the final layers ([1](#pred-complexity-depth))
+2. Residual stream functions as measurable accumulator of statistical complexity ([3](#pred-accumulator))
+3. IB compression and statistical complexity growth complement rather than trade off ([4](#pred-ib-complement))
+4. CoT effectiveness correlates with compressive novelty per step, not chain length ([6](#pred-cot-quality))
+
+**Testable with targeted experiments** — these require controlled comparisons across models or training stages:
+
+5. Statistical complexity growth across training follows power-law dynamics with qualitative shift ([5](#pred-training-shift))
+6. In-context learning fails when the required regularity type is absent from the weight geometry ([7](#pred-icl-failure))
+7. Transformer representational geometry converges with biological neural geometry as models scale ([8](#pred-rsa-convergence))
+
+**Boldest prediction** — the framework's strongest claim, most in need of direct empirical test:
+
+8. Capability onset correlates with statistical complexity crossing identifiable thresholds ([2](#pred-capability-complexity))
+
+These predictions are not trivially satisfied. Several could fail in ways that would require substantial revision of the framework. Prediction 4 in particular — if IB compression and statistical complexity growth traded off rather than complementing each other, the framework's central distinction between subtractive and generative processing would be undermined.
+
+The predictions share a common dependency: the operationalisation of statistical complexity in high-dimensional continuous representations. The framework is explicit that direct estimation of $C_\mu$ in transformer hidden states is not yet feasible (@sec-statistical-complexity, Appendix @sec-estimation-challenges), and the predictions are stated in terms of proxy measures — intrinsic dimensionality, participation ratio, representational similarity — with explicit acknowledgment that the proxy relationship is imperfect. Closing this measurement gap is the most important near-term challenge the framework creates for itself.
+
+## Future directions {#sec-future-directions}
+
+The enriching/degrading distinction introduced in @sec-enriching-degrading operates within a single context window. But the same ambivalence recurs wherever model outputs feed back as inputs: in agentic loops that persist state across sessions, in human-mediated integration of model outputs into published knowledge, and in recursive training where model-generated text enters the corpora of successor models. The ecological implications of this recursion — including the threat of silent flattening, where surface quality is preserved while higher-order representational diversity erodes — are the subject of ongoing work.
+
+Similarly, the grounding problem reframed as a rate-distortion question (@sec-grounding-rate-distortion) identifies the formal structure of what would need to be measured but does not resolve whether the gap can be closed by text-only compression. Both directions require empirical operationalisation of the framework's central quantities — work that is underway but beyond the scope of this paper.

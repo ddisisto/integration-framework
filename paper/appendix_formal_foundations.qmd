@@ -102,7 +102,7 @@ $$
 
 @grassberger_1986 showed that $E \leq C_\mu$ always holds, with equality only for processes where the causal states are deterministically related to the past. Excess entropy measures how much of the past is relevant to the future; statistical complexity measures how much memory is needed to *use* that relevance. The gap between them reflects the cost of organising predictive information into a usable form — precisely the cost the framework claims transformer layers pay.
 
-### Estimation challenges
+### Estimation challenges {#sec-estimation-challenges}
 
 Direct estimation of $C_\mu$ in high-dimensional continuous spaces — such as transformer hidden states — is technically formidable. The causal state construction requires partitioning history space into equivalence classes, which in continuous settings demands either discretisation (which introduces artefacts) or kernel-based estimation (which scales poorly with dimension).
 
