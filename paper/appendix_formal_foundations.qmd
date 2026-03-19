@@ -1,38 +1,180 @@
 # Appendix A: Formal Foundations {#sec-appendix-formal .appendix}
 
-<!-- STATUS: Stub — to be written after all main chapters are complete.
+This appendix develops the formal constructions that the main text references but does not derive. Each section is self-contained and addresses a specific question a sceptical reader would reasonably ask.
 
-Purpose: Carry the formal rigour that the main body references but does not
-develop. Each section answers a specific question a sceptical reader would ask.
+## A.1 Rate-distortion and the compression hierarchy {#sec-appendix-rd}
 
-Planned sections:
+The compression continuum described in @sec-compression-hierarchy rests on rate-distortion theory. This section states the framework precisely and shows how the three compression levels — perceptual, structural, semantic — correspond to rate-distortion problems with different distortion measures.
 
-## A.1 Rate-distortion and the compression hierarchy
-- Formal definition of R(D) and the role of the distortion measure.
-- Explicit construction: how the three compression levels map to rate-distortion
-  problems with different d(·,·).
-- Relationship to @achille_soatto_2018 (minimal sufficient statistics).
+### The rate-distortion function
 
-## A.2 Statistical complexity: definition and properties
-- Formal definition of causal states, ε-machines, and Cμ.
-- Relationship to excess entropy / predictive information.
-- Why Cμ is not constrained by the DPI (it is a property of the representation,
-  not mutual information with the source).
-- Known difficulties with estimation in continuous high-dimensional spaces.
-- Proxy measures and their relationship to Cμ.
+For a source $X$ with distribution $p(x)$, a reproduction alphabet $\hat{X}$, and a distortion measure $d: X \times \hat{X} \to [0, \infty)$, the rate-distortion function is
 
-## A.3 The autoregressive loop as sequential coding
-- The dimensionality mismatch stated formally.
-- Joint source-channel coding: why the classical channel coding theorem applies
-  only approximately (message constructed during transmission).
-- Token interdependence and effective capacity per token.
+$$
+R(D) = \min_{p(\hat{x}|x): \mathbb{E}[d(X, \hat{X})] \leq D} I(X; \hat{X})
+$$ {#eq-rd}
 
-## A.4 The Saxe/Shwartz-Ziv measurement debate
-- Brief, fair summary.
-- Why the debate is about measurement, not about whether reorganisation occurs.
-- Implications for the framework's own measurement predictions.
+where the minimisation is over all conditional distributions (encodings) achieving expected distortion at most $D$ [@shannon_1959]. $R(D)$ gives the minimum number of bits required to represent the source at distortion level $D$.
 
-Each section should be self-contained and referenceable from the main text.
-Write only after main chapters are finalised — the appendices serve claims
-that need to be stable before formalising.
--->
+The key point for the framework: $R(D)$ is defined *relative to the distortion measure $d$*. Change $d$ and you change everything — which encodings are optimal, what information is preserved, what is discarded. The distortion measure is where relevance enters. It is not a property of the source but a choice made by or on behalf of the receiver.
+
+### Three distortion measures, three compression levels
+
+The compression continuum (@sec-compression-continuum) identifies three regions. Each corresponds to a class of distortion measure operating at a different level of abstraction.
+
+**Perceptual compression.** The distortion measure operates on surface features as perceived by a receiver:
+
+$$
+d_{\text{percept}}(x, \hat{x}) = \|f_{\text{percept}}(x) - f_{\text{percept}}(\hat{x})\|
+$$ {#eq-d-percept}
+
+where $f_{\text{percept}}$ maps signals to their perceptual representations. JPEG's quantisation strategy and MP3's psychoacoustic masking are both solutions to $R(D)$ under perceptual distortion measures — they discard what the receiver's sensory system cannot resolve.
+
+**Structural compression.** The distortion measure operates on relational and compositional structure:
+
+$$
+d_{\text{struct}}(x, \hat{x}) = \Delta\bigl(S(x),\, S(\hat{x})\bigr)
+$$ {#eq-d-struct}
+
+where $S(\cdot)$ extracts structural properties (syntactic parse, taxonomic relations, principal components) and $\Delta$ is a metric on structural descriptions. A grammar that generates invalid sentences incurs high structural distortion regardless of surface similarity. PCA achieves optimal structural compression when the distortion measure is reconstruction error in the subspace of maximum variance.
+
+**Semantic compression.** The distortion measure operates on meaning — the geometry of inferential relationships:
+
+$$
+d_{\text{sem}}(x, \hat{x}) = \Delta\bigl(M(x),\, M(\hat{x})\bigr)
+$$ {#eq-d-sem}
+
+where $M(\cdot)$ maps to a semantic representation in which distance reflects inferential proximity. Two paraphrases incur zero semantic distortion despite maximal surface difference. Two sentences differing by a single negation incur high semantic distortion despite minimal surface difference.
+
+### Connection to deep representations
+
+@tishby_zaslavsky_2015 showed that each layer of a deep network can be understood as solving a rate-distortion problem, with the task label defining relevance. @achille_soatto_2018 proved a stronger result: the optimal solution to the layer-wise rate-distortion problem — the minimal sufficient statistic for the task — naturally produces representations that are invariant to nuisance factors and disentangled with respect to the task-relevant variables. These properties are not imposed by architectural design. They are consequences of rate-distortion optimality.
+
+The deep variational information bottleneck [@alemi_etal_2017] provides a tractable approximation: rather than solving @eq-rd exactly, each layer minimises a variational upper bound on mutual information with the input while maximising a lower bound on mutual information with the task. @dubois_etal_2020 extend this to the decodable information bottleneck, which ensures that preserved information is not merely present but linearly accessible — a property the main text's discussion of "making implicit structure explicit" (@sec-dpi-resolution) requires.
+
+The compression continuum, then, is not a metaphor. It is a claim that different layers solve @eq-rd under distortion measures that shift from surface toward meaning — and that this shift is what the forward pass *does*.
+
+## A.2 Statistical complexity: definition and properties {#sec-appendix-complexity}
+
+@sec-statistical-complexity claims that what grows across transformer layers is statistical complexity — a measure of representational organisation that is not constrained by the data processing inequality. This section defines the quantity precisely and explains why the DPI does not bound it.
+
+### Causal states and $\varepsilon$-machines
+
+Computational mechanics [@crutchfield_young_1989; @shalizi_crutchfield_2001] defines causal states as equivalence classes over histories that yield identical conditional distributions over futures. For a stationary process $\ldots X_{-2}, X_{-1}, X_0, X_1, X_2, \ldots$, the causal state at time $t$ is
+
+$$
+\epsilon_t = \epsilon(\overleftarrow{x}_t) \quad \text{where} \quad \overleftarrow{x}_t \sim \overleftarrow{x}_t' \iff P(\overrightarrow{X} \mid \overleftarrow{X} = \overleftarrow{x}_t) = P(\overrightarrow{X} \mid \overleftarrow{X} = \overleftarrow{x}_t')
+$$ {#eq-causal-state}
+
+where $\overleftarrow{x}_t$ denotes the past and $\overrightarrow{X}$ the future. Two histories belong to the same causal state if and only if they make identical predictions.
+
+The $\varepsilon$-machine is the hidden Markov model whose states are the causal states and whose transitions are determined by the process. It is the minimal sufficient statistic for prediction — the smallest representation that captures all predictable structure in the process [@shalizi_crutchfield_2001].
+
+Statistical complexity is the entropy of the causal state distribution:
+
+$$
+C_\mu = H(\epsilon) = -\sum_{s \in \mathcal{S}} P(s) \log P(s)
+$$ {#eq-cmu}
+
+This measures how much information is required to specify which causal state the process is in — equivalently, how much memory the minimal predictor must maintain.
+
+### Why $C_\mu$ is not bounded by the DPI
+
+The data processing inequality states that for a Markov chain $X \to Y \to Z$:
+
+$$
+I(X; Z) \leq I(X; Y)
+$$
+
+This bounds mutual information *between the representation and the source*. Statistical complexity is not mutual information with the source. It is entropy of the representation's own causal state structure — a property of how the representation is organised, not how much it remembers about the input.
+
+A concrete example: consider two representations of the same data, both retaining the same mutual information with the source. One stores raw features. The other has reorganised those features into clusters, hierarchies, and compositional structures. They satisfy the DPI equally. But the second has higher statistical complexity — more internal organisation, more structure that a downstream process can exploit.
+
+This is the formal basis for the framework's central distinction between subtractive processing (discarding information, bounded by DPI) and generative processing (reorganising preserved information, not bounded by DPI).
+
+### Relationship to excess entropy
+
+Statistical complexity is related to but distinct from excess entropy (also called predictive information), defined as the mutual information between past and future:
+
+$$
+E = I(\overleftarrow{X}; \overrightarrow{X})
+$$
+
+@grassberger_1986 showed that $E \leq C_\mu$ always holds, with equality only for processes where the causal states are deterministically related to the past. Excess entropy measures how much of the past is relevant to the future; statistical complexity measures how much memory is needed to *use* that relevance. The gap between them reflects the cost of organising predictive information into a usable form — precisely the cost the framework claims transformer layers pay.
+
+### Estimation challenges
+
+Direct estimation of $C_\mu$ in high-dimensional continuous spaces — such as transformer hidden states — is technically formidable. The causal state construction requires partitioning history space into equivalence classes, which in continuous settings demands either discretisation (which introduces artefacts) or kernel-based estimation (which scales poorly with dimension).
+
+This is why the main text (@sec-statistical-complexity) relies on proxy measures:
+
+- **Intrinsic dimensionality** estimates the effective number of degrees of freedom in the representation manifold [@ansuini_etal_2019]. Growth in intrinsic dimensionality is necessary but not sufficient for growth in $C_\mu$ — a representation can have high dimensionality without high organisation.
+- **Participation ratio** measures how many dimensions carry significant variance. Like intrinsic dimensionality, it tracks geometric complexity without directly measuring causal state structure.
+
+The framework's predictions are stated in terms of these proxies where direct $C_\mu$ estimation is not feasible, with explicit acknowledgment that the proxy relationship is imperfect. A method for estimating statistical complexity in transformer hidden states would be a significant contribution — and would make the framework's predictions directly testable rather than testable by proxy.
+
+## A.3 The autoregressive loop as sequential coding {#sec-appendix-sequential}
+
+@sec-channel-capacity frames the autoregressive loop as a sequential coding scheme. This section states the bandwidth mismatch formally and explains why classical channel coding theorems apply only approximately.
+
+### The dimensionality mismatch
+
+At each generation step, the model's internal state is a vector $\mathbf{h} \in \mathbb{R}^d$ where $d$ is the model dimension (typically $10^3$ to $10^4$). The output is a single token $t \in \mathcal{V}$ where $|\mathcal{V}|$ is the vocabulary size (typically $3 \times 10^4$ to $10^5$).
+
+The information content of the internal state — even after accounting for the fact that hidden states occupy a lower-dimensional manifold — far exceeds what a single token can carry. If the effective dimensionality of the hidden state manifold is $d_{\text{eff}}$ and each dimension carries $b$ bits of useful information, the internal information is $O(d_{\text{eff}} \cdot b)$ bits, while a single token carries at most $\log_2 |\mathcal{V}|$ bits (approximately 15–17 bits for typical vocabularies).
+
+This is a bandwidth mismatch in the precise Shannon sense. The source rate exceeds the channel capacity per use.
+
+### Sequential coding as the solution
+
+Shannon's channel coding theorem [@shannon_1948] establishes that reliable communication at rates exceeding channel capacity per use requires multiple channel uses — distributing the message across a sequence of transmissions. The autoregressive loop implements exactly this: each token is a channel use, and the sequence of tokens collectively encodes what no single token could carry.
+
+The classical theorem assumes a fixed message encoded before transmission begins. The autoregressive setting departs from this in a critical way: the "message" is constructed during transmission. Each token both extends the message and encodes accumulated content for subsequent decoding. This is closer to joint source-channel coding, where source coding (deciding what to say) and channel coding (deciding how to encode it for the channel) happen simultaneously.
+
+### Successive refinement
+
+The connection to successive refinement [@equitz_cover_1991] is direct. A source is successively refinable if it can be encoded in stages, with each stage adding detail, such that the overall encoding is as efficient as encoding at the final resolution in one pass. Gaussian sources are successively refinable; many other sources are not.
+
+The autoregressive loop performs a form of successive refinement — each token adds to the encoded message — but with the complication that the "source" (the intended output) is not fully determined when encoding begins. The model is simultaneously deciding what to say and encoding it, with each token constraining both the message and its encoding.
+
+This departure from the classical setting means that standard successive refinement guarantees do not directly apply. The effective capacity per token is not $\log_2 |\mathcal{V}|$ but something lower, reduced by the overhead of message construction. How much lower is an empirical question the framework highlights but does not answer.
+
+### Self-attention as a capacity constraint
+
+@hahn_2020 proved formal limitations on the computational capacity of self-attention: hard attention transformers cannot model all regular languages, and the class of functions computable by self-attention is constrained by the interaction between sequence length and embedding dimension. These limitations are consistent with the bandwidth framing. Self-attention is the mechanism by which the model reads the accumulated context — the sequence of previous channel uses — and its computational constraints bound how effectively the model can decode the information distributed across those uses.
+
+The practical consequence: even when the context window is technically large enough to contain all necessary information, attentional capacity limits how much of that distributed encoding the model can effectively integrate. This is the formal basis for the attentional degradation discussed in @sec-autoregressive-limitations — a hard constraint distinct from the compositional degradation that arises from regime drift.
+
+## A.4 The Saxe/Shwartz-Ziv measurement debate {#sec-appendix-measurement}
+
+The framework's predictions about information flow across layers (@sec-dpi-resolution, @sec-ib-complementarity) inherit a known measurement problem. This section summarises the debate fairly and explains why the framework's predictions survive it.
+
+### The original claim and the challenge
+
+@shwartz-ziv_tishby_2017 reported that deep networks exhibit two distinct training phases: an initial fitting phase where mutual information $I(X; T)$ between input and hidden layers increases, followed by a compression phase where $I(X; T)$ decreases while task-relevant information $I(T; Y)$ is preserved. This was presented as evidence for the information bottleneck theory of deep learning.
+
+@saxe_etal_2018 challenged this finding on two grounds. First, the compression phase was observed with saturating nonlinearities (tanh) but not with ReLU activations — suggesting the finding was activation-function-dependent rather than a general property of deep learning. Second, they argued that the mutual information estimates were sensitive to binning choices, and that for deterministic networks (networks with deterministic activation functions), $I(X; T)$ is technically infinite unless noise is added or binning is applied.
+
+### The measurement problem
+
+The core issue is that mutual information between continuous random variables is sensitive to how continuity is handled. For a deterministic function $f$, the mutual information $I(X; f(X))$ is infinite — the mapping preserves all information. The finite values reported by @shwartz-ziv_tishby_2017 depended on binning (discretising) the hidden layer activations, and the results were sensitive to bin width.
+
+Subsequent work has attempted to resolve this in several ways:
+
+- @goldfeld_etal_2019 developed neural network-based estimators that avoid binning, finding evidence of compression that is less sensitive to architectural choices.
+- @chelombiev_etal_2019 used adaptive estimators and found compression in both tanh and ReLU networks, suggesting the original null result for ReLU was an estimation artefact.
+- @kolchinsky_tracey_2018 showed that in deterministic networks, a noise-based definition of mutual information (adding small noise to activations) recovers meaningful compression results.
+- @wickstrom_etal_2022 used matrix-based Rényi entropy, which avoids binning entirely, and found compression across architectures.
+- @gabrie_etal_2018 analysed mutual information in analytically tractable network models, providing ground truth against which estimators can be calibrated.
+
+@geiger_2021 provides a comprehensive review. The emerging consensus is that *some form* of information compression occurs across layers, but its magnitude, timing, and relationship to generalisation depend on the estimation method, architecture, and training regime. @amjad_geiger_2020 and @goldfeld_polyanskiy_2020 offer further perspectives on when and how the information bottleneck principle applies in practice.
+
+### Why the framework's predictions survive this debate
+
+The framework does not depend on the strong version of the Shwartz-Ziv claim — that a distinct compression phase is a universal feature of deep learning. It depends on two weaker claims, both of which survive the measurement debate:
+
+1. **Reorganisation occurs.** Even when total mutual information with the input does not measurably decrease, the *structure* of the representation changes across layers. This is observable through probing studies, representational similarity analysis, and intrinsic dimensionality measurements — none of which depend on mutual information estimation. The debate is about whether reorganisation is accompanied by measurable compression. The framework requires only that reorganisation occurs, not that it is always accompanied by a detectable drop in $I(X; T)$.
+
+2. **The DPI permits structural growth.** Whether or not $I(X; T)$ decreases, the DPI guarantees it does not increase. The framework's claim is that statistical complexity — representational organisation — grows within this constraint. This claim is orthogonal to the measurement debate, which concerns the *subtractive* side (how much information is discarded) rather than the *generative* side (how remaining information is organised).
+
+The measurement debate does, however, constrain how the framework's predictions should be tested. Predictions involving mutual information (@pred-ib-complement) should be tested with estimation methods robust to the issues identified above — ideally multiple methods, to ensure results are not artefacts of a particular estimator. Predictions involving statistical complexity (@pred-complexity-depth, @pred-capability-complexity) face their own estimation challenges (@sec-appendix-complexity) but are not affected by the mutual information measurement debate, since they concern a different quantity entirely.
