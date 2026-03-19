@@ -1,6 +1,6 @@
 project:
   type: book
-  output-dir: _output
+  output-dir: ../web
 
 book:
   title: "Integration"
@@ -49,6 +49,8 @@ format:
       text: |
         \usepackage{amsmath}
         \usepackage{amssymb}
+        \usepackage{pgfpages}
+        \pgfpagesuselayout{2 on 1}[a4paper,landscape]
 
 # Profiles for multi-scale output
 # quarto render --profile full  → complete paper with appendices

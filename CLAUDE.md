@@ -26,6 +26,20 @@ paper/
 
 Other files: `v1_draft.md` (source material), `v2_outline.md` (superseded), `integration_framework.md` (working outline).
 
+## Rendering
+
+Requires: Python venv (`.venv/`), Quarto, TinyTeX. Setup for a fresh clone:
+
+```bash
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+cd paper && quarto render       # outputs HTML + PDF to web/
+```
+
+Output goes to `web/` (HTML site + `Integration.pdf`). The `web/` directory is committed so that tagged versions always include a current render.
+
+**Always run `cd paper && quarto render` before tagging or when changes need review.**
+
 ## Writing principles
 
 - Say what needs saying, then stop. One idea per paragraph.
