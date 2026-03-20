@@ -8,12 +8,12 @@ Ecological implications (feedback loops, silent flattening, carrier transition) 
 
 ## Status
 
-Paper 1 is tightened to Chapters 1–4 + Conclusion. Appendix A written. Renders cleanly.
+Paper 1 is tightened to Sections 1–4 + Conclusion. Appendix A written. Renders cleanly.
 
 ```
 paper/
 ├── _quarto.yml                        ← render config
-├── integration.qmd                    ← main document (includes all chapters)
+├── integration.qmd                    ← main document (includes all sections)
 ├── index.qmd                          ← abstract + preface
 ├── 01_compression_hierarchy.qmd       ← DONE (~1,040 words)
 ├── 02_structure_across_depth.qmd      ← DONE (~3,200 words)
@@ -27,8 +27,8 @@ paper/
 
 paper2/                                ← staging for companion piece
 ├── README.md                          ← scope and key concepts
-├── 05_recursive_loop.qmd             ← original Ch5 (ecology)
-└── 06_of_meaning.qmd                 ← original Ch6 (meaning)
+├── 05_recursive_loop.qmd             ← original §5 (ecology)
+└── 06_of_meaning.qmd                 ← original §6 (meaning)
 ```
 
 Other files: `v1_draft.md` (source material), `v2_outline.md` (superseded), `integration_framework.md` (working outline), `feedback-v0.1.md` (external reviewer feedback).
@@ -56,9 +56,10 @@ Output goes to `web/` (HTML site + `Integration.pdf`). The `web/` directory is c
 
 ## Key decisions
 
-- **Formalism:** Main body uses info theory as precise vocabulary. Appendices carry the formal constructions. Rate-distortion in Ch1, DPI + statistical complexity in Ch2, channel capacity in Ch3. Distributed, not frontloaded.
+- **Formalism:** Main body uses info theory as precise vocabulary. Appendices carry the formal constructions. Rate-distortion in §1, DPI + statistical complexity in §2, channel capacity in §3. Distributed, not frontloaded.
 - **Audience:** ML researchers, cognitive scientists, informed generalists. Clarity over gatekeeping; rigour available in appendices.
 - **Scope:** Paper 1 covers compression and composition (the formally constrained core). Ecological dynamics (feedback loops, silent flattening, carrier transition, attention economy) deferred to paper 2.
+- **Structure:** Flat sections (no Part I/II/III). Use "section" not "chapter" or "part" in all copy.
 - **Multi-scale output:** Full paper → blog post → interactive web app (semantic zoom). Blog and web app come after the paper exists.
 - **Human-AI collaboration** acknowledged in preface, stated plainly.
 
@@ -77,3 +78,8 @@ Output goes to `web/` (HTML site + `Integration.pdf`). The `web/` directory is c
 - Attention allocation as distortion measure selection; algorithmic capture as adaptive exploit at ecological scale
 
 These have no clear precedent in the literature. Present as contributions, not established theory.
+
+## Next steps
+
+1. **Prediction table in §5.** Convert the consolidated predictions list into a table with a `Status` column (supported / partially supported / untested / in progress). Some predictions already have substantial empirical backing; making this visible strengthens the paper.
+2. **Training/dataset section.** The paper currently describes the compression hierarchy at inference time but says little about how training *builds* it. A new section (~1,000 words, likely between §4 and the conclusion) would address: training as iterative distortion-measure refinement, dataset composition as implicit distortion measure, and connections to scaling laws. Expected to generate 1–2 new predictions.

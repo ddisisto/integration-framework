@@ -389,24 +389,85 @@ window.Quarto = {
 </section>
 <section id="sec-consolidated-predictions" class="level2" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="sec-consolidated-predictions"><span class="header-section-number">5.3</span> Consolidated predictions</h2>
-<p>The framework generates eight specific predictions across its three sections. They are stated in full where they arise (<a href="#sec-predictions-ch2" class="quarto-xref">Section&nbsp;2.6</a>, <a href="#sec-predictions-ch3" class="quarto-xref">Section&nbsp;3.6</a>, <a href="#sec-predictions-ch4" class="quarto-xref">Section&nbsp;4.4</a>) and summarised here, grouped by testability.</p>
-<p><strong>Most directly testable</strong> — these require probing existing models and could be tested with current methods:</p>
-<ol type="1">
-<li>Statistical complexity scales with depth — sublinear growth through the representational core, contraction in the final layers (<a href="#pred-complexity-depth">1</a>)</li>
-<li>Residual stream functions as measurable accumulator of statistical complexity (<a href="#pred-accumulator">3</a>)</li>
-<li>IB compression and statistical complexity growth complement rather than trade off (<a href="#pred-ib-complement">4</a>)</li>
-<li>CoT effectiveness correlates with compressive novelty per step, not chain length (<a href="#pred-cot-quality">6</a>)</li>
-</ol>
-<p><strong>Testable with targeted experiments</strong> — these require controlled comparisons across models or training stages:</p>
-<ol start="5" type="1">
-<li>Statistical complexity growth across training follows power-law dynamics with qualitative shift (<a href="#pred-training-shift">5</a>)</li>
-<li>In-context learning fails when the required regularity type is absent from the weight geometry (<a href="#pred-icl-failure">7</a>)</li>
-<li>Transformer representational geometry converges with biological neural geometry as models scale (<a href="#pred-rsa-convergence">8</a>)</li>
-</ol>
-<p><strong>Boldest prediction</strong> — the framework’s strongest claim, most in need of direct empirical test:</p>
-<ol start="8" type="1">
-<li>Capability onset correlates with statistical complexity crossing identifiable thresholds (<a href="#pred-capability-complexity">2</a>)</li>
-</ol>
+<p>The framework generates eight specific predictions across its three sections. They are stated in full where they arise (<a href="#sec-predictions-ch2" class="quarto-xref">Section&nbsp;2.6</a>, <a href="#sec-predictions-ch3" class="quarto-xref">Section&nbsp;3.6</a>, <a href="#sec-predictions-ch4" class="quarto-xref">Section&nbsp;4.4</a>) and summarised here.</p>
+<div id="tbl-predictions" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-predictions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Consolidated predictions with current empirical status.
+</figcaption>
+<div aria-describedby="tbl-predictions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Prediction</th>
+<th>Section</th>
+<th>Testability</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="#pred-complexity-depth">1</a></td>
+<td>Statistical complexity scales with depth — sublinear growth through the representational core, contraction in final layers</td>
+<td>§2</td>
+<td>Probing existing models</td>
+<td>Partially supported</td>
+</tr>
+<tr class="even">
+<td><a href="#pred-capability-complexity">2</a></td>
+<td>Capability onset correlates with statistical complexity crossing identifiable thresholds</td>
+<td>§2</td>
+<td>Targeted experiments</td>
+<td>Untested</td>
+</tr>
+<tr class="odd">
+<td><a href="#pred-accumulator">3</a></td>
+<td>Residual stream functions as measurable accumulator of statistical complexity</td>
+<td>§2</td>
+<td>Probing existing models</td>
+<td>Partially supported</td>
+</tr>
+<tr class="even">
+<td><a href="#pred-ib-complement">4</a></td>
+<td>IB compression and statistical complexity growth complement rather than trade off</td>
+<td>§2</td>
+<td>Probing existing models</td>
+<td>Untested</td>
+</tr>
+<tr class="odd">
+<td><a href="#pred-training-shift">5</a></td>
+<td>Statistical complexity growth across training follows power-law dynamics with qualitative shift</td>
+<td>§2</td>
+<td>Controlled comparisons across training stages</td>
+<td>Partially supported</td>
+</tr>
+<tr class="even">
+<td><a href="#pred-cot-quality">6</a></td>
+<td>CoT effectiveness correlates with compressive novelty per step, not chain length</td>
+<td>§3</td>
+<td>Probing existing models</td>
+<td>Partially supported</td>
+</tr>
+<tr class="odd">
+<td><a href="#pred-icl-failure">7</a></td>
+<td>In-context learning fails when the required regularity type is absent from the weight geometry</td>
+<td>§3</td>
+<td>Controlled comparisons across models</td>
+<td>Untested</td>
+</tr>
+<tr class="even">
+<td><a href="#pred-rsa-convergence">8</a></td>
+<td>Transformer representational geometry converges with biological neural geometry as models scale</td>
+<td>§4</td>
+<td>Cross-model comparison with neural data</td>
+<td>Partially supported</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
 <p>These predictions are not trivially satisfied. Several could fail in ways that would require substantial revision of the framework. Prediction 4 in particular — if IB compression and statistical complexity growth traded off rather than complementing each other, the framework’s central distinction between subtractive and generative processing would be undermined.</p>
 <p>The predictions share a common dependency: the operationalisation of statistical complexity in high-dimensional continuous representations. The framework is explicit that direct estimation of <span class="math inline">\(C_\mu\)</span> in transformer hidden states is not yet feasible (<a href="#sec-statistical-complexity" class="quarto-xref">Section&nbsp;2.3</a>, Appendix <a href="#sec-estimation-challenges" class="quarto-xref">Section&nbsp;6.2.4</a>), and the predictions are stated in terms of proxy measures — intrinsic dimensionality, participation ratio, representational similarity — with explicit acknowledgment that the proxy relationship is imperfect. Closing this measurement gap is the most important near-term challenge the framework creates for itself.</p>
 </section>

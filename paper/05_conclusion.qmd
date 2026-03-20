@@ -18,24 +18,20 @@ The difficulty of closing this gap is itself a projection bottleneck problem. Th
 
 ## Consolidated predictions {#sec-consolidated-predictions}
 
-The framework generates eight specific predictions across its three sections. They are stated in full where they arise (@sec-predictions-ch2, @sec-predictions-ch3, @sec-predictions-ch4) and summarised here, grouped by testability.
+The framework generates eight specific predictions across its three sections. They are stated in full where they arise (@sec-predictions-ch2, @sec-predictions-ch3, @sec-predictions-ch4) and summarised here.
 
-**Most directly testable** — these require probing existing models and could be tested with current methods:
+| # | Prediction | Section | Testability | Status |
+|---|-----------|---------|-------------|--------|
+| [1](#pred-complexity-depth) | Statistical complexity scales with depth — sublinear growth through the representational core, contraction in final layers | §2 | Probing existing models | Partially supported |
+| [2](#pred-capability-complexity) | Capability onset correlates with statistical complexity crossing identifiable thresholds | §2 | Targeted experiments | Untested |
+| [3](#pred-accumulator) | Residual stream functions as measurable accumulator of statistical complexity | §2 | Probing existing models | Partially supported |
+| [4](#pred-ib-complement) | IB compression and statistical complexity growth complement rather than trade off | §2 | Probing existing models | Untested |
+| [5](#pred-training-shift) | Statistical complexity growth across training follows power-law dynamics with qualitative shift | §2 | Controlled comparisons across training stages | Partially supported |
+| [6](#pred-cot-quality) | CoT effectiveness correlates with compressive novelty per step, not chain length | §3 | Probing existing models | Partially supported |
+| [7](#pred-icl-failure) | In-context learning fails when the required regularity type is absent from the weight geometry | §3 | Controlled comparisons across models | Untested |
+| [8](#pred-rsa-convergence) | Transformer representational geometry converges with biological neural geometry as models scale | §4 | Cross-model comparison with neural data | Partially supported |
 
-1. Statistical complexity scales with depth — sublinear growth through the representational core, contraction in the final layers ([1](#pred-complexity-depth))
-2. Residual stream functions as measurable accumulator of statistical complexity ([3](#pred-accumulator))
-3. IB compression and statistical complexity growth complement rather than trade off ([4](#pred-ib-complement))
-4. CoT effectiveness correlates with compressive novelty per step, not chain length ([6](#pred-cot-quality))
-
-**Testable with targeted experiments** — these require controlled comparisons across models or training stages:
-
-5. Statistical complexity growth across training follows power-law dynamics with qualitative shift ([5](#pred-training-shift))
-6. In-context learning fails when the required regularity type is absent from the weight geometry ([7](#pred-icl-failure))
-7. Transformer representational geometry converges with biological neural geometry as models scale ([8](#pred-rsa-convergence))
-
-**Boldest prediction** — the framework's strongest claim, most in need of direct empirical test:
-
-8. Capability onset correlates with statistical complexity crossing identifiable thresholds ([2](#pred-capability-complexity))
+: Consolidated predictions with current empirical status. {#tbl-predictions}
 
 These predictions are not trivially satisfied. Several could fail in ways that would require substantial revision of the framework. Prediction 4 in particular — if IB compression and statistical complexity growth traded off rather than complementing each other, the framework's central distinction between subtractive and generative processing would be undermined.
 
