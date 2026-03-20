@@ -18,7 +18,7 @@ The difficulty of closing this gap is itself a projection bottleneck problem. Th
 
 ## Consolidated predictions {#sec-consolidated-predictions}
 
-The framework generates eight specific predictions across its three parts. They are stated in full where they arise (@sec-predictions-ch2, @sec-predictions-ch3, @sec-predictions-ch4) and summarised here, grouped by testability.
+The framework generates eight specific predictions across its three sections. They are stated in full where they arise (@sec-predictions-ch2, @sec-predictions-ch3, @sec-predictions-ch4) and summarised here, grouped by testability.
 
 **Most directly testable** — these require probing existing models and could be tested with current methods:
 

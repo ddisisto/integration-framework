@@ -1,13 +1,13 @@
 # Cross-Reference Conventions
 
-Canonical IDs for use across all chapter files. Use `@sec-*` for sections,
+Canonical IDs for use across all section files. Use `@sec-*` for sections,
 `@pred-*` for predictions, `@fig-*` / `@tbl-*` / `@eq-*` as needed.
 
 ---
 
-## Chapter IDs
+## Section IDs
 
-| ID | Chapter | File |
+| ID | Section | File |
 |----|---------|------|
 | `sec-compression-hierarchy` | 1. The Compression Hierarchy | `01_compression_hierarchy.qmd` |
 | `sec-structure-across-depth` | 2. Structure Across Depth | `02_structure_across_depth.qmd` |
@@ -15,21 +15,14 @@ Canonical IDs for use across all chapter files. Use `@sec-*` for sections,
 | `sec-convergence` | 4. Convergence Across Substrates | `04_convergence_across_substrates.qmd` |
 | `sec-conclusion` | 5. Conclusion | `05_conclusion.qmd` |
 
-## Part IDs
-
-| ID | Part |
-|----|------|
-| `sec-part-compression` | Part I — Compression |
-| `sec-part-composition` | Part II — Composition |
-
 ## Key Subsection IDs
 
-### Chapter 1
+### Section 1
 - `sec-lossless-lossy` — The one sharp boundary; entry of relevance
 - `sec-compression-continuum` — Lossy compression as continuum (perceptual → structural → semantic)
 - `sec-what-transformers-do` — Bridging to deep learning; forward reference to Ch 2
 
-### Chapter 2
+### Section 2
 - `sec-architectural-mechanisms` — How transformers generate representational structure
 - `sec-dpi-resolution` — DPI and the reorganisation/creation distinction
 - `sec-statistical-complexity` — Statistical complexity as measure of growth
@@ -37,7 +30,7 @@ Canonical IDs for use across all chapter files. Use `@sec-*` for sections,
 - `sec-emergence-thresholds` — Emergent capabilities as threshold-crossing
 - `sec-predictions-ch2` — Predictions 1–5
 
-### Chapter 3
+### Section 3
 - `sec-two-compression-systems` — Fixed weight geometry + dynamic context
 - `sec-channel-capacity` — Channel capacity and the projection bottleneck
 - `sec-compositional-novelty` — Compositional novelty from fixed geometry
@@ -46,13 +39,13 @@ Canonical IDs for use across all chapter files. Use `@sec-*` for sections,
 - `sec-predictions-ch3` — Predictions 6–7
 - `sec-autoregressive-limitations` — Limitations of the autoregressive account
 
-### Chapter 4
+### Section 4
 - `sec-projection-bottleneck` — Channel capacity as substrate-independent constraint
 - `sec-convergence-limits` — What convergence explains and what it doesn't
 - `sec-grounding-rate-distortion` — Grounding as rate-distortion question (novel)
 - `sec-predictions-ch4` — Prediction 8
 
-### Chapter 5 (Conclusion)
+### Section 5 (Conclusion)
 - `sec-thematic-spine` — Integration vs mere accumulation
 - `sec-distortion-alignment` — Alignment as distortion measure mismatch (novel)
 - `sec-consolidated-predictions` — Summary of all 8 predictions with testability ranking
@@ -60,7 +53,7 @@ Canonical IDs for use across all chapter files. Use `@sec-*` for sections,
 
 ## Prediction IDs
 
-| ID | # | Prediction | Chapter |
+| ID | # | Prediction | Section |
 |----|---|-----------|---------|
 | `pred-complexity-depth` | 1 | Statistical complexity scales with depth (sublinear) | 2 |
 | `pred-capability-complexity` | 2 | Capability onset correlates with complexity thresholds | 2 |

@@ -1,6 +1,6 @@
 # Convergence Across Substrates {#sec-convergence}
 
-The compression hierarchy described in Parts I and II is a claim about transformers. But the problem transformers solve — projecting rich internal representation through a bandwidth-limited sequential channel — is not new. Biological cognition has faced it for as long as language has existed. This chapter argues that the convergence is expected rather than surprising, and uses the grounding problem to sharpen an open question the framework cannot yet answer.
+The compression hierarchy described in the preceding sections is a claim about transformers. But the problem transformers solve — projecting rich internal representation through a bandwidth-limited sequential channel — is not new. Biological cognition has faced it for as long as language has existed. This section argues that the convergence is expected rather than surprising, and uses the grounding problem to sharpen an open question the framework cannot yet answer.
 
 The claim is not that transformers and brains work the same way. They manifestly do not, at the level of mechanism. The claim is that both face a structurally identical information-theoretic constraint, and that this constraint narrows the space of viable solutions enough that convergence on the same *type* of architecture — hierarchical, multi-scale, with a serial projection bottleneck — is what the problem demands.
 

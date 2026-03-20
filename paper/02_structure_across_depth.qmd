@@ -1,6 +1,6 @@
 # Structure Across Depth {#sec-structure-across-depth}
 
-@sec-compression-hierarchy established what compression becomes when the distortion measure shifts from surface fidelity toward meaning: a continuum along which progressively more abstract structure is preserved. This chapter is about how transformers implement that continuum — how the forward pass generates progressively deeper compression across layers, what formal framework captures what is happening, and what specific predictions follow.
+@sec-compression-hierarchy established what compression becomes when the distortion measure shifts from surface fidelity toward meaning: a continuum along which progressively more abstract structure is preserved. This section is about how transformers implement that continuum — how the forward pass generates progressively deeper compression across layers, what formal framework captures what is happening, and what specific predictions follow.
 
 ## How transformers generate representational structure {#sec-architectural-mechanisms}
 
@@ -16,7 +16,7 @@ Within a transformer, each layer does not merely re-encode the input. It synthes
 
 There is an apparent tension in the claim that layers *generate* new representational structure. The data processing inequality (DPI) states that processing cannot increase mutual information about the source: if $X \to Y \to Z$ forms a Markov chain, then $I(X; Z) \leq I(X; Y)$ [@cover_thomas_2006]. Layers cannot create information about the input that was not already present.
 
-The resolution is the core formal move of this chapter. What layers generate is not new *information about the input* but new *organisation* of existing information. Making implicit structure explicit. Surfacing regularities that were present but computationally inaccessible.
+The resolution is the core formal move of this section. What layers generate is not new *information about the input* but new *organisation* of existing information. Making implicit structure explicit. Surfacing regularities that were present but computationally inaccessible.
 
 The DPI constrains total mutual information with the source. It says nothing about how that information is *arranged* in the representation. A layer that transforms a raw signal into a representation where previously latent structure is geometrically manifest — where distance in the representation space reflects meaningful similarity — has not violated the DPI. It has reorganised preserved information into a form that supports new kinds of inference.
 
@@ -54,7 +54,7 @@ The empirical scaling laws themselves [@kaplan_etal_2020] — smooth power-law r
 
 ## Predictions {#sec-predictions-ch2}
 
-The framework generates five specific predictions from Part I:
+The framework generates five specific predictions from the preceding sections:
 
 1. [**Statistical complexity scales with depth**]{#pred-complexity-depth}. Growth through the representational core (~80% of layers), with contraction in the final layers consistent with the projection bottleneck. Sublinear scaling as successive layers face diminishing marginal structural novelty in increasingly organised input. Measurable via proxy measures (intrinsic dimensionality, participation ratio) if not direct statistical complexity estimation.
 
