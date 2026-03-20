@@ -8,7 +8,7 @@ Ecological implications (feedback loops, silent flattening, carrier transition) 
 
 ## Status
 
-Paper 1 is tightened to Sections 1–4 + Conclusion. Appendix A written. Renders cleanly.
+Paper 1 is tightened to Sections 1–5 + Conclusion. Appendix A written. Tagged v0.2. Renders cleanly as HTML + PDF. Summary page and README in place. GitHub Pages and Zenodo pending setup.
 
 ```
 paper/
@@ -18,8 +18,10 @@ paper/
 ├── 01_compression_hierarchy.qmd       ← DONE (~1,040 words)
 ├── 02_structure_across_depth.qmd      ← DONE (~3,200 words)
 ├── 03_autoregressive_loop.qmd         ← DONE (~2,600 words)
-├── 04_convergence_across_substrates.qmd ← TIGHTENED (~1,200 words, was ~2,300)
-├── 05_conclusion.qmd                  ← NEW (~900 words) — predictions + future directions
+├── 04_convergence_across_substrates.qmd ← DONE (~1,200 words)
+├── 04b_training.qmd                   ← DONE (~500 words) — how training builds the hierarchy
+├── 05_conclusion.qmd                  ← DONE (~900 words) — predictions + future directions
+├── summary.qmd                        ← shareable summary page
 ├── references.bib                     ← ~76 entries
 ├── cross-references.md                ← canonical IDs
 ├── appendix_formal_foundations.qmd    ← DONE (four sections)
@@ -81,5 +83,7 @@ These have no clear precedent in the literature. Present as contributions, not e
 
 ## Next steps
 
-1. **Prediction table in §5.** Convert the consolidated predictions list into a table with a `Status` column (supported / partially supported / untested / in progress). Some predictions already have substantial empirical backing; making this visible strengthens the paper.
-2. **Training/dataset section.** The paper currently describes the compression hierarchy at inference time but says little about how training *builds* it. A new section (~1,000 words, likely between §4 and the conclusion) would address: training as iterative distortion-measure refinement, dataset composition as implicit distortion measure, and connections to scaling laws. Expected to generate 1–2 new predictions.
+1. ~~**Prediction table in §5.**~~ Done. Nine predictions with Status column.
+2. ~~**Training/dataset section.**~~ Done. §5 (04b_training.qmd), one new prediction (#9).
+3. **Zenodo integration.** Link repo to Zenodo for DOI minting on tagged releases. v0.2 is tagged and ready.
+4. **GitHub Pages.** Enable in repo settings: branch `main`, folder `/docs`.
