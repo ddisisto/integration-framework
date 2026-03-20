@@ -43,7 +43,7 @@ The distinction between these two modes is invisible in everything we normally u
 
 Here's the part that surprised me.
 
-The model's own surprisal — how unexpected each token is given the preceding context — tracks this distinction directly. When surprisal stays elevated, the model is generating tokens that aren't predictable from what came before. That's the enriching regime: each token carries genuine compressive novelty. When surprisal collapses toward zero, the model is producing tokens that are already implied by the context. That's the degrading regime.
+The model's own surprisal — how unexpected each token is given the preceding context — tracks this distinction directly. When surprisal collapses toward zero, the model is producing tokens that are already implied by the context. That's the degrading regime. When surprisal stays moderate, tokens carry genuine compressive novelty — that's enrichment. But surprisal can also be *too* high: when every token is less predictable than the distribution's own uncertainty, the result isn't insight — it's noise. Structured output lives in the middle, where most tokens maintain coherence while a minority introduce genuine novelty.
 
 Surprisal *is* compressive novelty, measured at the token level. It's not a proxy. It's the thing itself.
 
@@ -57,7 +57,7 @@ This framework explains something that's been bugging people about chain-of-thou
 
 CoT works. Making the model "show its reasoning" before giving a final answer substantially improves performance. The standard explanation is that it "gives the model more computation." True, but incomplete.
 
-Each intermediate reasoning token enriches the context for the next forward pass. CoT keeps the model in the enriching regime by forcing it to surface structure step by step rather than trying to compress everything through a single pass.
+Each intermediate reasoning token enriches the context for the next forward pass. CoT sustains enrichment within coherent generation by forcing the model to surface structure step by step rather than trying to compress everything through a single pass.
 
 The evidence: that prompt-duplication trick that gives a 76% improvement on standard tasks? It shows *minimal additional benefit* when chain-of-thought is already active. They're solving the same problem. CoT already provides the integrative passes that duplication would supply.
 

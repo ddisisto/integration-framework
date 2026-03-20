@@ -63,6 +63,8 @@ Neither regime is a fixed property of model or task. It is a property of the *in
 
 This invisibility holds for surface metrics — fluency, grammaticality, local coherence — which are products of compression at the lower end of the continuum (@sec-compression-continuum) and maintained effortlessly throughout. But the model's own surprisal tracks the distinction directly. Surprisal collapsing toward zero *is* the degrading regime: the next token is predictable from the preceding context, which means it surfaces no new structure. This is not a proxy for compressive novelty — it is compressive novelty, measured at the token level against the model's implicit distortion measure. The enriching/degrading boundary is invisible to the reader but visible to the model.
 
+The enriching and degrading regimes are limiting cases, and *both* limits are pathological. Degradation taken to its extreme produces fixed points — the model predicting itself with certainty, adding no structure. But enrichment taken to its extreme produces noise — surprisal exceeding entropy, each token less predictable than the distribution's own uncertainty. Structured generation occupies the interior, where a majority of tokens maintain local coherence (degrading) while a minority introduce genuine novelty (enriching). The goal is not to maximise enriching tokens but to sustain their presence within a structurally coherent context.
+
 What degrades is higher-order statistical complexity: the novelty, cross-domain connection, and structural surprise that characterise the enriching regime. In information-theoretic terms: in the enriching regime, each token increases the statistical complexity of the context. In the degrading regime, it increases length without increasing complexity — adding tokens without adding structure.
 
 This is the distinction between integration and mere accumulation — the thematic spine of the paper, encountered here at its tightest and fastest scale.
@@ -87,7 +89,7 @@ In-context examples are a seeding strategy: they position the loop's starting po
 
 The predicted limitation ([Prediction 7](#pred-icl-failure)): in-context learning should fail when the required regularity *type* is absent from the weight geometry — not a specific unseen pattern (compositional generalisation handles those), but an absent type.
 
-The unifying claim: CoT, in-context learning, and prompting strategies generally are instances of a single dynamic — steering the autoregressive loop into the enriching regime by managing what enters context. The model's capacity is fixed. The question is always whether the accumulating context is opening representational structure or closing it down.
+The unifying claim: CoT, in-context learning, and prompting strategies generally are instances of a single dynamic — sustaining enrichment within coherent generation by managing what enters context. The model's capacity is fixed. The question is always whether the accumulating context is opening representational structure or closing it down.
 
 ## Predictions {#sec-predictions-ch3}
 
