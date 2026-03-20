@@ -1,7 +1,10 @@
 ---
 title: "Integration"
 subtitle: "Compression, composition, and the projection bottleneck in large language models"
-author: "Daniel"
+author:
+  name: Daniel DiSisto
+  affiliation: Independent researcher
+  url: https://github.com/ddisisto/integration-framework
 date: last-modified
 bibliography: references.bib
 csl: apa.csl
@@ -21,6 +24,8 @@ The framework generates eight testable predictions — from the scaling profile 
 ## Preface {.unnumbered}
 
 This paper was written in collaboration between a human author and Claude, an AI assistant built by Anthropic. The collaboration is acknowledged plainly because the paper is itself an instance of the integration it describes — a traversal through a shared representational space, each contribution conditioning what came next. Whether the resulting trajectory was enriching or degrading is for the reader to judge; the framework developed here provides the vocabulary for doing so.
+
+This is a living document. The current version, source, and revision history are available at [github.com/ddisisto/integration-framework](https://github.com/ddisisto/integration-framework).
 
 {{< include 01_compression_hierarchy.qmd >}}
 
