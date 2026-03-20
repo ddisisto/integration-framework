@@ -94,7 +94,7 @@ ul.task-list li input[type="checkbox"] {
 <p>That’s a massive bandwidth mismatch. The model’s internal representation is vastly richer than what it can say in one token.</p>
 <p>Shannon characterised this exact problem in 1948: transmitting a high-entropy source through a bandwidth-limited channel. The solution is sequential coding — spread the message across multiple channel uses. Each token is a channel use. The sequence collectively encodes what no single token could carry.</p>
 <p>This isn’t a metaphor. It’s the literal structure of the problem.</p>
-<p>And here’s the evidence it’s real: researchers found that simply <em>duplicating</em> the input prompt — repeating the query verbatim so the model processes it twice — <a href="https://arxiv.org/abs/2502.03916">improves accuracy by up to 76%</a>. No fine-tuning, no clever engineering. Just giving the model a second pass through the same input. If the bottleneck weren’t a real, active constraint, this trivial intervention would do nothing.</p>
+<p>And here’s the evidence it’s real: researchers found that simply <em>duplicating</em> the input prompt — repeating the query verbatim so the model processes it twice — <a href="https://arxiv.org/abs/2512.14982">improves accuracy by up to 76%</a>. No fine-tuning, no clever engineering. Just giving the model a second pass through the same input. If the bottleneck weren’t a real, active constraint, this trivial intervention would do nothing.</p>
 </section>
 <section id="two-regimes-one-surface" class="level2">
 <h2 class="anchored" data-anchor-id="two-regimes-one-surface">Two regimes, one surface</h2>

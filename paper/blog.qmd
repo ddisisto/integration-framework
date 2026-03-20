@@ -27,7 +27,7 @@ Shannon characterised this exact problem in 1948: transmitting a high-entropy so
 
 This isn't a metaphor. It's the literal structure of the problem.
 
-And here's the evidence it's real: researchers found that simply *duplicating* the input prompt — repeating the query verbatim so the model processes it twice — [improves accuracy by up to 76%](https://arxiv.org/abs/2502.03916). No fine-tuning, no clever engineering. Just giving the model a second pass through the same input. If the bottleneck weren't a real, active constraint, this trivial intervention would do nothing.
+And here's the evidence it's real: researchers found that simply *duplicating* the input prompt — repeating the query verbatim so the model processes it twice — [improves accuracy by up to 76%](https://arxiv.org/abs/2512.14982). No fine-tuning, no clever engineering. Just giving the model a second pass through the same input. If the bottleneck weren't a real, active constraint, this trivial intervention would do nothing.
 
 ## Two regimes, one surface
 
