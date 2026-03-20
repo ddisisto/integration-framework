@@ -40,10 +40,10 @@ Requires: Python venv (`.venv/`), Quarto, TinyTeX. Setup for a fresh clone:
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-cd paper && quarto render       # outputs HTML + PDF to web/
+cd paper && quarto render       # outputs HTML + PDF to docs/
 ```
 
-Output goes to `web/` (HTML site + `Integration.pdf`). The `web/` directory is committed so that tagged versions always include a current render.
+Output goes to `docs/` (HTML site + `Integration.pdf`). The `docs/` directory is committed so that tagged versions always include a current render.
 
 **Always run `cd paper && quarto render` before tagging or when changes need review.**
 
