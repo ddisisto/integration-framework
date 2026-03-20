@@ -16,6 +16,8 @@ A further observation falls directly out of the vocabulary. The model's implicit
 
 The difficulty of closing this gap is itself a projection bottleneck problem. The receiver's distortion measure is rich, contextual, and not fully articulable. The feedback channels through which it is communicated to the model — preference rankings, reward signals, natural language correction — are narrow. The same bandwidth mismatch that governs the autoregressive loop governs the attempt to align the system that produces it. This is, as far as we can determine, a novel framing; it is offered as a contribution, not an established result.
 
+This creates a measurable asymmetry. The model's surprisal provides a direct, token-level signal for enrichment against its own distortion measure. No comparable signal exists on the receiver's side — the receiver's sense of whether they are being enriched is richer, slower, and communicated only through the narrow feedback channels already described. The alignment problem at the token level is the gap between these two signals: a model in the enriching regime by its own measure may be in the degrading regime by the receiver's.
+
 ## Consolidated predictions {#sec-consolidated-predictions}
 
 The framework generates eight specific predictions across its three sections. They are stated in full where they arise (@sec-predictions-ch2, @sec-predictions-ch3, @sec-predictions-ch4) and summarised here.
