@@ -20,7 +20,7 @@ This creates a measurable asymmetry. The model's surprisal provides a direct, to
 
 ## Consolidated predictions {#sec-consolidated-predictions}
 
-The framework generates eight specific predictions across its three sections. They are stated in full where they arise (@sec-predictions-ch2, @sec-predictions-ch3, @sec-predictions-ch4) and summarised here.
+The framework generates nine specific predictions across its four sections. They are stated in full where they arise (@sec-predictions-ch2, @sec-predictions-ch3, @sec-predictions-ch4, @sec-predictions-training) and summarised here.
 
 | # | Prediction | Section | Testability | Status |
 |---|-----------|---------|-------------|--------|
@@ -32,6 +32,7 @@ The framework generates eight specific predictions across its three sections. Th
 | [6](#pred-cot-quality) | CoT effectiveness correlates with compressive novelty per step, not chain length | §3 | Probing existing models | Partially supported |
 | [7](#pred-icl-failure) | In-context learning fails when the required regularity type is absent from the weight geometry | §3 | Controlled comparisons across models | Untested |
 | [8](#pred-rsa-convergence) | Transformer representational geometry converges with biological neural geometry as models scale | §4 | Cross-model comparison with neural data | Partially supported |
+| [9](#pred-dataset-distortion) | Dataset composition shapes internal representational structure, not just performance | §5 | Controlled comparisons across data mixtures | Partially supported |
 
 : Consolidated predictions with current empirical status. {#tbl-predictions}
 

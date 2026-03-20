@@ -19,7 +19,7 @@ The autoregressive loop solves a problem Shannon characterised in 1948: transmit
 
 This paper develops the consequences of taking this bottleneck seriously. The forward pass builds the representations that must pass through it: each layer solves a rate-distortion problem under a progressively more abstract distortion measure, generating representational structure whose statistical complexity grows even as mutual information with the input is bounded by the data processing inequality. The autoregressive loop then composes these compressions sequentially — and this composition is fundamentally ambivalent. When each token surfaces structure unavailable from the preceding context, the loop is in the enriching regime; when tokens reinforce existing trajectories, the loop degrades, producing fluent output without increasing the complexity of what has been said. The distinction is invisible in surface metrics.
 
-The framework generates eight testable predictions — from the scaling profile of statistical complexity across layers, to the claim that chain-of-thought effectiveness tracks compressive novelty per step rather than chain length. It reframes the grounding problem as a rate-distortion question with measurable parameters and characterises alignment as a projection bottleneck between the receiver's distortion measure and the narrow feedback channels available to communicate it.
+The framework generates nine testable predictions — from the scaling profile of statistical complexity across layers, to the claim that chain-of-thought effectiveness tracks compressive novelty per step rather than chain length. It reframes the grounding problem as a rate-distortion question with measurable parameters and characterises alignment as a projection bottleneck between the receiver's distortion measure and the narrow feedback channels available to communicate it.
 
 ## Preface {.unnumbered}
 
@@ -34,6 +34,8 @@ This is a living document. The current version, source, and revision history are
 {{< include 03_autoregressive_loop.qmd >}}
 
 {{< include 04_convergence_across_substrates.qmd >}}
+
+{{< include 04b_training.qmd >}}
 
 {{< include 05_conclusion.qmd >}}
 

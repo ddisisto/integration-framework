@@ -1,0 +1,33 @@
+# How Training Builds the Hierarchy {#sec-training}
+
+The preceding sections describe the compression hierarchy as it operates at inference: layers solving rate-distortion problems at progressively more abstract levels, the autoregressive loop composing their output through a bandwidth-limited channel. This section addresses the question those sections leave open: how does training build this hierarchy in the first place?
+
+The answer is shorter than the question might suggest, because the framework already contains most of the pieces.
+
+## Compression is forced
+
+A large language model has fewer parameters than its training data has bits. It cannot memorise; it must compress. This is not a design choice but an arithmetic fact. The model must find regularities in the training distribution and encode them in a form that generalises — because there is literally not enough room to do anything else.
+
+The training objective — next-token prediction — determines the *form* of the compression: preserve whatever helps predict what comes next, discard what does not. This is a distortion measure, in the rate-distortion sense introduced in @sec-compression-continuum. The model is solving for the best compression of the training distribution under the constraint that prediction error is minimised.
+
+## The dataset completes the distortion measure
+
+But the training objective alone does not determine what the model learns to preserve. Next-token prediction on a corpus of legal filings rewards preserving different structure than next-token prediction on a corpus of poetry. The objective sets the form; the dataset sets the content. Together they fully specify the distortion measure — what counts as acceptable loss during compression.
+
+This means dataset composition is not merely a question of coverage (what the model has seen) but of values (what the model has learned to treat as worth preserving). A dataset heavy on formal reasoning teaches the model that logical structure is high-value — worth allocating parameters to compress well. A dataset heavy on conversational text teaches it that pragmatic coherence matters more than formal precision. The resulting distortion measures are different, and the compression hierarchies they produce are different, even under the same objective and architecture.
+
+This is the training-time analogue of the distortion measure mismatch discussed in @sec-distortion-alignment. The alignment problem begins not at deployment but at dataset curation: the choice of training distribution is the first and most consequential choice about what the model will treat as signal versus noise.
+
+## The hierarchy emerges cheap-to-expensive
+
+The scaling laws [@kaplan_etal_2020] describe the rate at which compressive structure is acquired: smooth power-law reduction in loss with increasing compute, data, and parameters. The framework interprets this as progressive capture of regularities ordered by compressive cost.
+
+Surface-level regularities — frequent token co-occurrences, common syntactic frames — are high-redundancy and cheap to encode. They are captured first, and they dominate early training. Higher-order regularities — semantic compositionality, cross-domain analogies, inferential structure — are lower-redundancy and more expensive: they require more parameters to represent and more data to identify. They are captured later.
+
+This ordering is not imposed by curriculum. It falls out of the optimisation: gradient descent captures the regularities that most reduce loss per unit of parameter budget, which are the most redundant — the most compressible — first. The characteristic learning order documented empirically (surface features, then syntax, then semantics; [Prediction 5](#pred-training-shift)) is what the framework predicts: the compression hierarchy is built from the bottom up because the bottom is cheapest.
+
+## Prediction {#sec-predictions-training}
+
+The framework generates one additional prediction from this account:
+
+9. [**Dataset composition shapes the distortion measure, not just coverage**]{#pred-dataset-distortion}. Models trained on differently composed datasets (same total tokens, different domain proportions) should develop measurably different compression hierarchies — different statistical complexity profiles across layers — even when evaluated on the same held-out distribution. The prediction is not merely that performance differs (which is known) but that the *internal representational structure* differs in ways that track the training distribution's implicit priorities. This is testable via representational similarity analysis across models trained on controlled data mixtures.

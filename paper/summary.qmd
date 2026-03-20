@@ -32,7 +32,7 @@ Duplicating a prompt verbatim — just repeating the query so the model processe
 
 The model's implicit distortion measure — what it treats as acceptable loss — is set by training. The user's distortion measure is set by their needs. The gap between these is the alignment problem, restated as a projection bottleneck. The difficulty isn't capability. It's that the feedback channels available to close the gap are narrow.
 
-## Eight testable predictions
+## Nine testable predictions
 
 The framework generates specific, falsifiable claims — from the scaling profile of statistical complexity across layers, to the prediction that chain-of-thought effectiveness tracks compressive novelty per step rather than chain length. Several already have empirical support; others are untested.
 
