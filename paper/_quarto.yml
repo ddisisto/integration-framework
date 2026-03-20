@@ -4,6 +4,7 @@ project:
   render:
     - integration.qmd
     - summary.qmd
+    - blog.qmd
 
 format:
   html:
