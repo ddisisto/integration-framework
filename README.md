@@ -7,9 +7,9 @@ compression, and that the autoregressive loop is fundamentally ambivalent —
 enriching when each token surfaces structure unavailable from context,
 degrading when tokens reinforce existing trajectories.
 
-**[Read the paper →](https://ddisisto.github.io/integration-framework/integration.html)**
+**[Summary →](https://ddisisto.github.io/integration-framework/summary.html)** · **[Full paper →](https://ddisisto.github.io/integration-framework/integration.html)**
 
-The HTML version includes a PDF download link.
+The full paper includes a PDF download link.
 
 ## Building locally
 
