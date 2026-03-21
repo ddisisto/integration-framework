@@ -10,7 +10,7 @@ What changes is where on the map the model is reading.
 
 Each generated token shifts the input to the next forward pass. The weight geometry is fixed, but the region being activated — the path through representational space — is constructed dynamically, step by step. Generation is not sampling from a single distribution. It is sequential traversal, where each step determines the starting point for the next.
 
-The natural description is that each token *reshapes* the space. The intuition is productive but technically wrong in a way that matters. The weights are fixed during inference. The geometry does not change. What changes is the trajectory through it — but through a space so high-dimensional and combinatorially structured that the distinction nearly collapses in practice. A chess board and its rules are fixed; the space of possible games is so vast that each move creates a local horizon that feels like a new landscape.
+The natural description is that each token *reshapes* the space. The intuition is productive but technically wrong in a way that matters. The weights are fixed during inference. The geometry does not change. What changes is the trajectory through it. The distinction is real and load-bearing — it is why two compression systems, not one, must be understood — even though the combinatorial richness of the space makes it experientially invisible. A chess board and its rules are fixed; the space of possible games is so vast that each move creates a local horizon that feels like a new landscape. The landscape is not new. But it might as well be.
 
 Two compression systems are thus operating simultaneously:
 
