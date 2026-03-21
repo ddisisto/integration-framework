@@ -1,8 +1,6 @@
 # How Training Builds the Hierarchy {#sec-training}
 
-The preceding sections describe the compression hierarchy as it operates at inference: layers solving rate-distortion problems at progressively more abstract levels, the autoregressive loop composing their output through a bandwidth-limited channel. This section addresses the question those sections leave open: how does training build this hierarchy in the first place?
-
-The answer is shorter than the question might suggest, because the framework already contains most of the pieces.
+The preceding sections describe the compression hierarchy at inference. Training is where it comes from. The connection is direct: the training loss and the model's surprisal at inference are the same function, evaluated on different data. What training does is fix the distortion measure that the rest of the paper has been describing.
 
 ## Compression is forced
 
@@ -14,7 +12,9 @@ The training objective — next-token prediction — determines the *form* of th
 
 But the training objective alone does not determine what the model learns to preserve. Next-token prediction on a corpus of legal filings rewards preserving different structure than next-token prediction on a corpus of poetry. The objective sets the form; the dataset sets the content. Together they fully specify the distortion measure — what counts as acceptable loss during compression.
 
-This means dataset composition is not merely a question of coverage (what the model has seen) but of values (what the model has learned to treat as worth preserving). A dataset heavy on formal reasoning teaches the model that logical structure is high-value — worth allocating parameters to compress well. A dataset heavy on conversational text teaches it that pragmatic coherence matters more than formal precision. The resulting distortion measures are different, and the compression hierarchies they produce are different, even under the same objective and architecture. This is also what determines what counts as enriching: a token is enriching relative to the model's distortion measure, and the training data is what shaped that measure.
+This means dataset composition is not merely a question of coverage (what the model has seen) but of values (what the model has learned to treat as worth preserving). A dataset heavy on formal reasoning teaches the model that logical structure is high-value — worth allocating parameters to compress well. A dataset heavy on conversational text teaches it that pragmatic coherence matters more than formal precision. The resulting distortion measures are different, and the compression hierarchies they produce are different, even under the same objective and architecture.
+
+This is also what determines what counts as enriching. The enrichment fraction introduced in @sec-enriching-degrading is defined relative to the model's distortion measure — and the training data is what shaped that measure. A token that surfaces novel structure by one model's lights may be routine by another's, if their training distributions prioritised different regularities.
 
 This is the training-time analogue of the distortion measure mismatch discussed in @sec-distortion-alignment. The alignment problem begins not at deployment but at dataset curation: the choice of training distribution is the first and most consequential choice about what the model will treat as signal versus noise.
 
