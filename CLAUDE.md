@@ -19,8 +19,8 @@ paper/
 ├── 01_compression_hierarchy.qmd       ← DONE (~1,040 words)
 ├── 02_structure_across_depth.qmd      ← DONE (~3,200 words)
 ├── 03_autoregressive_loop.qmd         ← DONE (~2,600 words)
-├── 04_convergence_across_substrates.qmd ← DONE (~1,200 words)
-├── 05_training.qmd                    ← DONE (~500 words) — how training builds the hierarchy
+├── 04_training.qmd                    ← DONE (~500 words) — how training builds the hierarchy
+├── 05_convergence_across_substrates.qmd ← DONE (~1,200 words)
 ├── 06_conclusion.qmd                  ← DONE (~900 words) — predictions + future directions
 ├── references.bib                     ← ~76 entries
 ├── cross-references.md                ← canonical IDs

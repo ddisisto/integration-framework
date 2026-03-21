@@ -33,9 +33,9 @@ This is a living document. The current version, source, and revision history are
 
 {{< include 03_autoregressive_loop.qmd >}}
 
-{{< include 04_convergence_across_substrates.qmd >}}
+{{< include 04_training.qmd >}}
 
-{{< include 05_training.qmd >}}
+{{< include 05_convergence_across_substrates.qmd >}}
 
 {{< include 06_conclusion.qmd >}}
 
