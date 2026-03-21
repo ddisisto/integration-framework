@@ -20,8 +20,8 @@ paper/
 ├── 02_structure_across_depth.qmd      ← DONE (~3,200 words)
 ├── 03_autoregressive_loop.qmd         ← DONE (~2,600 words)
 ├── 04_convergence_across_substrates.qmd ← DONE (~1,200 words)
-├── 04b_training.qmd                   ← DONE (~500 words) — how training builds the hierarchy
-├── 05_conclusion.qmd                  ← DONE (~900 words) — predictions + future directions
+├── 05_training.qmd                    ← DONE (~500 words) — how training builds the hierarchy
+├── 06_conclusion.qmd                  ← DONE (~900 words) — predictions + future directions
 ├── references.bib                     ← ~76 entries
 ├── cross-references.md                ← canonical IDs
 ├── appendix_formal_foundations.qmd    ← DONE (four sections)
@@ -32,8 +32,6 @@ paper2/                                ← staging for companion piece
 ├── 05_recursive_loop.qmd             ← original §5 (ecology)
 └── 06_of_meaning.qmd                 ← original §6 (meaning)
 ```
-
-Other files: `v1_draft.md` (source material), `v2_outline.md` (superseded), `integration_framework.md` (working outline), `feedback-v0.1.md` (external reviewer feedback).
 
 ## Rendering
 
@@ -83,9 +81,9 @@ These have no clear precedent in the literature. Present as contributions, not e
 
 ## Next steps
 
-1. ~~**Prediction table in §5.**~~ Done. Nine predictions with Status column.
-2. ~~**Training/dataset section.**~~ Done. §5 (04b_training.qmd), one new prediction (#9).
+1. ~~**Prediction table in §5.**~~ Done. Seven predictions with Status column.
+2. ~~**Training/dataset section.**~~ Done. §5 (05_training.qmd).
 3. ~~**Figures in §3.**~~ Done. Three figures from autoloop data (collapse, coherent prose, noise). Surprisal-colored tokens, PNG output.
-4. **v0.3: Enrichment fraction reframe.** Major revision of §3.4 — replace binary enriching/degrading regime framing with continuous enrichment fraction variable. "Stabilising" replaces "degrading" for healthy low-surprisal tokens; "degenerate" for the pathological extreme. Substrate-independent measure. See `v0.3-plan.md` for full scope.
+4. ~~**v0.3: Enrichment fraction reframe.**~~ Done. Continuous enrichment fraction variable, stabilising/degenerate vocabulary, upper-bound framing.
 5. **Zenodo integration.** Link repo to Zenodo for DOI minting on tagged releases. v0.2 is tagged and ready.
 6. **GitHub Pages.** Live, deploying from `publish` branch, folder `/docs`.
