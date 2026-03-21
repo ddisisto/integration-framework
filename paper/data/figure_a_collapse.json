@@ -1,0 +1,3144 @@
+{
+  "metadata": {
+    "model": "SmolLM-135M",
+    "L": 128,
+    "T": 0.6,
+    "seed": 42,
+    "step_range": [
+      67200,
+      67712
+    ],
+    "description": "Collapse from coherent prose into 5-token attractor basin",
+    "gap_definition": "entropy + log_prob (= entropy - surprisal). Positive = degrading, negative = enriching."
+  },
+  "windows": [
+    {
+      "window_id": 1,
+      "step_range": [
+        67200,
+        67328
+      ],
+      "stats": {
+        "mean_entropy": 1.7429,
+        "mean_surprisal": 0.7835,
+        "pct_enriching": 12.5
+      },
+      "tokens": [
+        {
+          "token": " than",
+          "surprisal": 1.27145,
+          "entropy": 1.55694,
+          "gap": 0.28549
+        },
+        {
+          "token": " it",
+          "surprisal": 3.69059,
+          "entropy": 2.69043,
+          "gap": -1.00016
+        },
+        {
+          "token": " was",
+          "surprisal": 0.06002,
+          "entropy": 1.10594,
+          "gap": 1.04593
+        },
+        {
+          "token": " in",
+          "surprisal": 1.67742,
+          "entropy": 1.56625,
+          "gap": -0.11118
+        },
+        {
+          "token": " the",
+          "surprisal": 0.02165,
+          "entropy": 0.92917,
+          "gap": 0.90752
+        },
+        {
+          "token": " southern",
+          "surprisal": 0.61593,
+          "entropy": 2.28638,
+          "gap": 1.67045
+        },
+        {
+          "token": " hemisphere",
+          "surprisal": 0.00267,
+          "entropy": 0.56486,
+          "gap": 0.56219
+        },
+        {
+          "token": ".",
+          "surprisal": 0.06826,
+          "entropy": 0.62331,
+          "gap": 0.55505
+        },
+        {
+          "token": "\n",
+          "surprisal": 0.00207,
+          "entropy": 0.15368,
+          "gap": 0.15161
+        },
+        {
+          "token": "\"",
+          "surprisal": 0.21194,
+          "entropy": 1.83118,
+          "gap": 1.61924
+        },
+        {
+          "token": "That",
+          "surprisal": 3.24919,
+          "entropy": 2.72999,
+          "gap": -0.5192
+        },
+        {
+          "token": "'s",
+          "surprisal": 0.14034,
+          "entropy": 2.12073,
+          "gap": 1.98039
+        },
+        {
+          "token": " because",
+          "surprisal": 1.51947,
+          "entropy": 2.95885,
+          "gap": 1.43938
+        },
+        {
+          "token": " the",
+          "surprisal": 0.08537,
+          "entropy": 1.74208,
+          "gap": 1.65671
+        },
+        {
+          "token": " ocean",
+          "surprisal": 6.25151,
+          "entropy": 4.53615,
+          "gap": -1.71536
+        },
+        {
+          "token": " is",
+          "surprisal": 0.15872,
+          "entropy": 2.57206,
+          "gap": 2.41334
+        },
+        {
+          "token": " more",
+          "surprisal": 1.01345,
+          "entropy": 3.86848,
+          "gap": 2.85503
+        },
+        {
+          "token": " active",
+          "surprisal": 3.98661,
+          "entropy": 4.63057,
+          "gap": 0.64396
+        },
+        {
+          "token": " in",
+          "surprisal": 0.05654,
+          "entropy": 1.57739,
+          "gap": 1.52084
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0091,
+          "entropy": 0.68015,
+          "gap": 0.67104
+        },
+        {
+          "token": " tropics",
+          "surprisal": 2.04773,
+          "entropy": 2.51783,
+          "gap": 0.4701
+        },
+        {
+          "token": ",",
+          "surprisal": 1.19915,
+          "entropy": 1.47648,
+          "gap": 0.27733
+        },
+        {
+          "token": " so",
+          "surprisal": 1.6808,
+          "entropy": 1.28242,
+          "gap": -0.39839
+        },
+        {
+          "token": " it",
+          "surprisal": 0.55203,
+          "entropy": 2.07397,
+          "gap": 1.52194
+        },
+        {
+          "token": "'s",
+          "surprisal": 0.03325,
+          "entropy": 1.60791,
+          "gap": 1.57467
+        },
+        {
+          "token": " more",
+          "surprisal": 0.09028,
+          "entropy": 2.1142,
+          "gap": 2.02392
+        },
+        {
+          "token": " likely",
+          "surprisal": 0.0107,
+          "entropy": 1.17429,
+          "gap": 1.16359
+        },
+        {
+          "token": " to",
+          "surprisal": 0.02817,
+          "entropy": 0.50119,
+          "gap": 0.47302
+        },
+        {
+          "token": " be",
+          "surprisal": 1.04713,
+          "entropy": 3.18343,
+          "gap": 2.1363
+        },
+        {
+          "token": " affected",
+          "surprisal": 0.9104,
+          "entropy": 4.0769,
+          "gap": 3.1665
+        },
+        {
+          "token": " by",
+          "surprisal": 0.0446,
+          "entropy": 0.81053,
+          "gap": 0.76593
+        },
+        {
+          "token": " tropical",
+          "surprisal": 2.80212,
+          "entropy": 2.51445,
+          "gap": -0.28767
+        },
+        {
+          "token": " cyclones",
+          "surprisal": 0.68997,
+          "entropy": 1.35978,
+          "gap": 0.66981
+        },
+        {
+          "token": ",\"",
+          "surprisal": 0.03203,
+          "entropy": 1.12312,
+          "gap": 1.09109
+        },
+        {
+          "token": " Mc",
+          "surprisal": 0.40049,
+          "entropy": 1.38632,
+          "gap": 0.98583
+        },
+        {
+          "token": "H",
+          "surprisal": 0.00177,
+          "entropy": 0.70863,
+          "gap": 0.70686
+        },
+        {
+          "token": "ugh",
+          "surprisal": 0.00057,
+          "entropy": 0.50768,
+          "gap": 0.50711
+        },
+        {
+          "token": " said",
+          "surprisal": 0.05646,
+          "entropy": 0.94115,
+          "gap": 0.88469
+        },
+        {
+          "token": ".",
+          "surprisal": 0.00397,
+          "entropy": 0.35678,
+          "gap": 0.35282
+        },
+        {
+          "token": "\n",
+          "surprisal": 0.00068,
+          "entropy": 0.09071,
+          "gap": 0.09003
+        },
+        {
+          "token": "\"",
+          "surprisal": 0.23341,
+          "entropy": 1.98849,
+          "gap": 1.75508
+        },
+        {
+          "token": "This",
+          "surprisal": 3.66685,
+          "entropy": 2.97934,
+          "gap": -0.6875
+        },
+        {
+          "token": " is",
+          "surprisal": 0.10001,
+          "entropy": 2.29378,
+          "gap": 2.19377
+        },
+        {
+          "token": " a",
+          "surprisal": 0.82445,
+          "entropy": 3.02592,
+          "gap": 2.20147
+        },
+        {
+          "token": " very",
+          "surprisal": 0.07032,
+          "entropy": 3.15112,
+          "gap": 3.08079
+        },
+        {
+          "token": " strong",
+          "surprisal": 1.23744,
+          "entropy": 3.46157,
+          "gap": 2.22413
+        },
+        {
+          "token": " storm",
+          "surprisal": 0.01205,
+          "entropy": 1.15054,
+          "gap": 1.1385
+        },
+        {
+          "token": ",",
+          "surprisal": 0.27525,
+          "entropy": 1.94244,
+          "gap": 1.66719
+        },
+        {
+          "token": " and",
+          "surprisal": 0.19104,
+          "entropy": 1.42483,
+          "gap": 1.23379
+        },
+        {
+          "token": " it",
+          "surprisal": 0.07432,
+          "entropy": 1.46071,
+          "gap": 1.38638
+        },
+        {
+          "token": "'s",
+          "surprisal": 0.03744,
+          "entropy": 1.63392,
+          "gap": 1.59648
+        },
+        {
+          "token": " a",
+          "surprisal": 3.04063,
+          "entropy": 3.32515,
+          "gap": 0.28453
+        },
+        {
+          "token": " very",
+          "surprisal": 0.05999,
+          "entropy": 1.7361,
+          "gap": 1.67611
+        },
+        {
+          "token": " strong",
+          "surprisal": 0.09207,
+          "entropy": 2.49127,
+          "gap": 2.3992
+        },
+        {
+          "token": " storm",
+          "surprisal": 0.00141,
+          "entropy": 0.51762,
+          "gap": 0.51622
+        },
+        {
+          "token": ".\"",
+          "surprisal": 0.86521,
+          "entropy": 1.9556,
+          "gap": 1.09039
+        },
+        {
+          "token": "\n",
+          "surprisal": 0.00558,
+          "entropy": 0.25853,
+          "gap": 0.25295
+        },
+        {
+          "token": "\"",
+          "surprisal": 0.71493,
+          "entropy": 2.59626,
+          "gap": 1.88133
+        },
+        {
+          "token": "It",
+          "surprisal": 1.36557,
+          "entropy": 2.84949,
+          "gap": 1.48392
+        },
+        {
+          "token": "'s",
+          "surprisal": 0.01596,
+          "entropy": 1.26295,
+          "gap": 1.24699
+        },
+        {
+          "token": " a",
+          "surprisal": 0.58308,
+          "entropy": 3.08509,
+          "gap": 2.50201
+        },
+        {
+          "token": " very",
+          "surprisal": 0.09137,
+          "entropy": 1.96439,
+          "gap": 1.87302
+        },
+        {
+          "token": " strong",
+          "surprisal": 0.01824,
+          "entropy": 1.1466,
+          "gap": 1.12836
+        },
+        {
+          "token": " storm",
+          "surprisal": 0.00061,
+          "entropy": 0.30885,
+          "gap": 0.30825
+        },
+        {
+          "token": ",",
+          "surprisal": 0.17904,
+          "entropy": 1.61862,
+          "gap": 1.43958
+        },
+        {
+          "token": " and",
+          "surprisal": 0.02506,
+          "entropy": 0.90778,
+          "gap": 0.88273
+        },
+        {
+          "token": " it",
+          "surprisal": 0.00365,
+          "entropy": 0.49587,
+          "gap": 0.49223
+        },
+        {
+          "token": "'s",
+          "surprisal": 0.0075,
+          "entropy": 0.87751,
+          "gap": 0.87001
+        },
+        {
+          "token": " a",
+          "surprisal": 0.04267,
+          "entropy": 1.63822,
+          "gap": 1.59555
+        },
+        {
+          "token": " very",
+          "surprisal": 0.01019,
+          "entropy": 0.66374,
+          "gap": 0.65355
+        },
+        {
+          "token": " strong",
+          "surprisal": 0.00339,
+          "entropy": 0.51875,
+          "gap": 0.51535
+        },
+        {
+          "token": " storm",
+          "surprisal": 0.00039,
+          "entropy": 0.33272,
+          "gap": 0.33232
+        },
+        {
+          "token": ",\"",
+          "surprisal": 2.74553,
+          "entropy": 1.40953,
+          "gap": -1.33599
+        },
+        {
+          "token": " Mc",
+          "surprisal": 1.31333,
+          "entropy": 2.0103,
+          "gap": 0.69697
+        },
+        {
+          "token": "H",
+          "surprisal": 0.00236,
+          "entropy": 1.27349,
+          "gap": 1.27112
+        },
+        {
+          "token": "ugh",
+          "surprisal": 0.00208,
+          "entropy": 0.83085,
+          "gap": 0.82877
+        },
+        {
+          "token": " said",
+          "surprisal": 0.34245,
+          "entropy": 1.56123,
+          "gap": 1.21879
+        },
+        {
+          "token": ".",
+          "surprisal": 0.01491,
+          "entropy": 0.63153,
+          "gap": 0.61663
+        },
+        {
+          "token": "\n",
+          "surprisal": 0.0033,
+          "entropy": 0.22187,
+          "gap": 0.21858
+        },
+        {
+          "token": "\"",
+          "surprisal": 0.04543,
+          "entropy": 1.3641,
+          "gap": 1.31867
+        },
+        {
+          "token": "The",
+          "surprisal": 2.76196,
+          "entropy": 2.61802,
+          "gap": -0.14394
+        },
+        {
+          "token": " storm",
+          "surprisal": 0.19721,
+          "entropy": 4.25731,
+          "gap": 4.06009
+        },
+        {
+          "token": "'s",
+          "surprisal": 3.01759,
+          "entropy": 2.45851,
+          "gap": -0.55908
+        },
+        {
+          "token": " going",
+          "surprisal": 0.79674,
+          "entropy": 4.4744,
+          "gap": 3.67766
+        },
+        {
+          "token": " to",
+          "surprisal": 0.00062,
+          "entropy": 0.34122,
+          "gap": 0.34059
+        },
+        {
+          "token": " be",
+          "surprisal": 0.60401,
+          "entropy": 2.98643,
+          "gap": 2.38243
+        },
+        {
+          "token": " very",
+          "surprisal": 0.74186,
+          "entropy": 3.37951,
+          "gap": 2.63765
+        },
+        {
+          "token": " strong",
+          "surprisal": 0.16579,
+          "entropy": 2.26535,
+          "gap": 2.09955
+        },
+        {
+          "token": ".\"",
+          "surprisal": 0.96108,
+          "entropy": 2.10447,
+          "gap": 1.14339
+        },
+        {
+          "token": "\n",
+          "surprisal": 0.00586,
+          "entropy": 0.25015,
+          "gap": 0.24429
+        },
+        {
+          "token": "\"",
+          "surprisal": 0.33125,
+          "entropy": 2.44992,
+          "gap": 2.11868
+        },
+        {
+          "token": "It",
+          "surprisal": 0.61213,
+          "entropy": 2.74627,
+          "gap": 2.13414
+        },
+        {
+          "token": "'s",
+          "surprisal": 0.00987,
+          "entropy": 0.92599,
+          "gap": 0.91611
+        },
+        {
+          "token": " going",
+          "surprisal": 0.1207,
+          "entropy": 1.73655,
+          "gap": 1.61585
+        },
+        {
+          "token": " to",
+          "surprisal": 0.00064,
+          "entropy": 0.46491,
+          "gap": 0.46427
+        },
+        {
+          "token": " be",
+          "surprisal": 0.00599,
+          "entropy": 0.89514,
+          "gap": 0.88915
+        },
+        {
+          "token": " very",
+          "surprisal": 0.05605,
+          "entropy": 1.53237,
+          "gap": 1.47632
+        },
+        {
+          "token": " strong",
+          "surprisal": 0.00804,
+          "entropy": 1.02075,
+          "gap": 1.0127
+        },
+        {
+          "token": ",\"",
+          "surprisal": 0.88077,
+          "entropy": 1.76718,
+          "gap": 0.8864
+        },
+        {
+          "token": " she",
+          "surprisal": 2.84383,
+          "entropy": 2.36959,
+          "gap": -0.47424
+        },
+        {
+          "token": " said",
+          "surprisal": 0.57437,
+          "entropy": 0.92765,
+          "gap": 0.35328
+        },
+        {
+          "token": ".",
+          "surprisal": 0.0221,
+          "entropy": 0.52769,
+          "gap": 0.50559
+        },
+        {
+          "token": "\n",
+          "surprisal": 0.00363,
+          "entropy": 0.21881,
+          "gap": 0.21518
+        },
+        {
+          "token": "\"",
+          "surprisal": 0.03534,
+          "entropy": 1.33906,
+          "gap": 1.30371
+        },
+        {
+          "token": "But",
+          "surprisal": 4.21364,
+          "entropy": 2.50856,
+          "gap": -1.70508
+        },
+        {
+          "token": " we",
+          "surprisal": 3.6763,
+          "entropy": 2.19211,
+          "gap": -1.48419
+        },
+        {
+          "token": " don",
+          "surprisal": 0.87343,
+          "entropy": 2.61073,
+          "gap": 1.7373
+        },
+        {
+          "token": "'t",
+          "surprisal": 0.00038,
+          "entropy": 0.08194,
+          "gap": 0.08156
+        },
+        {
+          "token": " know",
+          "surprisal": 0.10492,
+          "entropy": 1.42235,
+          "gap": 1.31743
+        },
+        {
+          "token": " if",
+          "surprisal": 1.56434,
+          "entropy": 2.31358,
+          "gap": 0.74924
+        },
+        {
+          "token": " it",
+          "surprisal": 0.26537,
+          "entropy": 1.44129,
+          "gap": 1.17591
+        },
+        {
+          "token": "'s",
+          "surprisal": 0.11158,
+          "entropy": 1.10103,
+          "gap": 0.98945
+        },
+        {
+          "token": " going",
+          "surprisal": 0.00801,
+          "entropy": 0.87568,
+          "gap": 0.86767
+        },
+        {
+          "token": " to",
+          "surprisal": 0.00049,
+          "entropy": 0.37947,
+          "gap": 0.37898
+        },
+        {
+          "token": " be",
+          "surprisal": 0.05074,
+          "entropy": 1.89923,
+          "gap": 1.84849
+        },
+        {
+          "token": " more",
+          "surprisal": 2.30304,
+          "entropy": 3.2268,
+          "gap": 0.92375
+        },
+        {
+          "token": " strong",
+          "surprisal": 4.74422,
+          "entropy": 2.9892,
+          "gap": -1.75502
+        },
+        {
+          "token": " in",
+          "surprisal": 3.31821,
+          "entropy": 2.02274,
+          "gap": -1.29547
+        },
+        {
+          "token": " the",
+          "surprisal": 0.00673,
+          "entropy": 0.94625,
+          "gap": 0.93952
+        },
+        {
+          "token": " tropics",
+          "surprisal": 0.09558,
+          "entropy": 2.45738,
+          "gap": 2.3618
+        },
+        {
+          "token": ".\"",
+          "surprisal": 0.87263,
+          "entropy": 1.79899,
+          "gap": 0.92636
+        },
+        {
+          "token": "\n",
+          "surprisal": 0.00225,
+          "entropy": 0.15803,
+          "gap": 0.15578
+        },
+        {
+          "token": "\"",
+          "surprisal": 0.04068,
+          "entropy": 1.7574,
+          "gap": 1.71671
+        },
+        {
+          "token": "The",
+          "surprisal": 2.80194,
+          "entropy": 2.6717,
+          "gap": -0.13024
+        },
+        {
+          "token": " only",
+          "surprisal": 4.81641,
+          "entropy": 4.98032,
+          "gap": 0.16391
+        },
+        {
+          "token": " way",
+          "surprisal": 0.94013,
+          "entropy": 1.61861,
+          "gap": 0.67848
+        },
+        {
+          "token": " we",
+          "surprisal": 0.44272,
+          "entropy": 1.53614,
+          "gap": 1.09342
+        },
+        {
+          "token": " can",
+          "surprisal": 0.23681,
+          "entropy": 1.14677,
+          "gap": 0.90996
+        }
+      ]
+    },
+    {
+      "window_id": 2,
+      "step_range": [
+        67328,
+        67456
+      ],
+      "stats": {
+        "mean_entropy": 1.6154,
+        "mean_surprisal": 0.6428,
+        "pct_enriching": 7.8
+      },
+      "tokens": [
+        {
+          "token": " tell",
+          "surprisal": 1.28635,
+          "entropy": 2.91336,
+          "gap": 1.62701
+        },
+        {
+          "token": " that",
+          "surprisal": 4.27072,
+          "entropy": 1.27348,
+          "gap": -2.99724
+        },
+        {
+          "token": " is",
+          "surprisal": 0.12563,
+          "entropy": 1.42282,
+          "gap": 1.29719
+        },
+        {
+          "token": " by",
+          "surprisal": 0.9681,
+          "entropy": 1.66159,
+          "gap": 0.69349
+        },
+        {
+          "token": " looking",
+          "surprisal": 0.17713,
+          "entropy": 2.26897,
+          "gap": 2.09185
+        },
+        {
+          "token": " at",
+          "surprisal": 0.00042,
+          "entropy": 0.15357,
+          "gap": 0.15315
+        },
+        {
+          "token": " the",
+          "surprisal": 0.02745,
+          "entropy": 1.50959,
+          "gap": 1.48213
+        },
+        {
+          "token": " weather",
+          "surprisal": 3.35021,
+          "entropy": 4.83461,
+          "gap": 1.4844
+        },
+        {
+          "token": " patterns",
+          "surprisal": 1.33925,
+          "entropy": 3.36207,
+          "gap": 2.02283
+        },
+        {
+          "token": ",\"",
+          "surprisal": 1.05721,
+          "entropy": 2.4049,
+          "gap": 1.34768
+        },
+        {
+          "token": " Mc",
+          "surprisal": 0.27586,
+          "entropy": 1.61658,
+          "gap": 1.34072
+        },
+        {
+          "token": "H",
+          "surprisal": 0.00115,
+          "entropy": 0.59548,
+          "gap": 0.59433
+        },
+        {
+          "token": "ugh",
+          "surprisal": 0.00048,
+          "entropy": 0.39725,
+          "gap": 0.39677
+        },
+        {
+          "token": " said",
+          "surprisal": 0.05557,
+          "entropy": 0.77085,
+          "gap": 0.71528
+        },
+        {
+          "token": ".",
+          "surprisal": 0.00322,
+          "entropy": 0.26121,
+          "gap": 0.25799
+        },
+        {
+          "token": "\n",
+          "surprisal": 0.00058,
+          "entropy": 0.08096,
+          "gap": 0.08039
+        },
+        {
+          "token": "\"",
+          "surprisal": 0.00578,
+          "entropy": 0.77502,
+          "gap": 0.76923
+        },
+        {
+          "token": "We",
+          "surprisal": 0.83014,
+          "entropy": 2.77116,
+          "gap": 1.94103
+        },
+        {
+          "token": "'re",
+          "surprisal": 3.2444,
+          "entropy": 2.16791,
+          "gap": -1.07648
+        },
+        {
+          "token": " going",
+          "surprisal": 1.75533,
+          "entropy": 2.44915,
+          "gap": 0.69382
+        },
+        {
+          "token": " to",
+          "surprisal": 0.00193,
+          "entropy": 0.63854,
+          "gap": 0.6366
+        },
+        {
+          "token": " have",
+          "surprisal": 0.16844,
+          "entropy": 1.72257,
+          "gap": 1.55413
+        },
+        {
+          "token": " to",
+          "surprisal": 0.24962,
+          "entropy": 1.86542,
+          "gap": 1.6158
+        },
+        {
+          "token": " look",
+          "surprisal": 1.06847,
+          "entropy": 3.08034,
+          "gap": 2.01187
+        },
+        {
+          "token": " at",
+          "surprisal": 0.01306,
+          "entropy": 0.71194,
+          "gap": 0.69889
+        },
+        {
+          "token": " the",
+          "surprisal": 0.07997,
+          "entropy": 2.04438,
+          "gap": 1.96441
+        },
+        {
+          "token": " weather",
+          "surprisal": 0.4179,
+          "entropy": 4.51177,
+          "gap": 4.09387
+        },
+        {
+          "token": " patterns",
+          "surprisal": 0.01329,
+          "entropy": 1.39088,
+          "gap": 1.37759
+        },
+        {
+          "token": " and",
+          "surprisal": 1.93529,
+          "entropy": 2.99149,
+          "gap": 1.0562
+        },
+        {
+          "token": " look",
+          "surprisal": 3.38743,
+          "entropy": 3.22957,
+          "gap": -0.15786
+        },
+        {
+          "token": " at",
+          "surprisal": 0.01559,
+          "entropy": 0.53837,
+          "gap": 0.52278
+        },
+        {
+          "token": " the",
+          "surprisal": 0.04515,
+          "entropy": 1.49946,
+          "gap": 1.4543
+        },
+        {
+          "token": " climate",
+          "surprisal": 1.87473,
+          "entropy": 5.11621,
+          "gap": 3.24148
+        },
+        {
+          "token": ".\"",
+          "surprisal": 0.71271,
+          "entropy": 2.72954,
+          "gap": 2.01683
+        },
+        {
+          "token": "\n",
+          "surprisal": 0.00076,
+          "entropy": 0.14006,
+          "gap": 0.1393
+        },
+        {
+          "token": "\"",
+          "surprisal": 0.05023,
+          "entropy": 1.86444,
+          "gap": 1.81421
+        },
+        {
+          "token": "We",
+          "surprisal": 0.6292,
+          "entropy": 2.78934,
+          "gap": 2.16014
+        },
+        {
+          "token": "'re",
+          "surprisal": 0.38562,
+          "entropy": 2.29354,
+          "gap": 1.90792
+        },
+        {
+          "token": " going",
+          "surprisal": 0.02518,
+          "entropy": 0.82716,
+          "gap": 0.80197
+        },
+        {
+          "token": " to",
+          "surprisal": 0.00154,
+          "entropy": 0.7128,
+          "gap": 0.71126
+        },
+        {
+          "token": " have",
+          "surprisal": 0.05314,
+          "entropy": 1.18942,
+          "gap": 1.13627
+        },
+        {
+          "token": " to",
+          "surprisal": 0.00314,
+          "entropy": 0.36883,
+          "gap": 0.3657
+        },
+        {
+          "token": " look",
+          "surprisal": 0.00453,
+          "entropy": 0.88482,
+          "gap": 0.88029
+        },
+        {
+          "token": " at",
+          "surprisal": 0.00208,
+          "entropy": 0.50859,
+          "gap": 0.50652
+        },
+        {
+          "token": " the",
+          "surprisal": 0.00935,
+          "entropy": 0.99436,
+          "gap": 0.98501
+        },
+        {
+          "token": " climate",
+          "surprisal": 0.77222,
+          "entropy": 2.58205,
+          "gap": 1.80984
+        },
+        {
+          "token": ",\"",
+          "surprisal": 1.03529,
+          "entropy": 2.02357,
+          "gap": 0.98829
+        },
+        {
+          "token": " Mc",
+          "surprisal": 1.03015,
+          "entropy": 2.33048,
+          "gap": 1.30033
+        },
+        {
+          "token": "H",
+          "surprisal": 0.00159,
+          "entropy": 0.90214,
+          "gap": 0.90055
+        },
+        {
+          "token": "ugh",
+          "surprisal": 0.00102,
+          "entropy": 0.73192,
+          "gap": 0.7309
+        },
+        {
+          "token": " said",
+          "surprisal": 0.07541,
+          "entropy": 0.8346,
+          "gap": 0.7592
+        },
+        {
+          "token": ".",
+          "surprisal": 0.01064,
+          "entropy": 0.48758,
+          "gap": 0.47694
+        },
+        {
+          "token": "\n",
+          "surprisal": 0.00124,
+          "entropy": 0.11645,
+          "gap": 0.1152
+        },
+        {
+          "token": "\"",
+          "surprisal": 0.0109,
+          "entropy": 1.01674,
+          "gap": 1.00584
+        },
+        {
+          "token": "And",
+          "surprisal": 3.5513,
+          "entropy": 2.65675,
+          "gap": -0.89454
+        },
+        {
+          "token": " in",
+          "surprisal": 6.99741,
+          "entropy": 2.50483,
+          "gap": -4.49258
+        },
+        {
+          "token": " the",
+          "surprisal": 0.08588,
+          "entropy": 2.07369,
+          "gap": 1.98781
+        },
+        {
+          "token": " tropics",
+          "surprisal": 0.10589,
+          "entropy": 2.68037,
+          "gap": 2.57448
+        },
+        {
+          "token": ",",
+          "surprisal": 0.03492,
+          "entropy": 1.03967,
+          "gap": 1.00475
+        },
+        {
+          "token": " we",
+          "surprisal": 0.49781,
+          "entropy": 2.18551,
+          "gap": 1.68771
+        },
+        {
+          "token": " have",
+          "surprisal": 2.60944,
+          "entropy": 2.23303,
+          "gap": -0.3764
+        },
+        {
+          "token": " to",
+          "surprisal": 0.54753,
+          "entropy": 2.15409,
+          "gap": 1.60655
+        },
+        {
+          "token": " look",
+          "surprisal": 0.00873,
+          "entropy": 0.94975,
+          "gap": 0.94102
+        },
+        {
+          "token": " at",
+          "surprisal": 0.00801,
+          "entropy": 0.64372,
+          "gap": 0.63571
+        },
+        {
+          "token": " the",
+          "surprisal": 0.04222,
+          "entropy": 1.61622,
+          "gap": 1.574
+        },
+        {
+          "token": " climate",
+          "surprisal": 0.34092,
+          "entropy": 3.65584,
+          "gap": 3.31492
+        },
+        {
+          "token": " and",
+          "surprisal": 1.24015,
+          "entropy": 2.49921,
+          "gap": 1.25906
+        },
+        {
+          "token": " look",
+          "surprisal": 0.95338,
+          "entropy": 2.79565,
+          "gap": 1.84227
+        },
+        {
+          "token": " at",
+          "surprisal": 0.01096,
+          "entropy": 0.64004,
+          "gap": 0.62908
+        },
+        {
+          "token": " the",
+          "surprisal": 0.02008,
+          "entropy": 1.08537,
+          "gap": 1.06529
+        },
+        {
+          "token": " weather",
+          "surprisal": 0.6179,
+          "entropy": 3.73747,
+          "gap": 3.11957
+        },
+        {
+          "token": " patterns",
+          "surprisal": 0.29954,
+          "entropy": 1.65464,
+          "gap": 1.3551
+        },
+        {
+          "token": ".\"",
+          "surprisal": 0.16863,
+          "entropy": 1.73841,
+          "gap": 1.56978
+        },
+        {
+          "token": "\n",
+          "surprisal": 0.00338,
+          "entropy": 0.23551,
+          "gap": 0.23213
+        },
+        {
+          "token": "\"",
+          "surprisal": 0.0413,
+          "entropy": 1.8455,
+          "gap": 1.8042
+        },
+        {
+          "token": "We",
+          "surprisal": 0.80497,
+          "entropy": 2.85528,
+          "gap": 2.05031
+        },
+        {
+          "token": "'re",
+          "surprisal": 0.57041,
+          "entropy": 2.35498,
+          "gap": 1.78457
+        },
+        {
+          "token": " going",
+          "surprisal": 0.01355,
+          "entropy": 0.72321,
+          "gap": 0.70966
+        },
+        {
+          "token": " to",
+          "surprisal": 0.00171,
+          "entropy": 0.6963,
+          "gap": 0.69459
+        },
+        {
+          "token": " have",
+          "surprisal": 0.03051,
+          "entropy": 0.99884,
+          "gap": 0.96833
+        },
+        {
+          "token": " to",
+          "surprisal": 0.00141,
+          "entropy": 0.24927,
+          "gap": 0.24786
+        },
+        {
+          "token": " look",
+          "surprisal": 0.00461,
+          "entropy": 0.89325,
+          "gap": 0.88864
+        },
+        {
+          "token": " at",
+          "surprisal": 0.00182,
+          "entropy": 0.48947,
+          "gap": 0.48764
+        },
+        {
+          "token": " the",
+          "surprisal": 0.01689,
+          "entropy": 1.20446,
+          "gap": 1.18757
+        },
+        {
+          "token": " weather",
+          "surprisal": 1.20433,
+          "entropy": 2.04944,
+          "gap": 0.84512
+        },
+        {
+          "token": " patterns",
+          "surprisal": 0.05011,
+          "entropy": 1.22491,
+          "gap": 1.1748
+        },
+        {
+          "token": " and",
+          "surprisal": 0.04639,
+          "entropy": 1.16616,
+          "gap": 1.11977
+        },
+        {
+          "token": " look",
+          "surprisal": 0.00121,
+          "entropy": 0.35714,
+          "gap": 0.35593
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0025,
+          "entropy": 0.5861,
+          "gap": 0.5836
+        },
+        {
+          "token": " the",
+          "surprisal": 0.01002,
+          "entropy": 0.87405,
+          "gap": 0.86402
+        },
+        {
+          "token": " climate",
+          "surprisal": 0.02361,
+          "entropy": 1.28448,
+          "gap": 1.26087
+        },
+        {
+          "token": " and",
+          "surprisal": 2.84663,
+          "entropy": 1.6205,
+          "gap": -1.22612
+        },
+        {
+          "token": " look",
+          "surprisal": 0.00222,
+          "entropy": 0.57666,
+          "gap": 0.57445
+        },
+        {
+          "token": " at",
+          "surprisal": 0.00446,
+          "entropy": 0.64003,
+          "gap": 0.63557
+        },
+        {
+          "token": " the",
+          "surprisal": 0.00453,
+          "entropy": 0.82828,
+          "gap": 0.82376
+        },
+        {
+          "token": " weather",
+          "surprisal": 0.01724,
+          "entropy": 1.8618,
+          "gap": 1.84455
+        },
+        {
+          "token": " patterns",
+          "surprisal": 0.03951,
+          "entropy": 1.31228,
+          "gap": 1.27277
+        },
+        {
+          "token": " and",
+          "surprisal": 0.68163,
+          "entropy": 1.7841,
+          "gap": 1.10248
+        },
+        {
+          "token": " look",
+          "surprisal": 0.00042,
+          "entropy": 0.30327,
+          "gap": 0.30285
+        },
+        {
+          "token": " at",
+          "surprisal": 0.00359,
+          "entropy": 0.65677,
+          "gap": 0.65318
+        },
+        {
+          "token": " the",
+          "surprisal": 0.00484,
+          "entropy": 0.69839,
+          "gap": 0.69356
+        },
+        {
+          "token": " weather",
+          "surprisal": 0.25797,
+          "entropy": 1.84283,
+          "gap": 1.58486
+        },
+        {
+          "token": " patterns",
+          "surprisal": 0.0402,
+          "entropy": 1.33206,
+          "gap": 1.29186
+        },
+        {
+          "token": " and",
+          "surprisal": 1.05731,
+          "entropy": 1.77942,
+          "gap": 0.72212
+        },
+        {
+          "token": " look",
+          "surprisal": 0.00042,
+          "entropy": 0.30845,
+          "gap": 0.30804
+        },
+        {
+          "token": " at",
+          "surprisal": 0.00239,
+          "entropy": 0.50543,
+          "gap": 0.50304
+        },
+        {
+          "token": " the",
+          "surprisal": 0.00843,
+          "entropy": 0.76612,
+          "gap": 0.7577
+        },
+        {
+          "token": " temperature",
+          "surprisal": 7.00369,
+          "entropy": 1.46438,
+          "gap": -5.53931
+        },
+        {
+          "token": " and",
+          "surprisal": 1.03668,
+          "entropy": 2.59163,
+          "gap": 1.55495
+        },
+        {
+          "token": " the",
+          "surprisal": 0.39793,
+          "entropy": 3.29074,
+          "gap": 2.89281
+        },
+        {
+          "token": " air",
+          "surprisal": 4.92718,
+          "entropy": 3.61339,
+          "gap": -1.31378
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.54018,
+          "entropy": 2.31031,
+          "gap": 1.77014
+        },
+        {
+          "token": " and",
+          "surprisal": 0.59613,
+          "entropy": 2.10709,
+          "gap": 1.51095
+        },
+        {
+          "token": " the",
+          "surprisal": 0.03741,
+          "entropy": 1.80188,
+          "gap": 1.76447
+        },
+        {
+          "token": " temperature",
+          "surprisal": 2.556,
+          "entropy": 3.66151,
+          "gap": 1.10551
+        },
+        {
+          "token": " and",
+          "surprisal": 0.10971,
+          "entropy": 1.71524,
+          "gap": 1.60553
+        },
+        {
+          "token": " the",
+          "surprisal": 0.02692,
+          "entropy": 1.52173,
+          "gap": 1.49481
+        },
+        {
+          "token": " air",
+          "surprisal": 0.15794,
+          "entropy": 2.70965,
+          "gap": 2.55171
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.00177,
+          "entropy": 0.2863,
+          "gap": 0.28453
+        },
+        {
+          "token": " and",
+          "surprisal": 0.27982,
+          "entropy": 1.60631,
+          "gap": 1.3265
+        },
+        {
+          "token": " the",
+          "surprisal": 1.31121,
+          "entropy": 1.65691,
+          "gap": 0.3457
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.54913,
+          "entropy": 2.88257,
+          "gap": 2.33344
+        },
+        {
+          "token": " and",
+          "surprisal": 0.12942,
+          "entropy": 1.55056,
+          "gap": 1.42113
+        },
+        {
+          "token": " look",
+          "surprisal": 2.80906,
+          "entropy": 1.50121,
+          "gap": -1.30785
+        },
+        {
+          "token": " at",
+          "surprisal": 0.00272,
+          "entropy": 0.56727,
+          "gap": 0.56455
+        },
+        {
+          "token": " the",
+          "surprisal": 0.01258,
+          "entropy": 1.0319,
+          "gap": 1.01932
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.93354,
+          "entropy": 2.7968,
+          "gap": 1.86326
+        },
+        {
+          "token": " and",
+          "surprisal": 0.05757,
+          "entropy": 1.30094,
+          "gap": 1.24337
+        }
+      ]
+    },
+    {
+      "window_id": 3,
+      "step_range": [
+        67456,
+        67584
+      ],
+      "stats": {
+        "mean_entropy": 0.1959,
+        "mean_surprisal": 0.0043,
+        "pct_enriching": 0.0
+      },
+      "tokens": [
+        {
+          "token": " look",
+          "surprisal": 0.07987,
+          "entropy": 1.09995,
+          "gap": 1.02009
+        },
+        {
+          "token": " at",
+          "surprisal": 0.00215,
+          "entropy": 0.62866,
+          "gap": 0.6265
+        },
+        {
+          "token": " the",
+          "surprisal": 0.00296,
+          "entropy": 0.81886,
+          "gap": 0.8159
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.11076,
+          "entropy": 2.01137,
+          "gap": 1.90061
+        },
+        {
+          "token": " and",
+          "surprisal": 0.06804,
+          "entropy": 1.31045,
+          "gap": 1.24241
+        },
+        {
+          "token": " look",
+          "surprisal": 0.00605,
+          "entropy": 0.67604,
+          "gap": 0.66999
+        },
+        {
+          "token": " at",
+          "surprisal": 0.00189,
+          "entropy": 0.59126,
+          "gap": 0.58938
+        },
+        {
+          "token": " the",
+          "surprisal": 0.00158,
+          "entropy": 0.58533,
+          "gap": 0.58375
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.03104,
+          "entropy": 1.40033,
+          "gap": 1.36929
+        },
+        {
+          "token": " and",
+          "surprisal": 0.05393,
+          "entropy": 1.1683,
+          "gap": 1.11438
+        },
+        {
+          "token": " look",
+          "surprisal": 0.00164,
+          "entropy": 0.44871,
+          "gap": 0.44707
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0002,
+          "entropy": 0.18975,
+          "gap": 0.18955
+        },
+        {
+          "token": " the",
+          "surprisal": 0.00057,
+          "entropy": 0.33614,
+          "gap": 0.33558
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.01228,
+          "entropy": 0.92424,
+          "gap": 0.91196
+        },
+        {
+          "token": " and",
+          "surprisal": 0.04775,
+          "entropy": 1.25049,
+          "gap": 1.20273
+        },
+        {
+          "token": " look",
+          "surprisal": 0.00021,
+          "entropy": 0.16216,
+          "gap": 0.16195
+        },
+        {
+          "token": " at",
+          "surprisal": 2e-05,
+          "entropy": 0.048,
+          "gap": 0.04798
+        },
+        {
+          "token": " the",
+          "surprisal": 0.00016,
+          "entropy": 0.19083,
+          "gap": 0.19066
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.00484,
+          "entropy": 0.61293,
+          "gap": 0.60809
+        },
+        {
+          "token": " and",
+          "surprisal": 0.03055,
+          "entropy": 0.98859,
+          "gap": 0.95804
+        },
+        {
+          "token": " look",
+          "surprisal": 8e-05,
+          "entropy": 0.1116,
+          "gap": 0.11152
+        },
+        {
+          "token": " at",
+          "surprisal": 2e-05,
+          "entropy": 0.0556,
+          "gap": 0.05558
+        },
+        {
+          "token": " the",
+          "surprisal": 0.00016,
+          "entropy": 0.18103,
+          "gap": 0.18087
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.00311,
+          "entropy": 0.49953,
+          "gap": 0.49642
+        },
+        {
+          "token": " and",
+          "surprisal": 0.02106,
+          "entropy": 0.8373,
+          "gap": 0.81623
+        },
+        {
+          "token": " look",
+          "surprisal": 5e-05,
+          "entropy": 0.09226,
+          "gap": 0.09221
+        },
+        {
+          "token": " at",
+          "surprisal": 1e-05,
+          "entropy": 0.03834,
+          "gap": 0.03833
+        },
+        {
+          "token": " the",
+          "surprisal": 0.00012,
+          "entropy": 0.16175,
+          "gap": 0.16164
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.00171,
+          "entropy": 0.42355,
+          "gap": 0.42184
+        },
+        {
+          "token": " and",
+          "surprisal": 0.01693,
+          "entropy": 0.71388,
+          "gap": 0.69695
+        },
+        {
+          "token": " look",
+          "surprisal": 2e-05,
+          "entropy": 0.05811,
+          "gap": 0.05809
+        },
+        {
+          "token": " at",
+          "surprisal": 1e-05,
+          "entropy": 0.02509,
+          "gap": 0.02508
+        },
+        {
+          "token": " the",
+          "surprisal": 6e-05,
+          "entropy": 0.10961,
+          "gap": 0.10955
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.00063,
+          "entropy": 0.2823,
+          "gap": 0.28167
+        },
+        {
+          "token": " and",
+          "surprisal": 0.00977,
+          "entropy": 0.5681,
+          "gap": 0.55833
+        },
+        {
+          "token": " look",
+          "surprisal": 2e-05,
+          "entropy": 0.06419,
+          "gap": 0.06416
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.01906,
+          "gap": 0.01906
+        },
+        {
+          "token": " the",
+          "surprisal": 5e-05,
+          "entropy": 0.08692,
+          "gap": 0.08687
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.0004,
+          "entropy": 0.21213,
+          "gap": 0.21173
+        },
+        {
+          "token": " and",
+          "surprisal": 0.00856,
+          "entropy": 0.54656,
+          "gap": 0.538
+        },
+        {
+          "token": " look",
+          "surprisal": 1e-05,
+          "entropy": 0.04703,
+          "gap": 0.04702
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.01777,
+          "gap": 0.01777
+        },
+        {
+          "token": " the",
+          "surprisal": 4e-05,
+          "entropy": 0.07406,
+          "gap": 0.07402
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.00019,
+          "entropy": 0.16279,
+          "gap": 0.1626
+        },
+        {
+          "token": " and",
+          "surprisal": 0.00744,
+          "entropy": 0.50767,
+          "gap": 0.50023
+        },
+        {
+          "token": " look",
+          "surprisal": 1e-05,
+          "entropy": 0.03984,
+          "gap": 0.03983
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.01529,
+          "gap": 0.01529
+        },
+        {
+          "token": " the",
+          "surprisal": 3e-05,
+          "entropy": 0.06269,
+          "gap": 0.06266
+        },
+        {
+          "token": " temperature",
+          "surprisal": 9e-05,
+          "entropy": 0.1141,
+          "gap": 0.11401
+        },
+        {
+          "token": " and",
+          "surprisal": 0.00601,
+          "entropy": 0.47085,
+          "gap": 0.46484
+        },
+        {
+          "token": " look",
+          "surprisal": 1e-05,
+          "entropy": 0.03627,
+          "gap": 0.03626
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.01132,
+          "gap": 0.01132
+        },
+        {
+          "token": " the",
+          "surprisal": 1e-05,
+          "entropy": 0.04403,
+          "gap": 0.04402
+        },
+        {
+          "token": " temperature",
+          "surprisal": 5e-05,
+          "entropy": 0.08013,
+          "gap": 0.08009
+        },
+        {
+          "token": " and",
+          "surprisal": 0.00442,
+          "entropy": 0.43635,
+          "gap": 0.43193
+        },
+        {
+          "token": " look",
+          "surprisal": 1e-05,
+          "entropy": 0.03555,
+          "gap": 0.03554
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00949,
+          "gap": 0.00949
+        },
+        {
+          "token": " the",
+          "surprisal": 1e-05,
+          "entropy": 0.03743,
+          "gap": 0.03742
+        },
+        {
+          "token": " temperature",
+          "surprisal": 4e-05,
+          "entropy": 0.06669,
+          "gap": 0.06665
+        },
+        {
+          "token": " and",
+          "surprisal": 0.0028,
+          "entropy": 0.35432,
+          "gap": 0.35152
+        },
+        {
+          "token": " look",
+          "surprisal": 1e-05,
+          "entropy": 0.02882,
+          "gap": 0.02881
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00932,
+          "gap": 0.00932
+        },
+        {
+          "token": " the",
+          "surprisal": 1e-05,
+          "entropy": 0.03256,
+          "gap": 0.03256
+        },
+        {
+          "token": " temperature",
+          "surprisal": 3e-05,
+          "entropy": 0.05481,
+          "gap": 0.05479
+        },
+        {
+          "token": " and",
+          "surprisal": 0.00287,
+          "entropy": 0.36013,
+          "gap": 0.35726
+        },
+        {
+          "token": " look",
+          "surprisal": 1e-05,
+          "entropy": 0.02845,
+          "gap": 0.02844
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00917,
+          "gap": 0.00916
+        },
+        {
+          "token": " the",
+          "surprisal": 1e-05,
+          "entropy": 0.02575,
+          "gap": 0.02575
+        },
+        {
+          "token": " temperature",
+          "surprisal": 1e-05,
+          "entropy": 0.03856,
+          "gap": 0.03855
+        },
+        {
+          "token": " and",
+          "surprisal": 0.00247,
+          "entropy": 0.3075,
+          "gap": 0.30502
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01895,
+          "gap": 0.01894
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00614,
+          "gap": 0.00614
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.01811,
+          "gap": 0.01811
+        },
+        {
+          "token": " temperature",
+          "surprisal": 1e-05,
+          "entropy": 0.02623,
+          "gap": 0.02622
+        },
+        {
+          "token": " and",
+          "surprisal": 6e-05,
+          "entropy": 0.10445,
+          "gap": 0.10439
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.02167,
+          "gap": 0.02167
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00612,
+          "gap": 0.00612
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.01627,
+          "gap": 0.01627
+        },
+        {
+          "token": " temperature",
+          "surprisal": 1e-05,
+          "entropy": 0.02447,
+          "gap": 0.02446
+        },
+        {
+          "token": " and",
+          "surprisal": 3e-05,
+          "entropy": 0.06985,
+          "gap": 0.06982
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01436,
+          "gap": 0.01436
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00588,
+          "gap": 0.00588
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.01039,
+          "gap": 0.01039
+        },
+        {
+          "token": " temperature",
+          "surprisal": 1e-05,
+          "entropy": 0.02343,
+          "gap": 0.02343
+        },
+        {
+          "token": " and",
+          "surprisal": 3e-05,
+          "entropy": 0.06392,
+          "gap": 0.06389
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01379,
+          "gap": 0.01379
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00525,
+          "gap": 0.00525
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.00846,
+          "gap": 0.00846
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.0,
+          "entropy": 0.01396,
+          "gap": 0.01396
+        },
+        {
+          "token": " and",
+          "surprisal": 3e-05,
+          "entropy": 0.0675,
+          "gap": 0.06747
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01151,
+          "gap": 0.01151
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00457,
+          "gap": 0.00457
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.00638,
+          "gap": 0.00638
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.0,
+          "entropy": 0.00837,
+          "gap": 0.00836
+        },
+        {
+          "token": " and",
+          "surprisal": 2e-05,
+          "entropy": 0.04868,
+          "gap": 0.04867
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01011,
+          "gap": 0.01011
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.004,
+          "gap": 0.004
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.00534,
+          "gap": 0.00534
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.0,
+          "entropy": 0.00713,
+          "gap": 0.00713
+        },
+        {
+          "token": " and",
+          "surprisal": 1e-05,
+          "entropy": 0.04319,
+          "gap": 0.04318
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01022,
+          "gap": 0.01022
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00253,
+          "gap": 0.00253
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.00377,
+          "gap": 0.00377
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.0,
+          "entropy": 0.0057,
+          "gap": 0.0057
+        },
+        {
+          "token": " and",
+          "surprisal": 1e-05,
+          "entropy": 0.03009,
+          "gap": 0.03008
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01656,
+          "gap": 0.01655
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00449,
+          "gap": 0.00449
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.00409,
+          "gap": 0.00409
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.0,
+          "entropy": 0.00915,
+          "gap": 0.00915
+        },
+        {
+          "token": " and",
+          "surprisal": 1e-05,
+          "entropy": 0.03719,
+          "gap": 0.03718
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01831,
+          "gap": 0.0183
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00331,
+          "gap": 0.00331
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.00363,
+          "gap": 0.00363
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.0,
+          "entropy": 0.00704,
+          "gap": 0.00704
+        },
+        {
+          "token": " and",
+          "surprisal": 1e-05,
+          "entropy": 0.04225,
+          "gap": 0.04224
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01361,
+          "gap": 0.01361
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.0028,
+          "gap": 0.0028
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.00335,
+          "gap": 0.00335
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.0,
+          "entropy": 0.00549,
+          "gap": 0.00549
+        },
+        {
+          "token": " and",
+          "surprisal": 1e-05,
+          "entropy": 0.04083,
+          "gap": 0.04081
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01216,
+          "gap": 0.01216
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00268,
+          "gap": 0.00268
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.00353,
+          "gap": 0.00353
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.0,
+          "entropy": 0.00556,
+          "gap": 0.00556
+        },
+        {
+          "token": " and",
+          "surprisal": 1e-05,
+          "entropy": 0.03335,
+          "gap": 0.03334
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01216,
+          "gap": 0.01216
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00268,
+          "gap": 0.00268
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.00353,
+          "gap": 0.00353
+        }
+      ]
+    },
+    {
+      "window_id": 4,
+      "step_range": [
+        67584,
+        67712
+      ],
+      "stats": {
+        "mean_entropy": 0.0116,
+        "mean_surprisal": 0.0,
+        "pct_enriching": 0.0
+      },
+      "tokens": [
+        {
+          "token": " temperature",
+          "surprisal": 0.0,
+          "entropy": 0.00556,
+          "gap": 0.00556
+        },
+        {
+          "token": " and",
+          "surprisal": 1e-05,
+          "entropy": 0.03335,
+          "gap": 0.03334
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01216,
+          "gap": 0.01216
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00268,
+          "gap": 0.00268
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.00353,
+          "gap": 0.00353
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.0,
+          "entropy": 0.00556,
+          "gap": 0.00556
+        },
+        {
+          "token": " and",
+          "surprisal": 1e-05,
+          "entropy": 0.03335,
+          "gap": 0.03334
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01216,
+          "gap": 0.01216
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00268,
+          "gap": 0.00268
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.00353,
+          "gap": 0.00353
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.0,
+          "entropy": 0.00556,
+          "gap": 0.00556
+        },
+        {
+          "token": " and",
+          "surprisal": 1e-05,
+          "entropy": 0.03335,
+          "gap": 0.03334
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01216,
+          "gap": 0.01216
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00268,
+          "gap": 0.00268
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.00353,
+          "gap": 0.00353
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.0,
+          "entropy": 0.00556,
+          "gap": 0.00556
+        },
+        {
+          "token": " and",
+          "surprisal": 1e-05,
+          "entropy": 0.03335,
+          "gap": 0.03334
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01216,
+          "gap": 0.01216
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00268,
+          "gap": 0.00268
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.00353,
+          "gap": 0.00353
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.0,
+          "entropy": 0.00556,
+          "gap": 0.00556
+        },
+        {
+          "token": " and",
+          "surprisal": 1e-05,
+          "entropy": 0.03335,
+          "gap": 0.03334
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01216,
+          "gap": 0.01216
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00268,
+          "gap": 0.00268
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.00353,
+          "gap": 0.00353
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.0,
+          "entropy": 0.00556,
+          "gap": 0.00556
+        },
+        {
+          "token": " and",
+          "surprisal": 1e-05,
+          "entropy": 0.03335,
+          "gap": 0.03334
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01216,
+          "gap": 0.01216
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00268,
+          "gap": 0.00268
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.00353,
+          "gap": 0.00353
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.0,
+          "entropy": 0.00556,
+          "gap": 0.00556
+        },
+        {
+          "token": " and",
+          "surprisal": 1e-05,
+          "entropy": 0.03335,
+          "gap": 0.03334
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01216,
+          "gap": 0.01216
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00268,
+          "gap": 0.00268
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.00353,
+          "gap": 0.00353
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.0,
+          "entropy": 0.00556,
+          "gap": 0.00556
+        },
+        {
+          "token": " and",
+          "surprisal": 1e-05,
+          "entropy": 0.03335,
+          "gap": 0.03334
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01216,
+          "gap": 0.01216
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00268,
+          "gap": 0.00268
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.00353,
+          "gap": 0.00353
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.0,
+          "entropy": 0.00556,
+          "gap": 0.00556
+        },
+        {
+          "token": " and",
+          "surprisal": 1e-05,
+          "entropy": 0.03335,
+          "gap": 0.03334
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01216,
+          "gap": 0.01216
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00268,
+          "gap": 0.00268
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.00353,
+          "gap": 0.00353
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.0,
+          "entropy": 0.00556,
+          "gap": 0.00556
+        },
+        {
+          "token": " and",
+          "surprisal": 1e-05,
+          "entropy": 0.03335,
+          "gap": 0.03334
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01216,
+          "gap": 0.01216
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00268,
+          "gap": 0.00268
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.00353,
+          "gap": 0.00353
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.0,
+          "entropy": 0.00556,
+          "gap": 0.00556
+        },
+        {
+          "token": " and",
+          "surprisal": 1e-05,
+          "entropy": 0.03335,
+          "gap": 0.03334
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01216,
+          "gap": 0.01216
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00268,
+          "gap": 0.00268
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.00353,
+          "gap": 0.00353
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.0,
+          "entropy": 0.00556,
+          "gap": 0.00556
+        },
+        {
+          "token": " and",
+          "surprisal": 1e-05,
+          "entropy": 0.03335,
+          "gap": 0.03334
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01216,
+          "gap": 0.01216
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00268,
+          "gap": 0.00268
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.00353,
+          "gap": 0.00353
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.0,
+          "entropy": 0.00556,
+          "gap": 0.00556
+        },
+        {
+          "token": " and",
+          "surprisal": 1e-05,
+          "entropy": 0.03335,
+          "gap": 0.03334
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01216,
+          "gap": 0.01216
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00268,
+          "gap": 0.00268
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.00353,
+          "gap": 0.00353
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.0,
+          "entropy": 0.00556,
+          "gap": 0.00556
+        },
+        {
+          "token": " and",
+          "surprisal": 1e-05,
+          "entropy": 0.03335,
+          "gap": 0.03334
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01216,
+          "gap": 0.01216
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00268,
+          "gap": 0.00268
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.00353,
+          "gap": 0.00353
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.0,
+          "entropy": 0.00556,
+          "gap": 0.00556
+        },
+        {
+          "token": " and",
+          "surprisal": 1e-05,
+          "entropy": 0.03335,
+          "gap": 0.03334
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01216,
+          "gap": 0.01216
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00268,
+          "gap": 0.00268
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.00353,
+          "gap": 0.00353
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.0,
+          "entropy": 0.00556,
+          "gap": 0.00556
+        },
+        {
+          "token": " and",
+          "surprisal": 1e-05,
+          "entropy": 0.03335,
+          "gap": 0.03334
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01216,
+          "gap": 0.01216
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00268,
+          "gap": 0.00268
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.00353,
+          "gap": 0.00353
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.0,
+          "entropy": 0.00556,
+          "gap": 0.00556
+        },
+        {
+          "token": " and",
+          "surprisal": 1e-05,
+          "entropy": 0.03335,
+          "gap": 0.03334
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01216,
+          "gap": 0.01216
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00268,
+          "gap": 0.00268
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.00353,
+          "gap": 0.00353
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.0,
+          "entropy": 0.00556,
+          "gap": 0.00556
+        },
+        {
+          "token": " and",
+          "surprisal": 1e-05,
+          "entropy": 0.03335,
+          "gap": 0.03334
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01216,
+          "gap": 0.01216
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00268,
+          "gap": 0.00268
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.00353,
+          "gap": 0.00353
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.0,
+          "entropy": 0.00556,
+          "gap": 0.00556
+        },
+        {
+          "token": " and",
+          "surprisal": 1e-05,
+          "entropy": 0.03335,
+          "gap": 0.03334
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01216,
+          "gap": 0.01216
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00268,
+          "gap": 0.00268
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.00353,
+          "gap": 0.00353
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.0,
+          "entropy": 0.00556,
+          "gap": 0.00556
+        },
+        {
+          "token": " and",
+          "surprisal": 1e-05,
+          "entropy": 0.03335,
+          "gap": 0.03334
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01216,
+          "gap": 0.01216
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00268,
+          "gap": 0.00268
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.00353,
+          "gap": 0.00353
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.0,
+          "entropy": 0.00556,
+          "gap": 0.00556
+        },
+        {
+          "token": " and",
+          "surprisal": 1e-05,
+          "entropy": 0.03335,
+          "gap": 0.03334
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01216,
+          "gap": 0.01216
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00268,
+          "gap": 0.00268
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.00353,
+          "gap": 0.00353
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.0,
+          "entropy": 0.00556,
+          "gap": 0.00556
+        },
+        {
+          "token": " and",
+          "surprisal": 1e-05,
+          "entropy": 0.03335,
+          "gap": 0.03334
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01216,
+          "gap": 0.01216
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00268,
+          "gap": 0.00268
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.00353,
+          "gap": 0.00353
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.0,
+          "entropy": 0.00556,
+          "gap": 0.00556
+        },
+        {
+          "token": " and",
+          "surprisal": 1e-05,
+          "entropy": 0.03335,
+          "gap": 0.03334
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01216,
+          "gap": 0.01216
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00268,
+          "gap": 0.00268
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.00353,
+          "gap": 0.00353
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.0,
+          "entropy": 0.00556,
+          "gap": 0.00556
+        },
+        {
+          "token": " and",
+          "surprisal": 1e-05,
+          "entropy": 0.03335,
+          "gap": 0.03334
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01216,
+          "gap": 0.01216
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00268,
+          "gap": 0.00268
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.00353,
+          "gap": 0.00353
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.0,
+          "entropy": 0.00556,
+          "gap": 0.00556
+        },
+        {
+          "token": " and",
+          "surprisal": 1e-05,
+          "entropy": 0.03335,
+          "gap": 0.03334
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01216,
+          "gap": 0.01216
+        },
+        {
+          "token": " at",
+          "surprisal": 0.0,
+          "entropy": 0.00268,
+          "gap": 0.00268
+        },
+        {
+          "token": " the",
+          "surprisal": 0.0,
+          "entropy": 0.00353,
+          "gap": 0.00353
+        },
+        {
+          "token": " temperature",
+          "surprisal": 0.0,
+          "entropy": 0.00556,
+          "gap": 0.00556
+        },
+        {
+          "token": " and",
+          "surprisal": 1e-05,
+          "entropy": 0.03335,
+          "gap": 0.03334
+        },
+        {
+          "token": " look",
+          "surprisal": 0.0,
+          "entropy": 0.01216,
+          "gap": 0.01216
+        }
+      ]
+    }
+  ]
+}

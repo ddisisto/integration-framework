@@ -1,0 +1,621 @@
+{
+  "metadata": {
+    "model": "SmolLM-135M",
+    "L": 128,
+    "T": 1.5,
+    "seed": 42,
+    "step_range": [
+      50000,
+      50100
+    ],
+    "description": "Noise regime — 81% enriching by gap metric, incoherent output",
+    "gap_definition": "entropy + log_prob (= entropy - surprisal). Positive = degrading, negative = enriching."
+  },
+  "stats": {
+    "mean_entropy": 8.4138,
+    "mean_surprisal": 9.6377,
+    "pct_enriching": 81.0
+  },
+  "tokens": [
+    {
+      "token": " corresponded",
+      "surprisal": 10.75754,
+      "entropy": 9.40759,
+      "gap": -1.34996
+    },
+    {
+      "token": " significant",
+      "surprisal": 8.83557,
+      "entropy": 9.41665,
+      "gap": 0.58108
+    },
+    {
+      "token": " sess",
+      "surprisal": 10.39833,
+      "entropy": 9.33347,
+      "gap": -1.06485
+    },
+    {
+      "token": " flora",
+      "surprisal": 11.11652,
+      "entropy": 8.40725,
+      "gap": -2.70928
+    },
+    {
+      "token": " far",
+      "surprisal": 8.15473,
+      "entropy": 9.2354,
+      "gap": 1.08067
+    },
+    {
+      "token": " theory",
+      "surprisal": 9.17415,
+      "entropy": 9.1711,
+      "gap": -0.00305
+    },
+    {
+      "token": " undesirable",
+      "surprisal": 11.23136,
+      "entropy": 9.0801,
+      "gap": -2.15126
+    },
+    {
+      "token": " Migration",
+      "surprisal": 11.74969,
+      "entropy": 9.27246,
+      "gap": -2.47723
+    },
+    {
+      "token": " lupus",
+      "surprisal": 10.78992,
+      "entropy": 9.2136,
+      "gap": -1.57632
+    },
+    {
+      "token": " land",
+      "surprisal": 7.758,
+      "entropy": 9.30393,
+      "gap": 1.54593
+    },
+    {
+      "token": " thus",
+      "surprisal": 9.36766,
+      "entropy": 8.88385,
+      "gap": -0.48381
+    },
+    {
+      "token": " ongoing",
+      "surprisal": 9.72517,
+      "entropy": 8.98673,
+      "gap": -0.73844
+    },
+    {
+      "token": " volume",
+      "surprisal": 9.42912,
+      "entropy": 9.25427,
+      "gap": -0.17485
+    },
+    {
+      "token": " somewhat",
+      "surprisal": 9.02052,
+      "entropy": 9.18213,
+      "gap": 0.16161
+    },
+    {
+      "token": " matplotlib",
+      "surprisal": 11.32346,
+      "entropy": 9.08597,
+      "gap": -2.2375
+    },
+    {
+      "token": " ministry",
+      "surprisal": 9.40664,
+      "entropy": 9.2709,
+      "gap": -0.13574
+    },
+    {
+      "token": " Pat",
+      "surprisal": 10.30161,
+      "entropy": 8.96489,
+      "gap": -1.33672
+    },
+    {
+      "token": "ch",
+      "surprisal": 7.15533,
+      "entropy": 7.16741,
+      "gap": 0.01208
+    },
+    {
+      "token": "Civil",
+      "surprisal": 11.74734,
+      "entropy": 8.32862,
+      "gap": -3.41872
+    },
+    {
+      "token": " deepen",
+      "surprisal": 12.47779,
+      "entropy": 7.92229,
+      "gap": -4.55549
+    },
+    {
+      "token": " penn",
+      "surprisal": 9.79171,
+      "entropy": 9.45202,
+      "gap": -0.33968
+    },
+    {
+      "token": "ant",
+      "surprisal": 4.08277,
+      "entropy": 6.26251,
+      "gap": 2.17974
+    },
+    {
+      "token": " su",
+      "surprisal": 9.59807,
+      "entropy": 8.98522,
+      "gap": -0.61286
+    },
+    {
+      "token": "idae",
+      "surprisal": 7.88059,
+      "entropy": 6.95509,
+      "gap": -0.9255
+    },
+    {
+      "token": " domain",
+      "surprisal": 10.00275,
+      "entropy": 9.23005,
+      "gap": -0.7727
+    },
+    {
+      "token": " Term",
+      "surprisal": 10.04467,
+      "entropy": 9.24062,
+      "gap": -0.80405
+    },
+    {
+      "token": "k",
+      "surprisal": 9.35296,
+      "entropy": 8.97371,
+      "gap": -0.37926
+    },
+    {
+      "token": "hah",
+      "surprisal": 11.96064,
+      "entropy": 8.41386,
+      "gap": -3.54678
+    },
+    {
+      "token": " command",
+      "surprisal": 9.34056,
+      "entropy": 8.55602,
+      "gap": -0.78454
+    },
+    {
+      "token": " command",
+      "surprisal": 8.19086,
+      "entropy": 9.13912,
+      "gap": 0.94826
+    },
+    {
+      "token": "ivity",
+      "surprisal": 9.10056,
+      "entropy": 8.77909,
+      "gap": -0.32147
+    },
+    {
+      "token": " reason",
+      "surprisal": 8.14837,
+      "entropy": 9.2906,
+      "gap": 1.14223
+    },
+    {
+      "token": " Reason",
+      "surprisal": 8.30239,
+      "entropy": 9.168,
+      "gap": 0.86561
+    },
+    {
+      "token": " Res",
+      "surprisal": 8.41368,
+      "entropy": 8.85595,
+      "gap": 0.44227
+    },
+    {
+      "token": "er",
+      "surprisal": 5.12679,
+      "entropy": 6.24158,
+      "gap": 1.11479
+    },
+    {
+      "token": "ar",
+      "surprisal": 8.67009,
+      "entropy": 6.91045,
+      "gap": -1.75964
+    },
+    {
+      "token": " gave",
+      "surprisal": 9.78714,
+      "entropy": 8.73074,
+      "gap": -1.0564
+    },
+    {
+      "token": " Taiwan",
+      "surprisal": 11.00756,
+      "entropy": 8.67057,
+      "gap": -2.33699
+    },
+    {
+      "token": " separated",
+      "surprisal": 9.27583,
+      "entropy": 9.14695,
+      "gap": -0.12888
+    },
+    {
+      "token": " pron",
+      "surprisal": 9.91043,
+      "entropy": 9.04176,
+      "gap": -0.86867
+    },
+    {
+      "token": "ia",
+      "surprisal": 7.78523,
+      "entropy": 3.85769,
+      "gap": -3.92754
+    },
+    {
+      "token": "mosp",
+      "surprisal": 11.79838,
+      "entropy": 8.09627,
+      "gap": -3.70211
+    },
+    {
+      "token": "heric",
+      "surprisal": 2.18043,
+      "entropy": 2.11831,
+      "gap": -0.06212
+    },
+    {
+      "token": " roll",
+      "surprisal": 8.36312,
+      "entropy": 9.13885,
+      "gap": 0.77573
+    },
+    {
+      "token": " leaving",
+      "surprisal": 9.78234,
+      "entropy": 8.79435,
+      "gap": -0.98798
+    },
+    {
+      "token": " vision",
+      "surprisal": 9.83725,
+      "entropy": 9.09245,
+      "gap": -0.7448
+    },
+    {
+      "token": " single",
+      "surprisal": 8.19256,
+      "entropy": 8.98244,
+      "gap": 0.78988
+    },
+    {
+      "token": "schedule",
+      "surprisal": 13.12922,
+      "entropy": 9.11763,
+      "gap": -4.01159
+    },
+    {
+      "token": " Sri",
+      "surprisal": 9.74305,
+      "entropy": 9.12638,
+      "gap": -0.61667
+    },
+    {
+      "token": " Vishnu",
+      "surprisal": 8.6418,
+      "entropy": 5.62321,
+      "gap": -3.01859
+    },
+    {
+      "token": " southern",
+      "surprisal": 8.44847,
+      "entropy": 8.8434,
+      "gap": 0.39493
+    },
+    {
+      "token": " reception",
+      "surprisal": 9.64924,
+      "entropy": 9.14046,
+      "gap": -0.50878
+    },
+    {
+      "token": " syn",
+      "surprisal": 8.41119,
+      "entropy": 8.45241,
+      "gap": 0.04122
+    },
+    {
+      "token": "gest",
+      "surprisal": 7.46962,
+      "entropy": 6.30406,
+      "gap": -1.16556
+    },
+    {
+      "token": " bi",
+      "surprisal": 9.96673,
+      "entropy": 6.12719,
+      "gap": -3.83954
+    },
+    {
+      "token": " Former",
+      "surprisal": 11.24893,
+      "entropy": 6.71934,
+      "gap": -4.52959
+    },
+    {
+      "token": " uses",
+      "surprisal": 8.99142,
+      "entropy": 6.60541,
+      "gap": -2.38601
+    },
+    {
+      "token": " logger",
+      "surprisal": 10.78235,
+      "entropy": 8.73434,
+      "gap": -2.04801
+    },
+    {
+      "token": " favorite",
+      "surprisal": 10.539,
+      "entropy": 9.1708,
+      "gap": -1.3682
+    },
+    {
+      "token": " gut",
+      "surprisal": 9.46725,
+      "entropy": 9.27608,
+      "gap": -0.19117
+    },
+    {
+      "token": " vent",
+      "surprisal": 9.72801,
+      "entropy": 7.14621,
+      "gap": -2.58179
+    },
+    {
+      "token": " heroin",
+      "surprisal": 9.43467,
+      "entropy": 8.62098,
+      "gap": -0.81369
+    },
+    {
+      "token": " resonant",
+      "surprisal": 9.96567,
+      "entropy": 9.36314,
+      "gap": -0.60253
+    },
+    {
+      "token": " Rosa",
+      "surprisal": 10.23261,
+      "entropy": 9.47384,
+      "gap": -0.75877
+    },
+    {
+      "token": " government",
+      "surprisal": 9.07017,
+      "entropy": 8.95926,
+      "gap": -0.11091
+    },
+    {
+      "token": " rapt",
+      "surprisal": 8.03431,
+      "entropy": 8.28943,
+      "gap": 0.25512
+    },
+    {
+      "token": "learn",
+      "surprisal": 11.84184,
+      "entropy": 3.82645,
+      "gap": -8.01538
+    },
+    {
+      "token": " square",
+      "surprisal": 10.16878,
+      "entropy": 7.49649,
+      "gap": -2.67229
+    },
+    {
+      "token": " TCP",
+      "surprisal": 10.81896,
+      "entropy": 9.08342,
+      "gap": -1.73555
+    },
+    {
+      "token": " era",
+      "surprisal": 8.4036,
+      "entropy": 8.19774,
+      "gap": -0.20586
+    },
+    {
+      "token": " Rocky",
+      "surprisal": 9.96283,
+      "entropy": 9.25312,
+      "gap": -0.70971
+    },
+    {
+      "token": " associate",
+      "surprisal": 10.05641,
+      "entropy": 8.83366,
+      "gap": -1.22275
+    },
+    {
+      "token": " shortage",
+      "surprisal": 9.93069,
+      "entropy": 8.48802,
+      "gap": -1.44267
+    },
+    {
+      "token": " suicidal",
+      "surprisal": 10.63236,
+      "entropy": 8.98206,
+      "gap": -1.6503
+    },
+    {
+      "token": " monetary",
+      "surprisal": 10.20251,
+      "entropy": 9.24794,
+      "gap": -0.95457
+    },
+    {
+      "token": " meteorological",
+      "surprisal": 10.31083,
+      "entropy": 9.13673,
+      "gap": -1.1741
+    },
+    {
+      "token": " sea",
+      "surprisal": 7.40009,
+      "entropy": 9.03138,
+      "gap": 1.63129
+    },
+    {
+      "token": " moved",
+      "surprisal": 9.80646,
+      "entropy": 9.00645,
+      "gap": -0.80001
+    },
+    {
+      "token": " index",
+      "surprisal": 11.07244,
+      "entropy": 9.10598,
+      "gap": -1.96647
+    },
+    {
+      "token": " Marion",
+      "surprisal": 11.48623,
+      "entropy": 9.08108,
+      "gap": -2.40515
+    },
+    {
+      "token": " crim",
+      "surprisal": 9.38263,
+      "entropy": 9.12263,
+      "gap": -0.26
+    },
+    {
+      "token": " Directive",
+      "surprisal": 10.67705,
+      "entropy": 2.70934,
+      "gap": -7.96771
+    },
+    {
+      "token": " marine",
+      "surprisal": 7.59526,
+      "entropy": 9.20671,
+      "gap": 1.61144
+    },
+    {
+      "token": " Park",
+      "surprisal": 10.0758,
+      "entropy": 9.22896,
+      "gap": -0.84684
+    },
+    {
+      "token": " complexities",
+      "surprisal": 11.14381,
+      "entropy": 9.13181,
+      "gap": -2.012
+    },
+    {
+      "token": " fact",
+      "surprisal": 9.33337,
+      "entropy": 9.24686,
+      "gap": -0.08651
+    },
+    {
+      "token": "ball",
+      "surprisal": 9.23848,
+      "entropy": 8.99535,
+      "gap": -0.24313
+    },
+    {
+      "token": " networks",
+      "surprisal": 10.75418,
+      "entropy": 9.16692,
+      "gap": -1.58725
+    },
+    {
+      "token": " Load",
+      "surprisal": 10.58644,
+      "entropy": 9.37493,
+      "gap": -1.21151
+    },
+    {
+      "token": "istance",
+      "surprisal": 11.84672,
+      "entropy": 6.88596,
+      "gap": -4.96076
+    },
+    {
+      "token": " imports",
+      "surprisal": 9.46317,
+      "entropy": 8.83052,
+      "gap": -0.63264
+    },
+    {
+      "token": " red",
+      "surprisal": 8.33741,
+      "entropy": 9.23574,
+      "gap": 0.89832
+    },
+    {
+      "token": " hip",
+      "surprisal": 9.81591,
+      "entropy": 8.43805,
+      "gap": -1.37786
+    },
+    {
+      "token": " Vernon",
+      "surprisal": 11.98162,
+      "entropy": 8.89209,
+      "gap": -3.08953
+    },
+    {
+      "token": "online",
+      "surprisal": 12.00645,
+      "entropy": 8.80027,
+      "gap": -3.20618
+    },
+    {
+      "token": " wait",
+      "surprisal": 8.90936,
+      "entropy": 8.73383,
+      "gap": -0.17553
+    },
+    {
+      "token": " Gol",
+      "surprisal": 10.96349,
+      "entropy": 8.61287,
+      "gap": -2.35061
+    },
+    {
+      "token": "ims",
+      "surprisal": 9.55387,
+      "entropy": 5.99339,
+      "gap": -3.56047
+    },
+    {
+      "token": " produced",
+      "surprisal": 9.54048,
+      "entropy": 9.16876,
+      "gap": -0.37172
+    },
+    {
+      "token": " diligently",
+      "surprisal": 11.66887,
+      "entropy": 8.72747,
+      "gap": -2.94141
+    }
+  ]
+}

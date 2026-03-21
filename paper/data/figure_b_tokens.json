@@ -1,0 +1,621 @@
+{
+  "metadata": {
+    "model": "SmolLM-135M",
+    "L": 192,
+    "T": 0.7,
+    "seed": 42,
+    "step_range": [
+      55000,
+      55100
+    ],
+    "description": "Coherent prose with ~20% enriching tokens",
+    "gap_definition": "entropy + log_prob (= entropy - surprisal). Positive = degrading, negative = enriching."
+  },
+  "stats": {
+    "mean_entropy": 1.6104,
+    "mean_surprisal": 1.1461,
+    "pct_enriching": 20.0
+  },
+  "tokens": [
+    {
+      "token": "\n",
+      "surprisal": 2e-05,
+      "entropy": 0.00603,
+      "gap": 0.00601
+    },
+    {
+      "token": "Now",
+      "surprisal": 0.00238,
+      "entropy": 0.15106,
+      "gap": 0.14868
+    },
+    {
+      "token": ",",
+      "surprisal": 0.00571,
+      "entropy": 0.2747,
+      "gap": 0.26899
+    },
+    {
+      "token": " how",
+      "surprisal": 1.19025,
+      "entropy": 2.48903,
+      "gap": 1.29878
+    },
+    {
+      "token": " does",
+      "surprisal": 0.11245,
+      "entropy": 0.8615,
+      "gap": 0.74905
+    },
+    {
+      "token": " our",
+      "surprisal": 6.49293,
+      "entropy": 2.08837,
+      "gap": -4.40457
+    },
+    {
+      "token": " magical",
+      "surprisal": 3.72899,
+      "entropy": 3.40114,
+      "gap": -0.32785
+    },
+    {
+      "token": " metal",
+      "surprisal": 1.01978,
+      "entropy": 3.13901,
+      "gap": 2.11923
+    },
+    {
+      "token": " come",
+      "surprisal": 0.33482,
+      "entropy": 3.68387,
+      "gap": 3.34906
+    },
+    {
+      "token": " into",
+      "surprisal": 0.49216,
+      "entropy": 1.41999,
+      "gap": 0.92783
+    },
+    {
+      "token": " play",
+      "surprisal": 0.02775,
+      "entropy": 0.58086,
+      "gap": 0.55311
+    },
+    {
+      "token": "?",
+      "surprisal": 0.19092,
+      "entropy": 0.97308,
+      "gap": 0.78216
+    },
+    {
+      "token": " Dental",
+      "surprisal": 3.96724,
+      "entropy": 3.91076,
+      "gap": -0.05648
+    },
+    {
+      "token": " implants",
+      "surprisal": 0.13096,
+      "entropy": 1.21378,
+      "gap": 1.08281
+    },
+    {
+      "token": " are",
+      "surprisal": 0.35393,
+      "entropy": 2.27778,
+      "gap": 1.92385
+    },
+    {
+      "token": " surgically",
+      "surprisal": 2.72754,
+      "entropy": 3.57504,
+      "gap": 0.8475
+    },
+    {
+      "token": " inserted",
+      "surprisal": 3.00429,
+      "entropy": 0.6209,
+      "gap": -2.3834
+    },
+    {
+      "token": " into",
+      "surprisal": 0.00303,
+      "entropy": 0.23889,
+      "gap": 0.23586
+    },
+    {
+      "token": " your",
+      "surprisal": 0.49291,
+      "entropy": 1.04519,
+      "gap": 0.55228
+    },
+    {
+      "token": " jaw",
+      "surprisal": 0.0094,
+      "entropy": 0.24712,
+      "gap": 0.23772
+    },
+    {
+      "token": "bone",
+      "surprisal": 0.01881,
+      "entropy": 0.61948,
+      "gap": 0.60068
+    },
+    {
+      "token": " through",
+      "surprisal": 1.64939,
+      "entropy": 2.77006,
+      "gap": 1.12067
+    },
+    {
+      "token": " small",
+      "surprisal": 0.33553,
+      "entropy": 1.55404,
+      "gap": 1.21852
+    },
+    {
+      "token": " incisions",
+      "surprisal": 0.44026,
+      "entropy": 1.2603,
+      "gap": 0.82004
+    },
+    {
+      "token": ".",
+      "surprisal": 1.04139,
+      "entropy": 2.4629,
+      "gap": 1.42151
+    },
+    {
+      "token": " Once",
+      "surprisal": 1.02605,
+      "entropy": 2.31211,
+      "gap": 1.28605
+    },
+    {
+      "token": " placed",
+      "surprisal": 0.46957,
+      "entropy": 2.40449,
+      "gap": 1.93492
+    },
+    {
+      "token": ",",
+      "surprisal": 0.34821,
+      "entropy": 1.30417,
+      "gap": 0.95596
+    },
+    {
+      "token": " they",
+      "surprisal": 0.12682,
+      "entropy": 1.48682,
+      "gap": 1.36
+    },
+    {
+      "token": " fuse",
+      "surprisal": 1.96551,
+      "entropy": 2.94561,
+      "gap": 0.9801
+    },
+    {
+      "token": " with",
+      "surprisal": 0.14234,
+      "entropy": 1.00158,
+      "gap": 0.85924
+    },
+    {
+      "token": " your",
+      "surprisal": 0.92439,
+      "entropy": 0.95893,
+      "gap": 0.03453
+    },
+    {
+      "token": " bone",
+      "surprisal": 1.99968,
+      "entropy": 1.75575,
+      "gap": -0.24392
+    },
+    {
+      "token": ",",
+      "surprisal": 1.03264,
+      "entropy": 2.26599,
+      "gap": 1.23335
+    },
+    {
+      "token": " creating",
+      "surprisal": 0.20353,
+      "entropy": 1.91784,
+      "gap": 1.71431
+    },
+    {
+      "token": " a",
+      "surprisal": 0.02243,
+      "entropy": 0.48341,
+      "gap": 0.46098
+    },
+    {
+      "token": " stable",
+      "surprisal": 2.16487,
+      "entropy": 2.11908,
+      "gap": -0.0458
+    },
+    {
+      "token": " base",
+      "surprisal": 2.08587,
+      "entropy": 0.86025,
+      "gap": -1.22562
+    },
+    {
+      "token": " for",
+      "surprisal": 0.25109,
+      "entropy": 1.23035,
+      "gap": 0.97927
+    },
+    {
+      "token": " your",
+      "surprisal": 1.29937,
+      "entropy": 2.46433,
+      "gap": 1.16496
+    },
+    {
+      "token": " new",
+      "surprisal": 0.07602,
+      "entropy": 1.45247,
+      "gap": 1.37645
+    },
+    {
+      "token": " tooth",
+      "surprisal": 0.61785,
+      "entropy": 1.69531,
+      "gap": 1.07746
+    },
+    {
+      "token": " roots",
+      "surprisal": 2.4972,
+      "entropy": 1.67061,
+      "gap": -0.82659
+    },
+    {
+      "token": ".",
+      "surprisal": 0.01994,
+      "entropy": 0.66825,
+      "gap": 0.64831
+    },
+    {
+      "token": " Over",
+      "surprisal": 1.62519,
+      "entropy": 3.18462,
+      "gap": 1.55943
+    },
+    {
+      "token": " time",
+      "surprisal": 0.00031,
+      "entropy": 0.04436,
+      "gap": 0.04406
+    },
+    {
+      "token": ",",
+      "surprisal": 3e-05,
+      "entropy": 0.01173,
+      "gap": 0.01169
+    },
+    {
+      "token": " your",
+      "surprisal": 1.03036,
+      "entropy": 2.77373,
+      "gap": 1.74337
+    },
+    {
+      "token": " natural",
+      "surprisal": 4.11868,
+      "entropy": 2.22755,
+      "gap": -1.89113
+    },
+    {
+      "token": " bone",
+      "surprisal": 3.81056,
+      "entropy": 1.19778,
+      "gap": -2.61278
+    },
+    {
+      "token": " returns",
+      "surprisal": 7.33065,
+      "entropy": 2.59342,
+      "gap": -4.73724
+    },
+    {
+      "token": ",",
+      "surprisal": 1.6025,
+      "entropy": 1.33739,
+      "gap": -0.2651
+    },
+    {
+      "token": " giving",
+      "surprisal": 1.43769,
+      "entropy": 2.77975,
+      "gap": 1.34206
+    },
+    {
+      "token": " you",
+      "surprisal": 0.21362,
+      "entropy": 0.88164,
+      "gap": 0.66802
+    },
+    {
+      "token": " a",
+      "surprisal": 0.18198,
+      "entropy": 1.75713,
+      "gap": 1.57514
+    },
+    {
+      "token": " brand",
+      "surprisal": 0.65939,
+      "entropy": 3.61334,
+      "gap": 2.95394
+    },
+    {
+      "token": " new",
+      "surprisal": 0.10421,
+      "entropy": 0.47337,
+      "gap": 0.36916
+    },
+    {
+      "token": " set",
+      "surprisal": 1.26051,
+      "entropy": 2.10225,
+      "gap": 0.84174
+    },
+    {
+      "token": " of",
+      "surprisal": 7e-05,
+      "entropy": 0.02341,
+      "gap": 0.02334
+    },
+    {
+      "token": " roots",
+      "surprisal": 4.09965,
+      "entropy": 2.76627,
+      "gap": -1.33337
+    },
+    {
+      "token": " that",
+      "surprisal": 0.69849,
+      "entropy": 2.71955,
+      "gap": 2.02106
+    },
+    {
+      "token": " look",
+      "surprisal": 0.79561,
+      "entropy": 3.41883,
+      "gap": 2.62323
+    },
+    {
+      "token": " and",
+      "surprisal": 0.15498,
+      "entropy": 1.55816,
+      "gap": 1.40318
+    },
+    {
+      "token": " feel",
+      "surprisal": 0.1726,
+      "entropy": 0.92952,
+      "gap": 0.75693
+    },
+    {
+      "token": " like",
+      "surprisal": 0.42612,
+      "entropy": 1.81561,
+      "gap": 1.38949
+    },
+    {
+      "token": " your",
+      "surprisal": 0.24006,
+      "entropy": 2.05775,
+      "gap": 1.81769
+    },
+    {
+      "token": " actual",
+      "surprisal": 2.89734,
+      "entropy": 2.46683,
+      "gap": -0.43052
+    },
+    {
+      "token": " teeth",
+      "surprisal": 0.15914,
+      "entropy": 1.22226,
+      "gap": 1.06312
+    },
+    {
+      "token": ".",
+      "surprisal": 0.23313,
+      "entropy": 0.97132,
+      "gap": 0.73819
+    },
+    {
+      "token": " Ne",
+      "surprisal": 5.2331,
+      "entropy": 2.38011,
+      "gap": -2.85299
+    },
+    {
+      "token": "at",
+      "surprisal": 0.00022,
+      "entropy": 0.04415,
+      "gap": 0.04393
+    },
+    {
+      "token": ",",
+      "surprisal": 0.00219,
+      "entropy": 0.12826,
+      "gap": 0.12608
+    },
+    {
+      "token": " huh",
+      "surprisal": 0.02902,
+      "entropy": 0.36457,
+      "gap": 0.33555
+    },
+    {
+      "token": "?",
+      "surprisal": 0.1602,
+      "entropy": 0.53925,
+      "gap": 0.37906
+    },
+    {
+      "token": "\n",
+      "surprisal": 0.00197,
+      "entropy": 0.14722,
+      "gap": 0.14525
+    },
+    {
+      "token": "\n",
+      "surprisal": 0.0,
+      "entropy": 0.00234,
+      "gap": 0.00234
+    },
+    {
+      "token": "But",
+      "surprisal": 0.32436,
+      "entropy": 2.02638,
+      "gap": 1.70202
+    },
+    {
+      "token": " wait",
+      "surprisal": 0.00933,
+      "entropy": 0.4196,
+      "gap": 0.41026
+    },
+    {
+      "token": ",",
+      "surprisal": 0.02974,
+      "entropy": 0.46495,
+      "gap": 0.43521
+    },
+    {
+      "token": " there",
+      "surprisal": 0.00363,
+      "entropy": 0.29282,
+      "gap": 0.28919
+    },
+    {
+      "token": "'s",
+      "surprisal": 0.004,
+      "entropy": 0.11565,
+      "gap": 0.11165
+    },
+    {
+      "token": " more",
+      "surprisal": 0.00101,
+      "entropy": 0.1018,
+      "gap": 0.10079
+    },
+    {
+      "token": "!",
+      "surprisal": 0.00094,
+      "entropy": 0.09593,
+      "gap": 0.09499
+    },
+    {
+      "token": " Did",
+      "surprisal": 2.05993,
+      "entropy": 3.74872,
+      "gap": 1.68879
+    },
+    {
+      "token": " you",
+      "surprisal": 0.00042,
+      "entropy": 0.03692,
+      "gap": 0.0365
+    },
+    {
+      "token": " know",
+      "surprisal": 0.00121,
+      "entropy": 0.10295,
+      "gap": 0.10174
+    },
+    {
+      "token": " that",
+      "surprisal": 0.00345,
+      "entropy": 0.40017,
+      "gap": 0.39672
+    },
+    {
+      "token": " dental",
+      "surprisal": 0.13513,
+      "entropy": 3.25362,
+      "gap": 3.11848
+    },
+    {
+      "token": " implants",
+      "surprisal": 0.00092,
+      "entropy": 0.10942,
+      "gap": 0.1085
+    },
+    {
+      "token": " actually",
+      "surprisal": 6.82811,
+      "entropy": 2.49956,
+      "gap": -4.32855
+    },
+    {
+      "token": " hide",
+      "surprisal": 7.08636,
+      "entropy": 4.23955,
+      "gap": -2.8468
+    },
+    {
+      "token": " their",
+      "surprisal": 3.61706,
+      "entropy": 3.04437,
+      "gap": -0.5727
+    },
+    {
+      "token": " roots",
+      "surprisal": 0.74387,
+      "entropy": 4.83089,
+      "gap": 4.08701
+    },
+    {
+      "token": " in",
+      "surprisal": 2.57938,
+      "entropy": 2.53441,
+      "gap": -0.04497
+    },
+    {
+      "token": " the",
+      "surprisal": 1.1375,
+      "entropy": 2.86476,
+      "gap": 1.72727
+    },
+    {
+      "token": " soft",
+      "surprisal": 3.22889,
+      "entropy": 2.45942,
+      "gap": -0.76947
+    },
+    {
+      "token": " tissue",
+      "surprisal": 0.5265,
+      "entropy": 1.81696,
+      "gap": 1.29046
+    },
+    {
+      "token": " inside",
+      "surprisal": 1.92004,
+      "entropy": 2.75431,
+      "gap": 0.83427
+    },
+    {
+      "token": " your",
+      "surprisal": 0.03679,
+      "entropy": 0.66771,
+      "gap": 0.63093
+    },
+    {
+      "token": " mouth",
+      "surprisal": 0.60826,
+      "entropy": 1.76703,
+      "gap": 1.15878
+    }
+  ]
+}

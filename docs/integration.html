@@ -324,7 +324,54 @@ window.Quarto = {
 <p>A crucial qualification: compressive novelty is relative to the model’s implicit distortion measure — next-token prediction against the weight geometry. That is the only measure available during generation. A token that bridges two domains in a novel way is enriching by this measure whether or not the bridge is valid. The enriching regime guarantees that the model is doing genuine compressive work; it does not guarantee that the work tracks anything the receiver would recognise as true or useful. The gap between the model’s distortion measure and the receiver’s is where failure enters — not as degradation, which is detectable, but as confident, structurally novel error (<a href="#sec-compositional-novelty" class="quarto-xref">Section&nbsp;3.3</a>). This is the distortion measure mismatch that <a href="#sec-compression-continuum" class="quarto-xref">Section&nbsp;1.2</a> identified as inherent to lossy compression: what counts as acceptable distortion is a choice, and the model’s choice is not the receiver’s. <a href="#sec-distortion-alignment" class="quarto-xref">Section&nbsp;6.2</a> will develop this gap as the formal structure of the alignment problem.</p>
 <p>Neither regime is a fixed property of model or task. It is a property of the <em>interaction</em>: capacity × task demands × context seeding × generation parameters. A capable model on a well-structured task, seeded with context that positions it in a productive region of the weight geometry, can sustain the enriching regime for extended generation. The same model, poorly seeded or on a task that quickly exhausts available novel combinations, will slide into the degrading regime — and the slide will be invisible in surface metrics.</p>
 <p>This invisibility holds for surface metrics — fluency, grammaticality, local coherence — which are products of compression at the lower end of the continuum (<a href="#sec-compression-continuum" class="quarto-xref">Section&nbsp;1.2</a>) and maintained effortlessly throughout. But the model’s own surprisal tracks the distinction directly. Surprisal collapsing toward zero <em>is</em> the degrading regime: the next token is predictable from the preceding context, which means it surfaces no new structure. This is not a proxy for compressive novelty — it is compressive novelty, measured at the token level against the model’s implicit distortion measure. The enriching/degrading boundary is invisible to the reader but visible to the model.</p>
-<p>The enriching and degrading regimes are limiting cases, and <em>both</em> limits are pathological. Degradation taken to its extreme produces fixed points — the model predicting itself with certainty, adding no structure. But enrichment taken to its extreme produces noise — surprisal exceeding entropy, each token less predictable than the distribution’s own uncertainty. Structured generation occupies the interior, where a majority of tokens maintain local coherence (degrading) while a minority introduce genuine novelty (enriching). The goal is not to maximise enriching tokens but to sustain their presence within a structurally coherent context.</p>
+<p><a href="#fig-collapse" class="quarto-xref">Figure&nbsp;1</a> illustrates the degrading extreme. Four excerpts from a single continuous generation show the transition from coherent prose into a permanent attractor — a five-token loop from which the model never escapes. The token coloring shifts from mixed (enriching and degrading tokens interspersed) to uniformly cool as the vocabulary narrows: the model predicts itself with certainty, and every subsequent token adds length without adding structure.</p>
+<div id="fig-collapse" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-collapse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/figure_a_collapse.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-collapse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Collapse into attractor basin. Excerpts from one continuous generation (SmolLM-135M, T=0.6, L=128), with tokens colored by surprisal: warm = high surprisal (enriching), cool = low surprisal (degrading). Vertical ellipses mark omitted tokens between excerpts. The color shift from mixed to uniformly cool tracks the transition from varied dynamics to complete self-prediction.
+</figcaption>
+</figure>
+</div>
+<p>The enriching and degrading regimes are limiting cases, and <em>both</em> limits are pathological. Degradation taken to its extreme produces the fixed points shown in <a href="#fig-collapse" class="quarto-xref">Figure&nbsp;1</a> — the model predicting itself with certainty, adding no structure. But enrichment taken to its extreme produces noise — surprisal exceeding entropy, each token less predictable than the distribution’s own uncertainty. Structured generation occupies the interior, where a majority of tokens maintain local coherence (degrading) while a minority introduce genuine novelty (enriching). The goal is not to maximise enriching tokens but to sustain their presence within a structurally coherent context.</p>
+<p><a href="#fig-regimes" class="quarto-xref">Figure&nbsp;2</a> places these extremes side by side. In coherent prose (left), most tokens show low surprisal — grammatical scaffolding the model predicts confidently — while a minority show elevated surprisal, carrying semantic content that introduces new information. In the noise regime (right), surprisal is uniformly high, yet the output is incoherent: the model is uncertain about every token, but that uncertainty reflects a near-uniform distribution, not productive novelty. The same token can play different roles depending on context: in the left panel, the word “roots” appears three times with surprisal ranging from 4.1 nats (first occurrence, introducing the concept) to 0.7 nats (third occurrence, now predictable from context). Compressive novelty is a property of the token-in-context, not of the token itself.</p>
+<div id="fig-regimes" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-regimes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-regimes" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-regime-coherent" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-regime-coherent-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/figure_b_tokens.png" class="img-fluid figure-img" data-ref-parent="fig-regimes">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-regime-coherent-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Coherent prose (T=0.7, 20% enriching)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-regimes" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-regime-noise" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-regime-noise-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/figure_c_noise.png" class="img-fluid figure-img" data-ref-parent="fig-regimes">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-regime-noise-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Noise (T=1.5, 81% enriching)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-regimes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: The enriching/degrading spectrum. Token coloring reflects the model’s surprisal — its own assessment of compressive novelty, not a human reader’s. The divergence between these assessments is the distortion measure mismatch developed in <a href="#sec-distortion-alignment" class="quarto-xref">Section&nbsp;6.2</a>.
+</figcaption>
+</figure>
+</div>
 <p>What degrades is higher-order statistical complexity: the novelty, cross-domain connection, and structural surprise that characterise the enriching regime. In information-theoretic terms: in the enriching regime, each token increases the statistical complexity of the context. In the degrading regime, it increases length without increasing complexity — adding tokens without adding structure.</p>
 <p>This is the distinction between integration and mere accumulation — the thematic spine of the paper, encountered here at its tightest and fastest scale.</p>
 </section>
