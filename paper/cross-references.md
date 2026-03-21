@@ -40,10 +40,8 @@ Canonical IDs for use across all section files. Use `@sec-*` for sections,
 - `sec-autoregressive-limitations` — Limitations of the autoregressive account
 
 ### Section 4
-- `sec-projection-bottleneck` — Channel capacity as substrate-independent constraint
-- `sec-convergence-limits` — What convergence explains and what it doesn't
+- `sec-projection-bottleneck` — The projection bottleneck as substrate-independent constraint
 - `sec-grounding-rate-distortion` — Grounding as rate-distortion question (novel)
-- `sec-predictions-ch4` — Prediction 8
 
 ### Section 5 (Conclusion)
 - `sec-thematic-spine` — Integration vs mere accumulation
@@ -62,7 +60,7 @@ Canonical IDs for use across all section files. Use `@sec-*` for sections,
 | `pred-training-shift` | 5 | Power-law dynamics; qualitative shift across training | 2 |
 | `pred-cot-quality` | 6 | CoT quality predicts effectiveness better than length | 3 |
 | `pred-icl-failure` | 7 | ICL fails when regularity type absent from geometry | 3 |
-| `pred-rsa-convergence` | 8 | Transformer/biological representational similarity | 4 |
+| `pred-dataset-distortion` | 8 | Dataset composition shapes representational structure | 5 |
 
 ### Predictions moved to Paper 2 (ecological dynamics)
 | `pred-ecological-erosion` | 9 | Top-down erosion in recursive training loops | paper2 |
