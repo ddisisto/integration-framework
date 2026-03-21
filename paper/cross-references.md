@@ -36,7 +36,7 @@ Canonical IDs for use across all section files. Use `@sec-*` for sections,
 - `sec-compositional-novelty` — Compositional novelty from fixed geometry
 - `sec-enriching-degrading` — Compressive novelty and the enrichment fraction
 - `sec-cot-icl` — CoT and ICL as steering strategies
-- `sec-predictions-ch3` — Predictions 6–7
+- `sec-predictions-ch3` — Prediction 6
 - `sec-autoregressive-limitations` — Limitations of the autoregressive account
 
 ### Section 4
@@ -46,7 +46,7 @@ Canonical IDs for use across all section files. Use `@sec-*` for sections,
 ### Section 5 (Conclusion)
 - `sec-thematic-spine` — Integration vs mere accumulation
 - `sec-distortion-alignment` — Alignment as distortion measure mismatch (novel)
-- `sec-consolidated-predictions` — Summary of all 8 predictions with testability ranking
+- `sec-consolidated-predictions` — Summary of all 7 predictions with testability ranking
 - `sec-future-directions` — Ecological dynamics and measurement operationalisation
 
 ## Prediction IDs
@@ -58,9 +58,8 @@ Canonical IDs for use across all section files. Use `@sec-*` for sections,
 | `pred-accumulator` | 3 | Residual stream as measurable accumulator | 2 |
 | `pred-ib-complement` | 4 | IB compression and complexity growth are complementary | 2 |
 | `pred-training-shift` | 5 | Power-law dynamics; qualitative shift across training | 2 |
-| `pred-cot-quality` | 6 | CoT quality predicts effectiveness better than length | 3 |
-| `pred-icl-failure` | 7 | ICL fails when regularity type absent from geometry | 3 |
-| `pred-dataset-distortion` | 8 | Dataset composition shapes representational structure | 5 |
+| `pred-icl-failure` | 6 | ICL fails when regularity type absent from geometry | 3 |
+| `pred-dataset-distortion` | 7 | Dataset composition shapes representational structure | 5 |
 
 ### Predictions moved to Paper 2 (ecological dynamics)
 | `pred-ecological-erosion` | 9 | Top-down erosion in recursive training loops | paper2 |
@@ -69,6 +68,6 @@ Canonical IDs for use across all section files. Use `@sec-*` for sections,
 ## Citation conventions
 
 - Use `@citekey` for inline citations: `@achille_soatto_2018`
-- Use `[@citekey]` for parenthetical: `[@achille_soatto_2018`]
+- Use `[@citekey]` for parenthetical: `[@achille_soatto_2018]`
 - Use `[@key1; @key2]` for multiple: `[@shannon_1948; @cover_thomas_2006]`
 - All citekeys defined in `references.bib`
