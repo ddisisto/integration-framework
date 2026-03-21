@@ -85,5 +85,7 @@ These have no clear precedent in the literature. Present as contributions, not e
 
 1. ~~**Prediction table in §5.**~~ Done. Nine predictions with Status column.
 2. ~~**Training/dataset section.**~~ Done. §5 (04b_training.qmd), one new prediction (#9).
-3. **Zenodo integration.** Link repo to Zenodo for DOI minting on tagged releases. v0.2 is tagged and ready.
-4. **GitHub Pages.** Enable in repo settings: branch `main`, folder `/docs`.
+3. ~~**Figures in §3.**~~ Done. Three figures from autoloop data (collapse, coherent prose, noise). Surprisal-colored tokens, PNG output.
+4. **v0.3: Enrichment fraction reframe.** Major revision of §3.4 — replace binary enriching/degrading regime framing with continuous enrichment fraction variable. "Stabilising" replaces "degrading" for healthy low-surprisal tokens; "degenerate" for the pathological extreme. Substrate-independent measure. See `v0.3-plan.md` for full scope.
+5. **Zenodo integration.** Link repo to Zenodo for DOI minting on tagged releases. v0.2 is tagged and ready.
+6. **GitHub Pages.** Enable in repo settings: branch `main`, folder `/docs`.
