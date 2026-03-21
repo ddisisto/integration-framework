@@ -3,7 +3,6 @@ project:
   output-dir: ../docs
   render:
     - integration.qmd
-    - blog.qmd
 
 format:
   html:

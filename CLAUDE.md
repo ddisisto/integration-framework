@@ -62,7 +62,7 @@ Output goes to `docs/` (HTML site + `Integration.pdf`). The `docs/` directory is
 - **Audience:** ML researchers, cognitive scientists, informed generalists. Clarity over gatekeeping; rigour available in appendices.
 - **Scope:** Paper 1 covers compression and composition (the formally constrained core). Ecological dynamics (feedback loops, silent flattening, carrier transition, attention economy) deferred to paper 2.
 - **Structure:** Flat sections (no Part I/II/III). Use "section" not "chapter" or "part" in all copy.
-- **Multi-scale output:** Full paper → blog post → interactive web app (semantic zoom). Blog and web app come after the paper exists.
+- **Multi-scale output:** Full paper → interactive web app (semantic zoom). Web app comes after the paper exists.
 - **Human-AI collaboration** acknowledged in preface, stated plainly.
 
 ## What's novel (handle with care)

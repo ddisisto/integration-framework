@@ -1,6 +1,6 @@
 ---
 title: "Integration"
-subtitle: "Compression, composition, and the projection bottleneck in large language models"
+subtitle: "Compression, distortion, novelty, and meaning"
 author:
   name: Daniel DiSisto
   affiliation: Independent researcher
