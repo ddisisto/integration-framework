@@ -6,7 +6,7 @@ At each scale examined in this paper, the same distinction governs.
 
 Within the forward pass, layers that reorganise preserved information into more useful structure — increasing statistical complexity while respecting the data processing inequality — perform integration. Layers that merely propagate without reorganising perform accumulation. The difference determines whether depth buys capability or merely adds parameters (@sec-structure-across-depth).
 
-Within the autoregressive loop, tokens that surface genuinely new structure sustain the enriching regime. Tokens that reinforce existing trajectories sustain the degrading regime. The difference is invisible in surface metrics but determines whether generation produces integration or accumulation (@sec-enriching-degrading).
+Within the autoregressive loop, tokens that surface genuinely new structure are enriching — they increase the statistical complexity of the context. Tokens that reinforce existing trajectories are stabilising — essential scaffolding, but not adding structure. The enrichment fraction over a window of generation determines whether the output is productive, degenerate, or noise. The difference is invisible in surface metrics but determines whether generation produces integration or accumulation (@sec-enriching-degrading).
 
 The variable is the same at both scales: whether what feeds forward adds structure or merely adds volume.
 
@@ -16,7 +16,7 @@ A further observation falls directly out of the vocabulary. The model's implicit
 
 The difficulty of closing this gap is itself a projection bottleneck problem. The receiver's distortion measure is rich, contextual, and not fully articulable. The feedback channels through which it is communicated to the model — preference rankings, reward signals, natural language correction — are narrow. The same bandwidth mismatch that governs the autoregressive loop governs the attempt to align the system that produces it. This is, as far as we can determine, a novel framing; it is offered as a contribution, not an established result.
 
-This creates a measurable asymmetry. The model's surprisal provides a direct, token-level signal for enrichment against its own distortion measure. No comparable signal exists on the receiver's side — the receiver's sense of whether they are being enriched is richer, slower, and communicated only through the narrow feedback channels already described. The alignment problem at the token level is the gap between these two signals: a model in the enriching regime by its own measure may be in the degrading regime by the receiver's.
+This creates a measurable asymmetry. The model's surprisal provides a direct, token-level signal for enrichment against its own distortion measure. No comparable signal exists on the receiver's side — the receiver's sense of whether they are being enriched is richer, slower, and communicated only through the narrow feedback channels already described. The alignment problem at the token level is the gap between these two signals: a high enrichment fraction by the model's measure may correspond to degeneration by the receiver's.
 
 ## Consolidated predictions {#sec-consolidated-predictions}
 
@@ -29,7 +29,7 @@ The framework generates nine specific predictions across its four sections. They
 | [3](#pred-accumulator) | Residual stream functions as measurable accumulator of statistical complexity | §2 | Probing existing models | Partially supported |
 | [4](#pred-ib-complement) | IB compression and statistical complexity growth complement rather than trade off | §2 | Probing existing models | Untested |
 | [5](#pred-training-shift) | Statistical complexity growth across training follows power-law dynamics with qualitative shift | §2 | Controlled comparisons across training stages | Partially supported |
-| [6](#pred-cot-quality) | CoT effectiveness correlates with compressive novelty per step, not chain length | §3 | Probing existing models | Partially supported |
+| [6](#pred-cot-quality) | CoT effectiveness correlates with enrichment fraction per step, not chain length | §3 | Probing existing models | Partially supported |
 | [7](#pred-icl-failure) | In-context learning fails when the required regularity type is absent from the weight geometry | §3 | Controlled comparisons across models | Untested |
 | [8](#pred-rsa-convergence) | Transformer representational geometry converges with biological neural geometry as models scale | §4 | Cross-model comparison with neural data | Partially supported |
 | [9](#pred-dataset-distortion) | Dataset composition shapes internal representational structure, not just performance | §5 | Controlled comparisons across data mixtures | Partially supported |
@@ -42,6 +42,6 @@ The predictions share a common dependency: the operationalisation of statistical
 
 ## Future directions {#sec-future-directions}
 
-The enriching/degrading distinction introduced in @sec-enriching-degrading operates within a single context window. But the same ambivalence recurs wherever model outputs feed back as inputs: in agentic loops that persist state across sessions, in human-mediated integration of model outputs into published knowledge, and in recursive training where model-generated text enters the corpora of successor models. The ecological implications of this recursion — including the threat of silent flattening, where surface quality is preserved while higher-order representational diversity erodes — are the subject of ongoing work.
+The enrichment fraction introduced in @sec-enriching-degrading operates within a single context window. But the same dynamic recurs wherever model outputs feed back as inputs: in agentic loops that persist state across sessions, in human-mediated integration of model outputs into published knowledge, and in recursive training where model-generated text enters the corpora of successor models. The ecological implications of this recursion — including the threat of silent flattening, where surface quality is preserved while higher-order representational diversity erodes — are the subject of ongoing work.
 
 Similarly, the grounding problem reframed as a rate-distortion question (@sec-grounding-rate-distortion) identifies the formal structure of what would need to be measured but does not resolve whether the gap can be closed by text-only compression. Both directions require empirical operationalisation of the framework's central quantities — work that is underway but beyond the scope of this paper.

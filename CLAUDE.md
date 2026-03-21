@@ -8,20 +8,20 @@ Ecological implications (feedback loops, silent flattening, carrier transition) 
 
 ## Status
 
-Paper 1 is tightened to Sections 1–5 + Conclusion. Appendix A written. Tagged v0.2. Renders cleanly as HTML + PDF. Summary page and README in place. GitHub Pages and Zenodo pending setup.
+Paper 1 is tightened to Sections 1–5 + Conclusion. Appendix A written. Tagged v0.2. Renders cleanly as HTML + PDF. Summary page and README in place. GitHub Pages live (deploying from `publish` branch). Zenodo pending setup.
+
+**Branching:** `main` is the working branch. `publish` tracks the latest released version (currently v0.2). Merge to `publish` when ready to update the live site.
 
 ```
 paper/
 ├── _quarto.yml                        ← render config
-├── integration.qmd                    ← main document (includes all sections)
-├── index.qmd                          ← abstract + preface
+├── integration.qmd                    ← main document (abstract, preface, includes all sections)
 ├── 01_compression_hierarchy.qmd       ← DONE (~1,040 words)
 ├── 02_structure_across_depth.qmd      ← DONE (~3,200 words)
 ├── 03_autoregressive_loop.qmd         ← DONE (~2,600 words)
 ├── 04_convergence_across_substrates.qmd ← DONE (~1,200 words)
 ├── 04b_training.qmd                   ← DONE (~500 words) — how training builds the hierarchy
 ├── 05_conclusion.qmd                  ← DONE (~900 words) — predictions + future directions
-├── summary.qmd                        ← shareable summary page
 ├── references.bib                     ← ~76 entries
 ├── cross-references.md                ← canonical IDs
 ├── appendix_formal_foundations.qmd    ← DONE (four sections)
@@ -88,4 +88,4 @@ These have no clear precedent in the literature. Present as contributions, not e
 3. ~~**Figures in §3.**~~ Done. Three figures from autoloop data (collapse, coherent prose, noise). Surprisal-colored tokens, PNG output.
 4. **v0.3: Enrichment fraction reframe.** Major revision of §3.4 — replace binary enriching/degrading regime framing with continuous enrichment fraction variable. "Stabilising" replaces "degrading" for healthy low-surprisal tokens; "degenerate" for the pathological extreme. Substrate-independent measure. See `v0.3-plan.md` for full scope.
 5. **Zenodo integration.** Link repo to Zenodo for DOI minting on tagged releases. v0.2 is tagged and ready.
-6. **GitHub Pages.** Enable in repo settings: branch `main`, folder `/docs`.
+6. **GitHub Pages.** Live, deploying from `publish` branch, folder `/docs`.

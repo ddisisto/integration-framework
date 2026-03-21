@@ -34,7 +34,7 @@ Canonical IDs for use across all section files. Use `@sec-*` for sections,
 - `sec-two-compression-systems` — Fixed weight geometry + dynamic context
 - `sec-channel-capacity` — Channel capacity and the projection bottleneck
 - `sec-compositional-novelty` — Compositional novelty from fixed geometry
-- `sec-enriching-degrading` — The enriching and degrading regimes
+- `sec-enriching-degrading` — Compressive novelty and the enrichment fraction
 - `sec-cot-icl` — CoT and ICL as steering strategies
 - `sec-predictions-ch3` — Predictions 6–7
 - `sec-autoregressive-limitations` — Limitations of the autoregressive account
