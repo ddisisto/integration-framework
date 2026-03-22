@@ -14,6 +14,7 @@ Chapters 5 (The Recursive Loop) and parts of Chapter 6 (Of Meaning) from the mai
 - **Attention economy as distortion measure ecology:** attention allocation as distortion measure selection
 - **Integration vs accumulation at ecological scale**
 - **IIT resonance:** noted convergence with Integrated Information Theory
+- **Surprisal leakage:** involuntary broadcast of prediction error as feedback channel; controllability hierarchy; adaptive suppression; the model asymmetry (perfect suppression by default)
 
 ## Predictions (moved from main paper)
 

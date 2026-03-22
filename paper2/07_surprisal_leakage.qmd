@@ -1,0 +1,57 @@
+# Surprisal Leakage and the Feedback Channel Ecology
+
+## The multimodal bottleneck
+
+Paper 1 establishes the projection bottleneck using @coupe_etal_2019's finding that human linguistic communication converges on approximately 39 bits per second across languages. But 39 bps captures only the lexical channel — one particularly tractable slice of what flows between minds. Face-to-face communication operates across multiple concurrent channels: prosody, facial expression, gesture, gaze, posture, timing, touch. Each carries information on distinct timescales and dynamic ranges, and they interact — a raised eyebrow during a pause changes the meaning of the silence.
+
+Even generous estimates of the total multimodal bandwidth do not close the gap with internal neural bandwidth by more than an order of magnitude or two. The bottleneck is structural, not an artefact of measuring only the verbal channel. But the *character* of the additional channels matters for the ecological argument in ways that the bandwidth number alone does not capture.
+
+## Surprisal as involuntary broadcast
+
+Humans leak their own prediction error. Widened eyes, intake of breath, prosodic shifts, pupil dilation, micro-expressions — these are real-time, largely involuntary transmissions of the receiver's surprisal back to the sender. In the framework's terms, this is a low-bandwidth but high-value backchannel for communicating the receiver's distortion measure: the sender learns what surprised the receiver, which is direct evidence about what the receiver expected, which is partial information about what the receiver's compression looks like.
+
+This backchannel operates below the level of deliberate communication. The receiver does not choose to broadcast their surprisal; the sender does not choose to read it. Both happen as a consequence of the biological substrate. The channel exists because the body is not a perfect encoder — internal states leak through outputs that were not designed for communication but have been co-opted for it across evolutionary time.
+
+The implications for understanding are significant. Much of what makes face-to-face communication effective is not the *forward* channel (speaker to listener) but the *return* channel (listener's reactions back to speaker). The speaker adjusts in real time — slowing down when the listener looks confused, skipping ahead when they nod, elaborating when surprise registers. This is closed-loop calibration of the sender's compression to the receiver's distortion measure, mediated by involuntary surprisal leakage.
+
+## A controllability hierarchy
+
+The backchannel signals vary dramatically in how controllable they are:
+
+**Near-involuntary.** Pupil dilation, micro-expressions, galvanic skin response, blushing. These broadcast internal state with minimal voluntary override. They are low-bandwidth individually but carry high-value information precisely because they are hard to fake — they are credible signals in the evolutionary signalling sense.
+
+**Semi-voluntary.** Prosody, posture, gaze direction, response timing, breathing patterns. These can be modulated with effort but have strong default behaviours. A speaker can control their tone of voice, but the default prosodic contour reflects genuine internal state. The effort required to override the default is itself informative — cognitive load manifests in the channels being controlled.
+
+**Voluntary.** Verbal content, deliberate gesture, constructed facial expressions. These are fully encoded — the sender chooses what to transmit. They carry the highest bandwidth but the lowest guaranteed authenticity.
+
+This hierarchy creates a natural credibility gradient. The hardest-to-control channels are the most reliable indicators of the sender's actual internal state. The easiest-to-control channels carry the most information but are the most susceptible to strategic manipulation. Effective communication relies on the coherence *across* levels — when the voluntary and involuntary channels agree, trust increases; when they diverge, the receiver detects something wrong, often without being able to articulate what.
+
+## Adaptive suppression and misrepresentation
+
+Suppressing or faking surprisal signals is adaptive exactly when information about one's internal model is exploitable by the other party. Poker, negotiation, social performance, deception — in each case, the transmitter has incentives to distort the signal about their own internal states.
+
+The cost of suppression is real. The cognitive load of lying is well-documented — it is essentially the computational cost of running a second encoder that overwrites the involuntary channel with a fabricated signal while simultaneously maintaining coherence across channels. Skilled deceivers manage this; most people manage it imperfectly, which is why deception detection (however unreliable in practice) is possible at all.
+
+In information-theoretic terms, this is an adversarial channel coding problem. The transmitter's objective is no longer to minimise distortion between their internal state and the receiver's reconstruction of it. It is to minimise distortion between a *fabricated* internal state and the receiver's reconstruction — while the receiver is simultaneously monitoring the involuntary channels for leakage from the *actual* internal state. The arms race between suppression and detection has shaped the evolution of both the leakage channels and the cognitive machinery for reading them.
+
+This connects to the broader ecological argument: communication systems evolve not just to transmit but to *credential* — to provide evidence about the reliability of what is being transmitted. The involuntary channels serve a credentialing function that the voluntary channels cannot replicate precisely because they are voluntary.
+
+## The model asymmetry
+
+LLMs have perfect suppression by default. There is no involuntary surprisal leakage channel. The model's logprobs are available if instrumented, but they are not *broadcast* — the receiver has to explicitly request them, and they arrive stripped of the temporal, multimodal, and contextual richness that characterises biological surprisal leakage.
+
+This is not merely a missing feature. It represents the absence of an entire class of feedback mechanism that biological communication relies on for calibration. Humans evolved with leaky channels that partially solved the distortion-measure-communication problem identified in Paper 1's alignment discussion. We can see when our interlocutor is confused, bored, surprised, engaged — and this involuntary signal does continuous, real-time work in aligning the sender's compression to the receiver's needs. We have built systems where this entire backchannel is structurally absent.
+
+The asymmetry runs in both directions. The model cannot read the user's involuntary signals (no access to facial expression, prosody, pupil dilation — even in voice interfaces, only a fraction of the available channels are captured). And the user cannot read the model's "involuntary" signals, because there are none — the model's internal surprisal is computed but not leaked. Both sides of the calibration loop that biological communication relies on are broken.
+
+This has implications for the alignment framing. Paper 1 argues that the binding constraint on alignment is feedback bandwidth, not feedback quality. The surprisal leakage analysis sharpens this: what is missing is not just bandwidth but a specific *kind* of bandwidth — involuntary, credible, real-time signal about internal states. Constructing artificial analogues (displaying model uncertainty, surfacing attention patterns, visualising internal confidence) is an attempt to rebuild what biological communication gets for free. Whether these constructed channels can substitute for evolved ones — whether they can achieve the same calibrating function without the credibility that involuntary leakage provides — is an open question with significant implications for how human-AI interaction develops.
+
+## Implications for the ecological argument
+
+The surprisal leakage framework connects to several threads in the ecological analysis:
+
+**Silent flattening detection.** If humans detect impoverished compression partly through involuntary channels (something feels off before it can be articulated), and model-generated text arrives stripped of these channels, then silent flattening may be harder to detect in model output than in human output. The involuntary credentialing signals that would flag shallow compression in a human interlocutor are absent.
+
+**Attention allocation.** The credibility gradient across channel controllability maps onto the attention economy: signals that are harder to fake command more attention precisely because they are more informative about the sender's actual internal state. As communication shifts toward channels where involuntary leakage is absent (text, generated content), the ecology loses a mechanism for discriminating between genuine integration and fluent accumulation.
+
+**The carrier transition.** As models become carriers of compressed knowledge (Paper 1's projection bottleneck), the absence of surprisal leakage means the carrier transition happens without the credentialing infrastructure that accompanied previous carrier transitions (oral to written, written to printed, printed to digital). Each previous transition lost some channels and gained others; the current transition is distinctive in eliminating the involuntary backchannel entirely.
