@@ -8,9 +8,9 @@ Ecological implications (feedback loops, silent flattening, surprisal leakage, c
 
 ## Status
 
-Paper 1 is tightened to Sections 1–4 + Conclusion. Appendix A written. Tagged v0.5. Renders cleanly as HTML + PDF. GitHub Pages live (deploying from `publish` branch).
+Paper 1 is tightened to Sections 1–4 + Conclusion. Appendix A written. Tagged v0.7. Renders cleanly as HTML + PDF. GitHub Pages live (deploying from `publish` branch).
 
-**Branching:** `main` is the working branch. `publish` tracks the latest released version (currently v0.5). Merge to `publish` when ready to update the live site.
+**Branching:** `main` is the working branch. `publish` tracks the latest released version (currently v0.7). Merge to `publish` when ready to update the live site.
 
 **Version injection:** `paper/_version.py` runs as a Quarto pre-render script, writing `git describe` output to `_version.yml` and `_version.tex`. Version appears in the preface (both formats) and PDF page footer.
 
@@ -97,6 +97,8 @@ These have no clear precedent in the literature. Present as contributions, not e
 3. ~~**Figures in §3.**~~ Done. Three figures from autoloop data.
 4. ~~**v0.3: Enrichment fraction reframe.**~~ Done.
 5. ~~**v0.5: Version injection, reviewer feedback, terminology fixes.**~~ Done.
-6. **Zenodo integration.** Link repo to Zenodo for DOI minting on tagged releases.
-7. **Outreach.** README rewritten as landing page. Discussion post drafted. First audience TBD.
-8. **Paper 2 development.** Surprisal leakage section drafted. Ecological argument to develop.
+6. ~~**v0.7: Mirostat lineage integration.**~~ Done. Three-regime prior art acknowledged (Holtzman, Basu/Mirostat, Meister, Nakaishi, Mikhaylovskiy). Predictions 1–2 reframed as partially established. Convergent evidence argument added to conclusion.
+7. **v0.8: Grounding circularity escape.** Make the distortion-measure decomposition explicit in §4 — model's measure (training-induced) vs task-specific measure, grounding as overlap. Notes in `drafts/v0.8-target-notes.md`.
+8. **Zenodo integration.** Link repo to Zenodo for DOI minting on tagged releases.
+9. **Outreach.** README rewritten as landing page. Discussion post drafted. First audience TBD.
+10. **Paper 2 development.** Surprisal leakage section drafted. Ecological argument to develop.
