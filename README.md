@@ -44,7 +44,7 @@ If we build systems that surface model surprisal as a communication signal — u
 
 The paper develops seven testable predictions, reframes the grounding problem as a rate-distortion question, and characterises alignment as a projection bottleneck between the receiver's distortion measure and the narrow feedback channels available to communicate it. Formal foundations (rate-distortion, statistical complexity, sequential coding) are in the appendix.
 
-This is a living document (currently v0.6-5-gacae9c6). Independent research — no affiliation, no funding, no product.
+This is a living document (currently v0.7-5-gacae9c6). Independent research — no affiliation, no funding, no product.
 
 **[Read the full paper →](https://ddisisto.github.io/integration-framework/integration.html)**
 
@@ -72,7 +72,7 @@ If you reference this work, please cite:
   title        = {Integration: Compression, Distortion, Novelty, and Meaning},
   year         = {2026},
   url          = {https://github.com/ddisisto/integration-framework},
-  note         = {Living document, v0.6-5-gacae9c6}
+  note         = {Living document, v0.7-5-gacae9c6}
 }
 ```
 
