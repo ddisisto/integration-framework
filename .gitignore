@@ -1,2 +1,4 @@
 .venv/
 .quarto/
+paper/_version.yml
+paper/_version.tex

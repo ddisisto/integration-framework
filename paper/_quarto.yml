@@ -1,8 +1,12 @@
 project:
   type: default
   output-dir: ../docs
+  pre-render: python _version.py
   render:
     - integration.qmd
+
+metadata-files:
+  - _version.yml
 
 format:
   html:
@@ -16,8 +20,17 @@ format:
     fontsize: 11pt
     number-sections: true
     include-in-header:
-      text: |
-        \usepackage{amsmath}
-        \usepackage{amssymb}
-        \usepackage{pgfpages}
-        \pgfpagesuselayout{2 on 1}[a4paper,landscape]
+      - _version.tex
+      - text: |
+          \usepackage{amsmath}
+          \usepackage{amssymb}
+          \usepackage{pgfpages}
+          \pgfpagesuselayout{2 on 1}[a4paper,landscape]
+          \usepackage{fancyhdr}
+          \pagestyle{fancy}
+          \fancyhf{}
+          \fancyhead[L]{\leftmark}
+          \fancyhead[R]{\thepage}
+          \fancyfoot[C]{\footnotesize\texttt{\version}}
+          \renewcommand{\headrulewidth}{0.4pt}
+          \renewcommand{\footrulewidth}{0.2pt}
