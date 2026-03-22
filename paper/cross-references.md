@@ -29,7 +29,7 @@ Canonical IDs for use across all section files. Use `@sec-*` for sections,
 - `sec-statistical-complexity` — Statistical complexity as measure of growth
 - `sec-ib-complementarity` — Contrast with the Information Bottleneck
 - `sec-emergence-thresholds` — Emergent capabilities as threshold-crossing
-- `sec-predictions-ch2` — Predictions 1–5
+- `sec-ib-implications` — Implications for internal structure (forward ref to predictions)
 
 ### Section 3
 - `sec-two-compression-systems` — Fixed weight geometry + dynamic context
@@ -37,12 +37,10 @@ Canonical IDs for use across all section files. Use `@sec-*` for sections,
 - `sec-compositional-novelty` — Compositional novelty from fixed geometry
 - `sec-enriching-degrading` — Compressive novelty and the enrichment fraction
 - `sec-cot-icl` — CoT and ICL as steering strategies
-- `sec-predictions-ch3` — Prediction 6
 - `sec-autoregressive-limitations` — Limitations of the autoregressive account
 
 ### Section 4
 - `sec-training` — How training builds the hierarchy
-- `sec-predictions-training` — Prediction 7
 
 ### Section 5
 - `sec-projection-bottleneck` — The projection bottleneck as substrate-independent constraint
@@ -51,24 +49,37 @@ Canonical IDs for use across all section files. Use `@sec-*` for sections,
 ### Section 6 (Conclusion)
 - `sec-thematic-spine` — Integration vs mere accumulation
 - `sec-distortion-alignment` — Alignment as distortion measure mismatch (novel)
-- `sec-consolidated-predictions` — Summary of all 7 predictions with testability ranking
+- `sec-predictions` — Predictions (included from `predictions.qmd`)
 - `sec-future-directions` — Ecological dynamics and measurement operationalisation
 
 ## Prediction IDs
 
-| ID | # | Prediction | Section |
-|----|---|-----------|---------|
-| `pred-complexity-depth` | 1 | Statistical complexity scales with depth (sublinear) | 2 |
-| `pred-capability-complexity` | 2 | Capability onset correlates with complexity thresholds | 2 |
-| `pred-accumulator` | 3 | Residual stream as measurable accumulator | 2 |
-| `pred-ib-complement` | 4 | IB compression and complexity growth are complementary | 2 |
-| `pred-training-shift` | 5 | Power-law dynamics; qualitative shift across training | 2 |
-| `pred-icl-failure` | 6 | ICL fails when regularity type absent from geometry | 3 |
-| `pred-dataset-distortion` | 7 | Dataset composition shapes representational structure | 4 |
+All predictions defined in `predictions.qmd` (single source of truth, included in conclusion).
+
+### Testable predictions
+| ID | Prediction |
+|----|-----------|
+| `pred-enrichment-decay` | Enrichment fraction decays in unconstrained generation |
+| `pred-temperature-enrichment` | Temperature–enrichment curve is non-monotonic |
+| `pred-scale-enrichment` | Larger models sustain enrichment longer |
+| `pred-surface-dominance` | Cheapest-compressed regularities dominate unconstrained output |
+
+### Theoretical commitments
+| ID | Prediction |
+|----|-----------|
+| `pred-complexity-depth` | Statistical complexity scales with depth (sublinear) |
+| `pred-capability-complexity` | Capability onset correlates with complexity thresholds |
+| `pred-accumulator` | Residual stream as measurable accumulator |
+| `pred-ib-complement` | IB compression and complexity growth are complementary |
+| `pred-training-shift` | Power-law dynamics; qualitative shift across training |
+| `pred-icl-failure` | ICL fails when regularity type absent from geometry |
+| `pred-dataset-distortion` | Dataset composition shapes representational structure |
 
 ### Predictions moved to Paper 2 (ecological dynamics)
-| `pred-ecological-erosion` | 9 | Top-down erosion in recursive training loops | paper2 |
-| `pred-critical-fraction` | 10 | Characterisable threshold for self-reinforcing degradation | paper2 |
+| ID | Prediction |
+|----|-----------|
+| `pred-ecological-erosion` | Top-down erosion in recursive training loops |
+| `pred-critical-fraction` | Characterisable threshold for self-reinforcing degradation |
 
 ## Citation conventions
 

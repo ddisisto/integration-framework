@@ -1,0 +1,42 @@
+## Predictions {#sec-predictions}
+
+The framework generates two classes of prediction. The first are testable via generation statistics and the model's own surprisal signal, using our experimental pipeline. These will be updated as results come in. The second concern internal representational structure and require probing tools beyond our current pipeline; these are stated as theoretical commitments the framework makes about what such probing should find.
+
+### Testable predictions {#sec-testable-predictions}
+
+| # | Prediction | Measurement | Status |
+|---|-----------|-------------|--------|
+| [1](#pred-enrichment-decay) | Enrichment fraction decays in unconstrained generation | Surprisal trajectory analysis | Untested |
+| [2](#pred-temperature-enrichment) | Temperature–enrichment curve is non-monotonic | Surprisal vs temperature sweep | Untested |
+| [3](#pred-scale-enrichment) | Larger models sustain enrichment longer | Cross-model generation comparison | Untested |
+| [4](#pred-surface-dominance) | Cheapest-compressed regularities dominate unconstrained output | Token/n-gram frequency analysis | Untested |
+
+: Testable predictions with current status. {#tbl-predictions}
+
+1. [**Enrichment fraction decays in unconstrained generation**]{#pred-enrichment-decay}. Generation without external input — unprompted, or after a short seed — should show declining enrichment fraction over the generation window, measurable via the model's own surprisal. Degenerate output has a characteristic signature: low, flat surprisal as the model settles into high-probability trajectories. Noise (from excessive temperature or degraded context) shows high but unstructured surprisal. Productive generation falls between these — variable surprisal with detectable structure. The three regimes should be empirically distinguishable from surprisal statistics alone.
+
+2. [**Temperature–enrichment curve is non-monotonic**]{#pred-temperature-enrichment}. The enrichment fraction as a function of sampling temperature should peak at intermediate values. Low temperature suppresses exploration, producing repetitive output with near-zero enrichment. High temperature overwhelms the model's compressed structure with noise. The productive range — where the model surfaces novel combinations of learned regularities — lies between these extremes. The prediction is that this is not a smooth trade-off but shows a distinguishable peak.
+
+3. [**Larger models sustain enrichment longer**]{#pred-scale-enrichment}. Within the same model family (e.g., SmolLM 135M, 360M, 1.7B), larger models should sustain productive enrichment fractions over longer generation windows before trajectory collapse. The richer weight geometry of a larger model encodes more compressive structure, providing more material for compositional novelty before the autoregressive loop exhausts the accessible regularities.
+
+4. [**Cheapest-compressed regularities dominate unconstrained output**]{#pred-surface-dominance}. Unprompted base model generation reveals what the model compressed most cheaply: high-frequency token co-occurrences, common syntactic frames, dominant distributional patterns. These are the regularities acquired earliest in training (@sec-training), and they should dominate generation when no prompt steers the model toward more expensive structure. This is measurable via token frequency, n-gram, and co-occurrence analysis of generated text, and testable by comparison with known training-order effects.
+
+### Theoretical commitments {#sec-theoretical-commitments}
+
+The framework also makes claims about internal representational structure. These require probing tools — intrinsic dimensionality estimation, representational similarity analysis, controlled ablation — beyond our current experimental pipeline. They are stated as commitments: what the framework predicts such probing should find.
+
+[**Statistical complexity scales with depth**]{#pred-complexity-depth}. Growth through the representational core (~80% of layers), with contraction in the final layers consistent with the projection bottleneck. Sublinear scaling as successive layers face diminishing marginal structural novelty in increasingly organised input. Measurable via proxy measures (intrinsic dimensionality, participation ratio) if not direct statistical complexity estimation.
+
+[**Capability-complexity correlation**]{#pred-capability-complexity}. Capability onset correlates with statistical complexity crossing identifiable thresholds at relevant layers — approximately constant across model sizes for a given capability. This is the framework's boldest claim and the one most in need of direct empirical test.
+
+[**Residual stream as accumulator**]{#pred-accumulator}. Statistical complexity grows faster with residual connections than without, because earlier organisations are preserved alongside later ones. The qualitative claim is well-supported by mechanistic interpretability; the quantitative comparison awaits controlled ablation.
+
+[**Complementarity with IB compression**]{#pred-ib-complement}. Layers showing high IB compression (reduced $I(X; T)$) nonetheless show growth in statistical complexity. Negative correlation would be evidence against the framework. If IB compression and statistical complexity growth traded off rather than complementing each other, the framework's central distinction between subtractive and generative processing would be undermined.
+
+[**Qualitative shift across training**]{#pred-training-shift}. (a) Statistical complexity growth across training checkpoints follows power-law dynamics. (b) Early-training dimensions encode surface statistical regularities; late-training dimensions encode higher-order compositional structure. This is a claim about the *type* of growth, not merely its tempo — and it is supported by convergent evidence from grokking [@power_etal_2022; @nanda_etal_2023], induction head formation [@olsson_etal_2022], and pre-training dynamics showing that linguistic features are learned in a characteristic order: surface features first, syntactic next, semantic last.
+
+[**In-context learning failure mode**]{#pred-icl-failure}. In-context learning should fail when the required regularity *type* is absent from the weight geometry — when the task demands a pattern the model has never encountered, even abstractly. This is distinct from failure on a specific unseen instance, which compositional generalisation can handle.
+
+[**Dataset composition shapes the distortion measure, not just coverage**]{#pred-dataset-distortion}. Models trained on differently composed datasets (same total tokens, different domain proportions) should develop measurably different compression hierarchies — different statistical complexity profiles across layers — even when evaluated on the same held-out distribution. The prediction is not merely that performance differs (which is known) but that the *internal representational structure* differs in ways that track the training distribution's implicit priorities.
+
+These commitments share a common dependency: the operationalisation of statistical complexity in high-dimensional continuous representations. The framework is explicit that direct estimation of $C_\mu$ in transformer hidden states is not yet feasible (@sec-statistical-complexity, Appendix @sec-estimation-challenges), and the claims above are stated in terms of proxy measures with explicit acknowledgment that the proxy relationship is imperfect. Closing this measurement gap is the most important near-term challenge the framework creates for itself.

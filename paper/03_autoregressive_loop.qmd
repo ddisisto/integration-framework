@@ -97,15 +97,9 @@ But CoT is not merely extended computation. It is a *steering strategy* for the 
 
 In-context examples are a seeding strategy: they position the loop's starting point where a productive enrichment fraction is likely to be sustained for the task at hand. This is consistent with the finding that in-context learning is associated with specific computational structures — induction heads — that emerge during training and implement pattern-matching across the context window [@olsson_etal_2022]. The framework adds that these structures are performing context-driven navigation of the weight geometry, using in-context patterns to determine which compressed regularities should dominate the current trajectory.
 
-The predicted limitation ([Prediction 6](#pred-icl-failure)): in-context learning should fail when the required regularity *type* is absent from the weight geometry — not a specific unseen pattern (compositional generalisation handles those), but an absent type.
+The predicted limitation (@sec-theoretical-commitments): in-context learning should fail when the required regularity *type* is absent from the weight geometry — not a specific unseen pattern (compositional generalisation handles those), but an absent type.
 
 The unifying claim: CoT, in-context learning, and prompting strategies generally are instances of a single dynamic — sustaining the enrichment fraction within the productive range by managing what enters context. The model's capacity is fixed. The question is always whether the accumulating context is opening representational structure or closing it down.
-
-## Predictions {#sec-predictions-ch3}
-
-The autoregressive account generates one specific prediction:
-
-6. [**In-context learning failure mode**]{#pred-icl-failure}. In-context learning should fail when the required regularity *type* is absent from the weight geometry — when the task demands a pattern the model has never encountered, even abstractly. This is distinct from failure on a specific unseen instance, which compositional generalisation can handle. Empirically distinguishing absent-type failure from compositional-generalisation failure — perhaps by controlling for structural similarity between demonstration patterns and training distribution — would be a productive test of the framework.
 
 ## Limitations {#sec-autoregressive-limitations}
 

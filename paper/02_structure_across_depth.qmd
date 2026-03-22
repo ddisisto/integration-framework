@@ -52,18 +52,6 @@ Small-scale settings provide the clearest evidence for the principle. @nanda_eta
 
 The empirical scaling laws themselves [@kaplan_etal_2020] — smooth power-law relationships between compute, data, parameters, and loss — are consistent with this picture: loss reduction reflects progressive acquisition of compressive structure, with diminishing returns as the easiest regularities are captured first. Scaling these analyses to large autoregressive models remains an open challenge. Most detailed representational evidence comes from encoder models or small-scale settings. The extrapolation to the systems the framework is primarily about — large decoder-only language models — should be acknowledged as a gap that the framework motivates closing, not one it has already closed.
 
-## Predictions {#sec-predictions-ch2}
+## Implications for internal structure
 
-The framework generates five specific predictions from the preceding sections:
-
-1. [**Statistical complexity scales with depth**]{#pred-complexity-depth}. Growth through the representational core (~80% of layers), with contraction in the final layers consistent with the projection bottleneck. Sublinear scaling as successive layers face diminishing marginal structural novelty in increasingly organised input. Measurable via proxy measures (intrinsic dimensionality, participation ratio) if not direct statistical complexity estimation.
-
-2. [**Capability-complexity correlation**]{#pred-capability-complexity}. Capability onset correlates with statistical complexity crossing identifiable thresholds at relevant layers — approximately constant across model sizes for a given capability. This is the framework's boldest prediction and the one most in need of direct empirical test.
-
-3. [**Residual stream as accumulator**]{#pred-accumulator}. Statistical complexity grows faster with residual connections than without, because earlier organisations are preserved alongside later ones. The qualitative claim is well-supported by mechanistic interpretability; the quantitative comparison awaits controlled ablation.
-
-4. [**Complementarity with IB compression**]{#pred-ib-complement}. Layers showing high IB compression (reduced $I(X; T)$) nonetheless show growth in statistical complexity. Negative correlation would be evidence against the framework.
-
-5. [**Qualitative shift across training**]{#pred-training-shift}. (a) Statistical complexity growth across training checkpoints follows power-law dynamics. (b) Early-training dimensions encode surface statistical regularities; late-training dimensions encode higher-order compositional structure. This is a prediction about the *type* of growth, not merely its tempo — and it is supported by convergent evidence from grokking [@power_etal_2022; @nanda_etal_2023], induction head formation [@olsson_etal_2022], and pre-training dynamics showing that linguistic features are learned in a characteristic order: surface features first, syntactic next, semantic last.
-
-These predictions are not trivially satisfied. Several could fail in ways that would require substantial revision of the framework. Prediction 4 in particular — if IB compression and statistical complexity growth traded off rather than complementing each other, the framework's central distinction between subtractive and generative processing would be undermined.
+The account above generates specific claims about what probing of transformer internals should find — statistical complexity scaling with depth, capability onset at complexity thresholds, complementarity between IB compression and representational organisation. These are stated in full in @sec-theoretical-commitments. Several could fail in ways that would require substantial revision of the framework; the [IB complementarity claim](#pred-ib-complement) in particular would, if falsified, undermine the central distinction between subtractive and generative processing.

@@ -18,25 +18,7 @@ The difficulty of closing this gap is itself a projection bottleneck problem. Th
 
 This creates a measurable asymmetry. The model's surprisal provides a direct, token-level signal for enrichment against its own distortion measure. No comparable signal exists on the receiver's side — the receiver's sense of whether they are being enriched is richer, slower, and communicated only through the narrow feedback channels already described. The alignment problem at the token level is the gap between these two signals: a high enrichment fraction by the model's measure may correspond to degeneration by the receiver's.
 
-## Consolidated predictions {#sec-consolidated-predictions}
-
-The framework generates testable predictions, stated in full where they arise and summarised here.
-
-| # | Prediction | Section | Testability | Status |
-|---|-----------|---------|-------------|--------|
-| [1](#pred-complexity-depth) | Statistical complexity scales with depth — sublinear growth through the representational core, contraction in final layers | §2 | Probing existing models | Partially supported |
-| [2](#pred-capability-complexity) | Capability onset correlates with statistical complexity crossing identifiable thresholds | §2 | Targeted experiments | Untested |
-| [3](#pred-accumulator) | Residual stream functions as measurable accumulator of statistical complexity | §2 | Probing existing models | Partially supported |
-| [4](#pred-ib-complement) | IB compression and statistical complexity growth complement rather than trade off | §2 | Probing existing models | Untested |
-| [5](#pred-training-shift) | Statistical complexity growth across training follows power-law dynamics with qualitative shift | §2 | Controlled comparisons across training stages | Partially supported |
-| [6](#pred-icl-failure) | In-context learning fails when the required regularity type is absent from the weight geometry | §3 | Controlled comparisons across models | Untested |
-| [7](#pred-dataset-distortion) | Dataset composition shapes internal representational structure, not just performance | §4 | Controlled comparisons across data mixtures | Partially supported |
-
-: Consolidated predictions with current empirical status. {#tbl-predictions}
-
-These predictions are not trivially satisfied. Several could fail in ways that would require substantial revision of the framework. Prediction 4 in particular — if IB compression and statistical complexity growth traded off rather than complementing each other, the framework's central distinction between subtractive and generative processing would be undermined.
-
-The predictions share a common dependency: the operationalisation of statistical complexity in high-dimensional continuous representations. The framework is explicit that direct estimation of $C_\mu$ in transformer hidden states is not yet feasible (@sec-statistical-complexity, Appendix @sec-estimation-challenges), and the predictions are stated in terms of proxy measures — intrinsic dimensionality, participation ratio, representational similarity — with explicit acknowledgment that the proxy relationship is imperfect. Closing this measurement gap is the most important near-term challenge the framework creates for itself.
+{{< include predictions.qmd >}}
 
 ## Future directions {#sec-future-directions}
 

@@ -24,10 +24,5 @@ The scaling laws [@kaplan_etal_2020] describe the rate at which compressive stru
 
 Surface-level regularities — frequent token co-occurrences, common syntactic frames — are high-redundancy and cheap to encode. They are captured first, and they dominate early training. Higher-order regularities — semantic compositionality, cross-domain analogies, inferential structure — are lower-redundancy and more expensive: they require more parameters to represent and more data to identify. They are captured later.
 
-This ordering is not imposed by curriculum. It falls out of the optimisation: gradient descent captures the regularities that most reduce loss per unit of parameter budget, which are the most redundant — the most compressible — first. The characteristic learning order documented empirically (surface features, then syntax, then semantics; [Prediction 5](#pred-training-shift)) is what the framework predicts: the compression hierarchy is built from the bottom up because the bottom is cheapest.
+This ordering is not imposed by curriculum. It falls out of the optimisation: gradient descent captures the regularities that most reduce loss per unit of parameter budget, which are the most redundant — the most compressible — first. The characteristic learning order documented empirically (surface features, then syntax, then semantics) is what the framework predicts: the compression hierarchy is built from the bottom up because the bottom is cheapest.
 
-## Prediction {#sec-predictions-training}
-
-The framework generates one additional prediction from this account:
-
-7. [**Dataset composition shapes the distortion measure, not just coverage**]{#pred-dataset-distortion}. Models trained on differently composed datasets (same total tokens, different domain proportions) should develop measurably different compression hierarchies — different statistical complexity profiles across layers — even when evaluated on the same held-out distribution. The prediction is not merely that performance differs (which is known) but that the *internal representational structure* differs in ways that track the training distribution's implicit priorities. This is testable via representational similarity analysis across models trained on controlled data mixtures.

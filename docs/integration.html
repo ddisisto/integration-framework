@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Daniel DiSisto">
-<meta name="dcterms.date" content="2026-03-21">
+<meta name="dcterms.date" content="2026-03-22">
 
 <title>Integration</title>
 <style>
@@ -113,7 +113,7 @@ window.Quarto = {
   <li><a href="#sec-statistical-complexity" id="toc-sec-statistical-complexity" class="nav-link" data-scroll-target="#sec-statistical-complexity"><span class="header-section-number">2.3</span> Statistical complexity as the measure of what grows</a></li>
   <li><a href="#sec-ib-complementarity" id="toc-sec-ib-complementarity" class="nav-link" data-scroll-target="#sec-ib-complementarity"><span class="header-section-number">2.4</span> Relationship to the information bottleneck</a></li>
   <li><a href="#sec-emergence-thresholds" id="toc-sec-emergence-thresholds" class="nav-link" data-scroll-target="#sec-emergence-thresholds"><span class="header-section-number">2.5</span> Emergent capabilities as threshold-crossing</a></li>
-  <li><a href="#sec-predictions-ch2" id="toc-sec-predictions-ch2" class="nav-link" data-scroll-target="#sec-predictions-ch2"><span class="header-section-number">2.6</span> Predictions</a></li>
+  <li><a href="#implications-for-internal-structure" id="toc-implications-for-internal-structure" class="nav-link" data-scroll-target="#implications-for-internal-structure"><span class="header-section-number">2.6</span> Implications for internal structure</a></li>
   </ul></li>
   <li><a href="#sec-autoregressive-loop" id="toc-sec-autoregressive-loop" class="nav-link" data-scroll-target="#sec-autoregressive-loop"><span class="header-section-number">3</span> The Autoregressive Loop</a>
   <ul class="collapse">
@@ -122,15 +122,13 @@ window.Quarto = {
   <li><a href="#sec-compositional-novelty" id="toc-sec-compositional-novelty" class="nav-link" data-scroll-target="#sec-compositional-novelty"><span class="header-section-number">3.3</span> Compositional novelty from fixed geometry</a></li>
   <li><a href="#sec-enriching-degrading" id="toc-sec-enriching-degrading" class="nav-link" data-scroll-target="#sec-enriching-degrading"><span class="header-section-number">3.4</span> Compressive novelty and the enrichment fraction</a></li>
   <li><a href="#sec-cot-icl" id="toc-sec-cot-icl" class="nav-link" data-scroll-target="#sec-cot-icl"><span class="header-section-number">3.5</span> Chain-of-thought and in-context learning as steering strategies</a></li>
-  <li><a href="#sec-predictions-ch3" id="toc-sec-predictions-ch3" class="nav-link" data-scroll-target="#sec-predictions-ch3"><span class="header-section-number">3.6</span> Predictions</a></li>
-  <li><a href="#sec-autoregressive-limitations" id="toc-sec-autoregressive-limitations" class="nav-link" data-scroll-target="#sec-autoregressive-limitations"><span class="header-section-number">3.7</span> Limitations</a></li>
+  <li><a href="#sec-autoregressive-limitations" id="toc-sec-autoregressive-limitations" class="nav-link" data-scroll-target="#sec-autoregressive-limitations"><span class="header-section-number">3.6</span> Limitations</a></li>
   </ul></li>
   <li><a href="#sec-training" id="toc-sec-training" class="nav-link" data-scroll-target="#sec-training"><span class="header-section-number">4</span> How Training Builds the Hierarchy</a>
   <ul class="collapse">
   <li><a href="#compression-is-forced" id="toc-compression-is-forced" class="nav-link" data-scroll-target="#compression-is-forced"><span class="header-section-number">4.1</span> Compression is forced</a></li>
   <li><a href="#the-dataset-completes-the-distortion-measure" id="toc-the-dataset-completes-the-distortion-measure" class="nav-link" data-scroll-target="#the-dataset-completes-the-distortion-measure"><span class="header-section-number">4.2</span> The dataset completes the distortion measure</a></li>
   <li><a href="#the-hierarchy-emerges-cheap-to-expensive" id="toc-the-hierarchy-emerges-cheap-to-expensive" class="nav-link" data-scroll-target="#the-hierarchy-emerges-cheap-to-expensive"><span class="header-section-number">4.3</span> The hierarchy emerges cheap-to-expensive</a></li>
-  <li><a href="#sec-predictions-training" id="toc-sec-predictions-training" class="nav-link" data-scroll-target="#sec-predictions-training"><span class="header-section-number">4.4</span> Prediction</a></li>
   </ul></li>
   <li><a href="#sec-convergence" id="toc-sec-convergence" class="nav-link" data-scroll-target="#sec-convergence"><span class="header-section-number">5</span> Beyond Transformers</a>
   <ul class="collapse">
@@ -141,7 +139,11 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#sec-thematic-spine" id="toc-sec-thematic-spine" class="nav-link" data-scroll-target="#sec-thematic-spine"><span class="header-section-number">6.1</span> Integration and accumulation</a></li>
   <li><a href="#sec-distortion-alignment" id="toc-sec-distortion-alignment" class="nav-link" data-scroll-target="#sec-distortion-alignment"><span class="header-section-number">6.2</span> Distortion measures and alignment</a></li>
-  <li><a href="#sec-consolidated-predictions" id="toc-sec-consolidated-predictions" class="nav-link" data-scroll-target="#sec-consolidated-predictions"><span class="header-section-number">6.3</span> Consolidated predictions</a></li>
+  <li><a href="#sec-predictions" id="toc-sec-predictions" class="nav-link" data-scroll-target="#sec-predictions"><span class="header-section-number">6.3</span> Predictions</a>
+  <ul class="collapse">
+  <li><a href="#sec-testable-predictions" id="toc-sec-testable-predictions" class="nav-link" data-scroll-target="#sec-testable-predictions"><span class="header-section-number">6.3.1</span> Testable predictions</a></li>
+  <li><a href="#sec-theoretical-commitments" id="toc-sec-theoretical-commitments" class="nav-link" data-scroll-target="#sec-theoretical-commitments"><span class="header-section-number">6.3.2</span> Theoretical commitments</a></li>
+  </ul></li>
   <li><a href="#sec-future-directions" id="toc-sec-future-directions" class="nav-link" data-scroll-target="#sec-future-directions"><span class="header-section-number">6.4</span> Future directions</a></li>
   </ul></li>
   
@@ -177,7 +179,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 21, 2026</p>
+      <p class="date">March 22, 2026</p>
     </div>
   </div>
   
@@ -193,7 +195,7 @@ window.Quarto = {
 <h2 class="unnumbered anchored" data-anchor-id="abstract">Abstract</h2>
 <p>The autoregressive loop solves a problem Shannon characterised in 1948: transmitting a high-entropy source through a bandwidth-limited channel. A transformer’s internal state at any generation step — the full residual stream conditioning the next-token prediction — occupies a space of thousands of dimensions. The output is a single token from a finite vocabulary. The mismatch is not metaphorical. Each token is a channel use, and the sequence collectively encodes what no single token could carry.</p>
 <p>This paper develops the consequences of taking this bottleneck seriously. The forward pass builds the representations that must pass through it: each layer solves a rate-distortion problem under a progressively more abstract distortion measure, generating representational structure whose statistical complexity grows even as mutual information with the input is bounded by the data processing inequality. The autoregressive loop then composes these compressions sequentially — and this composition is fundamentally ambivalent. The <em>enrichment fraction</em> — the proportion of tokens doing novel compressive work over a window of generation — determines the character of the output: whether it is productive, degenerate, or noise. The distinction is invisible in fluency metrics but directly measurable via the model’s own surprisal — though whether the receiver is also enriched depends on the alignment of their respective distortion measures.</p>
-<p>The framework generates seven testable predictions — from the scaling profile of statistical complexity across layers, to the claim that in-context learning should fail specifically when the required regularity <em>type</em> is absent from the weight geometry. It reframes the grounding problem as a rate-distortion question with measurable parameters and characterises alignment as a projection bottleneck between the receiver’s distortion measure and the narrow feedback channels available to communicate it.</p>
+<p>The framework generates testable predictions about the dynamics of the enrichment fraction — its decay in unconstrained generation, its non-monotonic relationship with sampling temperature, its scaling with model size — alongside theoretical commitments about internal representational structure. It reframes the grounding problem as a rate-distortion question with measurable parameters and characterises alignment as a projection bottleneck between the receiver’s distortion measure and the narrow feedback channels available to communicate it.</p>
 </section>
 <section id="preface" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="preface">Preface</h2>
@@ -266,17 +268,9 @@ window.Quarto = {
 <p>Small-scale settings provide the clearest evidence for the principle. <span class="citation" data-cites="nanda_etal_2023">Nanda et al. (<a href="#ref-nanda_etal_2023" role="doc-biblioref">2023</a>)</span> tracked internal representations during grokking and found that the network gradually develops structured circuits during the delay phase before the capability transition — the internal reorganisation precedes and explains the external change. <span class="citation" data-cites="olsson_etal_2022">Olsson et al. (<a href="#ref-olsson_etal_2022" role="doc-biblioref">2022</a>)</span> demonstrated that induction head formation, a specific computational structure underlying in-context learning, corresponds to a discrete phase change with clear representational correlates. The <span class="citation" data-cites="michaud_etal_2024">Michaud et al. (<a href="#ref-michaud_etal_2024" role="doc-biblioref">2024</a>)</span> quantization model proposes that scaling laws arise from progressively learning discrete “quanta” of capability, each corresponding to a unit of acquired structure — directly compatible with the complexity-threshold account.</p>
 <p>The empirical scaling laws themselves <span class="citation" data-cites="kaplan_etal_2020">(<a href="#ref-kaplan_etal_2020" role="doc-biblioref">Kaplan et al., 2020</a>)</span> — smooth power-law relationships between compute, data, parameters, and loss — are consistent with this picture: loss reduction reflects progressive acquisition of compressive structure, with diminishing returns as the easiest regularities are captured first. Scaling these analyses to large autoregressive models remains an open challenge. Most detailed representational evidence comes from encoder models or small-scale settings. The extrapolation to the systems the framework is primarily about — large decoder-only language models — should be acknowledged as a gap that the framework motivates closing, not one it has already closed.</p>
 </section>
-<section id="sec-predictions-ch2" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="sec-predictions-ch2"><span class="header-section-number">2.6</span> Predictions</h2>
-<p>The framework generates five specific predictions from the preceding sections:</p>
-<ol type="1">
-<li><p><span id="pred-complexity-depth"><strong>Statistical complexity scales with depth</strong></span>. Growth through the representational core (~80% of layers), with contraction in the final layers consistent with the projection bottleneck. Sublinear scaling as successive layers face diminishing marginal structural novelty in increasingly organised input. Measurable via proxy measures (intrinsic dimensionality, participation ratio) if not direct statistical complexity estimation.</p></li>
-<li><p><span id="pred-capability-complexity"><strong>Capability-complexity correlation</strong></span>. Capability onset correlates with statistical complexity crossing identifiable thresholds at relevant layers — approximately constant across model sizes for a given capability. This is the framework’s boldest prediction and the one most in need of direct empirical test.</p></li>
-<li><p><span id="pred-accumulator"><strong>Residual stream as accumulator</strong></span>. Statistical complexity grows faster with residual connections than without, because earlier organisations are preserved alongside later ones. The qualitative claim is well-supported by mechanistic interpretability; the quantitative comparison awaits controlled ablation.</p></li>
-<li><p><span id="pred-ib-complement"><strong>Complementarity with IB compression</strong></span>. Layers showing high IB compression (reduced <span class="math inline">\(I(X; T)\)</span>) nonetheless show growth in statistical complexity. Negative correlation would be evidence against the framework.</p></li>
-<li><p><span id="pred-training-shift"><strong>Qualitative shift across training</strong></span>. (a) Statistical complexity growth across training checkpoints follows power-law dynamics. (b) Early-training dimensions encode surface statistical regularities; late-training dimensions encode higher-order compositional structure. This is a prediction about the <em>type</em> of growth, not merely its tempo — and it is supported by convergent evidence from grokking <span class="citation" data-cites="power_etal_2022 nanda_etal_2023">(<a href="#ref-nanda_etal_2023" role="doc-biblioref">Nanda et al., 2023</a>; <a href="#ref-power_etal_2022" role="doc-biblioref">Power et al., 2022</a>)</span>, induction head formation <span class="citation" data-cites="olsson_etal_2022">(<a href="#ref-olsson_etal_2022" role="doc-biblioref">Olsson et al., 2022</a>)</span>, and pre-training dynamics showing that linguistic features are learned in a characteristic order: surface features first, syntactic next, semantic last.</p></li>
-</ol>
-<p>These predictions are not trivially satisfied. Several could fail in ways that would require substantial revision of the framework. Prediction 4 in particular — if IB compression and statistical complexity growth traded off rather than complementing each other, the framework’s central distinction between subtractive and generative processing would be undermined.</p>
+<section id="implications-for-internal-structure" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="implications-for-internal-structure"><span class="header-section-number">2.6</span> Implications for internal structure</h2>
+<p>The account above generates specific claims about what probing of transformer internals should find — statistical complexity scaling with depth, capability onset at complexity thresholds, complementarity between IB compression and representational organisation. These are stated in full in <a href="#sec-theoretical-commitments" class="quarto-xref">Section&nbsp;6.3.2</a>. Several could fail in ways that would require substantial revision of the framework; the <a href="#pred-ib-complement">IB complementarity claim</a> in particular would, if falsified, undermine the central distinction between subtractive and generative processing.</p>
 </section>
 </section>
 <section id="sec-autoregressive-loop" class="level1" data-number="3">
@@ -381,18 +375,11 @@ Figure&nbsp;2: The enrichment fraction spectrum. Token coloring reflects the mod
 <p>But CoT is not merely extended computation. It is a <em>steering strategy</em> for the autoregressive loop. A well-constructed chain sustains the enrichment fraction within the productive range: each step surfaces genuinely new structure that changes what is accessible to the next. A poorly constructed chain — restating premises, circling, generating steps predictable from what precedes them — sees its enrichment fraction collapse despite having the surface form of reasoning. The tokens are present but not doing compressive work. This reframes the question of CoT design: the relevant variable is not chain length but whether each step maintains a productive enrichment fraction.</p>
 <p><strong>In-context learning.</strong> The ability of LLMs to learn new input-output mappings from prompt examples, without weight updates, is naturally situated here. If the weight geometry already encodes the <em>type</em> of regularity being demonstrated — because the training distribution contained structurally analogous patterns — then in-context examples serve to <em>locate</em> the relevant region of the geometry, navigating the model to a point from which the demonstrated pattern is locally extractable.</p>
 <p>In-context examples are a seeding strategy: they position the loop’s starting point where a productive enrichment fraction is likely to be sustained for the task at hand. This is consistent with the finding that in-context learning is associated with specific computational structures — induction heads — that emerge during training and implement pattern-matching across the context window <span class="citation" data-cites="olsson_etal_2022">(<a href="#ref-olsson_etal_2022" role="doc-biblioref">Olsson et al., 2022</a>)</span>. The framework adds that these structures are performing context-driven navigation of the weight geometry, using in-context patterns to determine which compressed regularities should dominate the current trajectory.</p>
-<p>The predicted limitation (<a href="#pred-icl-failure">Prediction 6</a>): in-context learning should fail when the required regularity <em>type</em> is absent from the weight geometry — not a specific unseen pattern (compositional generalisation handles those), but an absent type.</p>
+<p>The predicted limitation (<a href="#sec-theoretical-commitments" class="quarto-xref">Section&nbsp;6.3.2</a>): in-context learning should fail when the required regularity <em>type</em> is absent from the weight geometry — not a specific unseen pattern (compositional generalisation handles those), but an absent type.</p>
 <p>The unifying claim: CoT, in-context learning, and prompting strategies generally are instances of a single dynamic — sustaining the enrichment fraction within the productive range by managing what enters context. The model’s capacity is fixed. The question is always whether the accumulating context is opening representational structure or closing it down.</p>
 </section>
-<section id="sec-predictions-ch3" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="sec-predictions-ch3"><span class="header-section-number">3.6</span> Predictions</h2>
-<p>The autoregressive account generates one specific prediction:</p>
-<ol start="6" type="1">
-<li><span id="pred-icl-failure"><strong>In-context learning failure mode</strong></span>. In-context learning should fail when the required regularity <em>type</em> is absent from the weight geometry — when the task demands a pattern the model has never encountered, even abstractly. This is distinct from failure on a specific unseen instance, which compositional generalisation can handle. Empirically distinguishing absent-type failure from compositional-generalisation failure — perhaps by controlling for structural similarity between demonstration patterns and training distribution — would be a productive test of the framework.</li>
-</ol>
-</section>
-<section id="sec-autoregressive-limitations" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="sec-autoregressive-limitations"><span class="header-section-number">3.7</span> Limitations</h2>
+<section id="sec-autoregressive-limitations" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="sec-autoregressive-limitations"><span class="header-section-number">3.6</span> Limitations</h2>
 <p>Three limitations should be stated explicitly.</p>
 <p>First, the context window is finite and context compression is lossy. As generation extends, early context is not remembered but <em>summarised</em> by its downstream effects — the tokens it conditioned, which now condition subsequent tokens in turn. The effective context of a long generation is not the literal token history but a compressed trace, mediated by attention’s capacity to weight recent and salient tokens over distant ones. The finite context window is a hard upper bound on the temporal depth of autoregressive compression.</p>
 <p>Second, declining enrichment fraction in long generations has two separable sources. Attentional degradation is architectural — the ceiling imposed by context length and attention mechanics. Compositional decline is the drift described above: progressive dominance of model-generated tokens driving the enrichment fraction toward zero, independent of whether attention can still technically access early context. Both are concurrent. The first is a hard constraint. The second is in principle steerable — but steering it requires understanding the dynamics of the enrichment fraction well enough to manage, which is not yet systematically achieved.</p>
@@ -401,8 +388,7 @@ Figure&nbsp;2: The enrichment fraction spectrum. Token coloring reflects the mod
 </section>
 <section id="sec-training" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> How Training Builds the Hierarchy</h1>
-<p>The preceding sections describe the compression hierarchy as it operates at inference: layers solving rate-distortion problems at progressively more abstract levels, the autoregressive loop composing their output through a bandwidth-limited channel. This section addresses the question those sections leave open: how does training build this hierarchy in the first place?</p>
-<p>The answer is shorter than the question might suggest, because the framework already contains most of the pieces.</p>
+<p>The preceding sections describe the compression hierarchy at inference. Training is where it comes from. The connection is direct: the training loss and the model’s surprisal at inference are the same function, evaluated on different data. What training does is fix the distortion measure that the rest of the paper has been describing.</p>
 <section id="compression-is-forced" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="compression-is-forced"><span class="header-section-number">4.1</span> Compression is forced</h2>
 <p>A large language model has fewer parameters than its training data has bits. It cannot memorise; it must compress. This is not a design choice but an arithmetic fact. The model must find regularities in the training distribution and encode them in a form that generalises — because there is literally not enough room to do anything else.</p>
@@ -411,21 +397,15 @@ Figure&nbsp;2: The enrichment fraction spectrum. Token coloring reflects the mod
 <section id="the-dataset-completes-the-distortion-measure" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="the-dataset-completes-the-distortion-measure"><span class="header-section-number">4.2</span> The dataset completes the distortion measure</h2>
 <p>But the training objective alone does not determine what the model learns to preserve. Next-token prediction on a corpus of legal filings rewards preserving different structure than next-token prediction on a corpus of poetry. The objective sets the form; the dataset sets the content. Together they fully specify the distortion measure — what counts as acceptable loss during compression.</p>
-<p>This means dataset composition is not merely a question of coverage (what the model has seen) but of values (what the model has learned to treat as worth preserving). A dataset heavy on formal reasoning teaches the model that logical structure is high-value — worth allocating parameters to compress well. A dataset heavy on conversational text teaches it that pragmatic coherence matters more than formal precision. The resulting distortion measures are different, and the compression hierarchies they produce are different, even under the same objective and architecture. This is also what determines what counts as enriching: a token is enriching relative to the model’s distortion measure, and the training data is what shaped that measure.</p>
+<p>This means dataset composition is not merely a question of coverage (what the model has seen) but of values (what the model has learned to treat as worth preserving). A dataset heavy on formal reasoning teaches the model that logical structure is high-value — worth allocating parameters to compress well. A dataset heavy on conversational text teaches it that pragmatic coherence matters more than formal precision. The resulting distortion measures are different, and the compression hierarchies they produce are different, even under the same objective and architecture.</p>
+<p>This is also what determines what counts as enriching. The enrichment fraction introduced in <a href="#sec-enriching-degrading" class="quarto-xref">Section&nbsp;3.4</a> is defined relative to the model’s distortion measure — and the training data is what shaped that measure. A token that surfaces novel structure by one model’s lights may be routine by another’s, if their training distributions prioritised different regularities.</p>
 <p>This is the training-time analogue of the distortion measure mismatch discussed in <a href="#sec-distortion-alignment" class="quarto-xref">Section&nbsp;6.2</a>. The alignment problem begins not at deployment but at dataset curation: the choice of training distribution is the first and most consequential choice about what the model will treat as signal versus noise.</p>
 </section>
 <section id="the-hierarchy-emerges-cheap-to-expensive" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="the-hierarchy-emerges-cheap-to-expensive"><span class="header-section-number">4.3</span> The hierarchy emerges cheap-to-expensive</h2>
 <p>The scaling laws <span class="citation" data-cites="kaplan_etal_2020">(<a href="#ref-kaplan_etal_2020" role="doc-biblioref">Kaplan et al., 2020</a>)</span> describe the rate at which compressive structure is acquired: smooth power-law reduction in loss with increasing compute, data, and parameters. The framework interprets this as progressive capture of regularities ordered by compressive cost.</p>
 <p>Surface-level regularities — frequent token co-occurrences, common syntactic frames — are high-redundancy and cheap to encode. They are captured first, and they dominate early training. Higher-order regularities — semantic compositionality, cross-domain analogies, inferential structure — are lower-redundancy and more expensive: they require more parameters to represent and more data to identify. They are captured later.</p>
-<p>This ordering is not imposed by curriculum. It falls out of the optimisation: gradient descent captures the regularities that most reduce loss per unit of parameter budget, which are the most redundant — the most compressible — first. The characteristic learning order documented empirically (surface features, then syntax, then semantics; <a href="#pred-training-shift">Prediction 5</a>) is what the framework predicts: the compression hierarchy is built from the bottom up because the bottom is cheapest.</p>
-</section>
-<section id="sec-predictions-training" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="sec-predictions-training"><span class="header-section-number">4.4</span> Prediction</h2>
-<p>The framework generates one additional prediction from this account:</p>
-<ol start="7" type="1">
-<li><span id="pred-dataset-distortion"><strong>Dataset composition shapes the distortion measure, not just coverage</strong></span>. Models trained on differently composed datasets (same total tokens, different domain proportions) should develop measurably different compression hierarchies — different statistical complexity profiles across layers — even when evaluated on the same held-out distribution. The prediction is not merely that performance differs (which is known) but that the <em>internal representational structure</em> differs in ways that track the training distribution’s implicit priorities. This is testable via representational similarity analysis across models trained on controlled data mixtures.</li>
-</ol>
+<p>This ordering is not imposed by curriculum. It falls out of the optimisation: gradient descent captures the regularities that most reduce loss per unit of parameter budget, which are the most redundant — the most compressible — first. The characteristic learning order documented empirically (surface features, then syntax, then semantics) is what the framework predicts: the compression hierarchy is built from the bottom up because the bottom is cheapest.</p>
 </section>
 </section>
 <section id="sec-convergence" class="level1" data-number="5">
@@ -461,13 +441,15 @@ Figure&nbsp;2: The enrichment fraction spectrum. Token coloring reflects the mod
 <p>The difficulty of closing this gap is itself a projection bottleneck problem. The receiver’s distortion measure is rich, contextual, and not fully articulable. The feedback channels through which it is communicated to the model — preference rankings, reward signals, natural language correction — are narrow. The same bandwidth mismatch that governs the autoregressive loop governs the attempt to align the system that produces it. This is, as far as we can determine, a novel framing; it is offered as a contribution, not an established result.</p>
 <p>This creates a measurable asymmetry. The model’s surprisal provides a direct, token-level signal for enrichment against its own distortion measure. No comparable signal exists on the receiver’s side — the receiver’s sense of whether they are being enriched is richer, slower, and communicated only through the narrow feedback channels already described. The alignment problem at the token level is the gap between these two signals: a high enrichment fraction by the model’s measure may correspond to degeneration by the receiver’s.</p>
 </section>
-<section id="sec-consolidated-predictions" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="sec-consolidated-predictions"><span class="header-section-number">6.3</span> Consolidated predictions</h2>
-<p>The framework generates seven specific predictions across its four sections. They are stated in full where they arise (<a href="#sec-predictions-ch2" class="quarto-xref">Section&nbsp;2.6</a>, <a href="#sec-predictions-ch3" class="quarto-xref">Section&nbsp;3.6</a>, <a href="#sec-predictions-training" class="quarto-xref">Section&nbsp;4.4</a>) and summarised here.</p>
+<section id="sec-predictions" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="sec-predictions"><span class="header-section-number">6.3</span> Predictions</h2>
+<p>The framework generates two classes of prediction. The first are testable via generation statistics and the model’s own surprisal signal, using our experimental pipeline. These will be updated as results come in. The second concern internal representational structure and require probing tools beyond our current pipeline; these are stated as theoretical commitments the framework makes about what such probing should find.</p>
+<section id="sec-testable-predictions" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="sec-testable-predictions"><span class="header-section-number">6.3.1</span> Testable predictions</h3>
 <div id="tbl-predictions" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-predictions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: Consolidated predictions with current empirical status.
+Table&nbsp;1: Testable predictions with current status.
 </figcaption>
 <div aria-describedby="tbl-predictions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -475,68 +457,59 @@ Table&nbsp;1: Consolidated predictions with current empirical status.
 <tr class="header">
 <th>#</th>
 <th>Prediction</th>
-<th>Section</th>
-<th>Testability</th>
+<th>Measurement</th>
 <th>Status</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><a href="#pred-complexity-depth">1</a></td>
-<td>Statistical complexity scales with depth — sublinear growth through the representational core, contraction in final layers</td>
-<td>§2</td>
-<td>Probing existing models</td>
-<td>Partially supported</td>
+<td><a href="#pred-enrichment-decay">1</a></td>
+<td>Enrichment fraction decays in unconstrained generation</td>
+<td>Surprisal trajectory analysis</td>
+<td>Untested</td>
 </tr>
 <tr class="even">
-<td><a href="#pred-capability-complexity">2</a></td>
-<td>Capability onset correlates with statistical complexity crossing identifiable thresholds</td>
-<td>§2</td>
-<td>Targeted experiments</td>
+<td><a href="#pred-temperature-enrichment">2</a></td>
+<td>Temperature–enrichment curve is non-monotonic</td>
+<td>Surprisal vs temperature sweep</td>
 <td>Untested</td>
 </tr>
 <tr class="odd">
-<td><a href="#pred-accumulator">3</a></td>
-<td>Residual stream functions as measurable accumulator of statistical complexity</td>
-<td>§2</td>
-<td>Probing existing models</td>
-<td>Partially supported</td>
-</tr>
-<tr class="even">
-<td><a href="#pred-ib-complement">4</a></td>
-<td>IB compression and statistical complexity growth complement rather than trade off</td>
-<td>§2</td>
-<td>Probing existing models</td>
+<td><a href="#pred-scale-enrichment">3</a></td>
+<td>Larger models sustain enrichment longer</td>
+<td>Cross-model generation comparison</td>
 <td>Untested</td>
 </tr>
-<tr class="odd">
-<td><a href="#pred-training-shift">5</a></td>
-<td>Statistical complexity growth across training follows power-law dynamics with qualitative shift</td>
-<td>§2</td>
-<td>Controlled comparisons across training stages</td>
-<td>Partially supported</td>
-</tr>
 <tr class="even">
-<td><a href="#pred-icl-failure">6</a></td>
-<td>In-context learning fails when the required regularity type is absent from the weight geometry</td>
-<td>§3</td>
-<td>Controlled comparisons across models</td>
+<td><a href="#pred-surface-dominance">4</a></td>
+<td>Cheapest-compressed regularities dominate unconstrained output</td>
+<td>Token/n-gram frequency analysis</td>
 <td>Untested</td>
-</tr>
-<tr class="odd">
-<td><a href="#pred-dataset-distortion">7</a></td>
-<td>Dataset composition shapes internal representational structure, not just performance</td>
-<td>§4</td>
-<td>Controlled comparisons across data mixtures</td>
-<td>Partially supported</td>
 </tr>
 </tbody>
 </table>
 </div>
 </figure>
 </div>
-<p>These predictions are not trivially satisfied. Several could fail in ways that would require substantial revision of the framework. Prediction 4 in particular — if IB compression and statistical complexity growth traded off rather than complementing each other, the framework’s central distinction between subtractive and generative processing would be undermined.</p>
-<p>The predictions share a common dependency: the operationalisation of statistical complexity in high-dimensional continuous representations. The framework is explicit that direct estimation of <span class="math inline">\(C_\mu\)</span> in transformer hidden states is not yet feasible (<a href="#sec-statistical-complexity" class="quarto-xref">Section&nbsp;2.3</a>, Appendix <a href="#sec-estimation-challenges" class="quarto-xref">Section&nbsp;7.2.4</a>), and the predictions are stated in terms of proxy measures — intrinsic dimensionality, participation ratio, representational similarity — with explicit acknowledgment that the proxy relationship is imperfect. Closing this measurement gap is the most important near-term challenge the framework creates for itself.</p>
+<ol type="1">
+<li><p><span id="pred-enrichment-decay"><strong>Enrichment fraction decays in unconstrained generation</strong></span>. Generation without external input — unprompted, or after a short seed — should show declining enrichment fraction over the generation window, measurable via the model’s own surprisal. Degenerate output has a characteristic signature: low, flat surprisal as the model settles into high-probability trajectories. Noise (from excessive temperature or degraded context) shows high but unstructured surprisal. Productive generation falls between these — variable surprisal with detectable structure. The three regimes should be empirically distinguishable from surprisal statistics alone.</p></li>
+<li><p><span id="pred-temperature-enrichment"><strong>Temperature–enrichment curve is non-monotonic</strong></span>. The enrichment fraction as a function of sampling temperature should peak at intermediate values. Low temperature suppresses exploration, producing repetitive output with near-zero enrichment. High temperature overwhelms the model’s compressed structure with noise. The productive range — where the model surfaces novel combinations of learned regularities — lies between these extremes. The prediction is that this is not a smooth trade-off but shows a distinguishable peak.</p></li>
+<li><p><span id="pred-scale-enrichment"><strong>Larger models sustain enrichment longer</strong></span>. Within the same model family (e.g., SmolLM 135M, 360M, 1.7B), larger models should sustain productive enrichment fractions over longer generation windows before trajectory collapse. The richer weight geometry of a larger model encodes more compressive structure, providing more material for compositional novelty before the autoregressive loop exhausts the accessible regularities.</p></li>
+<li><p><span id="pred-surface-dominance"><strong>Cheapest-compressed regularities dominate unconstrained output</strong></span>. Unprompted base model generation reveals what the model compressed most cheaply: high-frequency token co-occurrences, common syntactic frames, dominant distributional patterns. These are the regularities acquired earliest in training (<a href="#sec-training" class="quarto-xref">Section&nbsp;4</a>), and they should dominate generation when no prompt steers the model toward more expensive structure. This is measurable via token frequency, n-gram, and co-occurrence analysis of generated text, and testable by comparison with known training-order effects.</p></li>
+</ol>
+</section>
+<section id="sec-theoretical-commitments" class="level3" data-number="6.3.2">
+<h3 data-number="6.3.2" class="anchored" data-anchor-id="sec-theoretical-commitments"><span class="header-section-number">6.3.2</span> Theoretical commitments</h3>
+<p>The framework also makes claims about internal representational structure. These require probing tools — intrinsic dimensionality estimation, representational similarity analysis, controlled ablation — beyond our current experimental pipeline. They are stated as commitments: what the framework predicts such probing should find.</p>
+<p><span id="pred-complexity-depth"><strong>Statistical complexity scales with depth</strong></span>. Growth through the representational core (~80% of layers), with contraction in the final layers consistent with the projection bottleneck. Sublinear scaling as successive layers face diminishing marginal structural novelty in increasingly organised input. Measurable via proxy measures (intrinsic dimensionality, participation ratio) if not direct statistical complexity estimation.</p>
+<p><span id="pred-capability-complexity"><strong>Capability-complexity correlation</strong></span>. Capability onset correlates with statistical complexity crossing identifiable thresholds at relevant layers — approximately constant across model sizes for a given capability. This is the framework’s boldest claim and the one most in need of direct empirical test.</p>
+<p><span id="pred-accumulator"><strong>Residual stream as accumulator</strong></span>. Statistical complexity grows faster with residual connections than without, because earlier organisations are preserved alongside later ones. The qualitative claim is well-supported by mechanistic interpretability; the quantitative comparison awaits controlled ablation.</p>
+<p><span id="pred-ib-complement"><strong>Complementarity with IB compression</strong></span>. Layers showing high IB compression (reduced <span class="math inline">\(I(X; T)\)</span>) nonetheless show growth in statistical complexity. Negative correlation would be evidence against the framework. If IB compression and statistical complexity growth traded off rather than complementing each other, the framework’s central distinction between subtractive and generative processing would be undermined.</p>
+<p><span id="pred-training-shift"><strong>Qualitative shift across training</strong></span>. (a) Statistical complexity growth across training checkpoints follows power-law dynamics. (b) Early-training dimensions encode surface statistical regularities; late-training dimensions encode higher-order compositional structure. This is a claim about the <em>type</em> of growth, not merely its tempo — and it is supported by convergent evidence from grokking <span class="citation" data-cites="power_etal_2022 nanda_etal_2023">(<a href="#ref-nanda_etal_2023" role="doc-biblioref">Nanda et al., 2023</a>; <a href="#ref-power_etal_2022" role="doc-biblioref">Power et al., 2022</a>)</span>, induction head formation <span class="citation" data-cites="olsson_etal_2022">(<a href="#ref-olsson_etal_2022" role="doc-biblioref">Olsson et al., 2022</a>)</span>, and pre-training dynamics showing that linguistic features are learned in a characteristic order: surface features first, syntactic next, semantic last.</p>
+<p><span id="pred-icl-failure"><strong>In-context learning failure mode</strong></span>. In-context learning should fail when the required regularity <em>type</em> is absent from the weight geometry — when the task demands a pattern the model has never encountered, even abstractly. This is distinct from failure on a specific unseen instance, which compositional generalisation can handle.</p>
+<p><span id="pred-dataset-distortion"><strong>Dataset composition shapes the distortion measure, not just coverage</strong></span>. Models trained on differently composed datasets (same total tokens, different domain proportions) should develop measurably different compression hierarchies — different statistical complexity profiles across layers — even when evaluated on the same held-out distribution. The prediction is not merely that performance differs (which is known) but that the <em>internal representational structure</em> differs in ways that track the training distribution’s implicit priorities.</p>
+<p>These commitments share a common dependency: the operationalisation of statistical complexity in high-dimensional continuous representations. The framework is explicit that direct estimation of <span class="math inline">\(C_\mu\)</span> in transformer hidden states is not yet feasible (<a href="#sec-statistical-complexity" class="quarto-xref">Section&nbsp;2.3</a>, Appendix <a href="#sec-estimation-challenges" class="quarto-xref">Section&nbsp;7.2.4</a>), and the claims above are stated in terms of proxy measures with explicit acknowledgment that the proxy relationship is imperfect. Closing this measurement gap is the most important near-term challenge the framework creates for itself.</p>
+</section>
 </section>
 <section id="sec-future-directions" class="level2" data-number="6.4">
 <h2 data-number="6.4" class="anchored" data-anchor-id="sec-future-directions"><span class="header-section-number">6.4</span> Future directions</h2>
@@ -656,7 +629,7 @@ E = I(\overleftarrow{X}; \overrightarrow{X})
 <section id="self-attention-as-a-capacity-constraint" class="level3" data-number="7.3.4">
 <h3 data-number="7.3.4" class="anchored" data-anchor-id="self-attention-as-a-capacity-constraint"><span class="header-section-number">7.3.4</span> Self-attention as a capacity constraint</h3>
 <p><span class="citation" data-cites="hahn_2020">Hahn (<a href="#ref-hahn_2020" role="doc-biblioref">2020</a>)</span> proved formal limitations on the computational capacity of self-attention: hard attention transformers cannot model all regular languages, and the class of functions computable by self-attention is constrained by the interaction between sequence length and embedding dimension. These limitations are consistent with the bandwidth framing. Self-attention is the mechanism by which the model reads the accumulated context — the sequence of previous channel uses — and its computational constraints bound how effectively the model can decode the information distributed across those uses.</p>
-<p>The practical consequence: even when the context window is technically large enough to contain all necessary information, attentional capacity limits how much of that distributed encoding the model can effectively integrate. This is the formal basis for the attentional degradation discussed in <a href="#sec-autoregressive-limitations" class="quarto-xref">Section&nbsp;3.7</a> — a hard constraint distinct from the compositional degradation that arises from regime drift.</p>
+<p>The practical consequence: even when the context window is technically large enough to contain all necessary information, attentional capacity limits how much of that distributed encoding the model can effectively integrate. This is the formal basis for the attentional degradation discussed in <a href="#sec-autoregressive-limitations" class="quarto-xref">Section&nbsp;3.6</a> — a hard constraint distinct from the compositional degradation that arises from regime drift.</p>
 </section>
 </section>
 <section id="sec-appendix-measurement" class="level2" data-number="7.4">
@@ -687,7 +660,7 @@ E = I(\overleftarrow{X}; \overrightarrow{X})
 <li><p><strong>Reorganisation occurs.</strong> Even when total mutual information with the input does not measurably decrease, the <em>structure</em> of the representation changes across layers. This is observable through probing studies, representational similarity analysis, and intrinsic dimensionality measurements — none of which depend on mutual information estimation. The debate is about whether reorganisation is accompanied by measurable compression. The framework requires only that reorganisation occurs, not that it is always accompanied by a detectable drop in <span class="math inline">\(I(X; T)\)</span>.</p></li>
 <li><p><strong>The DPI permits structural growth.</strong> Whether or not <span class="math inline">\(I(X; T)\)</span> decreases, the DPI guarantees it does not increase. The framework’s claim is that statistical complexity — representational organisation — grows within this constraint. This claim is orthogonal to the measurement debate, which concerns the <em>subtractive</em> side (how much information is discarded) rather than the <em>generative</em> side (how remaining information is organised).</p></li>
 </ol>
-<p>The measurement debate does, however, constrain how the framework’s predictions should be tested. Predictions involving mutual information (<a href="#pred-ib-complement">Prediction 4</a>) should be tested with estimation methods robust to the issues identified above — ideally multiple methods, to ensure results are not artefacts of a particular estimator. Predictions involving statistical complexity (<a href="#pred-complexity-depth">Prediction 1</a>, <a href="#pred-capability-complexity">Prediction 2</a>) face their own estimation challenges (<a href="#sec-appendix-complexity" class="quarto-xref">Section&nbsp;7.2</a>) but are not affected by the mutual information measurement debate, since they concern a different quantity entirely.</p>
+<p>The measurement debate does, however, constrain how the framework’s theoretical commitments should be tested. Claims involving mutual information (the <a href="#pred-ib-complement">IB complementarity</a> commitment) should be tested with estimation methods robust to the issues identified above — ideally multiple methods, to ensure results are not artefacts of a particular estimator. Claims involving statistical complexity (<a href="#pred-complexity-depth">complexity-depth scaling</a>, <a href="#pred-capability-complexity">capability-complexity correlation</a>) face their own estimation challenges (<a href="#sec-appendix-complexity" class="quarto-xref">Section&nbsp;7.2</a>) but are not affected by the mutual information measurement debate, since they concern a different quantity entirely.</p>
 </section>
 </section>
 <section id="references" class="level2 unnumbered">
