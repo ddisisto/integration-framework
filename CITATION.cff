@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use or reference this work, please cite it as below."
+title: "Integration: Compression, Distortion, Novelty, and Meaning"
+authors:
+  - family-names: DiSisto
+    given-names: Daniel
+type: article
+url: "https://github.com/ddisisto/integration-framework"
+repository-code: "https://github.com/ddisisto/integration-framework"
+license: CC-BY-SA-4.0
+version: "0.5"
+date-released: "2026-03-22"
+abstract: >-
+  This paper argues that LLM effectiveness reflects hierarchical
+  multi-scale compression, and that the autoregressive loop is
+  fundamentally ambivalent — enriching when each token surfaces
+  structure unavailable from context, stabilising when tokens
+  reinforce existing trajectories. The enrichment fraction over a
+  window of generation determines the character of the output and
+  is directly measurable via the model's own surprisal.

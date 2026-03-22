@@ -48,6 +48,10 @@ This is a living document (currently v0.5). Independent research — no affiliat
 
 **[Read the full paper →](https://ddisisto.github.io/integration-framework/integration.html)**
 
+## Versioning
+
+Tagged releases (`v0.x`) mark stable versions of the paper. `main` is the working branch; `publish` tracks the latest tagged release and serves the [live site](https://ddisisto.github.io/integration-framework/). The version string is injected automatically at render time via `git describe`.
+
 ## Building locally
 
 Requires Python, [Quarto](https://quarto.org), and TinyTeX.
@@ -56,6 +60,20 @@ Requires Python, [Quarto](https://quarto.org), and TinyTeX.
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 quarto render paper   # outputs to docs/
+```
+
+## Citation
+
+If you reference this work, please cite:
+
+```bibtex
+@misc{disisto2026integration,
+  author       = {DiSisto, Daniel},
+  title        = {Integration: Compression, Distortion, Novelty, and Meaning},
+  year         = {2026},
+  url          = {https://github.com/ddisisto/integration-framework},
+  note         = {Living document, v0.5}
+}
 ```
 
 ## License
