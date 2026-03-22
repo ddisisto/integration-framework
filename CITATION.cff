@@ -8,7 +8,7 @@ type: article
 url: "https://github.com/ddisisto/integration-framework"
 repository-code: "https://github.com/ddisisto/integration-framework"
 license: CC-BY-SA-4.0
-version: "0.6"
+version: "0.6-5-gacae9c6"
 date-released: "2026-03-22"
 abstract: >-
   This paper argues that LLM effectiveness reflects hierarchical
