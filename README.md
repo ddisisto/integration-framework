@@ -18,7 +18,13 @@ The paper treats what LLMs do as hierarchical multi-scale compression, and the a
 
 - **The autoregressive loop** projects this rich internal state through a radical bottleneck — one token at a time. Surprisal at each token is a real-time signal about whether generation is doing novel compressive work or reinforcing existing trajectories. The *enrichment fraction* over a window of generation characterises the regime: productive, degenerate, or noise.
 
-- **The distinction is measurable.** High enrichment fraction with coherence = productive generation. Low enrichment fraction = attractor collapse (the repetitive loops everyone has seen). Very high enrichment fraction = noise (the model surprising itself because it's lost structure, not because it's generating novelty). These regimes are invisible in fluency metrics but directly observable in surprisal dynamics.
+- **The distinction is measurable.** High enrichment fraction with coherence = productive generation. Low enrichment fraction = attractor collapse (the repetitive loops everyone has seen). Very high enrichment fraction = noise (the model surprising itself because it's lost structure, not because it's generating novelty). These regimes are invisible in fluency metrics but directly observable in surprisal dynamics:
+
+<p align="center">
+<img src="paper/figures/figure_a_collapse.png" width="32%" alt="Attractor collapse — surprisal drops to near-zero as generation locks into a repeating loop">
+<img src="paper/figures/figure_b_tokens.png" width="32%" alt="Coherent prose — mix of enriching and stabilising tokens">
+<img src="paper/figures/figure_c_noise.png" width="32%" alt="Noise regime — high surprisal throughout, no coherent structure">
+</p>
 
 ## Why it matters beyond the model
 
