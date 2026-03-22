@@ -9,7 +9,7 @@
       50100
     ],
     "description": "Noise regime — 81% enriching by gap metric, incoherent output",
-    "gap_definition": "entropy + log_prob (= entropy - surprisal). Positive = degrading, negative = enriching."
+    "gap_definition": "entropy + log_prob (= entropy - surprisal). Positive = stabilising, negative = enriching."
   },
   "stats": {
     "mean_entropy": 8.4138,

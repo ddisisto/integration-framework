@@ -8,10 +8,10 @@ from pathlib import Path
 
 DATA_DIR = Path(__file__).parent / "data"
 
-# Color map: low surprisal (degrading) = cool slate, high surprisal (enriching) = warm amber
+# Color map: low surprisal (stabilising) = cool slate, high surprisal (enriching) = warm amber
 CMAP = LinearSegmentedColormap.from_list("regime", [
     (0.0, "#2b5278"),   # zero surprisal — deep basin, no compressive novelty
-    (0.15, "#8ba4b8"),  # low surprisal — mildly degrading
+    (0.15, "#8ba4b8"),  # low surprisal — mildly stabilising
     (0.4, "#e8e8e0"),   # moderate — transitional
     (0.65, "#e8a735"),  # elevated — enriching
     (1.0, "#c44e00"),   # high surprisal — strong novelty (or noise)
@@ -24,7 +24,7 @@ def load(name):
 
 
 def surprisal_to_color(surprisal, vmax=5.0):
-    """Map surprisal to color. Low = cool (degrading), high = warm (enriching)."""
+    """Map surprisal to color. Low = cool (stabilising), high = warm (enriching)."""
     norm = Normalize(vmin=0, vmax=vmax)
     return CMAP(norm(surprisal))
 
@@ -157,7 +157,7 @@ def add_colorbar(fig, y_bottom, vmax=5.0):
     sm = plt.cm.ScalarMappable(cmap=CMAP, norm=Normalize(vmin=0, vmax=vmax))
     sm.set_array([])
     cbar = fig.colorbar(sm, cax=cbar_ax, orientation="horizontal")
-    cbar.set_label("← low surprisal (degrading)          surprisal (nats)          high surprisal (enriching) →",
+    cbar.set_label("← low surprisal (stabilising)          surprisal (nats)          high surprisal (enriching) →",
                    fontsize=7)
     cbar.ax.tick_params(labelsize=6)
     return cbar

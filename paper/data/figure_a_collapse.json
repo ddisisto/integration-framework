@@ -9,7 +9,7 @@
       67712
     ],
     "description": "Collapse from coherent prose into 5-token attractor basin",
-    "gap_definition": "entropy + log_prob (= entropy - surprisal). Positive = degrading, negative = enriching."
+    "gap_definition": "entropy + log_prob (= entropy - surprisal). Positive = stabilising, negative = enriching."
   },
   "windows": [
     {

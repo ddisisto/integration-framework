@@ -9,7 +9,7 @@
       55100
     ],
     "description": "Coherent prose with ~20% enriching tokens",
-    "gap_definition": "entropy + log_prob (= entropy - surprisal). Positive = degrading, negative = enriching."
+    "gap_definition": "entropy + log_prob (= entropy - surprisal). Positive = stabilising, negative = enriching."
   },
   "stats": {
     "mean_entropy": 1.6104,

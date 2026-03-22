@@ -57,7 +57,7 @@ A passage of 60-100 tokens from the rich dynamics regime, with per-token metrics
 **Selection criteria:**
 - T in the 0.70-0.80 range (coherent, topically shifting)
 - ~15-20% enriching tokens
-- Choose a passage with clear semantic content — nouns, topic shifts, specific details — so the enriching/degrading pattern is visually legible
+- Choose a passage with clear semantic content — nouns, topic shifts, specific details — so the enriching/stabilising pattern is visually legible
 - Avoid passages with artefacts, broken words, or formatting noise
 
 **Schema:** `figure_b_tokens.json`
@@ -85,7 +85,7 @@ A passage of 60-100 tokens from the rich dynamics regime, with per-token metrics
 }
 ```
 
-**What the paper will do with this:** Render the passage with each token colored on a continuous scale by gap value. Cool/neutral for degrading (gap > 0), warm for enriching (gap < 0). The reader sees that semantic content words are enriching; grammatical scaffolding is degrading.
+**What the paper will do with this:** Render the passage with each token colored on a continuous scale by gap value. Cool/neutral for stabilising (gap > 0), warm for enriching (gap < 0). The reader sees that semantic content words are enriching; grammatical scaffolding is stabilising.
 
 ## Figure C: Noise extreme
 
@@ -123,7 +123,7 @@ Place output files in `../autoloop/exports/framework-figures/`. The paper will r
 
 ## Notes
 
-- The examples in `autoloop/docs/enriching-degrading-examples.md` already contain suitable candidates for all three figures. This spec asks for the same data in structured form.
-- Gap is defined as `entropy + log_prob` (equivalently `entropy - surprisal`). Positive gap = degrading, negative gap = enriching. Include this in metadata if helpful.
+- The examples in `autoloop/docs/enriching-stabilising-examples.md` already contain suitable candidates for all three figures. This spec asks for the same data in structured form.
+- Gap is defined as `entropy + log_prob` (equivalently `entropy - surprisal`). Positive gap = stabilising, negative gap = enriching. Include this in metadata if helpful.
 - Token strings should preserve leading whitespace (the tokenizer's spacing).
 - If a better example exists than the ones in the examples doc, use it. The selection criteria matter more than matching specific step ranges.
