@@ -10,6 +10,8 @@ Within the autoregressive loop, tokens that surface genuinely new structure are 
 
 The variable is the same at both scales: whether what feeds forward adds structure or merely adds volume.
 
+The generation dynamics described in @sec-enriching-degrading — the regime structure, the decay, the temperature sensitivity — have been independently observed across multiple research programmes using different methodologies [@holtzman_etal_2020; @basu_etal_2021; @nakaishi_2024; @mikhaylovskiy_2025]. That convergence from different starting points suggests a real phenomenon in need of a theoretical account. The compression hierarchy offers one: the regimes are consequences of a bandwidth-limited channel traversing a fixed geometry, not isolated empirical curiosities.
+
 ## Distortion measures and alignment {#sec-distortion-alignment}
 
 A further observation falls directly out of the vocabulary. The model's implicit distortion measure — what it treats as acceptable loss during compression — is determined by its training objective. The receiver's distortion measure is determined by their purposes, their context, their needs. The gap between these measures is the formal structure of what the field calls the alignment problem: make the model's compression serve the receiver's ends, not merely its own trained defaults.
