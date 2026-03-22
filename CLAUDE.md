@@ -2,35 +2,44 @@
 
 ## Project
 
-Independent research paper arguing that LLM effectiveness reflects hierarchical multi-scale compression, and the autoregressive loop is fundamentally ambivalent (enriching vs degrading regimes). Compression is the mechanism; **integration** is the thesis.
+Independent research paper arguing that LLM effectiveness reflects hierarchical multi-scale compression, and the autoregressive loop is fundamentally ambivalent (enriching vs stabilising regimes). Compression is the mechanism; **integration** is the thesis.
 
-Ecological implications (feedback loops, silent flattening, carrier transition) are staged in `paper2/` for a companion piece.
+Ecological implications (feedback loops, silent flattening, surprisal leakage, carrier transition) are staged in `paper2/` for a companion piece.
 
 ## Status
 
-Paper 1 is tightened to Sections 1–5 + Conclusion. Appendix A written. Tagged v0.2. Renders cleanly as HTML + PDF. Summary page and README in place. GitHub Pages live (deploying from `publish` branch). Zenodo pending setup.
+Paper 1 is tightened to Sections 1–4 + Conclusion. Appendix A written. Tagged v0.5. Renders cleanly as HTML + PDF. GitHub Pages live (deploying from `publish` branch).
 
-**Branching:** `main` is the working branch. `publish` tracks the latest released version (currently v0.2). Merge to `publish` when ready to update the live site.
+**Branching:** `main` is the working branch. `publish` tracks the latest released version (currently v0.5). Merge to `publish` when ready to update the live site.
+
+**Version injection:** `paper/_version.py` runs as a Quarto pre-render script, writing `git describe` output to `_version.yml` and `_version.tex`. Version appears in the preface (both formats) and PDF page footer.
 
 ```
 paper/
-├── _quarto.yml                        ← render config
+├── _quarto.yml                        ← render config (pre-render: _version.py)
+├── _version.py                        ← generates _version.yml/.tex from git describe
 ├── integration.qmd                    ← main document (abstract, preface, includes all sections)
-├── 01_compression_hierarchy.qmd       ← DONE (~1,040 words)
-├── 02_structure_across_depth.qmd      ← DONE (~3,200 words)
-├── 03_autoregressive_loop.qmd         ← DONE (~2,600 words)
-├── 04_convergence_across_substrates.qmd ← DONE (~1,200 words)
-├── 05_conclusion.qmd                  ← DONE (~900 words) — predictions + future directions
+├── 01_compression_hierarchy.qmd       ← §1: rate-distortion, compression continuum, what transformers do
+├── 02_structure_across_depth.qmd      ← §2: DPI resolution, statistical complexity, emergence thresholds
+├── 03_autoregressive_loop.qmd         ← §3: channel capacity, enrichment fraction, figures
+├── 04_convergence_across_substrates.qmd ← §4: projection bottleneck, grounding as rate-distortion
+├── 05_conclusion.qmd                  ← conclusion: integration/accumulation, alignment, predictions, future
 ├── predictions.qmd                    ← single source of truth for all predictions
-├── references.bib                     ← ~76 entries
+├── references.bib                     ← bibliography
 ├── cross-references.md                ← canonical IDs
-├── appendix_formal_foundations.qmd    ← DONE (four sections)
+├── appendix_formal_foundations.qmd    ← formal constructions (four sections)
+├── figures.py                         ← figure generation from autoloop data
+├── figure-spec.md                     ← data requirements for §3 figures
+├── data/                              ← JSON data exports from autoloop
 └── references.qmd
 
 paper2/                                ← staging for companion piece
 ├── README.md                          ← scope and key concepts
-├── 05_recursive_loop.qmd             ← original §5 (ecology)
-└── 06_of_meaning.qmd                 ← original §6 (meaning)
+├── 05_recursive_loop.qmd             ← ecology / feedback loops
+├── 06_of_meaning.qmd                 ← meaning and integration
+└── 07_surprisal_leakage.qmd          ← surprisal leakage, channel controllability, model asymmetry
+
+drafts/                                ← discussion posts, outreach drafts
 ```
 
 ## Rendering
@@ -43,7 +52,7 @@ pip install -r requirements.txt
 quarto render paper       # outputs HTML + PDF to docs/
 ```
 
-Output goes to `docs/` (HTML site + `Integration.pdf`). The `docs/` directory is committed so that tagged versions always include a current render.
+Output goes to `docs/` (HTML site + PDF). The `docs/` directory is committed so that tagged versions always include a current render.
 
 **Always run `quarto render paper` before tagging or when changes need review.**
 
@@ -58,22 +67,24 @@ Output goes to `docs/` (HTML site + `Integration.pdf`). The `docs/` directory is
 
 - **Formalism:** Main body uses info theory as precise vocabulary. Appendices carry the formal constructions. Rate-distortion in §1, DPI + statistical complexity in §2, channel capacity in §3. Distributed, not frontloaded.
 - **Audience:** ML researchers, cognitive scientists, informed generalists. Clarity over gatekeeping; rigour available in appendices.
-- **Scope:** Paper 1 covers compression and composition (the formally constrained core). Ecological dynamics (feedback loops, silent flattening, carrier transition, attention economy) deferred to paper 2.
+- **Scope:** Paper 1 covers compression and composition (the formally constrained core). Ecological dynamics (feedback loops, silent flattening, surprisal leakage, carrier transition, attention economy) deferred to paper 2.
 - **Structure:** Flat sections (no Part I/II/III). Use "section" not "chapter" or "part" in all copy.
-- **Multi-scale output:** Full paper → interactive web app (semantic zoom). Web app comes after the paper exists.
-- **Human-AI collaboration** acknowledged in preface, stated plainly.
+- **Terminology:** enriching/stabilising (not enriching/degrading). Enrichment fraction as continuous variable.
+- **Human-AI collaboration** acknowledged in preface, stated plainly. CLAUDE.md is public.
 
 ## What's novel (handle with care)
 
 ### In Paper 1
 - Autoregressive loop as sequential coding through bandwidth-limited channel
 - Grounding problem as rate-distortion question
-- Alignment as distortion measure mismatch (model's implicit measure vs receiver's; correction as projection bottleneck problem)
+- Alignment as distortion measure mismatch; binding constraint is feedback *bandwidth* not quality
 - Subtractive vs generative processing distinction (IB tracks what's discarded; this framework tracks what's generated)
+- Statistical complexity as the measure of what grows across depth (motivated by prediction objective; acknowledged as theoretical commitment pending operationalisation)
 
 ### Staged for Paper 2
 - Four-loop feedback taxonomy (within-context, agentic, human-mediated, training-distributional)
 - Silent flattening as named phenomenon with hierarchical erosion prediction
+- Surprisal leakage: involuntary prediction error broadcast as feedback channel; controllability hierarchy; model asymmetry (perfect suppression by default)
 - Processor-to-carrier transition framing
 - Attention allocation as distortion measure selection; algorithmic capture as adaptive exploit at ecological scale
 
@@ -81,9 +92,11 @@ These have no clear precedent in the literature. Present as contributions, not e
 
 ## Next steps
 
-1. ~~**Prediction table in §5.**~~ Done. Seven predictions with Status column.
-2. ~~**Training/dataset section.**~~ Done. §5 (05_training.qmd).
-3. ~~**Figures in §3.**~~ Done. Three figures from autoloop data (collapse, coherent prose, noise). Surprisal-colored tokens, PNG output.
-4. ~~**v0.3: Enrichment fraction reframe.**~~ Done. Continuous enrichment fraction variable, stabilising/degenerate vocabulary, upper-bound framing.
-5. **Zenodo integration.** Link repo to Zenodo for DOI minting on tagged releases. v0.2 is tagged and ready.
-6. **GitHub Pages.** Live, deploying from `publish` branch, folder `/docs`.
+1. ~~**Prediction table.**~~ Done. Seven predictions with Status column.
+2. ~~**Training/dataset section.**~~ Done. Distributed into §1 and §2.
+3. ~~**Figures in §3.**~~ Done. Three figures from autoloop data.
+4. ~~**v0.3: Enrichment fraction reframe.**~~ Done.
+5. ~~**v0.5: Version injection, reviewer feedback, terminology fixes.**~~ Done.
+6. **Zenodo integration.** Link repo to Zenodo for DOI minting on tagged releases.
+7. **Outreach.** README rewritten as landing page. Discussion post drafted. First audience TBD.
+8. **Paper 2 development.** Surprisal leakage section drafted. Ecological argument to develop.
