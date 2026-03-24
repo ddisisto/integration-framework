@@ -59,7 +59,7 @@ Requires Python, [Quarto](https://quarto.org), and TinyTeX.
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-quarto render paper   # outputs to docs/
+quarto render paper   # outputs to paper/docs/
 ```
 
 ## Citation

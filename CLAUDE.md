@@ -49,12 +49,12 @@ Requires: Python venv (`.venv/`), Quarto, TinyTeX. Setup for a fresh clone:
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-quarto render paper       # outputs HTML + PDF to docs/
+quarto render paper       # outputs HTML + PDF to paper/docs/
 ```
 
-Output goes to `docs/` (HTML site + PDF). The `docs/` directory is committed so that tagged versions always include a current render.
+Output goes to `paper/docs/` (HTML site + PDF). The `paper/docs/` directory is committed so that tagged versions always include a current render.
 
-**Always run `quarto render paper` before tagging or when changes need review.**
+**Releasing:** Use `/release v0.X` to run the full tag-render-publish pipeline. The skill handles CLAUDE.md updates, tagging, rendering, tag-move, merge to `publish`, and push. See `.claude/skills/release/SKILL.md` for the full procedure.
 
 ## Writing principles
 
