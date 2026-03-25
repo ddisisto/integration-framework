@@ -33,7 +33,7 @@ This is a living document ({{< meta version >}}). The current version, source, a
 
 {{< include 03_autoregressive_loop.qmd >}}
 
-{{< include 04_convergence_across_substrates.qmd >}}
+{{< include 04_grounding_alignment.qmd >}}
 
 {{< include 05_conclusion.qmd >}}
 

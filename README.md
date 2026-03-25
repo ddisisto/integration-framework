@@ -2,55 +2,53 @@
 
 **Compression, distortion, novelty, and meaning in large language models**
 
-**[Read the paper →](https://ddisisto.github.io/integration-framework/integration.html)** · **[PDF](https://ddisisto.github.io/integration-framework/integration.pdf)**
+**[Read the paper →](https://ddisisto.github.io/integration-framework/paper/docs/integration.html)** · **[PDF](https://ddisisto.github.io/integration-framework/paper/docs/integration.pdf)**
 
-## What this is about
+*Independent research — no affiliation, no funding, no product.*
+
+---
 
 Every token a language model generates comes with a surprisal value — the model's own prediction error, computed for free as part of inference. We use it during training (it's the loss function). We occasionally inspect it for debugging. And then, at inference time, we throw it away.
 
 This paper argues that's a mistake, and that the reason it's a mistake reveals something fundamental about what these systems are doing.
 
-## The framework
+## The argument in brief
 
-The paper treats what LLMs do as hierarchical multi-scale compression, and the autoregressive loop as sequential coding through a bandwidth-limited channel. Within this framework:
-
-- **The forward pass** builds progressively more abstract representations across layers, each solving a rate-distortion problem under a more abstract distortion measure. What grows across depth is not information about the input (the data processing inequality forbids that) but the *organisation* of preserved information — statistical complexity in the computational mechanics sense.
-
-- **The autoregressive loop** projects this rich internal state through a radical bottleneck — one token at a time. Surprisal at each token is a real-time signal about whether generation is doing novel compressive work or reinforcing existing trajectories. The *enrichment fraction* over a window of generation characterises the regime: productive, degenerate, or noise.
-
-- **The distinction is measurable.** High enrichment fraction with coherence = productive generation. Low enrichment fraction = attractor collapse (the repetitive loops everyone has seen). Very high enrichment fraction = noise (the model surprising itself because it's lost structure, not because it's generating novelty). These regimes are invisible in fluency metrics but directly observable in surprisal dynamics:
+The paper treats what LLMs do as **hierarchical multi-scale compression**, and the autoregressive loop as **sequential coding through a bandwidth-limited channel**. From this, a single measurable variable falls out: the **enrichment fraction** — the proportion of tokens doing novel compressive work over a window of generation. It determines whether output is productive, degenerate, or noise — a distinction invisible in fluency metrics but directly observable in the model's own surprisal.
 
 <p align="center">
 <img src="paper/figures/figure_a_collapse.png" width="32%" alt="Attractor collapse — surprisal drops to near-zero as generation locks into a repeating loop">
 <img src="paper/figures/figure_b_tokens.png" width="32%" alt="Coherent prose — mix of enriching and stabilising tokens">
 <img src="paper/figures/figure_c_noise.png" width="32%" alt="Noise regime — high surprisal throughout, no coherent structure">
 </p>
+<p align="center"><em>Left: attractor collapse (enrichment → 0). Centre: coherent prose (mixed enriching/stabilising). Right: noise (enrichment → 1).</em></p>
 
-## Why it matters beyond the model
+The three-regime structure itself is well-established empirically (Holtzman et al. 2020, Basu et al. 2021, Nakaishi 2024, Mikhaylovskiy 2025). The contribution is the enrichment fraction as a continuous, theoretically grounded metric — and its embedding within the compression hierarchy, which explains *why* these regimes exist rather than merely documenting that they do.
 
-The same bottleneck operates in biological communication. Coupé et al. (2019) measured convergence on roughly 39 bits per second across 17 languages — but that's just the lexical channel. Face-to-face, humans communicate surprisal *itself* through involuntary channels: widened eyes, prosodic shifts, changes in posture. These are real-time broadcasts of prediction error — low-bandwidth but high-value signal about where the listener's model diverged from what the speaker said.
+## What's novel
 
-Speakers calibrate in real time based on this. LLMs have none of it. The model computes surprisal at every token but doesn't broadcast it. The user has no involuntary leakage channel either. Both sides of the calibration loop that biological communication relies on are structurally absent.
+- **The autoregressive loop as sequential coding** through a bandwidth-limited channel — the mismatch between internal state dimensionality and single-token output is not metaphorical but information-theoretic.
+- **The enrichment fraction** as a continuous variable characterising generation regime, derived from the model's own surprisal.
+- **What grows across depth despite the data processing inequality** — not information about the input, but the *organisation* of preserved information (statistical complexity).
+- **Grounding as a rate-distortion question** — converts a philosophical debate into one with measurable parameters.
+- **Alignment as bandwidth constraint** — the binding constraint is feedback *bandwidth*, not feedback quality. The receiver's distortion measure is too rich to convey through available channels.
 
-This sharpens the alignment problem: the binding constraint isn't feedback *quality* but feedback *bandwidth* — and specifically the absence of involuntary, credible, real-time signal about internal states. The paper develops this formally; a companion piece on the ecological implications is in progress.
+## Predictions
 
-## An open question
+The framework generates testable predictions — four measurable via generation statistics, seven concerning internal structure. Two are already partially established by convergent results across independent research programmes. The predictions and their current status are tracked in the paper.
 
-If we build systems that surface model surprisal as a communication signal — uncertainty displays, confidence indicators, attention visualisations — these are *constructed* channels, fully voluntary. They can be gamed, tuned, optimised. They lack the credibility that comes from being involuntary.
+## Sections
 
-**Can a deliberately constructed transparency channel ever do the calibrating work that involuntary leakage does? Or does the credibility gradient require that the signal be outside the sender's control?**
+The paper is four sections plus a conclusion, with formal constructions in an appendix.
 
-## The paper
-
-The paper develops seven testable predictions, reframes the grounding problem as a rate-distortion question, and characterises alignment as a projection bottleneck between the receiver's distortion measure and the narrow feedback channels available to communicate it. Formal foundations (rate-distortion, statistical complexity, sequential coding) are in the appendix.
-
-This is a living document (currently v0.7-5-gacae9c6). Independent research — no affiliation, no funding, no product.
-
-**[Read the full paper →](https://ddisisto.github.io/integration-framework/integration.html)**
+1. **The Compression Hierarchy** — Rate-distortion as the organising principle. The one sharp boundary (lossless/lossy), the compression continuum, what transformers do, and how training fixes the distortion measure.
+2. **Structure Across Depth** — What grows across layers despite the data processing inequality. The DPI resolution, statistical complexity as the measure of what grows, and why depth buys capability rather than merely capacity.
+3. **The Autoregressive Loop** — The projection bottleneck formalised. Enrichment fraction, the three regimes, chain-of-thought and in-context learning as steering strategies. Where the framework meets and extends the Mirostat / typical sampling literature.
+4. **Beyond Transformers** — The bottleneck as substrate-independent constraint. Grounding as a rate-distortion question. Alignment as distortion measure mismatch — the binding constraint is feedback bandwidth, not quality.
 
 ## Versioning
 
-Tagged releases (`v0.x`) mark stable versions of the paper. `main` is the working branch; `publish` tracks the latest tagged release and serves the [live site](https://ddisisto.github.io/integration-framework/). The version string is injected automatically at render time via `git describe`.
+Tagged releases (`v0.x`) mark stable versions. `main` is the working branch; `publish` tracks the latest tagged release and serves the [live site](https://ddisisto.github.io/integration-framework/paper/docs/integration.html). The version string is injected automatically at render time via `git describe`.
 
 ## Building locally
 
@@ -72,7 +70,7 @@ If you reference this work, please cite:
   title        = {Integration: Compression, Distortion, Novelty, and Meaning},
   year         = {2026},
   url          = {https://github.com/ddisisto/integration-framework},
-  note         = {Living document, v0.7-5-gacae9c6}
+  note         = {Living document, v0.7}
 }
 ```
 

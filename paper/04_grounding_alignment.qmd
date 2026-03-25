@@ -1,0 +1,48 @@
+# Grounding and Alignment {#sec-grounding-alignment}
+
+The preceding sections developed a compression hierarchy that produces rich internal representations, projected through a bandwidth-limited channel one token at a time. The enrichment fraction measures whether that projection is doing novel compressive work — but novel by whose measure? The model's surprisal evaluates each token against its own implicit distortion measure, the one fixed by training. The receiver evaluates the output against theirs, shaped by their purposes, their context, their domain. These measures are not the same, and the gap between them is where the hardest questions about these systems live.
+
+This section argues that both the grounding problem and the alignment problem are instances of a single formal structure: a gap between two independently specifiable distortion measures, with limited channels available to close it.
+
+## Two distortion measures {#sec-two-measures}
+
+@sec-training established that the training objective and data jointly determine the model's distortion measure — what it treats as worth preserving during compression. This measure is fully specified without reference to grounding, understanding, or meaning: it is whatever statistical structure in the training distribution helps predict the next token, encoded under the parameter budget available.
+
+But any task to which the model is applied also has a distortion measure — what counts as acceptable loss in that domain. Zaslavsky et al. [-@zaslavsky_etal_2018] made this concrete for colour naming: the task-specific measure is distance in CIELAB perceptual space, independently defined by the physiology of human colour vision. They showed that cross-linguistic naming patterns achieve near-optimal compression of colour space under this measure. The distortion measure was not extracted from language; it was brought to the analysis from the domain.
+
+The same decomposition applies generally. Spatial reasoning has physical affordances. Medical diagnosis has clinical outcomes. Legal interpretation has precedent and statute. In each case, the task-specific distortion measure is specifiable independently of any particular model's training — it is a property of the domain, not of the system being evaluated.
+
+This decomposition is the formal structure that the rest of the section develops.
+
+## The grounding problem as rate-distortion question {#sec-grounding-rate-distortion}
+
+The grounding debate — rooted in @harnad_1990's observation that formal symbols are meaningless unless connected to the things they stand for — is active and unresolved. @bender_koller_2020 argue that models trained only on linguistic form cannot achieve genuine understanding. @piantadosi_hill_2022 counter that meaning can be constituted by inferential role — by the pattern of use across contexts — without requiring grounding in perception and action.
+
+The two-measure decomposition converts this dispute into one with measurable parameters. The question becomes: does the model's training-induced distortion measure — shaped by next-token prediction over its training distribution — preserve structure that matters under the task-specific distortion measure? Where it does, the model is grounded for that task. Where it does not, it is not.
+
+This framing dissolves a circularity that would otherwise threaten. "Grounding is preserving distortion-relevant structure" risks reducing to "grounding is grounding the right things" unless the distortion measure's origin is specified independently. But the two measures *are* independently specified: the model's measure by training objective and data, the task-specific measure by the domain. Grounding is the overlap between them — neither defined in terms of the other.
+
+Xu et al. [-@xu_etal_2025] provide an empirical instance. Comparing text-only and multimodal language models against human semantic judgements, they found that text-only training recovers non-sensorimotor features of word meaning but not sensorimotor features. In the present vocabulary: the text-only model's training-induced distortion measure overlaps substantially with the task-specific measure for inferential and associative structure, but fails to overlap where the task-specific measure requires sensorimotor grounding. The gap is not total, not uniform, and not a matter of principle — it is a measurable, domain-specific shortfall.
+
+The approach is Zaslavsky's move generalised. You make it domain by domain, not universally. This is not a weakness but the right structure for the question: grounding is a family of domain-specific questions about distortion measure overlap, each empirically approachable. The strong claim ("language models can never be grounded") and the strong counterclaim ("language models are already grounded") both dissolve — replaced by a research programme that asks, for each domain, how much of the task-specific distortion measure is recoverable from a given training regime.
+
+## Alignment as distortion measure mismatch {#sec-distortion-alignment}
+
+The same formal structure governs the alignment problem. The model's implicit distortion measure — what it treats as acceptable loss during compression — is determined by its training objective. The receiver's distortion measure is determined by their purposes, their context, their needs. The gap between these measures is the formal structure of what the field calls alignment: make the model's compression serve the receiver's ends, not merely its own trained defaults.
+
+The difficulty of closing this gap is itself a projection bottleneck problem. The receiver's distortion measure is rich, contextual, and not fully articulable. The feedback channels through which it is communicated to the model — preference rankings, reward signals, natural language correction — are narrow. The same bandwidth mismatch that governs the autoregressive loop governs the attempt to align the system that produces it.
+
+This framing makes a specific claim that reward misspecification accounts do not: the binding constraint on alignment is not feedback *quality* but feedback *bandwidth*. Even a receiver who knows exactly what they want cannot fully convey their distortion measure through the available channels — the problem is partially structural, not just a matter of better reward design. If this is correct, alignment difficulty should scale with the gap between the complexity of the receiver's distortion measure and the capacity of the feedback channel, and increasing bandwidth (richer interaction modalities, more expressive feedback mechanisms) should matter more than optimising within existing narrow channels.
+
+The measurable asymmetry is stark. The model's surprisal provides a direct, token-level signal for enrichment against its own distortion measure. No comparable signal exists on the receiver's side — the receiver's sense of whether they are being enriched is richer, slower, and communicated only through the narrow feedback channels already described. A high enrichment fraction by the model's measure may correspond to degeneration by the receiver's. The gap between these two signals is the alignment problem at the token level.
+
+## The shared structure {#sec-shared-structure}
+
+Grounding and alignment are not separate problems that happen to share vocabulary. They are the same problem at different interfaces.
+
+Grounding asks: does the model's training-induced distortion measure overlap with the task-specific distortion measure? The gap is between what training taught the model to preserve and what the domain requires to be preserved. The available channels for closing it are architectural — training data composition, modality, objective design.
+
+Alignment asks: does the model's distortion measure overlap with the receiver's? The gap is between what the model treats as worth preserving and what the receiver needs preserved. The available channels for closing it are interactional — feedback, correction, preference signals.
+
+In both cases, the structure is: two independently specifiable distortion measures, a gap between them, and limited bandwidth through which to close that gap. What varies is which measures, which gap, and which channels. The framework's vocabulary — rate-distortion, projection bottleneck, bandwidth constraint — applies uniformly because the *problem* is uniform, even where the solutions must differ.
+

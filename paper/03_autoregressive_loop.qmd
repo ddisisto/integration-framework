@@ -29,7 +29,7 @@ The framing is not metaphorical. Shannon's noisy channel theorem [@shannon_1948]
 
 Recent empirical evidence makes this bandwidth mismatch concrete. @leviathan_etal_2025 demonstrated that simply duplicating the input prompt — repeating the query verbatim so the model processes it twice — produces statistically significant improvements across seven models and seven benchmarks, with no degradation on any benchmark-model combination tested. The gains are largest on tasks where early tokens need access to later context, which is exactly what causal attention prevents. The mechanism is direct: on the first pass through the prompt, early tokens are processed without the benefit of later context. On the second copy, every token can attend to the complete first instance. Duplication is, in Shannon's terms, a second channel use — adding redundancy that lets the decoder recover information the sequential constraint would otherwise forfeit. That so simple an intervention produces consistent gains across diverse models and tasks is evidence that the projection bottleneck is not merely a theoretical framing but an active constraint on what these systems can extract from their input.
 
-@sec-convergence will develop this as a substrate-independent constraint: any system with internal representations exceeding output channel capacity must solve this sequential coding problem. The specific solution — hierarchical compression projected through a serial bottleneck — is what the constraint demands.
+@sec-grounding-alignment will develop what happens when the model's implicit distortion measure diverges from the receiver's — the formal structure shared by the grounding and alignment problems.
 
 ## Compositional novelty from fixed geometry {#sec-compositional-novelty}
 
@@ -81,7 +81,7 @@ Both extremes are pathological. Degeneration — the enrichment fraction at zero
 The enrichment fraction spectrum. Token coloring reflects the model's surprisal — its own assessment of compressive novelty, not a human reader's. The divergence between these assessments is the distortion measure mismatch developed in @sec-distortion-alignment.
 :::
 
-What declines as the enrichment fraction falls is higher-order statistical complexity: the novelty, cross-domain connection, and structural surprise that characterise productive generation. In information-theoretic terms: enriching tokens increase the statistical complexity of the context. Stabilising tokens increase length without increasing complexity — adding tokens without adding structure. Because the enrichment fraction is defined in terms of surprisal, it applies wherever surprisal does — a point @sec-convergence will develop.
+What declines as the enrichment fraction falls is higher-order statistical complexity: the novelty, cross-domain connection, and structural surprise that characterise productive generation. In information-theoretic terms: enriching tokens increase the statistical complexity of the context. Stabilising tokens increase length without increasing complexity — adding tokens without adding structure. Because the enrichment fraction is defined in terms of surprisal, it applies wherever surprisal does.
 
 This is the distinction between integration and mere accumulation — the thematic spine of the paper, encountered here at its tightest and fastest scale.
 
