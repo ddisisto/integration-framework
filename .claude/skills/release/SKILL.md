@@ -38,8 +38,8 @@ Execute the full release pipeline for version $ARGUMENTS. Follow each step in or
 ## Publish
 
 15. `git checkout publish && git merge main --no-edit && git checkout main`
-16. Push: `git push origin main publish $ARGUMENTS --force-with-lease`
-    - Note: `--force-with-lease` is needed because the tag was moved
+16. Push branches: `git push origin main publish --force-with-lease`
+17. Push tag (force needed because tag was moved): `git push origin $ARGUMENTS --force`
 
 ## Verify
 
