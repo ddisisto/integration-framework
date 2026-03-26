@@ -4,9 +4,19 @@ The preceding sections developed a compression hierarchy that produces rich inte
 
 This section argues that both the grounding problem and the alignment problem are instances of a single formal structure: a gap between two independently specifiable distortion measures, with limited channels available to close it.
 
+## What determines the model's distortion measure {#sec-training}
+
+@sec-lossless-lossy established that the distortion measure is a *choice*. For a transformer, who is choosing?
+
+A large language model has fewer parameters than its training data has bits. It cannot memorise; it must compress. This is not a design choice but an arithmetic fact. The model must find regularities in the training distribution and encode them in a form that generalises — because there is literally not enough room to do anything else.
+
+The training objective — next-token prediction — determines the *form* of the compression: preserve whatever helps predict what comes next, discard what does not. This is a distortion measure, in the rate-distortion sense introduced in @sec-compression-continuum. But the training objective alone does not determine what the model learns to preserve. Next-token prediction on a corpus of legal filings rewards preserving different structure than next-token prediction on a corpus of poetry. The objective sets the form; the dataset sets the content. Together they fully specify the distortion measure — what counts as acceptable loss during compression.
+
+This means dataset composition is not merely a question of coverage (what the model has seen) but of values (what the model has learned to treat as worth preserving). The resulting distortion measures differ across models, even under the same objective and architecture. The model's distortion measure is fully specified without reference to grounding, understanding, or meaning: it is whatever statistical structure in the training distribution helps predict the next token, encoded under the parameter budget available.
+
 ## Two distortion measures {#sec-two-measures}
 
-@sec-training established that the training objective and data jointly determine the model's distortion measure — what it treats as worth preserving during compression. This measure is fully specified without reference to grounding, understanding, or meaning: it is whatever statistical structure in the training distribution helps predict the next token, encoded under the parameter budget available.
+The model's distortion measure is one of two that matter.
 
 But any task to which the model is applied also has a distortion measure — what counts as acceptable loss in that domain. Zaslavsky et al. [-@zaslavsky_etal_2018] made this concrete for colour naming: the task-specific measure is distance in CIELAB perceptual space, independently defined by the physiology of human colour vision. They showed that cross-linguistic naming patterns achieve near-optimal compression of colour space under this measure. The distortion measure was not extracted from language; it was brought to the analysis from the domain.
 
