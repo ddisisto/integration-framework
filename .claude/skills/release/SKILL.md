@@ -28,23 +28,27 @@ Execute the full release pipeline for version $ARGUMENTS. Follow each step in or
 9. Verify version string in output: `grep` for `$ARGUMENTS` in `paper/docs/integration.html`
 10. If version string is wrong, diagnose — do not proceed with a stale render
 
+## Update version references
+
+11. Update `README.md`: set `note = {Living document, $ARGUMENTS}` in the bibtex block
+12. Update `CITATION.cff`: set `version:` to the version number without the `v` prefix
+
 ## Commit render
 
-11. Stage rendered output: `git add paper/docs/`
-12. Stage any version-injected files: `git add README.md CITATION.cff` (if changed)
-13. Commit: `Re-render with $ARGUMENTS version string`
-14. Move tag to final commit: `git tag -f $ARGUMENTS`
+13. Stage rendered output and version references: `git add paper/docs/ README.md CITATION.cff`
+14. Commit: `Re-render with $ARGUMENTS version string`
+15. Move tag to final commit: `git tag -f $ARGUMENTS`
 
 ## Publish
 
-15. `git checkout publish && git merge main --no-edit && git checkout main`
-16. Push branches: `git push origin main publish --force-with-lease`
-17. Push tag (force needed because tag was moved): `git push origin $ARGUMENTS --force`
+16. `git checkout publish && git merge main --no-edit && git checkout main`
+17. Push branches: `git push origin main publish --force-with-lease`
+18. Push tag (force needed because tag was moved): `git push origin $ARGUMENTS --force`
 
 ## Verify
 
-17. Confirm push succeeded for all three refs (main, publish, tag)
-18. Report the final tagged commit hash
+19. Confirm push succeeded for all three refs (main, publish, tag)
+20. Report the final tagged commit hash
 
 ## If something goes wrong
 
