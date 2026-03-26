@@ -44,7 +44,7 @@ The paper is four sections plus a conclusion, with formal constructions in an ap
 1. **The Compression Hierarchy** — Rate-distortion as the organising principle. The one sharp boundary (lossless/lossy), the compression continuum, what transformers do, and how training fixes the distortion measure.
 2. **Structure Across Depth** — What grows across layers despite the data processing inequality. The DPI resolution, statistical complexity as the measure of what grows, and why depth buys capability rather than merely capacity.
 3. **The Autoregressive Loop** — The projection bottleneck formalised. Enrichment fraction, the three regimes, chain-of-thought and in-context learning as steering strategies. Where the framework meets and extends the Mirostat / typical sampling literature.
-4. **Beyond Transformers** — The bottleneck as substrate-independent constraint. Grounding as a rate-distortion question. Alignment as distortion measure mismatch — the binding constraint is feedback bandwidth, not quality.
+4. **Grounding and Alignment** — Two distortion measures (training-induced vs task-specific). Grounding as rate-distortion question. Alignment as distortion measure mismatch — the binding constraint is feedback bandwidth, not quality.
 
 ## Versioning
 

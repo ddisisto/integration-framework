@@ -22,7 +22,7 @@ paper/
 ├── 01_compression_hierarchy.qmd       ← §1: rate-distortion, compression continuum, what transformers do
 ├── 02_structure_across_depth.qmd      ← §2: DPI resolution, statistical complexity, emergence thresholds
 ├── 03_autoregressive_loop.qmd         ← §3: channel capacity, enrichment fraction, figures
-├── 04_convergence_across_substrates.qmd ← §4: projection bottleneck, grounding as rate-distortion
+├── 04_grounding_alignment.qmd         ← §4: distortion measure decomposition, grounding, alignment
 ├── 05_conclusion.qmd                  ← conclusion: integration/accumulation, alignment, predictions, future
 ├── predictions.qmd                    ← single source of truth for all predictions
 ├── references.bib                     ← bibliography

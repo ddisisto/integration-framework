@@ -12,7 +12,7 @@ Canonical IDs for use across all section files. Use `@sec-*` for sections,
 | `sec-compression-hierarchy` | 1. The Compression Hierarchy | `01_compression_hierarchy.qmd` |
 | `sec-structure-across-depth` | 2. Structure Across Depth | `02_structure_across_depth.qmd` |
 | `sec-autoregressive-loop` | 3. The Autoregressive Loop | `03_autoregressive_loop.qmd` |
-| `sec-convergence` | 4. Beyond Transformers | `04_convergence_across_substrates.qmd` |
+| `sec-grounding-alignment` | 4. Grounding and Alignment | `04_grounding_alignment.qmd` |
 | `sec-conclusion` | 5. Conclusion | `05_conclusion.qmd` |
 
 ## Key Subsection IDs
@@ -20,8 +20,7 @@ Canonical IDs for use across all section files. Use `@sec-*` for sections,
 ### Section 1
 - `sec-lossless-lossy` — The one sharp boundary; entry of relevance
 - `sec-compression-continuum` — Lossy compression as continuum (perceptual → structural → semantic)
-- `sec-what-transformers-do` — Bridging to deep learning; forward reference to §2
-- `sec-training` — What determines the distortion measure (training objective + dataset)
+- `sec-information-surprisal` — Information content and surprisal
 
 ### Section 2
 - `sec-architectural-mechanisms` — How transformers generate representational structure
@@ -40,12 +39,14 @@ Canonical IDs for use across all section files. Use `@sec-*` for sections,
 - `sec-autoregressive-limitations` — Limitations of the autoregressive account
 
 ### Section 4
-- `sec-projection-bottleneck` — The projection bottleneck as substrate-independent constraint
+- `sec-training` — What determines the model's distortion measure (training objective + dataset)
+- `sec-two-measures` — Two distortion measures (training-induced vs task-specific)
 - `sec-grounding-rate-distortion` — Grounding as rate-distortion question (novel)
+- `sec-distortion-alignment` — Alignment as distortion measure mismatch (novel)
+- `sec-shared-structure` — The shared formal structure of grounding and alignment
 
 ### Section 5 (Conclusion)
 - `sec-thematic-spine` — Integration vs mere accumulation
-- `sec-distortion-alignment` — Alignment as distortion measure mismatch (novel)
 - `sec-predictions` — Predictions (included from `predictions.qmd`)
 - `sec-future-directions` — Ecological dynamics and measurement operationalisation
 
