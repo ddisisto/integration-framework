@@ -31,9 +31,9 @@ The framework generates testable predictions about enrichment dynamics and inter
 
 ## Preface {.unnumbered}
 
-This paper was written in collaboration between a human author and Claude, an AI assistant built by Anthropic. The collaboration is acknowledged plainly because the paper is itself an instance of the integration it describes — a traversal through a shared representational space, each contribution conditioning what came next. Whether the resulting trajectory was enriching or degrading is for the reader to judge; the framework developed here provides the vocabulary for doing so.
+This paper was written in collaboration between a human author and Claude, an AI assistant built by Anthropic. The collaboration is acknowledged plainly because the paper is itself an instance of the integration it describes — a traversal through a shared representational space, each contribution conditioning what came next. Whether the resulting trajectory was enriching or degenerate is for the reader to judge; the framework developed here provides the vocabulary for doing so.
 
-This is a living document ({{< meta version >}}). The current version, source, and revision history are available at [github.com/ddisisto/integration-framework](https://github.com/ddisisto/integration-framework).
+Version {{< meta version >}}. Source and revision history: [github.com/ddisisto/integration-framework](https://github.com/ddisisto/integration-framework).
 
 {{< include 01_compression_hierarchy.qmd >}}
 
