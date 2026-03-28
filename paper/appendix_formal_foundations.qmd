@@ -56,7 +56,7 @@ The compression continuum, then, is not a metaphor. It is a claim that different
 
 ## A.2 Statistical complexity: definition and properties {#sec-appendix-complexity}
 
-@sec-statistical-complexity claims that what grows across transformer layers is statistical complexity — a measure of representational organisation that is not constrained by the data processing inequality. This section defines the quantity precisely and explains why the DPI does not bound it.
+@sec-predictive-organisation claims that what grows across transformer layers is predictive organisation — representational structure oriented toward prediction, not constrained by the data processing inequality. Statistical complexity ($C_\mu$) from computational mechanics is the canonical formalisation of this concept. This section defines it precisely and explains why the DPI does not bound it.
 
 ### Causal states and $\varepsilon$-machines
 
@@ -106,12 +106,12 @@ $$
 
 Direct estimation of $C_\mu$ in high-dimensional continuous spaces — such as transformer hidden states — is technically formidable. The causal state construction requires partitioning history space into equivalence classes, which in continuous settings demands either discretisation (which introduces artefacts) or kernel-based estimation (which scales poorly with dimension).
 
-This is why the main text (@sec-statistical-complexity) relies on proxy measures:
+This is why the main text (@sec-predictive-organisation) relies on proxy measures:
 
-- **Intrinsic dimensionality** estimates the effective number of degrees of freedom in the representation manifold [@ansuini_etal_2019]. Growth in intrinsic dimensionality is necessary but not sufficient for growth in $C_\mu$ — a representation can have high dimensionality without high organisation.
+- **Intrinsic dimensionality** estimates the effective number of degrees of freedom in the representation manifold [@ansuini_etal_2019]. Growth in intrinsic dimensionality is necessary but not sufficient for growth in predictive organisation — a representation can have high dimensionality without high organisation.
 - **Participation ratio** measures how many dimensions carry significant variance. Like intrinsic dimensionality, it tracks geometric complexity without directly measuring causal state structure.
 
-The framework's predictions are stated in terms of these proxies where direct $C_\mu$ estimation is not feasible, with explicit acknowledgment that the proxy relationship is imperfect. A method for estimating statistical complexity in transformer hidden states would be a significant contribution — and would make the framework's predictions directly testable rather than testable by proxy.
+The framework's predictions are stated in terms of these proxies where direct estimation of predictive complexity is not feasible, with explicit acknowledgment that the proxy relationship is imperfect. A method for estimating $C_\mu$ or a related predictive complexity measure in transformer hidden states would be a significant contribution — and would make the framework's predictions directly testable rather than testable by proxy.
 
 ## A.3 The autoregressive loop as sequential coding {#sec-appendix-sequential}
 
@@ -175,6 +175,6 @@ The framework does not depend on the strong version of the Shwartz-Ziv claim —
 
 1. **Reorganisation occurs.** Even when total mutual information with the input does not measurably decrease, the *structure* of the representation changes across layers. This is observable through probing studies, representational similarity analysis, and intrinsic dimensionality measurements — none of which depend on mutual information estimation. The debate is about whether reorganisation is accompanied by measurable compression. The framework requires only that reorganisation occurs, not that it is always accompanied by a detectable drop in $I(X; T)$.
 
-2. **The DPI permits structural growth.** Whether or not $I(X; T)$ decreases, the DPI guarantees it does not increase. The framework's claim is that statistical complexity — representational organisation — grows within this constraint. This claim is orthogonal to the measurement debate, which concerns the *subtractive* side (how much information is discarded) rather than the *generative* side (how remaining information is organised).
+2. **The DPI permits structural growth.** Whether or not $I(X; T)$ decreases, the DPI guarantees it does not increase. The framework's claim is that predictive organisation grows within this constraint. This claim is orthogonal to the measurement debate, which concerns the *subtractive* side (how much information is discarded) rather than the *generative* side (how remaining information is organised).
 
-The measurement debate does, however, constrain how the framework's theoretical commitments should be tested. Claims involving mutual information (the [IB complementarity](#pred-ib-complement) commitment) should be tested with estimation methods robust to the issues identified above — ideally multiple methods, to ensure results are not artefacts of a particular estimator. Claims involving statistical complexity ([complexity-depth scaling](#pred-complexity-depth), [capability-complexity correlation](#pred-capability-complexity)) face their own estimation challenges (@sec-appendix-complexity) but are not affected by the mutual information measurement debate, since they concern a different quantity entirely.
+The measurement debate does, however, constrain how the framework's theoretical commitments should be tested. Claims involving mutual information (the [IB complementarity](#pred-ib-complement) commitment) should be tested with estimation methods robust to the issues identified above — ideally multiple methods, to ensure results are not artefacts of a particular estimator. Claims involving predictive complexity ([complexity-depth scaling](#pred-complexity-depth), [capability-complexity correlation](#pred-capability-complexity)) face their own estimation challenges (@sec-appendix-complexity) but are not affected by the mutual information measurement debate, since they concern a different quantity entirely.

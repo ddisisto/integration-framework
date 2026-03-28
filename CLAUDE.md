@@ -79,7 +79,7 @@ Output goes to `paper/docs/` (HTML site + PDF). The `paper/docs/` directory is c
 - Grounding problem as rate-distortion question
 - Alignment as distortion measure mismatch; binding constraint is feedback *bandwidth* not quality
 - Subtractive vs generative processing distinction (IB tracks what's discarded; this framework tracks what's generated)
-- Statistical complexity as the measure of what grows across depth (motivated by prediction objective; acknowledged as theoretical commitment pending operationalisation)
+- Predictive organisation (not geometric complexity) as the type of quantity that grows across depth; $C_\mu$ as canonical formalisation, commitment to family not specific measure
 
 ### Staged for Paper 2
 - Four-loop feedback taxonomy (within-context, agentic, human-mediated, training-distributional)

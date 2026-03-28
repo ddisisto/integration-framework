@@ -25,7 +25,7 @@ Canonical IDs for use across all section files. Use `@sec-*` for sections,
 ### Section 2
 - `sec-architectural-mechanisms` — How transformers generate representational structure
 - `sec-dpi-resolution` — DPI and the reorganisation/creation distinction
-- `sec-statistical-complexity` — Statistical complexity as measure of growth
+- `sec-predictive-organisation` — Predictive organisation as measure of what grows
 - `sec-ib-complementarity` — Contrast with the Information Bottleneck
 - `sec-emergence-thresholds` — Emergent capabilities as threshold-crossing
 - `sec-ib-implications` — Implications for internal structure (forward ref to predictions)
