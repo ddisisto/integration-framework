@@ -6,6 +6,14 @@ author:
   affiliation: Independent researcher
   url: https://github.com/ddisisto/integration-framework
 date: last-modified
+keywords:
+  - information theory
+  - rate-distortion theory
+  - large language models
+  - autoregressive generation
+  - text degeneration
+  - statistical complexity
+  - grounding problem
 bibliography: references.bib
 csl: apa.csl
 number-sections: true
@@ -17,9 +25,9 @@ toc-depth: 3
 
 The autoregressive loop solves a problem Shannon characterised in 1948: transmitting a high-entropy source through a bandwidth-limited channel. A transformer's internal state at any generation step — the full residual stream conditioning the next-token prediction — occupies a space of thousands of dimensions. The output is a single token from a finite vocabulary. The mismatch is not metaphorical. Each token is a channel use, and the sequence collectively encodes what no single token could carry.
 
-This paper develops the consequences of taking this bottleneck seriously. The forward pass builds the representations that must pass through it: each layer solves a rate-distortion problem under a progressively more abstract distortion measure, generating representational structure whose predictive organisation grows even as mutual information with the input is bounded by the data processing inequality. The autoregressive loop then composes these compressions sequentially — and this composition is fundamentally ambivalent. The *enrichment fraction* — the proportion of tokens doing novel compressive work over a window of generation — determines the character of the output: whether it is productive, degenerate, or noise. The distinction is invisible in fluency metrics but directly measurable via the model's own surprisal — though whether the receiver is also enriched depends on the alignment of their respective distortion measures.
+This paper develops the consequences of taking this bottleneck seriously. The forward pass builds the representations that must pass through it: each layer generates representational structure whose predictive organisation grows even as mutual information with the input is bounded by the data processing inequality. The autoregressive loop then composes these compressions sequentially. The *enrichment fraction* — the proportion of tokens doing novel compressive work over a window of generation — determines the character of the output: whether it is productive, degenerate, or noise. The distinction is invisible in fluency metrics but directly measurable via the model's own surprisal. Whether the receiver is also enriched depends on the alignment of their respective distortion measures.
 
-The framework generates testable predictions about the dynamics of the enrichment fraction — its decay in unconstrained generation, its non-monotonic relationship with sampling temperature, its scaling with model size — alongside theoretical commitments about internal representational structure. It reframes the grounding problem as a rate-distortion question with measurable parameters and characterises alignment as a projection bottleneck between the receiver's distortion measure and the narrow feedback channels available to communicate it.
+The framework generates testable predictions about enrichment dynamics and internal representational structure. It reframes the grounding problem as a rate-distortion question with measurable parameters and characterises alignment as a projection bottleneck constrained by feedback bandwidth.
 
 ## Preface {.unnumbered}
 

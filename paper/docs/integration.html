@@ -7,7 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Daniel DiSisto">
-<meta name="dcterms.date" content="2026-03-27">
+<meta name="dcterms.date" content="2026-03-28">
+<meta name="keywords" content="information theory, rate-distortion theory, large language models, autoregressive generation, text degeneration, statistical complexity, grounding problem">
 
 <title>Integration</title>
 <style>
@@ -176,7 +177,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 27, 2026</p>
+      <p class="date">March 28, 2026</p>
     </div>
   </div>
   
@@ -184,6 +185,12 @@ window.Quarto = {
   </div>
   
 
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>information theory, rate-distortion theory, large language models, autoregressive generation, text degeneration, statistical complexity, grounding problem</p>
+  </div>
+</div>
 
 </header>
 
@@ -191,13 +198,13 @@ window.Quarto = {
 <section id="abstract" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="abstract">Abstract</h2>
 <p>The autoregressive loop solves a problem Shannon characterised in 1948: transmitting a high-entropy source through a bandwidth-limited channel. A transformer’s internal state at any generation step — the full residual stream conditioning the next-token prediction — occupies a space of thousands of dimensions. The output is a single token from a finite vocabulary. The mismatch is not metaphorical. Each token is a channel use, and the sequence collectively encodes what no single token could carry.</p>
-<p>This paper develops the consequences of taking this bottleneck seriously. The forward pass builds the representations that must pass through it: each layer solves a rate-distortion problem under a progressively more abstract distortion measure, generating representational structure whose predictive organisation grows even as mutual information with the input is bounded by the data processing inequality. The autoregressive loop then composes these compressions sequentially — and this composition is fundamentally ambivalent. The <em>enrichment fraction</em> — the proportion of tokens doing novel compressive work over a window of generation — determines the character of the output: whether it is productive, degenerate, or noise. The distinction is invisible in fluency metrics but directly measurable via the model’s own surprisal — though whether the receiver is also enriched depends on the alignment of their respective distortion measures.</p>
-<p>The framework generates testable predictions about the dynamics of the enrichment fraction — its decay in unconstrained generation, its non-monotonic relationship with sampling temperature, its scaling with model size — alongside theoretical commitments about internal representational structure. It reframes the grounding problem as a rate-distortion question with measurable parameters and characterises alignment as a projection bottleneck between the receiver’s distortion measure and the narrow feedback channels available to communicate it.</p>
+<p>This paper develops the consequences of taking this bottleneck seriously. The forward pass builds the representations that must pass through it: each layer generates representational structure whose predictive organisation grows even as mutual information with the input is bounded by the data processing inequality. The autoregressive loop then composes these compressions sequentially. The <em>enrichment fraction</em> — the proportion of tokens doing novel compressive work over a window of generation — determines the character of the output: whether it is productive, degenerate, or noise. The distinction is invisible in fluency metrics but directly measurable via the model’s own surprisal. Whether the receiver is also enriched depends on the alignment of their respective distortion measures.</p>
+<p>The framework generates testable predictions about enrichment dynamics and internal representational structure. It reframes the grounding problem as a rate-distortion question with measurable parameters and characterises alignment as a projection bottleneck constrained by feedback bandwidth.</p>
 </section>
 <section id="preface" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="preface">Preface</h2>
 <p>This paper was written in collaboration between a human author and Claude, an AI assistant built by Anthropic. The collaboration is acknowledged plainly because the paper is itself an instance of the integration it describes — a traversal through a shared representational space, each contribution conditioning what came next. Whether the resulting trajectory was enriching or degrading is for the reader to judge; the framework developed here provides the vocabulary for doing so.</p>
-<p>This is a living document (v0.8). The current version, source, and revision history are available at <a href="https://github.com/ddisisto/integration-framework">github.com/ddisisto/integration-framework</a>.</p>
+<p>This is a living document (v0.8-2-g9e23754). The current version, source, and revision history are available at <a href="https://github.com/ddisisto/integration-framework">github.com/ddisisto/integration-framework</a>.</p>
 </section>
 <section id="sec-compression-hierarchy" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> The Compression Hierarchy</h1>
@@ -755,7 +762,7 @@ Leviathan, Y., Kalman, M., &amp; Matias, Y. (2025). Prompt repetition improves n
 Meister, C., Pimentel, T., Wiher, G., &amp; Cotterell, R. (2023). Locally typical sampling. <em>Transactions of the Association for Computational Linguistics</em>, <em>11</em>, 102–121.
 </div>
 <div id="ref-michaud_etal_2024" class="csl-entry" role="listitem">
-Michaud, E. J., Liu, Z., Girit, U., &amp; Tegmark, M. (2024). The quantization model of neural scaling laws. <em>arXiv Preprint</em>.
+Michaud, E. J., Liu, Z., Girit, U., &amp; Tegmark, M. (2024). The quantization model of neural scaling. <em>Proceedings of NeurIPS</em>.
 </div>
 <div id="ref-mikhaylovskiy_2025" class="csl-entry" role="listitem">
 Mikhaylovskiy, N. (2025). States of <span>LLM</span>-generated texts and phase transitions. <em>arXiv Preprint arXiv:2503.06330</em>.
@@ -812,7 +819,7 @@ Tishby, N., Pereira, F. C., &amp; Bialek, W. (2000). The information bottleneck 
 Tishby, N., &amp; Zaslavsky, N. (2015). Deep learning and the information bottleneck principle. <em>IEEE Information Theory Workshop (ITW)</em>, 1–5.
 </div>
 <div id="ref-valeriani_etal_2023" class="csl-entry" role="listitem">
-Valeriani, L. et al. (2023). The geometry of hidden representations of large transformer models. <em>arXiv Preprint</em>.
+Valeriani, L., Doimo, D., Cuturello, F., Laio, A., Ansuini, A., &amp; Cazzaniga, A. (2023). The geometry of hidden representations of large transformer models. <em>arXiv Preprint arXiv:2302.00294</em>.
 </div>
 <div id="ref-wickstrom_etal_2022" class="csl-entry" role="listitem">
 Wickstrøm, K., Løkse, S., Kampffmeyer, M., &amp; Jenssen, R. (2022). Information plane analysis of deep neural networks via matrix-based rényi entropy. <em>Proceedings of AAAI</em>.

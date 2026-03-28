@@ -7,6 +7,14 @@ authors:
 type: article
 url: "https://github.com/ddisisto/integration-framework"
 repository-code: "https://github.com/ddisisto/integration-framework"
+keywords:
+  - information theory
+  - rate-distortion theory
+  - large language models
+  - autoregressive generation
+  - text degeneration
+  - statistical complexity
+  - grounding problem
 license: CC-BY-4.0
 version: "0.8"
 date-released: "2026-03-28"
