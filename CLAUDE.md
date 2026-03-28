@@ -8,9 +8,9 @@ Ecological implications (feedback loops, silent flattening, surprisal leakage, c
 
 ## Status
 
-Paper 1 is tightened to Sections 1–4 + Conclusion. Appendix A written. Tagged v0.7. Renders cleanly as HTML + PDF. GitHub Pages live (deploying from `publish` branch).
+Paper 1 is tightened to Sections 1–4 + Conclusion. Appendix A written. Tagged v0.8. Renders cleanly as HTML + PDF. GitHub Pages live (deploying from `publish` branch).
 
-**Branching:** `main` is the working branch. `publish` tracks the latest released version (currently v0.7). Merge to `publish` when ready to update the live site.
+**Branching:** `main` is the working branch. `publish` tracks the latest released version (currently v0.8). Merge to `publish` when ready to update the live site.
 
 **Version injection:** `paper/_version.py` runs as a Quarto pre-render script, writing `git describe` output to `_version.yml` and `_version.tex`. Version appears in the preface (both formats) and PDF page footer.
 
@@ -98,7 +98,7 @@ These have no clear precedent in the literature. Present as contributions, not e
 4. ~~**v0.3: Enrichment fraction reframe.**~~ Done.
 5. ~~**v0.5: Version injection, reviewer feedback, terminology fixes.**~~ Done.
 6. ~~**v0.7: Mirostat lineage integration.**~~ Done. Three-regime prior art acknowledged (Holtzman, Basu/Mirostat, Meister, Nakaishi, Mikhaylovskiy). Predictions 1–2 reframed as partially established. Convergent evidence argument added to conclusion.
-7. **v0.8: Grounding circularity escape.** Make the distortion-measure decomposition explicit in §4 — model's measure (training-induced) vs task-specific measure, grounding as overlap. Notes in `drafts/v0.8-target-notes.md`.
+7. ~~**v0.8: Reviewer feedback revision.**~~ Done. C_μ commitment softened to predictive complexity family. Grounding reframed (not dissolved). Two-compression-system disanalogy made explicit. Nayebi 2025 added as formal support for bandwidth constraint. Bibliography rationalised (75→52 entries, paper2 refs split out). Stale §4 references updated across repo.
 8. **Zenodo integration.** Link repo to Zenodo for DOI minting on tagged releases.
 9. **Outreach.** README rewritten as landing page. Discussion post drafted. First audience TBD.
 10. **Paper 2 development.** Surprisal leakage section drafted. Ecological argument to develop.

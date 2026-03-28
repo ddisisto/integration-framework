@@ -70,7 +70,7 @@ If you reference this work, please cite:
   title        = {Integration: Compression, Distortion, Novelty, and Meaning},
   year         = {2026},
   url          = {https://github.com/ddisisto/integration-framework},
-  note         = {Living document, v0.7}
+  note         = {Living document, v0.8}
 }
 ```
 
