@@ -76,4 +76,4 @@ If you reference this work, please cite:
 
 ## License
 
-This work is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+This work is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

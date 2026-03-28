@@ -7,9 +7,9 @@ authors:
 type: article
 url: "https://github.com/ddisisto/integration-framework"
 repository-code: "https://github.com/ddisisto/integration-framework"
-license: CC-BY-SA-4.0
-version: "0.7"
-date-released: "2026-03-22"
+license: CC-BY-4.0
+version: "0.8"
+date-released: "2026-03-28"
 abstract: >-
   This paper argues that LLM effectiveness reflects hierarchical
   multi-scale compression, and that the autoregressive loop is
