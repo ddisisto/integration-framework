@@ -26,7 +26,7 @@ This decomposition is the formal structure that the rest of the section develops
 
 ## The grounding problem as rate-distortion question {#sec-grounding-rate-distortion}
 
-The grounding debate — rooted in @harnad_1990's observation that formal symbols are meaningless unless connected to the things they stand for — is active and unresolved. @bender_koller_2020 argue that models trained only on linguistic form cannot achieve genuine understanding. @piantadosi_hill_2022 counter that meaning can be constituted by inferential role — by the pattern of use across contexts — without requiring grounding in perception and action.
+The grounding debate — rooted in @harnad_1990's observation that formal symbols are meaningless unless connected to the things they stand for — is active and unresolved. @bender_koller_2020 argue that models trained only on linguistic form cannot achieve genuine understanding. @piantadosi_hill_2022 counter that meaning can be constituted by inferential role — by the pattern of use across contexts — without requiring grounding in perception and action. @mollo_milliere_2024 sharpen the question by asking under what formal conditions a model's representations would count as grounded, arguing that causal-informational relations established during training can suffice.
 
 The two-measure decomposition converts this dispute into one with measurable parameters. The question becomes: does the model's training-induced distortion measure — shaped by next-token prediction over its training distribution — preserve structure that matters under the task-specific distortion measure? Where it does, the model is grounded for that task. Where it does not, it is not.
 
