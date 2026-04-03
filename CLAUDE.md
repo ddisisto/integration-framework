@@ -8,7 +8,7 @@ Ecological implications (feedback loops, silent flattening, surprisal leakage, c
 
 ## Status
 
-Paper 1 is tightened to Sections 1–4 + Conclusion. Appendix A written. Tagged v0.8. Renders cleanly as HTML + PDF. GitHub Pages live (deploying from `publish` branch).
+Paper 1 has Introduction + Sections 2–5 + Conclusion + Appendix A. Preparing for v1.0 Zenodo upload. Renders cleanly as HTML + PDF. GitHub Pages live (deploying from `publish` branch). License is CC BY 4.0.
 
 **Branching:** `main` is the working branch. `publish` tracks the latest released version (currently v0.8). Merge to `publish` when ready to update the live site.
 
@@ -19,11 +19,12 @@ paper/
 ├── _quarto.yml                        ← render config (pre-render: _version.py)
 ├── _version.py                        ← generates _version.yml/.tex from git describe
 ├── integration.qmd                    ← main document (abstract, preface, includes all sections)
-├── 01_compression_hierarchy.qmd       ← §1: rate-distortion, compression continuum, what transformers do
-├── 02_structure_across_depth.qmd      ← §2: DPI resolution, statistical complexity, emergence thresholds
-├── 03_autoregressive_loop.qmd         ← §3: channel capacity, enrichment fraction, figures
-├── 04_grounding_alignment.qmd         ← §4: distortion measure decomposition, grounding, alignment
-├── 05_conclusion.qmd                  ← conclusion: integration/accumulation, alignment, predictions, future
+├── 00_introduction.qmd               ← §1: problem, prior work positioning, contributions, outline
+├── 01_compression_hierarchy.qmd       ← §2: rate-distortion, compression continuum, what transformers do
+├── 02_structure_across_depth.qmd      ← §3: DPI resolution, statistical complexity, emergence thresholds
+├── 03_autoregressive_loop.qmd         ← §4: channel capacity, enrichment fraction, figures
+├── 04_grounding_alignment.qmd         ← §5: distortion measure decomposition, grounding, alignment
+├── 05_conclusion.qmd                  ← conclusion: integration/accumulation, predictions, future
 ├── predictions.qmd                    ← single source of truth for all predictions
 ├── references.bib                     ← bibliography
 ├── cross-references.md                ← canonical IDs
@@ -65,7 +66,7 @@ Output goes to `paper/docs/` (HTML site + PDF). The `paper/docs/` directory is c
 
 ## Key decisions
 
-- **Formalism:** Main body uses info theory as precise vocabulary. Appendices carry the formal constructions. Rate-distortion in §1, DPI + statistical complexity in §2, channel capacity in §3. Distributed, not frontloaded.
+- **Formalism:** Main body uses info theory as precise vocabulary. Appendices carry the formal constructions. Rate-distortion in §2, DPI + statistical complexity in §3, channel capacity in §4. Distributed, not frontloaded.
 - **Audience:** ML researchers, cognitive scientists, informed generalists. Clarity over gatekeeping; rigour available in appendices.
 - **Scope:** Paper 1 covers compression and composition (the formally constrained core). Ecological dynamics (feedback loops, silent flattening, surprisal leakage, carrier transition, attention economy) deferred to paper 2.
 - **Structure:** Flat sections (no Part I/II/III). Use "section" not "chapter" or "part" in all copy.
@@ -99,6 +100,7 @@ These have no clear precedent in the literature. Present as contributions, not e
 5. ~~**v0.5: Version injection, reviewer feedback, terminology fixes.**~~ Done.
 6. ~~**v0.7: Mirostat lineage integration.**~~ Done. Three-regime prior art acknowledged (Holtzman, Basu/Mirostat, Meister, Nakaishi, Mikhaylovskiy). Predictions 1–2 reframed as partially established. Convergent evidence argument added to conclusion.
 7. ~~**v0.8: Reviewer feedback revision.**~~ Done. C_μ commitment softened to predictive complexity family. Grounding reframed (not dissolved). Two-compression-system disanalogy made explicit. Nayebi 2025 added as formal support for bandwidth constraint. Bibliography rationalised (75→52 entries, paper2 refs split out). Stale §4 references updated across repo.
-8. **Zenodo integration.** Link repo to Zenodo for DOI minting on tagged releases.
-9. **Outreach.** README rewritten as landing page. Discussion post drafted. First audience TBD.
-10. **Paper 2 development.** Surprisal leakage section drafted. Ecological argument to develop.
+8. **v0.9/v1.0: Preprint prep.** Introduction added. Prior work positioning written. New refs integrated (Huh, Huang, Voita & Titov, Mollo & Millière). Abstract tightened, keywords added, license changed to CC BY 4.0. Remaining: conclusion/discussion review, final abstract pass, tag v1.0.
+9. **Zenodo upload.** Upload v1.0 PDF for DOI. ORCID registered. Link DOI back to paper metadata.
+10. **Outreach.** Strategy: Zenodo first (priority + DOI) → targeted emails to Basu, Meister, Nayebi (seeking feedback + possible arXiv endorsement) → arXiv submission if endorsed.
+11. **Paper 2 development.** Surprisal leakage section drafted. Ecological argument to develop.
