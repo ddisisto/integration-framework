@@ -18,6 +18,6 @@ The same distinction operates at the level of distortion measures. @sec-groundin
 
 ## Future directions {#sec-future-directions}
 
-The most immediate challenge the framework creates for itself is empirical: operationalising its central quantities — the enrichment fraction, predictive complexity in high-dimensional representations, distortion measure overlap — well enough to test the predictions stated above. The experimental infrastructure for this is under development.
+The most immediate challenge the framework creates for itself is empirical: operationalising its central quantities — the enrichment fraction, predictive complexity in high-dimensional representations, distortion measure overlap — well enough to test the predictions stated above. Each is approachable with existing tools but none is yet operationalised.
 
 The enrichment fraction as developed here operates within a single context window. But the same dynamic recurs wherever model outputs feed back as inputs: in agentic loops that persist state across sessions, in human-mediated integration of model outputs into published knowledge, and in recursive training where model-generated text enters the corpora of successor models. Whether the integration/accumulation distinction scales to these longer loops — and what it would mean for representational diversity if accumulation dominates — is a natural next question that the framework's vocabulary is designed to support.

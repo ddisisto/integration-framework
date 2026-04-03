@@ -1,6 +1,6 @@
 ## Predictions {#sec-predictions}
 
-The framework generates two classes of prediction. The first are testable via generation statistics and the model's own surprisal signal, using our experimental pipeline. These will be updated as results come in. The second concern internal representational structure and require probing tools beyond our current pipeline; these are stated as theoretical commitments the framework makes about what such probing should find.
+The framework generates two classes of prediction. The first are testable via generation statistics and the model's own surprisal signal, using our experimental pipeline. The second concern internal representational structure and require probing tools beyond our current pipeline; these are stated as theoretical commitments the framework makes about what such probing should find.
 
 ### Testable predictions {#sec-testable-predictions}
 
