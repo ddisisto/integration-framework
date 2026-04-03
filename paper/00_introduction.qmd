@@ -16,6 +16,16 @@ The framework rests on three moves:
 
 The paper develops these claims with information-theoretic vocabulary where precision demands it and plain language where it does not. Formal constructions are developed in Appendix A for readers who want them; the main text is intended to be readable without them.
 
+### Prior work and the gap this paper addresses {.unnumbered}
+
+The framework draws on and connects work across five areas that have largely developed in isolation.
+
+The information bottleneck programme [@tishby_etal_2000; @tishby_zaslavsky_2015; @achille_soatto_2018] established that deep network layers can be understood as solving rate-distortion problems, trading input fidelity for task-relevant compression. @deletang_etal_2024 demonstrated this operationally — language models are literal compressors — and @huang_etal_2024 showed that compression efficiency predicts capability near-linearly across models. Separately, computational mechanics [@crutchfield_young_1989; @shalizi_crutchfield_2001] developed measures of predictive organisation that are not bounded by information-theoretic constraints on total information. These two threads have not been connected: the IB programme tracks what layers discard, while statistical complexity tracks what layers build. This paper argues both happen simultaneously and that the generative side — growth of predictive organisation — is what accounts for capability.
+
+The decoding and generation literature has independently converged on a three-regime structure. @holtzman_etal_2020 identified degeneration and incoherence as failure modes flanking coherent output; @basu_etal_2021 formalised this as feedback control via target perplexity; @meister_etal_2023 grounded it in information-theoretic typicality; @nakaishi_2024 and @mikhaylovskiy_2025 characterised the same regimes as phase transitions. That five independent approaches identify the same structure demands a theoretical account. This paper provides one: the enrichment fraction, derived from the model's own surprisal, as a continuous measure whose dynamics explain why the regimes exist.
+
+The grounding debate [@harnad_1990; @bender_koller_2020; @piantadosi_hill_2022; @mollo_milliere_2024] remains unresolved partly because it lacks shared formal vocabulary. The alignment literature faces an analogous problem — misspecification is diagnosed case by case without a unifying structure. This paper argues both are instances of a single formal problem: a gap between independently specifiable distortion measures, with limited bandwidth to close it. @nayebi_2025 arrives at a compatible constraint from communication complexity, providing independent support for the bandwidth-limited framing.
+
 ### Contributions
 
 The specific novel claims are:
