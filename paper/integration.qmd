@@ -35,6 +35,8 @@ This paper was written in collaboration between a human author and Claude, an AI
 
 Version {{< meta version >}}. Source and revision history: [github.com/ddisisto/integration-framework](https://github.com/ddisisto/integration-framework).
 
+{{< include 00_introduction.qmd >}}
+
 {{< include 01_compression_hierarchy.qmd >}}
 
 {{< include 02_structure_across_depth.qmd >}}

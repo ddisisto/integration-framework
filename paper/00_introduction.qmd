@@ -1,0 +1,31 @@
+# Introduction {#sec-introduction}
+
+A language model's internal state — the representation conditioning its next prediction — lives in a space of thousands of dimensions. Its output is a single token: one word, one fragment, chosen from a fixed vocabulary. Everything the model has computed about context, structure, and meaning must be compressed into that choice, then reconstructed on the other side as the token enters the growing sequence and the process repeats.
+
+This is not a metaphor. It is a bandwidth problem — the same one Claude Shannon characterised in 1948. A high-dimensional source must be transmitted through a narrow channel. The solution, then as now, is sequential coding: distribute across many channel uses what cannot fit through one. Each token is a channel use. The sequence carries what no single token could.
+
+The mismatch between internal richness and output narrowness is the organising fact of this paper. Taking it seriously — as an information-theoretic constraint, not a loose analogy — leads to a framework that connects several phenomena usually studied in isolation: why representations grow more structured across layers, why unconstrained generation degrades, why chain-of-thought helps, why grounding and alignment are hard in the specific ways they are hard.
+
+The framework rests on three moves:
+
+1. **Each layer solves a compression problem.** The forward pass builds representations whose organisation grows across depth — not by adding information about the input (the data processing inequality forbids that) but by reorganising preserved information into forms that support richer prediction. What grows is the structure of the representation, not its information content.
+
+2. **The autoregressive loop is sequential coding through the resulting bottleneck.** A single variable — the *enrichment fraction*, measuring the proportion of tokens doing novel compressive work — determines whether generation is productive, repetitive, or noise. This variable is directly measurable from the model's own prediction error, and its dynamics explain the regime structure independently documented across multiple research programmes.
+
+3. **Grounding and alignment are both projection problems.** In each case, two independently defined measures of what matters — the model's, shaped by training, and the receiver's, shaped by their domain or purposes — must be brought into contact through a channel too narrow to carry either one fully. The constraint is bandwidth, not quality of intent.
+
+The paper develops these claims with information-theoretic vocabulary where precision demands it and plain language where it does not. Formal constructions are developed in Appendix A for readers who want them; the main text is intended to be readable without them.
+
+### Contributions
+
+The specific novel claims are:
+
+- The autoregressive loop as sequential coding through a bandwidth-limited channel, with each token as a channel use (@sec-channel-capacity).
+- The enrichment fraction as a continuous, theoretically grounded metric for generation regime, derived from the model's own surprisal (@sec-enriching-degrading).
+- The identification of predictive organisation — not information content — as what grows across depth despite the data processing inequality (@sec-predictive-organisation).
+- The grounding problem reframed as a rate-distortion question with measurable parameters (@sec-grounding-rate-distortion).
+- Alignment characterised as distortion measure mismatch, with feedback bandwidth as the binding constraint (@sec-distortion-alignment).
+
+### Outline
+
+@sec-compression-hierarchy develops the compression continuum — the one sharp boundary between lossless and lossy compression, the shift from surface fidelity toward meaning, and the role of the distortion measure as the point where relevance enters. @sec-structure-across-depth examines what the forward pass builds: how representations gain structure across layers, and why that growth is compatible with information-theoretic bounds. @sec-autoregressive-loop turns to the sequential channel — the enrichment fraction, the three regimes, and how chain-of-thought and in-context learning operate as steering strategies. @sec-grounding-alignment develops the consequence for grounding and alignment: two instances of the same formal structure, a gap between independently specified measures of relevance, constrained by the channels available to close it. The paper concludes with testable predictions and their current status.
